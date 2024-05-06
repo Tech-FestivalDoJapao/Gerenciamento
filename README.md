@@ -1,2 +1,2 @@
-# FJTech.Web
-Versão para Web do aplicativo FJ Tech 
+# FJ Tech
+O aplcativo FJ Tech visa atender as necessidades gerenciais do Festival do Japão, agilizando os processos de controle de voluntários e dos recursos utilizados por eles, como uniformes (hapis) e vouchers, durante o evento.
