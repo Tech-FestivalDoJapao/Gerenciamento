@@ -1,47 +1,39 @@
-import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code"
-import { button as buttonStyles } from "@nextui-org/theme";
+import { title } from "@/components/primitives";
 import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
+import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
+import { Link } from "@nextui-org/link";
 
 export default function Home() {
 	return (
-		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-			<div className="inline-block max-w-lg text-center justify-center">
-				<h1 className={title()}>Página&nbsp;</h1>
-				<h1 className={title({ color: "violet" })}>Inicial&nbsp;</h1>
-				<h2 className={subtitle({ class: "mt-4" })}>
-					Beautiful, fast and modern React UI library.
-				</h2>
-			</div>
-
-			<div className="flex gap-3">
-				<Link
-					isExternal
-					href={siteConfig.links.docs}
-					className={buttonStyles({ color: "primary", radius: "full", variant: "shadow" })}
-				>
-					Documentation
-				</Link>
-				<Link
-					isExternal
-					className={buttonStyles({ variant: "bordered", radius: "full" })}
-					href={siteConfig.links.github}
-				>
-					<GithubIcon size={20} />
-					GitHub
-				</Link>
-			</div>
-
-			<div className="mt-8">
-				<Snippet hideSymbol hideCopyButton variant="flat">
-					<span>
-						Get started by editing <Code color="primary">app/page.tsx</Code>
-					</span>
-				</Snippet>
-			</div>
-		</section>
+		<div>
+			<h1 className={title()}>Home</h1>
+			<div className="flex gap-4 grid grid-cols-2 sm:grid-cols-3">
+				{siteConfig.navItems.map((item) => (
+					<Card 
+						key={item.href} isPressable	
+						className="flex gap-2"
+					>
+						<CardHeader 
+							className="gap-2 grid grid-rows-1 sm:grid-rows-2"
+						/>
+						<CardBody>
+							{item.label}
+						</CardBody>
+						<CardFooter 
+							className="justify-between bg-red-500"
+						>
+							<Link
+								href={item.href}
+								color="foreground"
+								className="text-small text-default-500"
+								showAnchorIcon
+							>
+								Acessar
+							</Link>
+						</CardFooter>
+					</Card>
+				))}
+			</div>			
+		</div>
 	);
 }
