@@ -6,15 +6,12 @@ import { Checkbox } from "@nextui-org/checkbox";
 import { Input } from "@nextui-org/input";
 import { Link } from "@nextui-org/link";
 
-[/*import {MailIcon} from './MailIcon.jsx';
-import {LockIcon} from './LockIcon.jsx';*/]
-
 export const LoginModal = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   return (
     <>
-      <Button onPress={onOpen} color="primary">Open Modal</Button>
+      <Button onPress={onOpen} color="primary">Abrir Modal</Button>
       <Modal 
         isOpen={isOpen} 
         onOpenChange={onOpenChange}
@@ -26,23 +23,17 @@ export const LoginModal = () => {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Desbloquear</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">Desbloquear acesso ao sistema</ModalHeader>
               <ModalBody>
                 <Input
                   autoFocus
-                  {/*endContent={
-                  MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                  }*/}
                   label="Email"
-                  placeholder="Enter your email"
+                  placeholder="Digite seu email"
                   variant="bordered"
                 />
                 <Input
-                  {/*endContent={
-                    <LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                  }*/}
-                  label="Password"
-                  placeholder="Enter your password"
+                  label="Senha"
+                  placeholder="Digite sua senha"
                   type="password"
                   variant="bordered"
                 />
@@ -55,16 +46,16 @@ export const LoginModal = () => {
                     Remember me
                   </Checkbox>
                   <Link color="primary" href="#" size="sm">
-                    Forgot password?
+                    Esqueceu a senha?
                   </Link>
                 </div>
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="flat" onPress={onClose}>
-                  Close
+                  Fechar
                 </Button>
                 <Button color="primary" onPress={onClose}>
-                  Sign in
+                  Entrar
                 </Button>
               </ModalFooter>
             </>
