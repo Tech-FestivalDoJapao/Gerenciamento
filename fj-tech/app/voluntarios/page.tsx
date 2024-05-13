@@ -1,6 +1,7 @@
 import React from "react";
 import { subtitle, title } from "@/components/primitives";
-import TabelaDeVoluntarios from "@/components/tabela-voluntarios";
+import { Button } from "@nextui-org/button";
+import { Link } from "@nextui-org/link";
 
 export default function VoluntariosPage() {
 	return (
@@ -10,7 +11,14 @@ export default function VoluntariosPage() {
 				Lista de voluntários cadastrados no evento
 			</h2>
 			<div>
-				<TabelaDeVoluntarios />
+				<Button 
+					href="/perfil"
+					as={Link}
+					color="primary"
+					variant="solid"
+				>
+					Acessar perfil
+				</Button>
 			</div>
 		</div>				
 	);
