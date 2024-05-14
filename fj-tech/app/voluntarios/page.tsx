@@ -2,6 +2,7 @@ import React from "react";
 import { subtitle, title } from "@/components/primitives";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
+import { TabelaDeVoluntarios } from "@/components/tabela-voluntarios";
 
 export default function VoluntariosPage() {
 	return (
@@ -19,6 +20,7 @@ export default function VoluntariosPage() {
 				>
 					Acessar perfil
 				</Button>
+				<TabelaDeVoluntarios />
 			</div>
 		</div>				
 	);

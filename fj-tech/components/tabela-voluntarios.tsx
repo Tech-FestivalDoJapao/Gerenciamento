@@ -143,4 +143,4 @@ export const TabelaDeVoluntarios = () => {
       </TableBody>
     </Table>
   );
-}
+};
