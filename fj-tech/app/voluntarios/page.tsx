@@ -11,7 +11,7 @@ export default function VoluntariosPage() {
 			<h2 className={subtitle({ class: "mt-4" })}>
 				Lista de voluntários cadastrados no evento
 			</h2>
-			<div>
+			<div className="mt-4">
 				<Button 
 					href="/perfil"
 					as={Link}
@@ -19,9 +19,9 @@ export default function VoluntariosPage() {
 					variant="solid"
 				>
 					Acessar perfil
-				</Button>
-				<TabelaDeVoluntarios />
-			</div>
+				</Button>			
+				<TabelaDeVoluntarios />						
+			</div>	
 		</div>				
 	);
 }

@@ -70,4 +70,18 @@ export const siteConfig = {
 		discord: "https://discord.gg/9b6yyZKmH4",
     	sponsor: "https://patreon.com/jrgarciadev"
 	},
+	cardsHomepage: [
+		{
+			label: "Voluntários",
+			href: "/voluntarios",
+		},
+		{
+			label: "Recursos",
+			href: "/recursos",
+		},
+		{
+			label: "Estandes",
+			href: "/estandes",
+		},
+	],
 };
