@@ -1,0 +1,32 @@
+{
+  "name": "fj-tech",
+  "description": "Sistema gerenciador de voluntários e recursos para o Festival do Japão.",
+  "version": "0.0.0",
+  "private": true,
+  "repository": "twbs/examples",
+  "license": "MIT",
+  "stackblitz": {
+    "startCommand": "npm start"
+  },
+  "scripts": {
+    "start": "webpack serve",
+    "build": "webpack build --mode=production",
+    "test": "npm run build"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "css-loader": "^7.1.1",
+    "html-webpack-plugin": "^5.6.0",
+    "postcss-loader": "^8.1.1",
+    "sass": "^1.76.0",
+    "sass-loader": "^14.2.1",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}
