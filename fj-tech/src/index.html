@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sistema gerenciador de voluntários e recursos do Festival do Japão.">
 
-    <script src="/color-modes.js"></script>
+    <script src="./js/color-modes.js"></script>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#voluntarios">Voluntários</a>
+                    <a class="nav-link" aria-current="page" href="./src/pages/voluntarios.html">Voluntários</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/#" role="button"
@@ -42,90 +42,127 @@
             </ul>
 
             <div>
-                <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
-                    aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+                <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme"
+                    type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
                     <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
                         <use href="#circle-half"></use>
                     </svg>
                     <span class="visually-hidden" id="bd-theme-text"></span>
                 </button>
-                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-                        <li>
-                            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
-                                aria-pressed="false">
-                                <svg class="bi me-2 opacity-50" width="1em" height="1em">
-                                    <use href="#sun-fill"></use>
-                                </svg>
-                                Light
-                                <svg class="bi ms-auto d-none" width="1em" height="1em">
-                                    <use href="#check2"></use>
-                                </svg>
-                            </button>
-                        </li>
-                        <li>
-                            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
-                                aria-pressed="false">
-                                <svg class="bi me-2 opacity-50" width="1em" height="1em">
-                                    <use href="#moon-stars-fill"></use>
-                                </svg>
-                                Dark
-                                <svg class="bi ms-auto d-none" width="1em" height="1em">
-                                    <use href="#check2"></use>
-                                </svg>
-                            </button>
-                        </li>
-                        <li>
-                            <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
-                                aria-pressed="true">
-                                <svg class="bi me-2 opacity-50" width="1em" height="1em">
-                                    <use href="#circle-half"></use>
-                                </svg>
-                                Auto
-                                <svg class="bi ms-auto d-none" width="1em" height="1em">
-                                    <use href="#check2"></use>
-                                </svg>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+                    <li>
+                        <button type="button" class="dropdown-item d-flex align-items-center"
+                            data-bs-theme-value="light" aria-pressed="false">
+                            <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                                <use href="#sun-fill"></use>
+                            </svg>
+                            Light
+                            <svg class="bi ms-auto d-none" width="1em" height="1em">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+                            aria-pressed="false">
+                            <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                                <use href="#moon-stars-fill"></use>
+                            </svg>
+                            Dark
+                            <svg class="bi ms-auto d-none" width="1em" height="1em">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item d-flex align-items-center active"
+                            data-bs-theme-value="auto" aria-pressed="true">
+                            <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                                <use href="#circle-half"></use>
+                            </svg>
+                            Auto
+                            <svg class="bi ms-auto d-none" width="1em" height="1em">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </header>
 
         <hr class="col-1 my-5 mx-0 bg-danger">
 
         <main id="main" class="d-flex flex-column align-items-md-center pb-3 mb-5">
-            <section id="titulo">
-                <h1 class="text-center">Início</h1>
-                <p class="fs-4">Sistema de gestão de voluntários do Festival do Japão</p>
-            </section>
+            <div class="flex-row">
+                <section id="titulo">
+                    <h1 class="text-center">Início</h1>
+                    <p class="fs-4">Sistema de gestão de voluntários do Festival do Japão</p>
+                </section>
 
-            <div id="cards" class="d-flex flex-row justify-content-between">
-                <div>
-                    <div id="cardVoluntarios" class="card text-bg-danger mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Lista de Voluntários</h5>
-                            <p class="card-text">
+                <section id="cards" class="d-flex flex-row align-items-md-center justify-content-between">
+                    <div>
+                        <div id="cardVoluntarios" class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Lista de Voluntários</h5>
+                                <p class="card-text">
+                                    <a href="/">Acessar</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Recursos</h5>
                                 <a href="/">Acessar</a>
-                            </p>
+                            </div>
+                        </div>
+                        <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Localização dos Estandes</h5>
+                                <a href="/">Acessar</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Recursos</h5>
-                            <a href="/">Acessar</a>
-                        </div>
-                    </div>
-                    <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Localização dos Estandes</h5>
-                            <a href="/">Acessar</a>
-                        </div>
-                    </div>
-                </div>
+                </section>
             </div>
 
-            <section id="voluntarios" hidden>
+
+            <section id="voluntarios" visible>
                 <h2 class="text-center">Voluntários</h2>
                 <h5>Lista de voluntários cadastrados no evento</h5>
+
+                <table class="table table-responsive table-hover table-striped">
+                    <!-- TODO:  Adicionar um offcanvas para o gerenciamento dos recursos -->
+                    <thead class="table-danger">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome completo</th>
+                            <th scope="col">Contato</th>
+                            <th scope="col">Email</th>                           
+
+                            <th scope="col">Status</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
 
             <section id="recursos" hidden>
@@ -166,7 +203,7 @@
             <path
                 d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
         </symbol>
-    </svg>    
+    </svg>
 </body>
 
 </html>

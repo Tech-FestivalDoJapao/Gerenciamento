@@ -6,18 +6,25 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: './src/js/main.js',
+  entry: {
+    index: './src/js/main.js',
+    voluntarios: './src/js/voluntarios.js',
+    perfil: './src/js/perfil-voluntario.js',
+  },
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true
   },
-  devServer:{
+  devServer: {
     static: path.resolve(__dirname, 'dist'),
     port: 8080,
     hot: true
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: './src/index.html' })
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new HtmlWebpackPlugin({ template: './src/pages/voluntarios.html', chunks: ['voluntarios'] }),
+    new HtmlWebpackPlugin({ template: './src/pages/perfil-voluntario.html', chunks: ['perfil'] })
   ],
   module: {
     rules: [
