@@ -93,36 +93,43 @@
 
         <hr class="col-1 my-5 mx-0 bg-danger">
 
-        <main id="main" class="d-flex flex-column align-items-md-center pb-3 mb-5">
-            <section id="titulo">
-                <h1 class="text-center">Início</h1>
+        <main id="main" class="align-items-md-center pb-3 mb-5">
+            <section id="titulo" class="text-center mb-5">
+                <h1>Início</h1>
                 <p class="fs-4">Sistema de gestão de voluntários do Festival do Japão</p>
             </section>
 
-            <div id="cards" class="d-flex flex-row justify-content-between">
-                <div>
-                    <div id="cardVoluntarios" class="card text-bg-danger mb-3" style="max-width: 18rem;">
+            <section id="cards" class="align-items-center align-items-md-center px-2">
+                <div class="row justify-content-between">
+                    <div class="col-sm-6 col-md-4">
+                      <div id="cardVoluntarios" class="card border-danger mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Lista de Voluntários</h5>
-                            <p class="card-text">
-                                <a href="/">Acessar</a>
-                            </p>
+                          <h5 class="card-title">Lista de Voluntários</h5>
+                          <p class="card-text">Acesse a lista de voluntários cadastrados no evento e cadastre os horários de cada um.</p>
+                          <a href="./voluntarios.html" class="btn btn-primary btn-danger">Acessar</a>
                         </div>
+                      </div>
                     </div>
-                    <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                    <div id="cardRecursos" class="col-sm-6 col-md-4">
+                      <div class="card border-danger mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Recursos</h5>
-                            <a href="/">Acessar</a>
+                          <h5 class="card-title">Recursos</h5>
+                          <p class="card-text ">Gerencie a distribuição de credenciais, hapis e vouchers alimentícios.</p>
+                          <a href="#" class="btn btn-danger">Acessar</a>
                         </div>
+                      </div>
                     </div>
-                    <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
+                    <div id="cardEstandes" class="col-sm-6 col-md-4">
+                        <div class="card border-danger mb-3">
+                          <div class="card-body">
                             <h5 class="card-title">Localização dos Estandes</h5>
-                            <a href="/">Acessar</a>
+                            <p class="card-text">Veja um mapa completo ou personalizado do pavilhão do evento.</p>
+                            <a href="#" class="btn btn-danger">Acessar</a>
+                          </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                  </div>
+            </section>
 
             <section id="voluntarios" hidden>
                 <h2 class="text-center">Voluntários</h2>

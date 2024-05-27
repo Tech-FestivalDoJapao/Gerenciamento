@@ -9,14 +9,93 @@
     <script src="./main.js"></script>
   </head>
   <body>
-    <div class="container py-4 px-3 mx-auto">
-      <h1>Página de listagem de voluntários</h1>
-      <button class="btn btn-primary">Primary button</button>
+    <div class="container py-3 px-3 mx-auto">
+        <header id="header"
+            class="d-flex justify-content-between align-items-md-center pb-3 mb-5 border-bottom border-danger border-5">
+            <h1 class="h4">
+                <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                    <span>Festival do Japão</span>
+                </a>
+            </h1>
+            <!-- Navegação em tabs -->
+            <ul class="nav nav-underline">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Voluntários</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/#" role="button"
+                        aria-expanded="false">Recursos</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/">Credenciais</a></li>
+                        <li><a class="dropdown-item" href="/">Hapis</a></li>
+                        <li><a class="dropdown-item" href="/">Vouchers</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Estandes</a>
+                </li>
+            </ul>
 
-      <section id="voluntarios">
-        <h2 class="text-center">Voluntários</h2>
-        <h5>Lista de voluntários cadastrados no evento</h5>
-      </section>
+            <div>
+                <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme"
+                    type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+                    <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+                        <use href="#circle-half"></use>
+                    </svg>
+                    <span class="visually-hidden" id="bd-theme-text"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+                    <li>
+                        <button type="button" class="dropdown-item d-flex align-items-center"
+                            data-bs-theme-value="light" aria-pressed="false">
+                            <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                                <use href="#sun-fill"></use>
+                            </svg>
+                            Light
+                            <svg class="bi ms-auto d-none" width="1em" height="1em">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+                            aria-pressed="false">
+                            <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                                <use href="#moon-stars-fill"></use>
+                            </svg>
+                            Dark
+                            <svg class="bi ms-auto d-none" width="1em" height="1em">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item d-flex align-items-center active"
+                            data-bs-theme-value="auto" aria-pressed="true">
+                            <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                                <use href="#circle-half"></use>
+                            </svg>
+                            Auto
+                            <svg class="bi ms-auto d-none" width="1em" height="1em">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <hr class="col-1 my-5 mx-0 bg-danger">
+
+        <main id="main" class="align-items-md-center pb-3 mb-5">
+            <section id="titulo" class="text-center mb-5">
+                <h1>Voluntários</h1>
+                <p class="fs-4">Lista de voluntários cadastrados no evento</p>
+            </section>
+        </main>
     </div>
   </body>
 </html>
