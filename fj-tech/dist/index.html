@@ -35,6 +35,7 @@
                         >Voluntários</a>
                 </li>
                 <li class="nav-item" role="presentation">
+                    <!-- Chama o modal para desbloqueio da parte de administrativa do sistema -->
                     <a class="nav-link" id="recursos-tab" type="button"
                         data-bs-toggle="tab" data-bs-target="#recursos-tab-pane" role="tab" aria-controls="recursos-tab-pane" aria-selected="false"
                         >Recursos</a>
@@ -99,6 +100,40 @@
         <hr class="col-1 my-5 mx-0 bg-danger">
 
         <!-- Desbloquear acesso -->
+        <div id="desbloquearSistema">           
+            <!-- Modal -->
+            <div class="modal fade" id="desbloquearGerenciamentoModal" tabindex="-1" 
+                aria-labelledby="desbloquearGerenciamentoDeRecursos" aria-hidden="true"
+                data-bs-backdrop="static" data-bs-keyboard="false">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="desbloquearGerenciamentoDeRecursos">Área Administrativa</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="validaAcessoAdministrativo" class="was-validated">
+                                <div class="mb-3">
+                                    <label for="palavra-chave" class="col-form-label mb-3">
+                                        Para desbloquear o acesso à área de Gerenciamento de Recursos é necessário informar uma palavra-chave:
+                                    </label>
+                                    <input type="text" class="form-control" id="palavra-chave" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, insira uma palavra-chave válida neste campo
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger" id="recursos-tab"
+                                data-bs-toggle="tab" data-bs-target="#recursos-tab-pane" role="tab" aria-controls="recursos-tab-pane" aria-selected="false" disabled
+                                >Acessar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Conteúdo do site -->
         <div id="main" class="align-items-md-center pb-3 mb-5">
@@ -126,7 +161,8 @@
                                     <div class="card-body">
                                       <h5 class="card-title pt-2 pb-3">Recursos</h5>
                                       <p class="card-text pb-3">Gerencie a distribuição de credenciais, hapis e vouchers alimentícios.</p>
-                                      <a href="#" class="btn btn-danger">Acessar</a>
+                                      <!-- Chama o modal para desbloqueio da parte de administrativa do sistema -->
+                                      <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#desbloquearGerenciamentoModal">Acessar</a>
                                     </div>
                                   </div>
                                 </div>
