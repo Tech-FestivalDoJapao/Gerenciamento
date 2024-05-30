@@ -2,19 +2,27 @@
   "name": "fj-tech",
   "version": "1.0.1",
   "main": "index.js",
+  "homepage": "https://tech-festivaldojapao.github.io/gerenciamento/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FJtechApp/FJTech.Web.git"
+  },
   "scripts": {
-    "start": "webpack serve --mode development",
+    "dev": "webpack serve --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack server",
     "build": "webpack",
-    "deploy": "gh-pages -d dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Sistema gerenciador de voluntários e recursos do Festival do Japão.",
   "devDependencies": {
     "autoprefixer": "^10.4.19",
     "css-loader": "^7.1.2",
+    "gh-pages": "^6.1.1",
     "mini-css-extract-plugin": "^2.9.0",
     "postcss-loader": "^8.1.1",
     "sass": "^1.77.2",
