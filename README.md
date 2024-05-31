@@ -1,11 +1,11 @@
 # FJ Tech
 O aplcativo FJ Tech visa atender as necessidades gerenciais do Festival do Japão, agilizando os processos de controle de voluntários e dos recursos utilizados por eles, como uniformes (hapis) e vouchers, durante o evento.
 
-Acesse o nosso site: https://tech-festivaldojapao.github.io/gerenciamento/
+Acesse o nosso site: https://tech-festivaldojapao.github.io/Gerenciamento/
 
 ## Como rodar o projeto
 ```sh
-git clone https://github.com/Tech-FestivalDoJapao/gerenciamento.git
+git clone https://github.com/Tech-FestivalDoJapao/Gerenciamento.git
 cd fj-tech
 npm install
 npm run dev
