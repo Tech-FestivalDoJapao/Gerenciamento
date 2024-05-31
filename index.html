@@ -129,9 +129,13 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-danger"
                                 data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-danger" id="recursos-tab" data-bs-toggle="tab"
-                                data-bs-target="#recursos-tab-pane" role="tab" aria-controls="recursos-tab-pane"
-                                aria-selected="false">Acessar</button>
+                            <button type="submit" class="btn btn-danger" id="acessar-recursos" onclick="
+                                if (document.getElementById('palavra-chave').value === 'admin') {
+                                    document.getElementById('recursos-tab').click();    
+                                    modal.hide();   
+                                } else {
+                                    alert('Palavra-chave inválida. Tente novamente.');
+                                }">Acessar</button>
                         </div>
                     </div>
                 </div>
@@ -141,6 +145,7 @@
         <!-- Conteúdo do site -->
         <div id="main" class="align-items-md-center pb-3 mb-5">
             <div class="tab-content" id="myTabContent">
+                <!-- Home -->
                 <section class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
                     tabindex="0">
                     <main class="align-items-md-center pb-3 mb-5">
@@ -149,6 +154,7 @@
                             <p class="fs-4">Sistema de gestão de voluntários do Festival do Japão</p>
                         </section>
 
+                        <!-- Cards de acesso rápido -->
                         <section id="cards" class="align-items-center align-items-md-center px-2">
                             <div class="row justify-content-between">
                                 <div class="col-sm-6 col-md-4">
@@ -157,7 +163,8 @@
                                             <h5 class="card-title pt-2 pb-3">Lista de Voluntários</h5>
                                             <p class="card-text pb-3">Acesse a lista de voluntários cadastrados no
                                                 evento e cadastre os horários de cada um.</p>
-                                            <a href="#" class="btn btn-primary btn-danger">Acessar</a>
+                                            <button class="btn btn-danger"
+                                                onclick="document.getElementById('voluntarios-tab').click()">Acessar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -179,7 +186,8 @@
                                             <h5 class="card-title pt-2 pb-3">Localização dos Estandes</h5>
                                             <p class="card-text pb-3">Veja um mapa completo ou personalizado do pavilhão
                                                 do evento.</p>
-                                            <a href="#" class="btn btn-danger">Acessar</a>
+                                            <button class="btn btn-danger"
+                                                onclick="document.getElementById('estandes-tab').click()">Acessar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -188,6 +196,7 @@
                     </main>
                 </section>
 
+                <!-- Voluntários -->
                 <section class="tab-pane fade" id="voluntarios-tab-pane" role="tabpanel"
                     aria-labelledby="voluntarios-tab" tabindex="0">
                     <main class="align-items-md-center pb-3 mb-5">
@@ -198,51 +207,22 @@
 
                         <!-- Lista de voluntários -->
                         <section id="listaDeVoluntarios" class="mb-3 justify-content-md-center table-responsive">
-                            <table class="table align-middle mb-0 table-bordeless table-hover">
+                            <table class="table table-striped table-hover p-3">
                                 <thead>
                                     <tr>
-                                        <th scope="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault" />
-                                            </div>
-                                        </th>
+                                        <th scope="col">#</th>
                                         <th scope="col">Nome</th>
-                                        <th scope="col">Contato</th>
-                                        <th scope="col" class="text-center">Check-in</th>
-                                        <th scope="col" class="text-center">Checkout</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Telefone</th>
                                         <th scope="col">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault" />
-                                            </div>
-                                        </th>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="ms">
-                                                    <p class="mb-1">Nome Completo do Voluntário</p>
-                                                    <p class="text-muted mb-0">voluntario@email.com</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="fw-normal mb-1">+55 (xx) 9xxxx-xxxx</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-center">-</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-center">-</p>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-success rounded-pill d-inline">Ativo</span>
-                                        </td>
+                                        <th scope="row">1</th>
+                                        <td>Nome Completo do Voluntário</td>
+                                        <td>voluntario@email.com</td>
+                                        <td>+55 (xx) 9xxxx-xxxx</td>
                                         <td>
                                             <div class="btn-group btn-group-sm" role="group"
                                                 aria-label="Small button group px-2">
@@ -267,109 +247,6 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault" />
-                                            </div>
-                                        </th>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="ms">
-                                                    <p class="fw-bold mb-1">Nome do Voluntário</p>
-                                                    <p class="text-muted mb-0">voluntario@email.com</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="fw-normal mb-1">+55 (xx) 9xxxx-xxxx</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-center">-</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-center">-</p>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-success rounded-pill d-inline">Intervalo</span>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group btn-group-sm" role="group"
-                                                aria-label="Small button group px-2">
-                                                <button type="button" class="btn btn-outline-danger"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                                    aria-controls="offcanvasRight">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="10" width="10"
-                                                        viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                                        <path
-                                                            d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
-                                                    </svg>
-                                                </button>
-
-                                                <button type="button" class="btn btn-outline-danger"
-                                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="10" width="10"
-                                                        viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                                        <path
-                                                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault" />
-                                            </div>
-                                        </th>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="ms">
-                                                    <p class="fw-bold mb-1">Nome Completo</p>
-                                                    <p class="text-muted mb-0">voluntario@email.com</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="fw-normal mb-1">+55 (xx) 9xxxx-xxxx</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-center">-</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-center">-</p>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-success rounded-pill d-inline">Ativo</span>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group btn-group-sm" role="group"
-                                                aria-label="Small button group px-2">
-                                                <button type="button" class="btn btn-outline-danger"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                                    aria-controls="offcanvasRight">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="10" width="10"
-                                                        viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                                        <path
-                                                            d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
-                                                    </svg>
-                                                </button>
-
-                                                <button type="button" class="btn btn-outline-danger"
-                                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="10" width="10"
-                                                        viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                                        <path
-                                                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-
                                 </tbody>
                             </table>
                         </section>
@@ -385,8 +262,95 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="offcanvas-body">
-                                    Gestão de horários e alocação de recursos ao voluntário selecionado na lista
-                                    principal
+                                    <p class="mb-5">
+                                        Gestão de horários e alocação de recursos ao voluntário selecionado na lista principal
+                                    </p>
+
+                                    <form action="" method="post">
+                                        <div class="mb-5">
+                                            <p class="mb-2 h5">Credencial</p>
+                                            <div class="mb-3">
+                                                <label for="codigoCredencial" class="form-label">Código da credencial associada:</label>
+                                                <input type="email" class="form-control" id="codigoCredencial" placeholder="xxxxxxxxxx" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-5">
+                                            <p class="mb-2 h5">Horários</p>
+                                            <div class="row">                                                
+                                                <div class="col">
+                                                    <label for="horarioCheckIn" class="form-label">Check-in</label>
+                                                    <input type="time" class="form-control" id="horarioCheckIn" required>
+                                                </div>
+                                                <div class="col">
+                                                    <label for="horarioCheckout" class="form-label">Checkout</label>
+                                                    <input type="time" class="form-control" id="horarioCheckout" required>
+                                                </div>
+
+                                                <div>
+                                                    <label for="horarioIntervalo" class="form-label">Iniciar intervalo</label>
+                                                    <div class="hstack gap-3">                                                    
+                                                        <input id="horarioIntervalo" class="form-control me-auto" type="time" placeholder="Add your item here..." aria-label="Add your item here...">
+                                                        <button type="button" class="btn btn-outline-danger active">Iniciar</button>
+                                                        <button type="button" class="btn btn-outline-danger">Terminar</button>
+                                                    </div>
+    
+                                                    <span id="horarioInicioIntervalo">
+                                                        <!-- Aqui você pode listar os horários de intervalo -->
+                                                    </span>
+                                                </div>                                               
+                                            </div>                                            
+                                        </div>
+
+                                        <div class="mb-5">
+                                            <p class="mb-2 h5">Hapi</p>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <select id="tamanhoHapi" class="form-select" required>
+                                                        <option selected>Tamanho do hapi</option>
+                                                        <option value="PP">PP</option>
+                                                        <option value="P">P</option>
+                                                        <option value="M">M</option>
+                                                        <option value="G">G</option>
+                                                        <option value="GG">GG</option>
+                                                        <option value="XG">XG</option>
+                                                    </select>
+                                                </div>    
+                                                <div class="col">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                        <label class="form-check-label" for="defaultCheck1">
+                                                          Resgatado
+                                                        </label>
+                                                    </div>
+                                                </div>                                            
+                                            </div>                                          
+                                        </div>
+
+                                        <div class="mb-5">
+                                            <p class="mb-2 h5">Voucher</p>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <select id="tamanhoHapi" class="form-select" required>
+                                                        <option selected>Tipo de voucher</option>
+                                                        <option value="1">Almoço</option>
+                                                        <option value="2">Jantar</option>
+                                                        <option value="3">Kit lanche</option>
+                                                    </select>
+                                                </div>    
+                                                <div class="col">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                        <label class="form-check-label" for="defaultCheck1">
+                                                          Resgatado
+                                                        </label>
+                                                    </div>
+                                                </div>                                            
+                                            </div>                                          
+                                        </div>
+
+                                        <button type="submit" class="btn btn-danger">Salvar</button>
+                                    </form>
                                 </div>
                             </div>
                         </section>
@@ -398,11 +362,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="14" width="14"
-                                                viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                                <path
-                                                    d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
-                                            </svg> Atenção
+                                            Atenção
                                         </h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
@@ -414,7 +374,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-danger"
                                             data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-danger">Excluir</button>
+                                        <button type="submit" class="btn btn-danger">Excluir</button>
                                     </div>
                                 </div>
                             </div>
@@ -422,6 +382,7 @@
                     </main>
                 </section>
 
+                <!-- Recursos -->
                 <section class="tab-pane fade" id="recursos-tab-pane" role="tabpanel" aria-labelledby="recursos-tab"
                     tabindex="0">
                     <main class="align-items-md-center pb-3 mb-5">
@@ -432,6 +393,7 @@
                     </main>
                 </section>
 
+                <!-- Estandes -->
                 <section class="tab-pane fade" id="estandes-tab-pane" role="tabpanel" aria-labelledby="estandes-tab"
                     tabindex="0">
                     <main class="align-items-md-center pb-3 mb-5">
@@ -441,7 +403,6 @@
                     </main>
                 </section>
             </div>
-
         </div>
 
         <hr class="mt-5 mb-4 border-bottom border-danger ">
