@@ -36,9 +36,12 @@
                 </li>
                 <li class="nav-item" role="presentation">
                     <!-- Chama o modal para desbloqueio da parte de administrativa do sistema -->
-                    <a class="nav-link" id="recursos-tab" type="button" data-bs-toggle="tab"
+                    <a class="nav-link" id="recursos-tab" type="button" data-bs-toggle="tab" hidden
                         data-bs-target="#recursos-tab-pane" role="tab" aria-controls="recursos-tab-pane"
                         aria-selected="false">Recursos</a>
+
+                    <a class="nav-link" id="recursos-tab" type="button" data-bs-toggle="modal"
+                        data-bs-target="#desbloquearGerenciamentoModal">Recursos</a>                        
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link disabled" id="estandes-tab" type="button" data-bs-toggle="tab"
