@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-bs-theme="light">
 
 <head>
     <title>Gerenciador do Festival do Japão</title>
@@ -18,33 +18,33 @@
         <header id="header"
             class="d-flex justify-content-between align-items-md-center pb-3 mb-5 border-bottom border-danger border-5">
             <h1 class="h4">
-                <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
                     <span>Festival do Japão</span>
                 </a>
             </h1>
             <!-- Navegação em tabs -->
             <ul class="nav nav-underline">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active text-danger" id="home-tab" type="button" data-bs-toggle="tab"
+                    <a class="nav-link active link-body-emphasis" id="home-tab" type="button" data-bs-toggle="tab"
                         data-bs-target="#home-tab-pane" role="tab" aria-controls="home-tab-pane"
                         aria-selected="true">Home</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link text-danger" id="voluntarios-tab" type="button" data-bs-toggle="tab"
+                    <a class="nav-link link-body-emphasis" id="voluntarios-tab" type="button" data-bs-toggle="tab"
                         data-bs-target="#voluntarios-tab-pane" role="tab" aria-controls="voluntarios-tab-pane"
                         aria-selected="false">Voluntários</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <!-- Chama o modal para desbloqueio da parte de administrativa do sistema -->
-                    <a class="nav-link text-danger" id="recursos-tab" type="button" data-bs-toggle="tab" hidden
+                    <a class="nav-link link-body-emphasis" id="recursos-tab" type="button" data-bs-toggle="tab" hidden
                         data-bs-target="#recursos-tab-pane" role="tab" aria-controls="recursos-tab-pane"
                         aria-selected="false">Recursos</a>
 
-                    <a class="nav-link text-danger" id="recursos-tab" type="button" data-bs-toggle="modal"
+                    <a class="nav-link link-body-emphasis" id="recursos-tab" type="button" data-bs-toggle="modal"
                         name="acessar-recursos-link" data-bs-target="#desbloquearGerenciamentoModal">Recursos</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link text-danger text-opacity-75 disabled" id="estandes-tab" type="button"
+                    <a class="nav-link link-body-emphasis text-opacity-75 disabled" id="estandes-tab" type="button"
                         data-bs-toggle="tab" data-bs-target="#estandes-tab-pane" role="tab"
                         aria-controls="estandes-tab-pane" aria-selected="false">Estandes</a>
                 </li>
@@ -140,7 +140,7 @@
                                     modal.hide();   
                                 } else {
                                     alert('Palavra-chave inválida. Tente novamente.');
-                                }">Acessar</button>
+                                }" data-bs-dismiss="modal">Acessar</button>
                         </div>
                     </div>
                 </div>
@@ -215,7 +215,7 @@
 
                         <!-- Lista de voluntários -->
                         <section id="listaDeVoluntarios" class="mb-3 justify-content-md-center">
-                            <!-- Barra de pesquisa -->                           
+                            <!-- Barra de pesquisa -->
                             <div class="hstack gap-5 mb-4">
                                 <div class="col col-1"></div>
                                 <div class="p-2">
@@ -246,8 +246,8 @@
                             <!-- Tabela de voluntários -->
                             <div class="hstack gap-5 mb-3">
                                 <div class="col col-1"></div>
-                                <div class="p-2 col">
-                                    <table class="table align-middle mb-0 table-bordeless table-hover table-responsive">
+                                <div class="p-2 col table-responsive">
+                                    <table class="table align-middle mb-0 table-bordeless table-hover">
                                         <thead>
                                             <tr>
                                                 <th scope="col">
@@ -295,23 +295,37 @@
                                                 <td>
                                                     <div class="btn-group btn-group-sm gap-1" role="group"
                                                         aria-label="Small button group px-2">
+                                                        <!-- Editar dados do voluntário no festival -->
                                                         <button type="button" class="btn btn-outline-danger"
                                                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                                                             aria-controls="offcanvasRight">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                                fill="currentColor" class="bi bi-pencil-square"
-                                                                viewBox="0 0 16 16">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor"
+                                                                class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                                 <path
                                                                     d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                                                 <path fill-rule="evenodd"
                                                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                                                             </svg>
                                                         </button>
-        
+
+                                                        <!-- Acessar perfil cadastral do voluntário -->
+                                                        <button type="button" class="btn btn-outline-danger"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#perfilVoluntarioModal">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor"
+                                                                class="bi bi-person-fill" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                                                            </svg>
+                                                        </button>
+
+                                                        <!-- Excluir voluntário da lista do festival -->
                                                         <button type="button" class="btn btn-outline-danger"
                                                             data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                                fill="currentColor" class="bi bi-trash-fill"
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor" class="bi bi-trash-fill"
                                                                 viewBox="0 0 16 16">
                                                                 <path
                                                                     d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
@@ -350,23 +364,37 @@
                                                 <td>
                                                     <div class="btn-group btn-group-sm gap-1" role="group"
                                                         aria-label="Small button group px-2">
+                                                        <!-- Editar dados do voluntário no festival -->
                                                         <button type="button" class="btn btn-outline-danger"
                                                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                                                             aria-controls="offcanvasRight">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                                fill="currentColor" class="bi bi-pencil-square"
-                                                                viewBox="0 0 16 16">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor"
+                                                                class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                                 <path
                                                                     d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                                                 <path fill-rule="evenodd"
                                                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                                                             </svg>
                                                         </button>
-        
+
+                                                        <!-- Acessar perfil cadastral do voluntário -->
+                                                        <button type="button" class="btn btn-outline-danger"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#perfilVoluntarioModal">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor"
+                                                                class="bi bi-person-fill" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                                                            </svg>
+                                                        </button>
+
+                                                        <!-- Excluir voluntário da lista do festival -->
                                                         <button type="button" class="btn btn-outline-danger"
                                                             data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                                fill="currentColor" class="bi bi-trash-fill"
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor" class="bi bi-trash-fill"
                                                                 viewBox="0 0 16 16">
                                                                 <path
                                                                     d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
@@ -405,23 +433,37 @@
                                                 <td>
                                                     <div class="btn-group btn-group-sm gap-1" role="group"
                                                         aria-label="Small button group px-2">
+                                                        <!-- Editar dados do voluntário no festival -->
                                                         <button type="button" class="btn btn-outline-danger"
                                                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                                                             aria-controls="offcanvasRight">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                                fill="currentColor" class="bi bi-pencil-square"
-                                                                viewBox="0 0 16 16">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor"
+                                                                class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                                 <path
                                                                     d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                                                 <path fill-rule="evenodd"
                                                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                                                             </svg>
                                                         </button>
-        
+
+                                                        <!-- Acessar perfil cadastral do voluntário -->
+                                                        <button type="button" class="btn btn-outline-danger"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#perfilVoluntarioModal">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor"
+                                                                class="bi bi-person-fill" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                                                            </svg>
+                                                        </button>
+
+                                                        <!-- Excluir voluntário da lista do festival -->
                                                         <button type="button" class="btn btn-outline-danger"
                                                             data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                                fill="currentColor" class="bi bi-trash-fill"
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor" class="bi bi-trash-fill"
                                                                 viewBox="0 0 16 16">
                                                                 <path
                                                                     d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
@@ -433,8 +475,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="col col-1"></div>                                
-                            </div>                
+                                <div class="col col-1"></div>
+                            </div>
                         </section>
 
                         <!-- OffCanvas para gestão de horários e alocação de recursos ao voluntário selecionado -->
@@ -572,11 +614,145 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-danger"
                                             data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                        <button type="submit" class="btn btn-danger"
+                                            data-bs-dismiss="modal">Excluir</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Modal para vizualização do perfil do voluntário -->
+                        <section id="perfil-voluntario">
+                            <!-- Full screen modal -->
+                            <div class="modal fade" id="perfilVoluntarioModal" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+                                <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Dados do Voluntário</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body row align-items-center">
+                                            <div class="col"></div>
+                                            <form class="row col-11 g-3">
+                                                <div class="row mb-4 col-12 ">
+                                                    <p class="fs-5"><strong>Dados Pessoais</strong></p>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <label for="nomeCompletoDoVoluntario" class="form-label">Nome completo</label>
+                                                        <input type="text" class="form-control" id="nomeCompletoDoVoluntario">
+                                                    </div>
+                                                    <div class="col-6 row">
+                                                        <div class="col-md-6 col-sm-12">
+                                                            <label for="telefoneDoVoluntario" class="form-label">Telefone</label>
+                                                            <input type="phone" class="form-control" id="telefoneDoVoluntario">
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-12">
+                                                            <label for="cpfDoVoluntario" class="form-label">CPF</label>
+                                                            <input type="text" class="form-control" id="cpfDoVoluntario">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <label for="emailDoVoluntario" class="form-label">Email</label>
+                                                        <input type="email" class="form-control" id="emailDoVoluntario">
+                                                    </div>    
+                                                    <div class="col-6 row">                                                        
+                                                        <div class="col-md-6 col-sm-12">
+                                                            <label for="sexoDoVoluntario" class="form-label">Sexo</label>
+                                                            <div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="sexoDoVoluntario" id="sexoFeminino" value="F">
+                                                                    <label class="form-check-label" for="sexoFeminino">Feminino</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="sexoDoVoluntario" id="sexoMasculino" value="M">
+                                                                    <label class="form-check-label" for="sexoMasculino">Masculino</label>
+                                                                </div>
+                                                            </div>                                                            
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-12">
+                                                            <label for="faixaEtariaDoVoluntario" class="form-label">Faixa etária</label>
+                                                            <select class="form-select" id="faixaEtariaDoVoluntario" aria-label="Default select example">
+                                                                <option selected hidden>Selecione...</option>
+                                                                <option value="15">Abaixo de 16 anos</option>
+                                                                <option value="16-20">De 16 a 20 anos</option>
+                                                                <option value="21-30">De 21 a 30 anos</option>
+                                                                <option value="31-40">De 31 a 40 anos</option>
+                                                                <option value="41-50">De 41 a 50 anos</option>
+                                                                <option value="51-60">De 51 a 60 anos</option>
+                                                                <option value="61">Acima de 60 anos</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>                                                
+                                                </div>
+                                                <div class="row mb-4 col-md-6 col-sm-12">
+                                                    <p><strong class="fs-5">Contato de Emergência</strong><br>
+                                                        Esta informação será utilizada para contato, em caso de emergência
+                                                    </p>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <label for="nomeContatoDoVoluntario" class="form-label">Nome</label>
+                                                        <input type="name" class="form-control" id="nomeContatoDoVoluntario">
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <label for="telefoneContatoDoVoluntario" class="form-label">Telefone</label>
+                                                        <input type="phone" class="form-control" id="telefoneContatoDoVoluntario">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4 col-md-6 col-sm-12">
+                                                    <p><strong class="fs-5">Endereço</strong><br><br><br></p>
+                                                    <div class="col-md-4">
+                                                        <label for="cepDoVoluntario" class="form-label">CEP</label>
+                                                        <input type="text" class="form-control" id="cepDoVoluntario">
+                                                    </div>  
+                                                    <div class="col-md-6">
+                                                        <label for="cidadeDoVoluntario" class="form-label">Cidade</label>
+                                                        <input type="text" class="form-control" id="cidadeDoVoluntario">
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="estadoDoVoluntario" class="form-label">Estado</label>
+                                                        <input type="text" class="form-control" id="estadoDoVoluntario">
+                                                    </div>                                                                                                      
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <label for="inputEmail4" class="form-label">Email</label>
+                                                    <input type="email" class="form-control" id="inputEmail4">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="inputPassword4" class="form-label">Password</label>
+                                                    <input type="password" class="form-control" id="inputPassword4">
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="inputAddress" class="form-label">Address</label>
+                                                    <input type="text" class="form-control" id="inputAddress"
+                                                        placeholder="1234 Main St">
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="inputAddress2" class="form-label">Address 2</label>
+                                                    <input type="text" class="form-control" id="inputAddress2"
+                                                        placeholder="Apartment, studio, or floor">
+                                                </div>
+                                                
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                                                        <label class="form-check-label" for="gridCheck">
+                                                            Check me out
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div class="col"></div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger"
+                                                data-bs-dismiss="modal">Fechar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </main>
                 </section>
 
