@@ -40,13 +40,13 @@
                         data-bs-target="#recursos-tab-pane" role="tab" aria-controls="recursos-tab-pane"
                         aria-selected="false">Recursos</a>
 
-                    <a class="nav-link text-danger" id="recursos-tab" type="button" data-bs-toggle="modal" name="acessar-recursos-link"
-                        data-bs-target="#desbloquearGerenciamentoModal">Recursos</a>                        
+                    <a class="nav-link text-danger" id="recursos-tab" type="button" data-bs-toggle="modal"
+                        name="acessar-recursos-link" data-bs-target="#desbloquearGerenciamentoModal">Recursos</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link text-danger text-opacity-75 disabled" id="estandes-tab" type="button" data-bs-toggle="tab"
-                        data-bs-target="#estandes-tab-pane" role="tab" aria-controls="estandes-tab-pane"
-                        aria-selected="false">Estandes</a>
+                    <a class="nav-link text-danger text-opacity-75 disabled" id="estandes-tab" type="button"
+                        data-bs-toggle="tab" data-bs-target="#estandes-tab-pane" role="tab"
+                        aria-controls="estandes-tab-pane" aria-selected="false">Estandes</a>
                 </li>
             </ul>
 
@@ -111,7 +111,8 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="desbloquearGerenciamentoDeRecursos">Área Administrativa</h1>
+                            <h1 class="modal-title fs-5" id="desbloquearGerenciamentoDeRecursos">Área Administrativa
+                            </h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -161,8 +162,9 @@
                         <!-- Cards de acesso rápido -->
                         <section id="cards" class="align-items-center align-items-md-center px-2">
                             <div class="row justify-content-between">
-                                <div class="col-sm-6 col-md-4">
-                                    <div id="cardVoluntarios" class="card border-danger mb-3">
+                                <!-- Card de acesso rápido para a lista de voluntários -->
+                                <div id="cardVoluntarios" class="col-sm-6 col-md-4">
+                                    <div class="card border-danger mb-3">
                                         <div class="card-body">
                                             <h5 class="card-title pt-2 pb-3">Lista de Voluntários</h5>
                                             <p class="card-text pb-3">Acesse a lista de voluntários cadastrados no
@@ -172,6 +174,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Card de acesso rápido para a gestão de recursos -->
                                 <div id="cardRecursos" class="col-sm-6 col-md-4">
                                     <div class="card border-danger mb-3">
                                         <div class="card-body">
@@ -184,7 +187,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="cardEstandes" class="col-sm-6 col-md-4">
+                                <!-- Card de acesso rápido para a localização dos estandes -->
+                                <div id="cardEstandes" class="col-sm-6 col-md-4" disabled>
                                     <div class="card border-danger mb-3">
                                         <div class="card-body">
                                             <h5 class="card-title pt-2 pb-3">Localização dos Estandes</h5>
@@ -210,49 +214,227 @@
                         </section>
 
                         <!-- Lista de voluntários -->
-                        <section id="listaDeVoluntarios" class="mb-3 justify-content-md-center table-responsive">
-                            <table class="table table-striped table-hover p-3">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Telefone</th>
-                                        <th scope="col">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Nome Completo do Voluntário</td>
-                                        <td>voluntario@email.com</td>
-                                        <td>+55 (xx) 9xxxx-xxxx</td>
-                                        <td>
-                                            <div class="btn-group btn-group-sm" role="group"
-                                                aria-label="Small button group px-2">
-                                                <button type="button" class="btn btn-outline-danger"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                                    aria-controls="offcanvasRight">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="10" width="10"
-                                                        viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                                        <path
-                                                            d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
-                                                    </svg>
-                                                </button>
+                        <section id="listaDeVoluntarios" class="mb-3 justify-content-md-center">
+                            <!-- Barra de pesquisa -->                           
+                            <div class="hstack gap-5 mb-4">
+                                <div class="col col-1"></div>
+                                <div class="p-2">
+                                    <form class="d-flex me-auto" role="search">
+                                        <input class="form-control me-2" type="search"
+                                            placeholder="Pesquisar por nome ou email" aria-label="Search">
+                                        <button class="btn btn-danger" type="submit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="p-2 ms-auto">
+                                    <button class="btn btn-danger" type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+                                            <path
+                                                d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="col col-1"></div>
+                            </div>
 
-                                                <button type="button" class="btn btn-outline-danger"
-                                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="10" width="10"
-                                                        viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                                        <path
-                                                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <!-- Tabela de voluntários -->
+                            <div class="hstack gap-5 mb-3">
+                                <div class="col col-1"></div>
+                                <div class="p-2 col">
+                                    <table class="table align-middle mb-0 table-bordeless table-hover table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckDefault" />
+                                                    </div>
+                                                </th>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">Contato</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Check-in</th>
+                                                <th scope="col">Checkout</th>
+                                                <th scope="col">Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckDefault" />
+                                                    </div>
+                                                </th>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="ms">
+                                                            <p class="fw-semibold mb-0">Nome Completo do Voluntário</p>
+                                                            <p class="text-muted mb-0">voluntario@email.com</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="fw-normal mb-1">+55 (xx) 9xxxx-xxxx</p>
+                                                </td>
+                                                <td>
+                                                    <span class="badge rounded-pill text-bg-success">Ativo</span>
+                                                </td>
+                                                <td>
+                                                    <p>-</p>
+                                                </td>
+                                                <td>
+                                                    <p>-</p>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group btn-group-sm gap-1" role="group"
+                                                        aria-label="Small button group px-2">
+                                                        <button type="button" class="btn btn-outline-danger"
+                                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                                                            aria-controls="offcanvasRight">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                                fill="currentColor" class="bi bi-pencil-square"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                                <path fill-rule="evenodd"
+                                                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                                                            </svg>
+                                                        </button>
+        
+                                                        <button type="button" class="btn btn-outline-danger"
+                                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                                fill="currentColor" class="bi bi-trash-fill"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckDefault" />
+                                                    </div>
+                                                </th>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="ms">
+                                                            <p class="fw-semibold mb-0">Nome do Voluntário</p>
+                                                            <p class="text-muted mb-0">voluntario@email.com</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="fw-normal mb-1">+55 (xx) 9xxxx-xxxx</p>
+                                                </td>
+                                                <td>
+                                                    <span class="badge rounded-pill text-bg-warning">Intervalo</span>
+                                                </td>
+                                                <td>
+                                                    <p>-</p>
+                                                </td>
+                                                <td>
+                                                    <p>-</p>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group btn-group-sm gap-1" role="group"
+                                                        aria-label="Small button group px-2">
+                                                        <button type="button" class="btn btn-outline-danger"
+                                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                                                            aria-controls="offcanvasRight">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                                fill="currentColor" class="bi bi-pencil-square"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                                <path fill-rule="evenodd"
+                                                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                                                            </svg>
+                                                        </button>
+        
+                                                        <button type="button" class="btn btn-outline-danger"
+                                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                                fill="currentColor" class="bi bi-trash-fill"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckDefault" />
+                                                    </div>
+                                                </th>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="ms">
+                                                            <p class="fw-semibold mb-0">Nome Completo</p>
+                                                            <p class="text-muted mb-0">voluntario@email.com</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="fw-normal mb-1">+55 (xx) 9xxxx-xxxx</p>
+                                                </td>
+                                                <td>
+                                                    <span class="badge rounded-pill text-bg-danger">Inativo</span>
+                                                </td>
+                                                <td>
+                                                    <p>-</p>
+                                                </td>
+                                                <td>
+                                                    <p>-</p>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group btn-group-sm gap-1" role="group"
+                                                        aria-label="Small button group px-2">
+                                                        <button type="button" class="btn btn-outline-danger"
+                                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                                                            aria-controls="offcanvasRight">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                                fill="currentColor" class="bi bi-pencil-square"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                                <path fill-rule="evenodd"
+                                                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                                                            </svg>
+                                                        </button>
+        
+                                                        <button type="button" class="btn btn-outline-danger"
+                                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                                fill="currentColor" class="bi bi-trash-fill"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col col-1"></div>                                
+                            </div>                
                         </section>
 
                         <!-- OffCanvas para gestão de horários e alocação de recursos ao voluntário selecionado -->
@@ -267,43 +449,53 @@
                                 </div>
                                 <div class="offcanvas-body">
                                     <p class="mb-5">
-                                        Gestão de horários e alocação de recursos ao voluntário selecionado na lista principal
+                                        Gestão de horários e alocação de recursos ao voluntário selecionado na lista
+                                        principal
                                     </p>
 
                                     <form action="" method="post">
                                         <div class="mb-5">
                                             <p class="mb-2 h5">Credencial</p>
                                             <div class="mb-3">
-                                                <label for="codigoCredencial" class="form-label">Código da credencial associada:</label>
-                                                <input type="email" class="form-control" id="codigoCredencial" placeholder="xxxxxxxxxx" disabled>
+                                                <label for="codigoCredencial" class="form-label">Código da credencial
+                                                    associada:</label>
+                                                <input type="email" class="form-control" id="codigoCredencial"
+                                                    placeholder="xxxxxxxxxx" disabled>
                                             </div>
                                         </div>
 
                                         <div class="mb-5">
                                             <p class="mb-2 h5">Horários</p>
-                                            <div class="row">                                                
+                                            <div class="row">
                                                 <div class="col">
                                                     <label for="horarioCheckIn" class="form-label">Check-in</label>
-                                                    <input type="time" class="form-control" id="horarioCheckIn" required>
+                                                    <input type="time" class="form-control" id="horarioCheckIn"
+                                                        required>
                                                 </div>
                                                 <div class="col">
                                                     <label for="horarioCheckout" class="form-label">Checkout</label>
-                                                    <input type="time" class="form-control" id="horarioCheckout" required>
+                                                    <input type="time" class="form-control" id="horarioCheckout"
+                                                        required>
                                                 </div>
 
                                                 <div>
-                                                    <label for="horarioIntervalo" class="form-label">Iniciar intervalo</label>
-                                                    <div class="hstack gap-3">                                                    
-                                                        <input id="horarioIntervalo" class="form-control me-auto" type="time" placeholder="Add your item here..." aria-label="Add your item here...">
-                                                        <button type="button" class="btn btn-outline-danger active">Iniciar</button>
-                                                        <button type="button" class="btn btn-outline-danger">Terminar</button>
+                                                    <label for="horarioIntervalo" class="form-label">Iniciar
+                                                        intervalo</label>
+                                                    <div class="hstack gap-3">
+                                                        <input id="horarioIntervalo" class="form-control me-auto"
+                                                            type="time" placeholder="Add your item here..."
+                                                            aria-label="Add your item here...">
+                                                        <button type="button"
+                                                            class="btn btn-outline-danger active">Iniciar</button>
+                                                        <button type="button"
+                                                            class="btn btn-outline-danger">Terminar</button>
                                                     </div>
-    
+
                                                     <span id="horarioInicioIntervalo">
                                                         <!-- Aqui você pode listar os horários de intervalo -->
                                                     </span>
-                                                </div>                                               
-                                            </div>                                            
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="mb-5">
@@ -319,16 +511,17 @@
                                                         <option value="GG">GG</option>
                                                         <option value="XG">XG</option>
                                                     </select>
-                                                </div>    
+                                                </div>
                                                 <div class="col">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="defaultCheck1">
                                                         <label class="form-check-label" for="defaultCheck1">
-                                                          Resgatado
+                                                            Resgatado
                                                         </label>
                                                     </div>
-                                                </div>                                            
-                                            </div>                                          
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="mb-5">
@@ -341,16 +534,17 @@
                                                         <option value="2">Jantar</option>
                                                         <option value="3">Kit lanche</option>
                                                     </select>
-                                                </div>    
+                                                </div>
                                                 <div class="col">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="defaultCheck1">
                                                         <label class="form-check-label" for="defaultCheck1">
-                                                          Resgatado
+                                                            Resgatado
                                                         </label>
                                                     </div>
-                                                </div>                                            
-                                            </div>                                          
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <button type="submit" class="btn btn-danger">Salvar</button>
