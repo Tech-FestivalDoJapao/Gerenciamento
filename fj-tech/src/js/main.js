@@ -4,14 +4,6 @@ import './color-modes.js'
 
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'
-import Alert from 'bootstrap/js/dist/alert'
-
-const alertList = document.querySelectorAll('.alert')
-const alerts = [...alertList].map(element => new bootstrap.Alert(element))
-
-// Import icons
-import '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-free'
 
 /**
  * TODO
@@ -21,7 +13,6 @@ const validaAcessoAdministrativo = document.getElementById('#validaAcessoAdminis
 if (validaAcessoAdministrativo.querySelector('.was-validated')) {
   // Valida valor informado e habilita o botão de acesso
 }
-
 
 /**
  * Uso da API ViaCEP para preenchimento automático do endereço

@@ -100,8 +100,6 @@
             </div>
         </header>
 
-        <hr class="col-1 my-5 mx-0">
-
         <!-- Desbloquear acesso -->
         <div id="desbloquearSistema">
             <!-- Modal -->
@@ -545,8 +543,7 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <select id="tamanhoHapi" class="form-select" required>
-                                                        <option selected>Tamanho do hapi</option>
-                                                        <option value="PP">PP</option>
+                                                        <option selected hidden>Tamanho do hapi</option>
                                                         <option value="P">P</option>
                                                         <option value="M">M</option>
                                                         <option value="G">G</option>
@@ -571,7 +568,7 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <select id="tamanhoHapi" class="form-select" required>
-                                                        <option selected>Tipo de voucher</option>
+                                                        <option selected hidden>Tipo de voucher</option>
                                                         <option value="1">Almoço</option>
                                                         <option value="2">Jantar</option>
                                                         <option value="3">Kit lanche</option>
@@ -625,7 +622,8 @@
                         <section id="perfil-voluntario">
                             <!-- Full screen modal -->
                             <div class="modal fade" id="perfilVoluntarioModal" tabindex="-1"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+                                aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static"
+                                data-bs-keyboard="false">
                                 <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -635,44 +633,59 @@
                                         </div>
                                         <div class="modal-body row align-items-center">
                                             <div class="col"></div>
-                                            <form class="row col-11 g-3">
-                                                <div class="row mb-4 col-12 ">
+                                            <form class="row col-11 g-3" action="." method="get">
+                                                <!-- Dados pessoais -->
+                                                <div class="row mb-4 col-12">
                                                     <p class="fs-5"><strong>Dados Pessoais</strong></p>
                                                     <div class="col-md-6 col-sm-12">
-                                                        <label for="nomeCompletoDoVoluntario" class="form-label">Nome completo</label>
-                                                        <input type="text" class="form-control" id="nomeCompletoDoVoluntario">
+                                                        <label for="nomeCompletoDoVoluntario" class="form-label">Nome
+                                                            completo</label>
+                                                        <input type="text" class="form-control"
+                                                            id="nomeCompletoDoVoluntario">
                                                     </div>
-                                                    <div class="col-6 row">
+                                                    <div class="col row">
                                                         <div class="col-md-6 col-sm-12">
-                                                            <label for="telefoneDoVoluntario" class="form-label">Telefone</label>
-                                                            <input type="phone" class="form-control" id="telefoneDoVoluntario">
+                                                            <label for="telefoneDoVoluntario"
+                                                                class="form-label">Telefone</label>
+                                                            <input type="phone" class="form-control"
+                                                                id="telefoneDoVoluntario">
                                                         </div>
                                                         <div class="col-md-6 col-sm-12">
                                                             <label for="cpfDoVoluntario" class="form-label">CPF</label>
-                                                            <input type="text" class="form-control" id="cpfDoVoluntario">
+                                                            <input type="text" class="form-control"
+                                                                id="cpfDoVoluntario">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
                                                         <label for="emailDoVoluntario" class="form-label">Email</label>
                                                         <input type="email" class="form-control" id="emailDoVoluntario">
-                                                    </div>    
-                                                    <div class="col-6 row">                                                        
+                                                    </div>
+                                                    <div class="col row">
                                                         <div class="col-md-6 col-sm-12">
-                                                            <label for="sexoDoVoluntario" class="form-label">Sexo</label>
+                                                            <label for="sexoDoVoluntario"
+                                                                class="form-label">Sexo</label>
                                                             <div>
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="sexoDoVoluntario" id="sexoFeminino" value="F">
-                                                                    <label class="form-check-label" for="sexoFeminino">Feminino</label>
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="sexoDoVoluntario" id="sexoFeminino"
+                                                                        value="F">
+                                                                    <label class="form-check-label"
+                                                                        for="sexoFeminino">Feminino</label>
                                                                 </div>
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="sexoDoVoluntario" id="sexoMasculino" value="M">
-                                                                    <label class="form-check-label" for="sexoMasculino">Masculino</label>
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="sexoDoVoluntario" id="sexoMasculino"
+                                                                        value="M">
+                                                                    <label class="form-check-label"
+                                                                        for="sexoMasculino">Masculino</label>
                                                                 </div>
-                                                            </div>                                                            
+                                                            </div>
                                                         </div>
                                                         <div class="col-md-6 col-sm-12">
-                                                            <label for="faixaEtariaDoVoluntario" class="form-label">Faixa etária</label>
-                                                            <select class="form-select" id="faixaEtariaDoVoluntario" aria-label="Default select example">
+                                                            <label for="faixaEtariaDoVoluntario"
+                                                                class="form-label">Faixa etária</label>
+                                                            <select class="form-select" id="faixaEtariaDoVoluntario"
+                                                                aria-label="Default select example">
                                                                 <option selected hidden>Selecione...</option>
                                                                 <option value="15">Abaixo de 16 anos</option>
                                                                 <option value="16-20">De 16 a 20 anos</option>
@@ -683,63 +696,215 @@
                                                                 <option value="61">Acima de 60 anos</option>
                                                             </select>
                                                         </div>
-                                                    </div>                                                
-                                                </div>
-                                                <div class="row mb-4 col-md-6 col-sm-12">
-                                                    <p><strong class="fs-5">Contato de Emergência</strong><br>
-                                                        Esta informação será utilizada para contato, em caso de emergência
-                                                    </p>
-                                                    <div class="col-md-6 col-sm-12">
-                                                        <label for="nomeContatoDoVoluntario" class="form-label">Nome</label>
-                                                        <input type="name" class="form-control" id="nomeContatoDoVoluntario">
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-12">
-                                                        <label for="telefoneContatoDoVoluntario" class="form-label">Telefone</label>
-                                                        <input type="phone" class="form-control" id="telefoneContatoDoVoluntario">
                                                     </div>
                                                 </div>
+                                                <!-- Contato de emergência -->
                                                 <div class="row mb-4 col-md-6 col-sm-12">
-                                                    <p><strong class="fs-5">Endereço</strong><br><br><br></p>
-                                                    <div class="col-md-4">
-                                                        <label for="cepDoVoluntario" class="form-label">CEP</label>
-                                                        <input type="text" class="form-control" id="cepDoVoluntario">
-                                                    </div>  
-                                                    <div class="col-md-6">
-                                                        <label for="cidadeDoVoluntario" class="form-label">Cidade</label>
-                                                        <input type="text" class="form-control" id="cidadeDoVoluntario">
+                                                    <p><strong class="fs-5">Contato de Emergência</strong></p>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <label for="nomeContatoDoVoluntario"
+                                                            class="form-label">Nome</label>
+                                                        <input type="name" class="form-control"
+                                                            id="nomeContatoDoVoluntario">
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <label for="telefoneContatoDoVoluntario"
+                                                            class="form-label">Telefone</label>
+                                                        <input type="phone" class="form-control"
+                                                            id="telefoneContatoDoVoluntario">
+                                                    </div>
+                                                    <spam class="align-middle mb-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                                                          </svg>
+                                                        <small>Esta informação será utilizada para contato, em caso de emergência</small>
+                                                    </spam>
+                                                </div>
+                                                <!-- Endereço -->
+                                                <div class="row mb-4 col-md-6 col-sm-12">
+                                                    <p><strong class="fs-5">Endereço</strong></p>
+                                                    <div class="col-md-5">
+                                                        <label for="bairroDoVoluntario"
+                                                            class="form-label">Bairro</label>
+                                                        <input type="text" class="form-control" id="bairroDoVoluntario"
+                                                            disabled>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="cidadeDoVoluntario"
+                                                            class="form-label">Cidade</label>
+                                                        <input type="text" class="form-control" id="cidadeDoVoluntario"
+                                                            disabled>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <label for="estadoDoVoluntario" class="form-label">Estado</label>
-                                                        <input type="text" class="form-control" id="estadoDoVoluntario">
-                                                    </div>                                                                                                      
+                                                        <label for="estadoDoVoluntario"
+                                                            class="form-label">Estado</label>
+                                                        <input type="text" class="form-control" id="estadoDoVoluntario"
+                                                            size="2" disabled>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <label for="enderecoDoVoluntario"
+                                                            class="form-label">Endereco</label>
+                                                        <input type="text" class="form-control"
+                                                            id="enderecoDoVoluntario" disabled>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="cepDoVoluntario" class="form-label">CEP</label>
+                                                        <input type="text" class="form-control" id="cepDoVoluntario"
+                                                            size="10" maxlength="9"
+                                                            onblur="pesquisaEnderecoPorCEP(this.value);">
+                                                    </div>
                                                 </div>
-
-
-                                                <div class="col-md-6">
-                                                    <label for="inputEmail4" class="form-label">Email</label>
-                                                    <input type="email" class="form-control" id="inputEmail4">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="inputPassword4" class="form-label">Password</label>
-                                                    <input type="password" class="form-control" id="inputPassword4">
-                                                </div>
-                                                <div class="col-12">
-                                                    <label for="inputAddress" class="form-label">Address</label>
-                                                    <input type="text" class="form-control" id="inputAddress"
-                                                        placeholder="1234 Main St">
-                                                </div>
-                                                <div class="col-12">
-                                                    <label for="inputAddress2" class="form-label">Address 2</label>
-                                                    <input type="text" class="form-control" id="inputAddress2"
-                                                        placeholder="Apartment, studio, or floor">
-                                                </div>
-                                                
-                                                <div class="col-12">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                                                        <label class="form-check-label" for="gridCheck">
-                                                            Check me out
-                                                        </label>
+                                                <!-- Contato de emergência -->
+                                                <div class="row mb-4 col-12">
+                                                    <p><strong class="fs-5">Dados Adicionais</strong></p>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="col-12 row">
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <label for="nomeContatoDoVoluntario"
+                                                                    class="form-label">Descendência japonesa</label>
+                                                                <div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="possuiDescendenciaJaponesa"
+                                                                            id="descendenteSim" value="Sim">
+                                                                        <label class="form-check-label"
+                                                                            for="descendenteSim">Sim</label>
+                                                                    </div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="possuiDescendenciaJaponesa"
+                                                                            id="descendenteNao" value="Nao">
+                                                                        <label class="form-check-label"
+                                                                            for="descendenteNao">Não</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <label for="ascendenciaDoVoluntarioDescendente"
+                                                                    class="form-label">Ascendência</label>
+                                                                <select class="form-select"
+                                                                    id="ascendenciaDoVoluntarioDescendente"
+                                                                    aria-label="Default select example">
+                                                                    <option selected hidden>Selecione...</option>
+                                                                    <option value="1">Issei (Japonês)</option>
+                                                                    <option value="2">Nissei (2ª Geração)</option>
+                                                                    <option value="3">Sansei (3ª Geração)</option>
+                                                                    <option value="4">Yonsei (4ª Geração)</option>
+                                                                    <option value="5">Gosei (5ª Geração)</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <label for="telefoneContatoDoVoluntario"
+                                                            class="form-label">Idiomas</label>
+                                                        <div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="idiomaVoluntarioJapones" value="Japones">
+                                                                <label class="form-check-label"
+                                                                    for="idiomaVoluntarioJapones">Japonês</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="idiomaVoluntarioIngles" value="Ingles">
+                                                                <label class="form-check-label"
+                                                                    for="idiomaVoluntarioIngles">Inglês</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="idiomaVoluntarioEspanhol" value="Espanhol">
+                                                                <label class="form-check-label"
+                                                                    for="idiomaVoluntarioEspanhol">Espanhol</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="col-12 row">
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <label for="nomeContatoDoVoluntario"
+                                                                class="form-label">Treinamento em Primeiros
+                                                                Socorros</label>
+                                                            <div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="treinamentoPrimeirosSocorros"
+                                                                        id="treinamentoSim" value="Sim">
+                                                                    <label class="form-check-label"
+                                                                        for="treinamentoSim">Sim</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="treinamentoPrimeirosSocorros"
+                                                                        id="treinamentoNao" value="Nao">
+                                                                    <label class="form-check-label"
+                                                                        for="treinamentoNao">Não</label>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <label for="nomeContatoDoVoluntario"
+                                                                class="form-label">Conhecimento em LIBRAS</label>
+                                                                <div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="conhecimentoLibras"
+                                                                            id="conhecimentoLibrasSim" value="Sim">
+                                                                        <label class="form-check-label"
+                                                                            for="conhecimentoLibrasSim">Sim</label>
+                                                                    </div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="conhecimentoLibras"
+                                                                            id="conhecimentoLibrasNao" value="Nao">
+                                                                        <label class="form-check-label"
+                                                                            for="conhecimentoLibrasNao">Não</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="col-12 row">                                                            
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <label for="ascendenciaDoVoluntarioDescendente"
+                                                                    class="form-label">Escolaridade</label>
+                                                                <select class="form-select"
+                                                                    id="ascendenciaDoVoluntarioDescendente"
+                                                                    aria-label="Default select example">
+                                                                    <option selected hidden>Selecione...</option>
+                                                                    <option value="1">Pós-graduação completo</option>
+                                                                    <option value="2">Superior completo</option>
+                                                                    <option value="3">Superior incompleto</option>
+                                                                    <option value="4">Ensino Médio completo</option>
+                                                                    <option value="5">Ensino Médio incompleto</option>
+                                                                    <option value="6">Fundamental II completo</option>
+                                                                    <option value="7">Fundamental II incompleto</option>
+                                                                    <option value="8">Fundamental I completo</option>
+                                                                    <option value="9">Fundamental I incompleto</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <label for="possuiEmprego"
+                                                                    class="form-label">Trabalha atualmente</label>
+                                                                <div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="possuiEmprego"
+                                                                            id="trabalhaSim" value="Sim">
+                                                                        <label class="form-check-label"
+                                                                            for="trabalhaSim">Sim</label>
+                                                                    </div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="possuiEmprego"
+                                                                            id="trabalhaNao" value="Nao">
+                                                                        <label class="form-check-label"
+                                                                            for="trabalhaNao">Não</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </form>
@@ -787,6 +952,56 @@
             </p>
         </footer>
     </div>
+
+    <!-- Consumindo a API ViaCEP para tratativa de endereços -->
+    <script>
+        //Limpa valores do formulário de cep.
+        function limpaFormEnderecos() {
+            document.getElementById('enderecoDoVoluntario').value = ("");
+            document.getElementById('bairroDoVoluntario').value = ("");
+            document.getElementById('cidadeDoVoluntario').value = ("");
+            document.getElementById('estadoDoVoluntario').value = ("");
+        }
+        // Atualiza os campos com os valores.
+        function respostaAPI(conteudo) {
+            if (!("erro" in conteudo)) {
+                document.getElementById('enderecoDoVoluntario').value = (conteudo.logradouro);
+                document.getElementById('bairroDoVoluntario').value = (conteudo.bairro);
+                document.getElementById('cidadeDoVoluntario').value = (conteudo.localidade);
+                document.getElementById('estadoDoVoluntario').value = (conteudo.uf);
+            } else {
+                limpaFormEnderecos();
+                alert("Não foi possível encontrar o endereço informado.");
+            }
+        }
+        // Função para pesquisar o CEP.
+        function pesquisaEnderecoPorCEP(valor) {
+            var cep = valor.replace(/\D/g, '');
+            // Verifica se campo cep possui valor informado.
+            if (cep != "") {
+                var validacep = /^[0-9]{8}$/;   // Regex para validar o CEP.
+                // Valida o formato do CEP.
+                if (validacep.test(cep)) {
+                    // Preenche os campos com "..." enquanto consulta webservice.
+                    document.getElementById('enderecoDoVoluntario').value = "...";
+                    document.getElementById('bairroDoVoluntario').value = "...";
+                    document.getElementById('cidadeDoVoluntario').value = "...";
+                    document.getElementById('estadoDoVoluntario').value = "...";
+                    // Cria um elemento javascript.
+                    var script = document.createElement('script');
+                    // Sincroniza com o callback.
+                    script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=respostaAPI';
+                    // Insere script no documento e carrega o conteúdo.
+                    document.body.appendChild(script);
+                } else {
+                    limpaFormEnderecos();
+                    alert("O CEP informado está em um formato inválido. Tente novamente");
+                }
+            } else {
+                limpaFormEnderecos();
+            }
+        };
+    </script>
 
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
