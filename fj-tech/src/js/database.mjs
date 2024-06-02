@@ -137,5 +137,9 @@ const q = query(collection(db, "voluntario"), where("nome_completo_voluntario", 
 const querySnapshot = await getDocs(q);
 querySnapshot.forEach((doc) => {
   console.log(doc.id, " => ", doc.data().nome_completo_voluntario);
-  document.getElementById("nomeCompletoVoluntario").innerText += `${doc.data().nome_completo_voluntario}`;
+  //document.getElementById("nomeCompletoVoluntario").innerText += `${doc.data().nome_completo_voluntario}`;
+
+  document.getElementById("ListaNomeCompletoVoluntario").innerText += `${doc.data().nome_completo_voluntario}`;
+  document.getElementById("ListaEmailVoluntario").innerText += `${doc.data().contato_voluntario.email_voluntario}`;
+  document.getElementById("ListaContatoVoluntario").innerText += `${doc.data().contato_voluntario.celular_voluntario}`;
 });
