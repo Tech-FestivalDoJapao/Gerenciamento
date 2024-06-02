@@ -2,6 +2,9 @@
 import '../scss/styles.scss'
 import './color-modes.js'
 
+// Adiciona as variáveis de ambiente
+require('dotenv').config()
+
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'
 
@@ -25,22 +28,26 @@ if (validaAcessoAdministrativo.querySelector('.was-validated')) {
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getDatabase } from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAeWGSCxslocTAsWW6g-eNRtWSbEolJwIU",
-  authDomain: "fjtech-8d0ea.firebaseapp.com",
-  databaseURL: "https://fjtech-8d0ea-default-rtdb.firebaseio.com",
-  projectId: "fjtech-8d0ea",
-  storageBucket: "fjtech-8d0ea.appspot.com",
-  messagingSenderId: "1061546904371",
-  appId: "1:1061546904371:web:74fdb21d188a6a856d8c46",
-  measurementId: "G-WT9DPY5ZN9"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
+  databaseURL: process.env.FIREBASE_REALTIME_DATABASE_URL
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+// Initialize Realtime Database and get a reference to the service
+const database = getDatabase(app);
