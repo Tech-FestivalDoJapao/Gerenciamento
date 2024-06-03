@@ -135,11 +135,27 @@ import { query, where, getDocs } from "firebase/firestore";
 const q = query(collection(db, "voluntario"), where("nome_completo_voluntario", "!=", null));
 
 const querySnapshot = await getDocs(q);
+
+/**
+ * Lista de voluntários a partir das consultas do banco de dados
+ */ 
 querySnapshot.forEach((doc) => {
   console.log(doc.id, " => ", doc.data().nome_completo_voluntario);
   //document.getElementById("nomeCompletoVoluntario").innerText += `${doc.data().nome_completo_voluntario}`;
 
+  document.getElementById("ListaNomeCompletoVoluntario").innerText += `${doc.data().nome_completo_voluntario} \n`;
+  document.getElementById("ListaEmailVoluntario").innerText += `${doc.data().contato_voluntario.email_voluntario} \n`;
+  document.getElementById("ListaContatoVoluntario").innerText += `${doc.data().contato_voluntario.celular_voluntario} \n`;
+
+  /*
+  //document.getElementById("corpoTabelaDeListagemDeVoluntarios").appendChild(createElement("tr"));
+  document.getElementById("corpoTabelaDeListagemDeVoluntarios").appendChild().innerHTML(`
+    <tr>
+      <td>teste</td>
+    </tr>  
+    `);
   document.getElementById("ListaNomeCompletoVoluntario").innerText += `${doc.data().nome_completo_voluntario}`;
   document.getElementById("ListaEmailVoluntario").innerText += `${doc.data().contato_voluntario.email_voluntario}`;
   document.getElementById("ListaContatoVoluntario").innerText += `${doc.data().contato_voluntario.celular_voluntario}`;
+  */
 });
