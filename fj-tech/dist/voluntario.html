@@ -138,7 +138,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-1">
+                                        <div class="col-md-8 mt-1">
                                             <label for="faixaEtariaDoVoluntario" class="form-label">
                                                 Faixa etária <br>
                                                 <spam class="align-middle mb-2">
@@ -152,17 +152,19 @@
                                                     </small>
                                                 </spam>
                                             </label>
-                                            <select class="form-select" id="faixaEtariaDoVoluntario"
+                                            <div class="col-md-4">
+                                                <select class="form-select" id="faixaEtariaDoVoluntario"
                                                 aria-label="Default select example">
-                                                <option selected hidden>Selecione...</option>
-                                                <option value="15">Abaixo de 16 anos</option>
-                                                <option value="16-20">De 16 a 20 anos</option>
-                                                <option value="21-30">De 21 a 30 anos</option>
-                                                <option value="31-40">De 31 a 40 anos</option>
-                                                <option value="41-50">De 41 a 50 anos</option>
-                                                <option value="51-60">De 51 a 60 anos</option>
-                                                <option value="61">Acima de 60 anos</option>
-                                            </select>
+                                                    <option selected hidden>Selecione...</option>
+                                                    <option value="16-">Abaixo de 16 anos</option>
+                                                    <option value="16-20">De 16 a 20 anos</option>
+                                                    <option value="21-30">De 21 a 30 anos</option>
+                                                    <option value="31-40">De 31 a 40 anos</option>
+                                                    <option value="41-50">De 41 a 50 anos</option>
+                                                    <option value="51-60">De 51 a 60 anos</option>
+                                                    <option value="60+">Acima de 60 anos</option>
+                                                </select>
+                                            </div>                                            
                                         </div>
                                     </div>
                                 </section>
@@ -244,8 +246,8 @@
                                         <hr class="mt-1 mb-4 border-bottom border-danger ">
                                     </p>
 
-                                    <div class="row mb-">
-                                        <div class="col-md-6 mt-1">
+                                    <div class="mb-2">
+                                        <div class="col-md-6 mt-1 mb-2">
                                             <label for="descendenciaJaponesa" class="form-label">Você é descendente de
                                                 japoneses?</label>
                                             <div>
@@ -263,15 +265,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <script>
-                                            if (document.getElementById("descendenteSim").getAttribute("checked")
-                                                && document.getElementById("VoluntarioDescendente").getAttribute("hidden")) {
-                                                document.getElementById("VoluntarioDescendente").removeAttribute("hidden");
-                                            }
-                                        </script>
-
-                                        <div class="col-md-6 mt-1" id="VoluntarioDescendente" hidden>
+                                        <div class="col-md-6 mt-1" id="VoluntarioDescendente">
                                             <label for="ascendenciaDoVoluntarioDescendente"
                                                 class="form-label">Ascendência</label>
                                             <select class="form-select" id="ascendenciaDoVoluntarioDescendente"
@@ -282,10 +276,10 @@
                                                 <option value="3">Sansei (3ª Geração)</option>
                                                 <option value="4">Yonsei (4ª Geração)</option>
                                                 <option value="5">Gosei (5ª Geração)</option>
+                                                <option value="6">Não se aplca</option>
                                             </select>
                                         </div>
                                     </div>
-
                                 </section>
 
                                 <section class="mb-4 mt-4">
@@ -293,6 +287,92 @@
                                         <strong class="mb-3">Escolaridade</strong>
                                         <hr class="mt-1 mb-4 border-bottom border-danger ">
                                     </p>
+
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <label for="ascendenciaDoVoluntarioDescendente"
+                                                class="form-label">Escolaridade</label>
+                                            <select class="form-select"
+                                                id="ascendenciaDoVoluntarioDescendente"
+                                                aria-label="Default select example">
+                                                <option selected hidden>Selecione...</option>
+                                                <option value="1">Pós-graduação completo</option>
+                                                <option value="2">Superior completo</option>
+                                                <option value="3">Superior incompleto</option>
+                                                <option value="4">Ensino Médio completo</option>
+                                                <option value="5">Ensino Médio incompleto</option>
+                                                <option value="6">Fundamental II completo</option>
+                                                <option value="7">Fundamental II incompleto</option>
+                                                <option value="8">Fundamental I completo</option>
+                                                <option value="9">Fundamental I incompleto</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mt-1">
+                                            <label for="estudante"
+                                                class="form-label">Está estudando atualmente</label>
+                                            <div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="estudante"
+                                                        id="estudaSim" value="Sim">
+                                                    <label class="form-check-label"
+                                                        for="estudaSim">Sim</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="estudante"
+                                                        id="estudaNao" value="Nao">
+                                                    <label class="form-check-label"
+                                                        for="estudaNao">Não</label>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                        
+                                        <div class="col-md-6 mt-1">
+                                            <label for="telefoneContatoDoVoluntario"
+                                                class="form-label">Idiomas</label>
+                                            <div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="idiomaVoluntarioJapones" value="Japones">
+                                                    <label class="form-check-label"
+                                                        for="idiomaVoluntarioJapones">Japonês</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="idiomaVoluntarioIngles" value="Ingles">
+                                                    <label class="form-check-label"
+                                                        for="idiomaVoluntarioIngles">Inglês</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="idiomaVoluntarioEspanhol" value="Espanhol">
+                                                    <label class="form-check-label"
+                                                        for="idiomaVoluntarioEspanhol">Espanhol</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mt-1">
+                                            <label for="nomeContatoDoVoluntario"
+                                            class="form-label">Conhecimento em LIBRAS</label>
+                                            <div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="conhecimentoLibras"
+                                                        id="conhecimentoLibrasSim" value="Sim">
+                                                    <label class="form-check-label"
+                                                        for="conhecimentoLibrasSim">Sim</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="conhecimentoLibras"
+                                                        id="conhecimentoLibrasNao" value="Nao">
+                                                    <label class="form-check-label"
+                                                        for="conhecimentoLibrasNao">Não</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </section>
 
                                 <section class="mb-4 mt-4">
@@ -300,6 +380,10 @@
                                         <strong class="mb-3">Trabalho</strong>
                                         <hr class="mt-1 mb-4 border-bottom border-danger ">
                                     </p>
+
+                                    <div class="mb-2">
+
+                                    </div>
                                 </section>
 
                                 <section class="mb-4 mt-4">
@@ -307,6 +391,10 @@
                                         <strong class="mb-3">Voluntariado</strong>
                                         <hr class="mt-1 mb-4 border-bottom border-danger ">
                                     </p>
+
+                                    <div class="mb-2">
+
+                                    </div>
                                 </section>
                             </div>
 
