@@ -3,6 +3,7 @@ import '../scss/styles.scss'
 import './color-modes.js'
 
 import './database.mjs'
+import './cadastra_voluntario.mjs'
 
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'
