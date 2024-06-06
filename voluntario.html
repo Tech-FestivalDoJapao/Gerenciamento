@@ -9,11 +9,10 @@
     <meta name="keywords" content="Festival do Japão, Voluntários, Gerenciamento">
 
     <link rel="shortcut icon" href="./img/image.png" type="image/x-icon">
+    <link rel="icon" href="./img/image.png" type="image/x-icon">
 
     <script src="./main.js"></script>
     <script src="./color-modes.js"></script>
-
-    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-svg-core/index.js">
 </head>
 
 <body>
@@ -89,7 +88,7 @@
                 <section id="cadastro_voluntario">
                     <div class="modal-body row align-items-center">
                         <div class="col"></div>
-                        <form class="row col-md-10 col-sm-12 g-3" action="#" method="get">
+                        <form class="row col-md-10 col-sm-12 g-3" id="cadastroDeVoluntario">
                             <!-- Dados pessoais -->
                             <div class="row mb-4 col-12">
                                 <section class="mb-4">
@@ -148,13 +147,14 @@
                                                         <path
                                                             d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
                                                     </svg>
-                                                    <small class="opacity-75">A idade minima para ajudar como voluntário é de 16 anos de idade
+                                                    <small class="opacity-75">A idade minima para ajudar como voluntário
+                                                        é de 16 anos de idade
                                                     </small>
                                                 </spam>
                                             </label>
                                             <div class="col-md-4">
                                                 <select class="form-select" id="faixaEtariaDoVoluntario"
-                                                aria-label="Default select example">
+                                                    aria-label="Default select example">
                                                     <option selected hidden>Selecione...</option>
                                                     <option value="16-">Abaixo de 16 anos</option>
                                                     <option value="16-20">De 16 a 20 anos</option>
@@ -164,7 +164,7 @@
                                                     <option value="51-60">De 51 a 60 anos</option>
                                                     <option value="60+">Acima de 60 anos</option>
                                                 </select>
-                                            </div>                                            
+                                            </div>
                                         </div>
                                     </div>
                                 </section>
@@ -292,8 +292,7 @@
                                         <div class="col-md-6">
                                             <label for="ascendenciaDoVoluntarioDescendente"
                                                 class="form-label">Escolaridade</label>
-                                            <select class="form-select"
-                                                id="ascendenciaDoVoluntarioDescendente"
+                                            <select class="form-select" id="ascendenciaDoVoluntarioDescendente"
                                                 aria-label="Default select example">
                                                 <option selected hidden>Selecione...</option>
                                                 <option value="1">Pós-graduação completo</option>
@@ -308,29 +307,23 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6 mt-1">
-                                            <label for="estudante"
-                                                class="form-label">Está estudando atualmente</label>
+                                            <label for="estudante" class="form-label">Está estudando atualmente</label>
                                             <div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="estudante"
+                                                    <input class="form-check-input" type="radio" name="estudante"
                                                         id="estudaSim" value="Sim">
-                                                    <label class="form-check-label"
-                                                        for="estudaSim">Sim</label>
+                                                    <label class="form-check-label" for="estudaSim">Sim</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="estudante"
+                                                    <input class="form-check-input" type="radio" name="estudante"
                                                         id="estudaNao" value="Nao">
-                                                    <label class="form-check-label"
-                                                        for="estudaNao">Não</label>
+                                                    <label class="form-check-label" for="estudaNao">Não</label>
                                                 </div>
                                             </div>
-                                        </div>   
-                                        
+                                        </div>
+
                                         <div class="col-md-6 mt-1">
-                                            <label for="telefoneContatoDoVoluntario"
-                                                class="form-label">Idiomas</label>
+                                            <label for="telefoneContatoDoVoluntario" class="form-label">Idiomas</label>
                                             <div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox"
@@ -353,20 +346,20 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 mt-1">
-                                            <label for="nomeContatoDoVoluntario"
-                                            class="form-label">Conhecimento em LIBRAS</label>
+                                            <label for="nomeContatoDoVoluntario" class="form-label">Conhecimento em
+                                                LIBRAS</label>
                                             <div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio"
-                                                        name="conhecimentoLibras"
-                                                        id="conhecimentoLibrasSim" value="Sim">
+                                                        name="conhecimentoLibras" id="conhecimentoLibrasSim"
+                                                        value="Sim">
                                                     <label class="form-check-label"
                                                         for="conhecimentoLibrasSim">Sim</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio"
-                                                        name="conhecimentoLibras"
-                                                        id="conhecimentoLibrasNao" value="Nao">
+                                                        name="conhecimentoLibras" id="conhecimentoLibrasNao"
+                                                        value="Nao">
                                                     <label class="form-check-label"
                                                         for="conhecimentoLibrasNao">Não</label>
                                                 </div>
@@ -407,15 +400,15 @@
                 </section>
             </main>
         </div>
+    </div>
 
+    <footer id="footer" class="container navbar-fixed-bottom">
         <hr class="mt-5 mb-4 border-bottom border-danger">
 
-        <footer id="footer" class="footer">
-            <p class="text-muted">
-                © 2024 FJ Tech
-            </p>
-        </footer>
-    </div>
+        <p class="text-muted">
+            © 2024 FJ Tech
+        </p>
+    </footer>
 
     <!-- Consumindo a API ViaCEP para tratativa de endereços -->
     <script>
@@ -465,6 +458,32 @@
                 limpaFormEnderecos();
             }
         };
+    </script>
+
+    <script>
+        // Pega os valores enviados pelo formulário na página de 
+        document.getElementById("cadastroDeVoluntario").addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const nomeVoluntario = document.getElementById("nomeCompletoDoVoluntario").value;
+            const emailVoluntario = document.getElementById("emailDoVoluntario").value;
+
+            const response = await fetch("/adicionarVoluntario", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nomeVoluntario, emailVoluntario })
+            });
+
+            if (response.ok) {
+                alert("Voluntário adicionado com sucesso");
+                console.log(nomeVoluntario);
+            } else {
+                alert("Desculpe!\nNão foi possível cadastrar o voluntário.");
+                console.log(nomeVoluntario + "\n" + response);
+            }
+        });
     </script>
 
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
