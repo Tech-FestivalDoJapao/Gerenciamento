@@ -39,5 +39,8 @@ module.exports = {
         ]
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.mjs']
   }
 }
