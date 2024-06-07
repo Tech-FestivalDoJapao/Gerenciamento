@@ -5,6 +5,7 @@ import './color-modes.js'
 import './database.mjs'
 import './busca_voluntario.mjs'
 import './cadastra_voluntario.mjs'
+import './cadastra_recursos_voluntario.mjs'
 
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'

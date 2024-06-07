@@ -1,17 +1,4 @@
-import { firebaseConfig } from "./firebaseConfig.mjs";
-
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
-import { getFirestore } from "firebase/firestore";
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
-
-// Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
-export { db };
+//import { db } from "./database.mjs";
 
 // Add a new document with a generated id.
 import { collection, query, where, getDocs } from "firebase/firestore";
@@ -22,15 +9,8 @@ const querySnapshot = await getDocs(q);
 querySnapshot.forEach((doc) => {
   console.log(doc.id, " => ", doc.data().nome_completo_voluntario);
 
-  const checkIn = (!doc.data().horario_checkin) ? " - " : doc.data().horario_checkin;
-  const checkOut = (!doc.data().horario_checkout) ? " - " : doc.data().horario_checkout;
-
-  const status = ((doc.data().horario_checkin != null && doc.data().horario_checkout) == null) 
-    ? "<span class='badge rounded-pill text-bg-success'> Ativo </span>"
-    : "<span class='badge rounded-pill text-bg-danger'> Inativo </span>";
-
-  document.getElementById("corpoTabelaDeListagemDeVoluntarios").innerHTML +=
-    `<tr id="${doc.id}">
+  /*document.getElementById("corpoTabelaDeListagemDeVoluntarios").innerHTML +=
+    `<tr>
       <th scope="row">
           <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="selecionaVoluntario" />
@@ -48,19 +28,21 @@ querySnapshot.forEach((doc) => {
           <p class="fw-normal mb-1"> ${doc.data().contato_voluntario.celular_voluntario} </p>
       </td>
       <td>
-        ${status} 
+          <span class="badge rounded-pill text-bg-success"> Ativo </span>
+          <span class="badge rounded-pill text-bg-warning"> Intervalo </span>
+          <span class="badge rounded-pill text-bg-danger"> Inativo </span>
       </td>
       <td>
-          <p> ${checkIn} </p>
+          <p>-</p>
       </td>
       <td>
-          <p> ${checkOut} </p>
+          <p>-</p>
       </td>
       <td>
           <div class="btn-group btn-group-sm gap-1" role="group" aria-label="Small button group px-2">
               <!-- Editar dados do voluntário no festival -->
-              <button type="button" class="btn btn-outline-danger" id="GerenciarRecursosDoVoluntarioNoFestival" name="${doc.id}"
-                  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+              <button type="button" class="btn btn-outline-danger" data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path
@@ -72,7 +54,7 @@ querySnapshot.forEach((doc) => {
 
               <!-- Acessar perfil cadastral do voluntário -->
               <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                  data-bs-target="#perfilVoluntarioModal" id="AcessarPerfilVoluntario" name="${doc.id}">
+                  data-bs-target="#perfilVoluntarioModal" id="AcessarPerfilVoluntario" name="${doc.data().cpf_voluntario}">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-person-fill" viewBox="0 0 16 16">
                       <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
@@ -80,8 +62,8 @@ querySnapshot.forEach((doc) => {
               </button>
 
               <!-- Excluir voluntário da lista do festival -->
-              <button type="button" class="btn btn-outline-danger" id="removerVoluntario" name="${doc.id}"
-                  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" id="btnModalConfirmaExclusao"
+                  data-bs-target="#staticBackdrop">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-trash-fill" viewBox="0 0 16 16">
                       <path
@@ -90,5 +72,5 @@ querySnapshot.forEach((doc) => {
               </button>
           </div>
       </td>
-  </tr>`;
+  </tr>`;*/
 });  
