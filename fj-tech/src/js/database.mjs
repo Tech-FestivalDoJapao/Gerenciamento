@@ -20,17 +20,24 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 const q = query(collection(db, "voluntario"), where("nome_completo_voluntario", "!=", null));
 const querySnapshot = await getDocs(q);
 querySnapshot.forEach((doc) => {
-  console.log(doc.id, " => ", doc.data().nome_completo_voluntario);
+    console.log(doc.id, " => ", doc.data().nome_completo_voluntario);
 
-  const checkIn = (!doc.data().horario_checkin) ? " - " : doc.data().horario_checkin;
-  const checkOut = (!doc.data().horario_checkout) ? " - " : doc.data().horario_checkout;
+    const checkIn = (!doc.data().horario_checkin) ? " - " : doc.data().horario_checkin;
+    const checkOut = (!doc.data().horario_checkout) ? " - " : doc.data().horario_checkout;
 
-  const status = ((doc.data().horario_checkin != null && doc.data().horario_checkout) == null) 
-    ? "<span class='badge rounded-pill text-bg-success'> Ativo </span>"
-    : "<span class='badge rounded-pill text-bg-danger'> Inativo </span>";
+    const hora = new Date().getHours(doc.data().horario_checkin);
+    const min = new Date().getMinutes(doc.data().horario_checkin);
+    const sec = new Date().getSeconds(doc.data().horario_checkin);
 
-  document.getElementById("corpoTabelaDeListagemDeVoluntarios").innerHTML +=
-    `<tr id="${doc.id}">
+    const horarioCheckInVoluntario = hora + ":" + min + ":" + sec;
+    const horarioCheckOutVoluntario = hora + ":" + min + ":" + sec;
+
+    const status = ((doc.data().horario_checkin != null && doc.data().horario_checkout) == null)
+        ? "<span class='badge rounded-pill text-bg-success'> Ativo </span>"
+        : "<span class='badge rounded-pill text-bg-danger'> Inativo </span>";
+
+    document.getElementById("corpoTabelaDeListagemDeVoluntarios").innerHTML +=
+        `<tr id="${doc.id}">
       <th scope="row">
           <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="selecionaVoluntario" />
@@ -51,10 +58,10 @@ querySnapshot.forEach((doc) => {
         ${status} 
       </td>
       <td>
-          <p> ${checkIn} </p>
+          <p> ${horarioCheckInVoluntario} </p>
       </td>
       <td>
-          <p> ${checkOut} </p>
+          <p> ${horarioCheckOutVoluntario} </p>
       </td>
       <td>
           <div class="btn-group btn-group-sm gap-1" role="group" aria-label="Small button group px-2">
@@ -91,4 +98,9 @@ querySnapshot.forEach((doc) => {
           </div>
       </td>
   </tr>`;
+
+
+   document.getElementById("removerVoluntario").addEventListener('click', () => {
+        document.getElementById("confirmacaoRemocao").innerHTML += `<p>Tem certeza de que deseja excluir os dados referentes ao voluntário ${doc.data().nome_completo_voluntario}?</p>`;
+    });
 });  
