@@ -6,7 +6,7 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
+/*
 // Obtém o corpo da tabela pelo ID
 const tabela = document.getElementById('corpoTabelaDeListagemDeVoluntarios');
 // Verifica se o corpo da tabela foi encontrado
@@ -28,8 +28,8 @@ if (tabela) {
 } else {
     console.log('Tabela não encontrada');
 }
-
-
+*/
+/*
 document.getElementById('registrarRecursosDoVoluntario').addEventListener('click', async () => {
     const voluntario = document.getElementsByName('GerenciarRecursosDoVoluntarioNoFestival').value;
     const horaCheckIn = document.getElementById('horarioCheckIn').value;
@@ -43,14 +43,13 @@ document.getElementById('registrarRecursosDoVoluntario').addEventListener('click
                 horario_checkin: horaCheckIn,
                 horario_checkout: horaCheckout,
             },
-            
-            /*voluntario_associado: voluntario */
         }, { merge: true });
     } catch (error) {
         console.error('Erro ao salvar horários: ', error);
     }
 })
-
+*/
+/*
 const nomeVoluntario = document.getElementById("nomeCompletoDoVoluntario").value;
 
 try {
@@ -167,3 +166,4 @@ try {
 } catch (e) {
     console.error("Error adding document: ", e);
 }
+*/

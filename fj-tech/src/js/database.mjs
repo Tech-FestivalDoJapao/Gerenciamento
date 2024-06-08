@@ -3,7 +3,7 @@ import { firebaseConfig } from "./firebaseConfig.mjs";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, serverTimestamp, Timestamp } from "firebase/firestore";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -20,22 +20,36 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 const q = query(collection(db, "voluntario"), where("nome_completo_voluntario", "!=", null));
 const querySnapshot = await getDocs(q);
 querySnapshot.forEach((doc) => {
-    console.log(doc.id, " => ", doc.data().nome_completo_voluntario);
+    /**
+     * Torna as datas de check-in, check-out e intervalo legíveis
+     */
+    const checkIn = (doc.data().voluntariado.horarios.horario_checkin)
+        ? new Date(doc.data().voluntariado.horarios.horario_checkin * 1000).toLocaleTimeString('pt-BR')
+        : " - ";
+    const inicioIntervalo = (doc.data().voluntariado.horarios.horario_intervalo.inicio_intervalo)
+        ? new Date(doc.data().voluntariado.horarios.horario_intervalo.inicio_intervalo * 1000).toLocaleTimeString('pt-BR')
+        : " - ";
+    const fimIntervalo = (doc.data().voluntariado.horarios.horario_intervalo.fim_intervalo)
+        ? new Date(doc.data().voluntariado.horarios.horario_intervalo.fim_intervalo * 1000).toLocaleTimeString('pt-BR')
+        : " - ";
+    const checkOut = (doc.data().voluntariado.horarios.horario_checkout)
+        ? new Date(doc.data().voluntariado.horarios.horario_checkout * 1000).toLocaleTimeString('pt-BR')
+        : " - ";
 
-    const checkIn = (!doc.data().horario_checkin) ? " - " : doc.data().horario_checkin;
-    const checkOut = (!doc.data().horario_checkout) ? " - " : doc.data().horario_checkout;
-
-    const hora = new Date().getHours(doc.data().horario_checkin);
-    const min = new Date().getMinutes(doc.data().horario_checkin);
-    const sec = new Date().getSeconds(doc.data().horario_checkin);
-
-    const horarioCheckInVoluntario = hora + ":" + min + ":" + sec;
-    const horarioCheckOutVoluntario = hora + ":" + min + ":" + sec;
-
-    const status = ((doc.data().horario_checkin != null && doc.data().horario_checkout) == null)
+    /**
+     * Verifica se o voluntário está ativo, em intervalo, inativo ou se já finalizou o expediente
+     */
+    const status = ((checkIn != " - ") && (checkOut == " - ") && (inicioIntervalo == " - ") && (fimIntervalo == " - "))
         ? "<span class='badge rounded-pill text-bg-success'> Ativo </span>"
-        : "<span class='badge rounded-pill text-bg-danger'> Inativo </span>";
+        : ((checkIn != " - ") && (checkOut == " - ") && (inicioIntervalo != " - ") && (fimIntervalo == " - "))
+            ? "<span class='badge rounded-pill text-bg-warning'> Intervalo </span>"
+            : ((checkIn != " - ") && (checkOut == " - ") && (inicioIntervalo != " - ") && (fimIntervalo != " - "))
+                ? "<span class='badge rounded-pill text-bg-success'> Ativo </span>"
+                : "<span class='badge rounded-pill text-bg-danger'> Inativo </span>";
 
+    /**
+     * Insere os dados do voluntário na tabela de listagem de voluntários
+     */
     document.getElementById("corpoTabelaDeListagemDeVoluntarios").innerHTML +=
         `<tr id="${doc.id}">
       <th scope="row">
@@ -55,13 +69,13 @@ querySnapshot.forEach((doc) => {
           <p class="fw-normal mb-1"> ${doc.data().contato_voluntario.celular_voluntario} </p>
       </td>
       <td>
-        ${status} 
+          ${status} 
       </td>
       <td>
-          <p> ${horarioCheckInVoluntario} </p>
+          <p class="text-center"> ${checkIn} </p>
       </td>
       <td>
-          <p> ${horarioCheckOutVoluntario} </p>
+          <p class="text-center"> ${checkOut} </p>
       </td>
       <td>
           <div class="btn-group btn-group-sm gap-1" role="group" aria-label="Small button group px-2">
@@ -99,8 +113,19 @@ querySnapshot.forEach((doc) => {
       </td>
   </tr>`;
 
+    /**
+     * Mensagem de confirmação para remoção de voluntário da lista do festival
+     */
+    document.getElementById("removerVoluntario").addEventListener('click', removeVoluntarioDaLista(
+        doc.id, doc.data().nome_completo_voluntario, doc.data().cpf_voluntario
+    ));
+    function removeVoluntarioDaLista(identificacao, nomeCompleto, cpfVoluntario) {
+        const nomeCompletoVoluntario = nomeCompleto;
 
-   document.getElementById("removerVoluntario").addEventListener('click', () => {
-        document.getElementById("confirmacaoRemocao").innerHTML += `<p>Tem certeza de que deseja excluir os dados referentes ao voluntário ${doc.data().nome_completo_voluntario}?</p>`;
-    });
-});  
+        if (document.getElementById("removerVoluntario").getAttribute("name") === identificacao && doc.data().cpf_voluntario === cpfVoluntario) {
+            document.getElementById("nomeVoluntarioCandidatoRemocao").innerHTML += `${nomeCompletoVoluntario}`;
+        } else {
+            document.getElementById("nomeVoluntarioCandidatoRemocao").innerHTML += `-`;
+        }
+    };
+});

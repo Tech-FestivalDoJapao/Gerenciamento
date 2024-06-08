@@ -1,14 +1,14 @@
 import { firebaseConfig } from "./firebaseConfig.mjs";
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, Timestamp } from "firebase/firestore";
+import { getFirestore, collection, addDoc, serverTimestamp, Timestamp } from "firebase/firestore";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 //const nomeVoluntario = document.getElementById("nomeCompletoDoVoluntario").value;
-
+/*
 try {
   const docRef = await addDoc(collection(db, "voluntario"), {
     nome_completo_voluntario: "Nome ",
@@ -116,13 +116,13 @@ try {
         ],
       },
       motivo_voluntariado: "Motivo do Voluntário para o Voluntariado",
-      data_inscricao: Date.now(),
+      data_inscricao: Timestamp.fromDate(new Date()),
       horarios: {
-        horario_checkin: Timestamp.now(),
-        horario_checkout: Timestamp.now(),
+        horario_checkin: Timestamp.fromDate(new Date()),
+        horario_checkout: Timestamp.fromDate(new Date()),
         horario_intervalo: {
-          inicio_intervalo: Timestamp.now(),
-          fim_intervalo: Timestamp.now(),
+          inicio_intervalo: Timestamp.fromDate(new Date()),
+          fim_intervalo: Timestamp.fromDate(new Date()),
         },
       },
     },
@@ -131,3 +131,4 @@ try {
 } catch (e) {
   console.error("Error adding document: ", e);
 }
+*/

@@ -1,4 +1,4 @@
-//import { db } from "./database.mjs";
+import { db } from "./database.mjs";
 
 // Add a new document with a generated id.
 import { collection, query, where, getDocs } from "firebase/firestore";
@@ -7,7 +7,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 const q = query(collection(db, "voluntario"), where("nome_completo_voluntario", "!=", null));
 const querySnapshot = await getDocs(q);
 querySnapshot.forEach((doc) => {
-  console.log(doc.id, " => ", doc.data().nome_completo_voluntario);
+  //console.log(doc.id, " => ", doc.data().nome_completo_voluntario);
 
   /*document.getElementById("corpoTabelaDeListagemDeVoluntarios").innerHTML +=
     `<tr>
@@ -73,4 +73,4 @@ querySnapshot.forEach((doc) => {
           </div>
       </td>
   </tr>`;*/
-});  
+});
