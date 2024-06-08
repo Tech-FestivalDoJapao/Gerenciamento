@@ -39,8 +39,11 @@ document.getElementById('registrarRecursosDoVoluntario').addEventListener('click
 
     try {
         await db.collection('voluntario').doc(voluntario).set({
-            horario_checkin: horaCheckIn,
-            horario_checkout: horaCheckout,
+            horarios: {
+                horario_checkin: horaCheckIn,
+                horario_checkout: horaCheckout,
+            },
+            
             /*voluntario_associado: voluntario */
         }, { merge: true });
     } catch (error) {
