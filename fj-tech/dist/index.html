@@ -418,13 +418,17 @@
                         <!-- Modal para vizualização do perfil do voluntário -->
                         <section id="perfil-voluntario">
                             <!-- Full screen modal -->
-                            <div class="modal fade" id="perfilVoluntarioModal" tabindex="-1"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static"
+                            <div class="modal fade" id="PerfilVoluntarioModal" tabindex="-1"
+                                aria-labelledby="perfilVoluntarioModalLabel" aria-hidden="true" data-bs-backdrop="static"
                                 data-bs-keyboard="false">
                                 <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Dados do Voluntário</h1>
+                                            <div>
+                                                <h1 class="modal-title fs-5" id="perfilVoluntarioModalLabel">Dados do Voluntário</h1>
+                                                <small class="opacity-50 text-secondary mt-0" id="docVoluntarioPerfil"></small> 
+                                            </div>
+                                                 
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -432,30 +436,27 @@
                                             <div class="col"></div>
                                             <form class="row col-11 g-3" action="." method="get">
                                                 <!-- Dados pessoais -->
-                                                <div class="row mb-4 col-12">
-                                                    <p class="fs-5"><strong>Dados Pessoais</strong></p>
+                                                <div class="row mb-4 col-12" id="dadosPessoaisVoluntario">
+                                                    <p>
+                                                        <strong class="fs-5">Dados Pessoais</strong>                                                                                                          
+                                                    </p>
                                                     <div class="col-md-6 col-sm-12">
-                                                        <label for="nomeCompletoDoVoluntario" class="form-label">Nome
-                                                            completo</label>
-                                                        <input type="text" class="form-control"
-                                                            id="nomeCompletoDoVoluntario">
+                                                        <label for="nomeCompletoDoVoluntario" class="form-label">Nome completo</label>
+                                                        <input type="text" class="form-control" id="nomeCompletoDoVoluntario" readonly>
                                                     </div>
                                                     <div class="col row">
                                                         <div class="col-md-6 col-sm-12">
-                                                            <label for="telefoneDoVoluntario"
-                                                                class="form-label">Telefone</label>
-                                                            <input type="phone" class="form-control"
-                                                                id="telefoneDoVoluntario">
+                                                            <label for="telefoneDoVoluntario" class="form-label">Telefone</label>
+                                                            <input type="phone" class="form-control" id="telefoneDoVoluntario" readonly>
                                                         </div>
                                                         <div class="col-md-6 col-sm-12">
                                                             <label for="cpfDoVoluntario" class="form-label">CPF</label>
-                                                            <input type="text" class="form-control"
-                                                                id="cpfDoVoluntario">
+                                                            <input type="text" class="form-control" id="cpfDoVoluntario" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
                                                         <label for="emailDoVoluntario" class="form-label">Email</label>
-                                                        <input type="email" class="form-control" id="emailDoVoluntario">
+                                                        <input type="email" class="form-control" id="emailDoVoluntario" readonly>
                                                     </div>
                                                     <div class="col row">
                                                         <div class="col-md-6 col-sm-12">
@@ -464,50 +465,37 @@
                                                             <div>
                                                                 <div class="form-check form-check-inline">
                                                                     <input class="form-check-input" type="radio"
-                                                                        name="sexoDoVoluntario" id="sexoFeminino"
-                                                                        value="F">
-                                                                    <label class="form-check-label"
-                                                                        for="sexoFeminino">Feminino</label>
+                                                                        name="sexoDoVoluntario" id="sexoFeminino" value="Feminino">
+                                                                    <label class="form-check-label" for="sexoFeminino">Feminino</label>
                                                                 </div>
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="sexoDoVoluntario" id="sexoMasculino"
-                                                                        value="M">
-                                                                    <label class="form-check-label"
-                                                                        for="sexoMasculino">Masculino</label>
+                                                                    <input class="form-check-input" type="radio" 
+                                                                        name="sexoDoVoluntario" id="sexoMasculino" value="Masculino">
+                                                                    <label class="form-check-label" for="sexoMasculino">Masculino</label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-sm-12">
-                                                            <label for="faixaEtariaDoVoluntario"
-                                                                class="form-label">Faixa etária</label>
-                                                            <select class="form-select" id="faixaEtariaDoVoluntario"
-                                                                aria-label="Default select example">
-                                                                <option selected hidden>Selecione...</option>
-                                                                <option value="15">Abaixo de 16 anos</option>
-                                                                <option value="16-20">De 16 a 20 anos</option>
-                                                                <option value="21-30">De 21 a 30 anos</option>
-                                                                <option value="31-40">De 31 a 40 anos</option>
-                                                                <option value="41-50">De 41 a 50 anos</option>
-                                                                <option value="51-60">De 51 a 60 anos</option>
-                                                                <option value="61">Acima de 60 anos</option>
+                                                            <label for="faixaEtariaDoVoluntario" class="form-label">Faixa etária</label>
+                                                            <input class="form-control" id="faixaEtariaDoVoluntario" readonly type="text">
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- Contato de emergência -->
                                                 <div class="row mb-4 col-md-6 col-sm-12">
                                                     <p><strong class="fs-5">Contato de Emergência</strong></p>
                                                     <div class="col-md-6 col-sm-12">
                                                         <label for="nomeContatoDoVoluntario"
                                                             class="form-label">Nome</label>
-                                                        <input type="name" class="form-control"
+                                                        <input type="name" class="form-control" readonly
                                                             id="nomeContatoDoVoluntario">
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
                                                         <label for="telefoneContatoDoVoluntario"
                                                             class="form-label">Telefone</label>
-                                                        <input type="phone" class="form-control"
+                                                        <input type="phone" class="form-control" readonly
                                                             id="telefoneContatoDoVoluntario">
                                                     </div>
                                                     <spam class="align-middle mb-2">
@@ -521,41 +509,34 @@
                                                             emergência</small>
                                                     </spam>
                                                 </div>
+
                                                 <!-- Endereço -->
                                                 <div class="row mb-4 col-md-6 col-sm-12">
                                                     <p><strong class="fs-5">Endereço</strong></p>
                                                     <div class="col-md-5">
-                                                        <label for="bairroDoVoluntario"
-                                                            class="form-label">Bairro</label>
-                                                        <input type="text" class="form-control" id="bairroDoVoluntario"
-                                                            disabled>
+                                                        <label for="bairroDoVoluntario" class="form-label">Bairro</label>
+                                                        <input type="text" class="form-control" id="bairroDoVoluntario" readonly>
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <label for="cidadeDoVoluntario"
-                                                            class="form-label">Cidade</label>
-                                                        <input type="text" class="form-control" id="cidadeDoVoluntario"
-                                                            disabled>
+                                                        <label for="cidadeDoVoluntario" class="form-label">Cidade</label>
+                                                        <input type="text" class="form-control" id="cidadeDoVoluntario" readonly>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <label for="estadoDoVoluntario"
-                                                            class="form-label">Estado</label>
-                                                        <input type="text" class="form-control" id="estadoDoVoluntario"
-                                                            size="2" disabled>
+                                                        <label for="estadoDoVoluntario" class="form-label">Estado</label>
+                                                        <input type="text" class="form-control" id="estadoDoVoluntario" size="2" readonly>
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <label for="enderecoDoVoluntario"
-                                                            class="form-label">Endereco</label>
-                                                        <input type="text" class="form-control"
-                                                            id="enderecoDoVoluntario" disabled>
+                                                        <label for="enderecoDoVoluntario" class="form-label">Endereco</label>
+                                                        <input type="text" class="form-control" id="enderecoDoVoluntario" readonly>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label for="cepDoVoluntario" class="form-label">CEP</label>
-                                                        <input type="text" class="form-control" id="cepDoVoluntario"
-                                                            size="10" maxlength="9"
-                                                            onblur="pesquisaEnderecoPorCEP(this.value);">
+                                                        <input type="text" class="form-control" id="cepDoVoluntario" 
+                                                            size="10" maxlength="9" onblur="pesquisaEnderecoPorCEP(this.value);">
                                                     </div>
                                                 </div>
-                                                <!-- Contato de emergência -->
+
+                                                <!-- Dados Adicionais-->
                                                 <div class="row mb-4 col-12">
                                                     <p><strong class="fs-5">Dados Adicionais</strong></p>
                                                     <div class="col-md-6 col-sm-12">
@@ -580,19 +561,10 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6 col-sm-12">
+                                                            <div class="col-md-6 col-sm-12" id="ascendente">
                                                                 <label for="ascendenciaDoVoluntarioDescendente"
                                                                     class="form-label">Ascendência</label>
-                                                                <select class="form-select"
-                                                                    id="ascendenciaDoVoluntarioDescendente"
-                                                                    aria-label="Default select example">
-                                                                    <option selected hidden>Selecione...</option>
-                                                                    <option value="1">Issei (Japonês)</option>
-                                                                    <option value="2">Nissei (2ª Geração)</option>
-                                                                    <option value="3">Sansei (3ª Geração)</option>
-                                                                    <option value="4">Yonsei (4ª Geração)</option>
-                                                                    <option value="5">Gosei (5ª Geração)</option>
-                                                                </select>
+                                                                <input class="form-control" id="ascendenciaDoVoluntarioDescendente" type="text" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -613,8 +585,7 @@
                                                                     for="idiomaVoluntarioIngles">Inglês</label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    id="idiomaVoluntarioEspanhol" value="Espanhol">
+                                                                <input class="form-check-input" type="checkbox" id="idiomaVoluntarioEspanhol">
                                                                 <label class="form-check-label"
                                                                     for="idiomaVoluntarioEspanhol">Espanhol</label>
                                                             </div>
@@ -668,26 +639,14 @@
                                                     <div class="col-md-6 col-sm-12">
                                                         <div class="col-12 row">
                                                             <div class="col-md-6 col-sm-12">
-                                                                <label for="ascendenciaDoVoluntarioDescendente"
+                                                                <label for="nivelEscolaridadeVoluntario"
                                                                     class="form-label">Escolaridade</label>
-                                                                <select class="form-select"
-                                                                    id="ascendenciaDoVoluntarioDescendente"
-                                                                    aria-label="Default select example">
-                                                                    <option selected hidden>Selecione...</option>
-                                                                    <option value="1">Pós-graduação completo</option>
-                                                                    <option value="2">Superior completo</option>
-                                                                    <option value="3">Superior incompleto</option>
-                                                                    <option value="4">Ensino Médio completo</option>
-                                                                    <option value="5">Ensino Médio incompleto</option>
-                                                                    <option value="6">Fundamental II completo</option>
-                                                                    <option value="7">Fundamental II incompleto</option>
-                                                                    <option value="8">Fundamental I completo</option>
-                                                                    <option value="9">Fundamental I incompleto</option>
-                                                                </select>
+                                                                <input class="form-control"
+                                                                    id="nivelEscolaridadeVoluntario"
+                                                                    type="text" readonly>
                                                             </div>
                                                             <div class="col-md-6 col-sm-12">
-                                                                <label for="possuiEmprego" class="form-label">Trabalha
-                                                                    atualmente</label>
+                                                                <label for="possuiEmprego" class="form-label">Trabalha atualmente</label>
                                                                 <div>
                                                                     <div class="form-check form-check-inline">
                                                                         <input class="form-check-input" type="radio"
