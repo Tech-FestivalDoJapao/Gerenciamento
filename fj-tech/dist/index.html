@@ -12,7 +12,6 @@
     <link rel="icon" href="./img/image.png" type="image/x-icon">
 
     <script src="./main.js"></script>
-    <script src="./color-modes.js"></script>
 </head>
 
 <body>
@@ -275,13 +274,11 @@
 
                         <!-- OffCanvas para gestão de horários e alocação de recursos ao voluntário selecionado -->
                         <section id="gerenciarVoluntario">
-                            <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false"
+                            <div class="offcanvas offcanvas-end col-sm-12" data-bs-scroll="true" data-bs-backdrop="false"
                                 tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                                 <div class="offcanvas-header">
-                                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Gerenciar recursos associados
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                        aria-label="Close"></button>
+                                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Gerenciar recursos associados</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                 </div>
                                 <div class="offcanvas-body">
                                     <p class="mb-5">
@@ -290,6 +287,8 @@
                                     </p>
 
                                     <form>
+                                        <div id="gestaoRecusosVoluntarioNoFestival"></div>
+
                                         <div class="mb-5">
                                             <p class="mb-2 h5">Credencial</p>
                                             <div class="mb-3">
@@ -396,9 +395,10 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                                            Atenção
-                                        </h1>
+                                        <div>
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel"> Atenção </h1>
+                                            <small class="text-small opacity-75 text-secondary mt-0 mb-0" id="identificaRegistroVoluntario">  </small>
+                                        </div>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>

@@ -80,7 +80,7 @@ querySnapshot.forEach((doc) => {
       <td>
           <div class="btn-group btn-group-sm gap-1" role="group" aria-label="Small button group px-2">
               <!-- Editar dados do voluntário no festival -->
-              <button type="button" class="btn btn-outline-danger" id="GerenciarRecursosDoVoluntarioNoFestival" name="${doc.id}"
+              <button type="button" class="btn btn-outline-danger" id="GerenciarRecursosDoVoluntarioNoFestival" name="${doc.id}" onclick="atualizaOffcanvas(${doc.id})"
                   data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -101,7 +101,7 @@ querySnapshot.forEach((doc) => {
               </button>
 
               <!-- Excluir voluntário da lista do festival -->
-              <button type="button" class="btn btn-outline-danger" id="removerVoluntario" name="${doc.id}"
+              <button type="button" class="btn btn-outline-danger" id="removerVoluntario" name="${doc.id}" 
                   data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-trash-fill" viewBox="0 0 16 16">
@@ -114,18 +114,19 @@ querySnapshot.forEach((doc) => {
   </tr>`;
 
     /**
-     * Mensagem de confirmação para remoção de voluntário da lista do festival
+     * Adiciona o ID do voluntário ao botão de remoção
      */
-    document.getElementById("removerVoluntario").addEventListener('click', removeVoluntarioDaLista(
-        doc.id, doc.data().nome_completo_voluntario, doc.data().cpf_voluntario
-    ));
-    function removeVoluntarioDaLista(identificacao, nomeCompleto, cpfVoluntario) {
-        const nomeCompletoVoluntario = nomeCompleto;
-
-        if (document.getElementById("removerVoluntario").getAttribute("name") === identificacao && doc.data().cpf_voluntario === cpfVoluntario) {
-            document.getElementById("nomeVoluntarioCandidatoRemocao").innerHTML += `${nomeCompletoVoluntario}`;
-        } else {
-            document.getElementById("nomeVoluntarioCandidatoRemocao").innerHTML += `-`;
-        }
-    };
+    const identificaVoluntarioRemocao = document.getElementById("corpoTabelaDeListagemDeVoluntarios").lastElementChild.id;
+    document.querySelector("#removerVoluntario").setAttribute('name', identificaVoluntarioRemocao);
+    const btnRemoverVoluntario = document.querySelector("#removerVoluntario").getAttribute('name');
+    
+    if (btnRemoverVoluntario == doc.id) { 
+        const identificaRegistroVoluntario = document.getElementById("identificaRegistroVoluntario");
+        const nomeVoluntarioCandidatoRemocao = document.getElementById("nomeVoluntarioCandidatoRemocao");
+        
+        identificaRegistroVoluntario.innerHTML = `${doc.id}`;
+        nomeVoluntarioCandidatoRemocao.innerText = `${doc.data().nome_completo_voluntario}`;
+    } 
+    
+    console.log(identificaVoluntarioRemocao, "\n", doc.id, "\n", btnRemoverVoluntario);    
 });
