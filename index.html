@@ -274,11 +274,14 @@
 
                         <!-- OffCanvas para gestão de horários e alocação de recursos ao voluntário selecionado -->
                         <section id="gerenciarVoluntario">
-                            <div class="offcanvas offcanvas-end col-sm-12" data-bs-scroll="true" data-bs-backdrop="false"
-                                tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                            <div class="offcanvas offcanvas-end col-sm-12" data-bs-scroll="true"
+                                data-bs-backdrop="false" tabindex="-1" id="offcanvasRight"
+                                aria-labelledby="offcanvasRightLabel">
                                 <div class="offcanvas-header">
-                                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Gerenciar recursos associados</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Gerenciar recursos associados
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
                                 </div>
                                 <div class="offcanvas-body">
                                     <p class="mb-5">
@@ -383,7 +386,8 @@
                                             </div>
                                         </div>
 
-                                        <button type="btn" class="btn btn-danger" id="registrarRecursosDoVoluntario">Registrar</button>
+                                        <button type="btn" class="btn btn-danger"
+                                            id="registrarRecursosDoVoluntario">Registrar</button>
                                     </form>
                                 </div>
                             </div>
@@ -397,13 +401,15 @@
                                     <div class="modal-header">
                                         <div>
                                             <h1 class="modal-title fs-5" id="staticBackdropLabel"> Atenção </h1>
-                                            <small class="text-small opacity-75 text-secondary mt-0 mb-0" id="identificaRegistroVoluntario">  </small>
+                                            <small class="text-small opacity-75 text-secondary mt-0 mb-0"
+                                                id="identificaRegistroVoluntario"> </small>
                                         </div>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body" id="confirmacaoRemocao">
-                                        <p>Tem certeza de que deseja excluir os dados referentes ao voluntário <b id="nomeVoluntarioCandidatoRemocao"></b>?</p>
+                                        <p>Tem certeza de que deseja excluir os dados referentes ao voluntário <b
+                                                id="nomeVoluntarioCandidatoRemocao"></b>?</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-danger"
@@ -419,16 +425,18 @@
                         <section id="perfil-voluntario">
                             <!-- Full screen modal -->
                             <div class="modal fade" id="PerfilVoluntarioModal" tabindex="-1"
-                                aria-labelledby="perfilVoluntarioModalLabel" aria-hidden="true" data-bs-backdrop="static"
-                                data-bs-keyboard="false">
+                                aria-labelledby="perfilVoluntarioModalLabel" aria-hidden="true"
+                                data-bs-backdrop="static" data-bs-keyboard="false">
                                 <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <div>
-                                                <h1 class="modal-title fs-5" id="perfilVoluntarioModalLabel">Dados do Voluntário</h1>
-                                                <small class="opacity-50 text-secondary mt-0" id="docVoluntarioPerfil"></small> 
+                                                <h1 class="modal-title fs-5" id="perfilVoluntarioModalLabel">Dados do
+                                                    Voluntário</h1>
+                                                <small class="opacity-50 text-secondary mt-0"
+                                                    id="docVoluntarioPerfil"></small>
                                             </div>
-                                                 
+
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -438,25 +446,31 @@
                                                 <!-- Dados pessoais -->
                                                 <div class="row mb-4 col-12" id="dadosPessoaisVoluntario">
                                                     <p>
-                                                        <strong class="fs-5">Dados Pessoais</strong>                                                                                                          
+                                                        <strong class="fs-5">Dados Pessoais</strong>
                                                     </p>
                                                     <div class="col-md-6 col-sm-12">
-                                                        <label for="nomeCompletoDoVoluntario" class="form-label">Nome completo</label>
-                                                        <input type="text" class="form-control" id="nomeCompletoDoVoluntario" readonly>
+                                                        <label for="nomeCompletoDoVoluntario" class="form-label">Nome
+                                                            completo</label>
+                                                        <input type="text" class="form-control"
+                                                            id="nomeCompletoDoVoluntario" readonly>
                                                     </div>
                                                     <div class="col row">
                                                         <div class="col-md-6 col-sm-12">
-                                                            <label for="telefoneDoVoluntario" class="form-label">Telefone</label>
-                                                            <input type="phone" class="form-control" id="telefoneDoVoluntario" readonly>
+                                                            <label for="telefoneDoVoluntario"
+                                                                class="form-label">Telefone</label>
+                                                            <input type="phone" class="form-control"
+                                                                id="telefoneDoVoluntario" readonly>
                                                         </div>
                                                         <div class="col-md-6 col-sm-12">
                                                             <label for="cpfDoVoluntario" class="form-label">CPF</label>
-                                                            <input type="text" class="form-control" id="cpfDoVoluntario" readonly>
+                                                            <input type="text" class="form-control" id="cpfDoVoluntario"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
                                                         <label for="emailDoVoluntario" class="form-label">Email</label>
-                                                        <input type="email" class="form-control" id="emailDoVoluntario" readonly>
+                                                        <input type="email" class="form-control" id="emailDoVoluntario"
+                                                            readonly>
                                                     </div>
                                                     <div class="col row">
                                                         <div class="col-md-6 col-sm-12">
@@ -465,19 +479,25 @@
                                                             <div>
                                                                 <div class="form-check form-check-inline">
                                                                     <input class="form-check-input" type="radio"
-                                                                        name="sexoDoVoluntario" id="sexoFeminino" value="Feminino">
-                                                                    <label class="form-check-label" for="sexoFeminino">Feminino</label>
+                                                                        name="sexoDoVoluntario" id="sexoFeminino"
+                                                                        value="Feminino">
+                                                                    <label class="form-check-label"
+                                                                        for="sexoFeminino">Feminino</label>
                                                                 </div>
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" 
-                                                                        name="sexoDoVoluntario" id="sexoMasculino" value="Masculino">
-                                                                    <label class="form-check-label" for="sexoMasculino">Masculino</label>
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="sexoDoVoluntario" id="sexoMasculino"
+                                                                        value="Masculino">
+                                                                    <label class="form-check-label"
+                                                                        for="sexoMasculino">Masculino</label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-sm-12">
-                                                            <label for="faixaEtariaDoVoluntario" class="form-label">Faixa etária</label>
-                                                            <input class="form-control" id="faixaEtariaDoVoluntario" readonly type="text">
+                                                            <label for="faixaEtariaDoVoluntario"
+                                                                class="form-label">Faixa etária</label>
+                                                            <input class="form-control" id="faixaEtariaDoVoluntario"
+                                                                readonly type="text">
                                                             </select>
                                                         </div>
                                                     </div>
@@ -514,25 +534,34 @@
                                                 <div class="row mb-4 col-md-6 col-sm-12">
                                                     <p><strong class="fs-5">Endereço</strong></p>
                                                     <div class="col-md-5">
-                                                        <label for="bairroDoVoluntario" class="form-label">Bairro</label>
-                                                        <input type="text" class="form-control" id="bairroDoVoluntario" readonly>
+                                                        <label for="bairroDoVoluntario"
+                                                            class="form-label">Bairro</label>
+                                                        <input type="text" class="form-control" id="bairroDoVoluntario"
+                                                            readonly>
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <label for="cidadeDoVoluntario" class="form-label">Cidade</label>
-                                                        <input type="text" class="form-control" id="cidadeDoVoluntario" readonly>
+                                                        <label for="cidadeDoVoluntario"
+                                                            class="form-label">Cidade</label>
+                                                        <input type="text" class="form-control" id="cidadeDoVoluntario"
+                                                            readonly>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <label for="estadoDoVoluntario" class="form-label">Estado</label>
-                                                        <input type="text" class="form-control" id="estadoDoVoluntario" size="2" readonly>
+                                                        <label for="estadoDoVoluntario"
+                                                            class="form-label">Estado</label>
+                                                        <input type="text" class="form-control" id="estadoDoVoluntario"
+                                                            size="2" readonly>
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <label for="enderecoDoVoluntario" class="form-label">Endereco</label>
-                                                        <input type="text" class="form-control" id="enderecoDoVoluntario" readonly>
+                                                        <label for="enderecoDoVoluntario"
+                                                            class="form-label">Endereco</label>
+                                                        <input type="text" class="form-control"
+                                                            id="enderecoDoVoluntario" readonly>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label for="cepDoVoluntario" class="form-label">CEP</label>
-                                                        <input type="text" class="form-control" id="cepDoVoluntario" 
-                                                            size="10" maxlength="9" onblur="pesquisaEnderecoPorCEP(this.value);">
+                                                        <input type="text" class="form-control" id="cepDoVoluntario"
+                                                            size="10" maxlength="9"
+                                                            onblur="pesquisaEnderecoPorCEP(this.value);">
                                                     </div>
                                                 </div>
 
@@ -564,7 +593,9 @@
                                                             <div class="col-md-6 col-sm-12" id="ascendente">
                                                                 <label for="ascendenciaDoVoluntarioDescendente"
                                                                     class="form-label">Ascendência</label>
-                                                                <input class="form-control" id="ascendenciaDoVoluntarioDescendente" type="text" readonly>
+                                                                <input class="form-control"
+                                                                    id="ascendenciaDoVoluntarioDescendente" type="text"
+                                                                    readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -585,7 +616,8 @@
                                                                     for="idiomaVoluntarioIngles">Inglês</label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="checkbox" id="idiomaVoluntarioEspanhol">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="idiomaVoluntarioEspanhol">
                                                                 <label class="form-check-label"
                                                                     for="idiomaVoluntarioEspanhol">Espanhol</label>
                                                             </div>
@@ -642,11 +674,12 @@
                                                                 <label for="nivelEscolaridadeVoluntario"
                                                                     class="form-label">Escolaridade</label>
                                                                 <input class="form-control"
-                                                                    id="nivelEscolaridadeVoluntario"
-                                                                    type="text" readonly>
+                                                                    id="nivelEscolaridadeVoluntario" type="text"
+                                                                    readonly>
                                                             </div>
                                                             <div class="col-md-6 col-sm-12">
-                                                                <label for="possuiEmprego" class="form-label">Trabalha atualmente</label>
+                                                                <label for="possuiEmprego" class="form-label">Trabalha
+                                                                    atualmente</label>
                                                                 <div>
                                                                     <div class="form-check form-check-inline">
                                                                         <input class="form-check-input" type="radio"
@@ -689,6 +722,65 @@
                             <h1>Recursos</h1>
                             <p class="fs-4">Gerenciar credenciais, hapis e vouchers</p>
                         </section>
+
+                        <!-- Cards relacionados aos Recusos do Festival-->
+                        <soction id="dadosHapi">
+                            <div class="row justify-content-between">
+                                <!-- Card de acesso rápido para a lista de voluntários -->
+                                <div id="cardHapis" class="col-sm-6 col-md-4">
+                                    <div class="card border-danger mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title pt-2 pb-3 text-center">Hapis</h5>
+                                            <div class="card-text pb-3">
+                                                <p>Total: <spam id="hapisTotal">15000</spam></p>
+                                                <p>Em uso: <spam id="hapisEmUso">14990</spam></p>
+                                                <p>Disponíveis: <spam id="hapisDisponiveis">10</spam></p>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card de acesso rápido para a gestão de credenciais -->
+                                <div id="cardCredenciais" class="col-sm-6 col-md-4">
+                                    <div class="card border-danger mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title pt-2 pb-3 text-center">Credenciais</h5>
+                                            <div class="card-text pb-3">
+                                                <p>Total: <spam id="credenciaisTotal">15000</spam></p>
+                                                <p>Em uso: <spam id="credenciaisEmUso">14990</spam></p>
+                                                <p>Disponíveis: <spam id="credenciaisDisponiveis">10</spam></p>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card de acesso rápido para a gestão de vouchers -->
+                                <div id="cardVouchers" class="col-sm-6 col-md-4">
+                                    <div class="card border-danger mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title pt-2 pb-3 text-center">Vouchers</h5>    
+                                            <div class="card-text pb-3">
+                                                <p>Total: <spam id="vouchersTotal">15000</spam>
+                                                    <ul>
+                                                        <li>Almoço: <spam id="vouchersAlmoco">5000</spam></li>
+                                                        <li>Jantar: <spam id="vouchersJantar">5000</spam></li>
+                                                        <li>Kit lanche: <spam id="vouchersKitLanche">5000</spam></li>
+                                                    </ul>
+                                                </p>
+                                                <p>Resgatados: <spam id="vouchersEmUso">0</spam></p>                                          
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </soction>
+
+                        <!-- Cards relacionados às Credenciais -->
+                        <section id="dadosCredencial"></section>
+
+                        <!-- Cards relacionados aos Vouchers -->
+                        <section id="dadosVoucher"></section>
                     </main>
                 </section>
 
