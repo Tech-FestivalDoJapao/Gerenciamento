@@ -62,30 +62,33 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
                     <li>
+                        <!-- Modo claro --> 
                         <button type="button" class="dropdown-item d-flex align-items-center"
                             data-bs-theme-value="light" aria-pressed="false">
                             <svg class="bi me-2 opacity-50" width="1em" height="1em">
                                 <use href="#sun-fill"></use>
                             </svg>
-                            Light
+                            Claro
                             <svg class="bi ms-auto d-none" width="1em" height="1em">
                                 <use href="#check2"></use>
                             </svg>
                         </button>
                     </li>
                     <li>
+                        <!-- Modo escuro -->
                         <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
                             aria-pressed="false">
                             <svg class="bi me-2 opacity-50" width="1em" height="1em">
                                 <use href="#moon-stars-fill"></use>
                             </svg>
-                            Dark
+                            Escuro
                             <svg class="bi ms-auto d-none" width="1em" height="1em">
                                 <use href="#check2"></use>
                             </svg>
                         </button>
                     </li>
                     <li>
+                        <!-- Modo automático, de acordo com o sistema -->
                         <button type="button" class="dropdown-item d-flex align-items-center active"
                             data-bs-theme-value="auto" aria-pressed="true">
                             <svg class="bi me-2 opacity-50" width="1em" height="1em">
@@ -250,6 +253,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">
+                                                    <!--  Coluna de multipla seleção de voluntários através da marcação dos checkboxes -->
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" value=""
                                                             id="selecionaVoluntarioNaTabela" />
@@ -731,6 +735,7 @@
                                     <div class="card border-danger mb-3">
                                         <div class="card-body">
                                             <h5 class="card-title pt-2 pb-3 text-center">Hapis</h5>
+                                            
                                             <div class="card-text pb-3">
                                                 <p>Total: <spam id="hapisTotal">15000</spam></p>
                                                 <p>Em uso: <spam id="hapisEmUso">14990</spam></p>
@@ -745,6 +750,7 @@
                                     <div class="card border-danger mb-3">
                                         <div class="card-body">
                                             <h5 class="card-title pt-2 pb-3 text-center">Credenciais</h5>
+                                            
                                             <div class="card-text pb-3">
                                                 <p>Total: <spam id="credenciaisTotal">15000</spam></p>
                                                 <p>Em uso: <spam id="credenciaisEmUso">14990</spam></p>
@@ -759,6 +765,7 @@
                                     <div class="card border-danger mb-3">
                                         <div class="card-body">
                                             <h5 class="card-title pt-2 pb-3 text-center">Vouchers</h5>    
+                                            
                                             <div class="card-text pb-3">
                                                 <p>Total: <spam id="vouchersTotal">15000</spam>
                                                     <ul>
@@ -772,7 +779,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </soction>
 
@@ -790,6 +796,13 @@
                     <main class="align-items-md-center pb-3 mb-5">
                         <section id="titulo" class="text-center mb-5">
                             <h1>Localização dos Estandes</h1>
+                            <p class="fs-4">Veja os principais pontos do Pavilhão do Evento como banheiros e saídas de emergência</p>
+                        </section>
+
+                        <!-- Imagem interativa do pavilhão do evento-->
+                        <section class="text-center border-danger">
+                            <!-- Atualizar anualmente conforme a planta do pavilhão do evento disponibilizada pela organização do evento-->
+                            <iframe src="https://drive.google.com/file/d/17G5Og7hSqrk_4limWK65au5LUb5DxxoX/preview" width="750" height="590" allow="autoplay" class="border-danger border-2"></iframe>
                         </section>
                     </main>
                 </section>
