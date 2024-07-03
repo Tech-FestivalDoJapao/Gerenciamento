@@ -1,6 +1,6 @@
 {
   "name": "fj-tech",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "homepage": "https://tech-festivaldojapao.github.io/gerenciamento/",
   "repository": {
@@ -38,6 +38,6 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "firebase": "^10.12.2"
+    "firebase": "^10.9.0"
   }
 }

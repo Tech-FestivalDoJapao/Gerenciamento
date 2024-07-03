@@ -1,4 +1,5 @@
 const path = require('path')
+const loader = require('sass-loader')
 
 module.exports = {
   entry: './src/js/main.js',
@@ -38,5 +39,8 @@ module.exports = {
         ]
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.mjs']
   }
 }

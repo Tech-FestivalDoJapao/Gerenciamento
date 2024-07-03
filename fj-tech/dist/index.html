@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" data-bs-theme="light">
+<html lang="pt-br" data-bs-theme="auto">
 
 <head>
     <title>Gerenciador do Festival do Japão</title>
@@ -9,11 +9,9 @@
     <meta name="keywords" content="Festival do Japão, Voluntários, Gerenciamento">
 
     <link rel="shortcut icon" href="./img/image.png" type="image/x-icon">
+    <link rel="icon" href="./img/image.png" type="image/x-icon">
 
     <script src="./main.js"></script>
-    <script src="./color-modes.js"></script>
-
-    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-svg-core/index.js">
 </head>
 
 <body>
@@ -21,7 +19,7 @@
         <header id="header"
             class="d-flex justify-content-between align-items-md-center pb-3 mb-5 border-bottom border-danger border-5">
             <h1 class="h4">
-                <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none">
                     <span>Festival do Japão</span>
                 </a>
             </h1>
@@ -64,30 +62,33 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
                     <li>
+                        <!-- Modo claro --> 
                         <button type="button" class="dropdown-item d-flex align-items-center"
                             data-bs-theme-value="light" aria-pressed="false">
                             <svg class="bi me-2 opacity-50" width="1em" height="1em">
                                 <use href="#sun-fill"></use>
                             </svg>
-                            Light
+                            Claro
                             <svg class="bi ms-auto d-none" width="1em" height="1em">
                                 <use href="#check2"></use>
                             </svg>
                         </button>
                     </li>
                     <li>
+                        <!-- Modo escuro -->
                         <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
                             aria-pressed="false">
                             <svg class="bi me-2 opacity-50" width="1em" height="1em">
                                 <use href="#moon-stars-fill"></use>
                             </svg>
-                            Dark
+                            Escuro
                             <svg class="bi ms-auto d-none" width="1em" height="1em">
                                 <use href="#check2"></use>
                             </svg>
                         </button>
                     </li>
                     <li>
+                        <!-- Modo automático, de acordo com o sistema -->
                         <button type="button" class="dropdown-item d-flex align-items-center active"
                             data-bs-theme-value="auto" aria-pressed="true">
                             <svg class="bi me-2 opacity-50" width="1em" height="1em">
@@ -221,9 +222,9 @@
                                 <div class="col col-1"></div>
                                 <div class="p-2">
                                     <form class="d-flex me-auto" role="search">
-                                        <input class="form-control me-2" type="search"
-                                            placeholder="Pesquisar por nome ou email" aria-label="Search">
-                                        <button class="btn btn-danger" type="submit">
+                                        <input class="form-control me-2" type="text" id="buscaVoluntarioNaTabela"
+                                            placeholder="Pesquisar nome..." aria-label="Search">
+                                        <button class="btn btn-danger" type="btn">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                                 <path
@@ -252,9 +253,10 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">
+                                                    <!--  Coluna de multipla seleção de voluntários através da marcação dos checkboxes -->
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckDefault" />
+                                                            id="selecionaVoluntarioNaTabela" />
                                                     </div>
                                                 </th>
                                                 <th scope="col">Nome</th>
@@ -265,214 +267,8 @@
                                                 <th scope="col">Ações</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckDefault" />
-                                                    </div>
-                                                </th>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="ms">
-                                                            <p class="fw-semibold mb-0">Nome Completo do Voluntário</p>
-                                                            <p class="text-muted mb-0">voluntario@email.com</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="fw-normal mb-1">+55 (xx) 9xxxx-xxxx</p>
-                                                </td>
-                                                <td>
-                                                    <span class="badge rounded-pill text-bg-success">Ativo</span>
-                                                </td>
-                                                <td>
-                                                    <p>-</p>
-                                                </td>
-                                                <td>
-                                                    <p>-</p>
-                                                </td>
-                                                <td>
-                                                    <div class="btn-group btn-group-sm gap-1" role="group"
-                                                        aria-label="Small button group px-2">
-                                                        <!-- Editar dados do voluntário no festival -->
-                                                        <button type="button" class="btn btn-outline-danger"
-                                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                                            aria-controls="offcanvasRight">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                height="16" fill="currentColor"
-                                                                class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                                <path
-                                                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                                <path fill-rule="evenodd"
-                                                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
-                                                            </svg>
-                                                        </button>
-
-                                                        <!-- Acessar perfil cadastral do voluntário -->
-                                                        <button type="button" class="btn btn-outline-danger"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#perfilVoluntarioModal">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                height="16" fill="currentColor"
-                                                                class="bi bi-person-fill" viewBox="0 0 16 16">
-                                                                <path
-                                                                    d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                                                            </svg>
-                                                        </button>
-
-                                                        <!-- Excluir voluntário da lista do festival -->
-                                                        <button type="button" class="btn btn-outline-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                height="16" fill="currentColor" class="bi bi-trash-fill"
-                                                                viewBox="0 0 16 16">
-                                                                <path
-                                                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckDefault" />
-                                                    </div>
-                                                </th>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="ms">
-                                                            <p class="fw-semibold mb-0">Nome do Voluntário</p>
-                                                            <p class="text-muted mb-0">voluntario@email.com</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="fw-normal mb-1">+55 (xx) 9xxxx-xxxx</p>
-                                                </td>
-                                                <td>
-                                                    <span class="badge rounded-pill text-bg-warning">Intervalo</span>
-                                                </td>
-                                                <td>
-                                                    <p>-</p>
-                                                </td>
-                                                <td>
-                                                    <p>-</p>
-                                                </td>
-                                                <td>
-                                                    <div class="btn-group btn-group-sm gap-1" role="group"
-                                                        aria-label="Small button group px-2">
-                                                        <!-- Editar dados do voluntário no festival -->
-                                                        <button type="button" class="btn btn-outline-danger"
-                                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                                            aria-controls="offcanvasRight">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                height="16" fill="currentColor"
-                                                                class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                                <path
-                                                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                                <path fill-rule="evenodd"
-                                                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
-                                                            </svg>
-                                                        </button>
-
-                                                        <!-- Acessar perfil cadastral do voluntário -->
-                                                        <button type="button" class="btn btn-outline-danger"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#perfilVoluntarioModal">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                height="16" fill="currentColor"
-                                                                class="bi bi-person-fill" viewBox="0 0 16 16">
-                                                                <path
-                                                                    d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                                                            </svg>
-                                                        </button>
-
-                                                        <!-- Excluir voluntário da lista do festival -->
-                                                        <button type="button" class="btn btn-outline-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                height="16" fill="currentColor" class="bi bi-trash-fill"
-                                                                viewBox="0 0 16 16">
-                                                                <path
-                                                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckDefault" />
-                                                    </div>
-                                                </th>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="ms">
-                                                            <p class="fw-semibold mb-0">Nome Completo</p>
-                                                            <p class="text-muted mb-0">voluntario@email.com</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="fw-normal mb-1">+55 (xx) 9xxxx-xxxx</p>
-                                                </td>
-                                                <td>
-                                                    <span class="badge rounded-pill text-bg-danger">Inativo</span>
-                                                </td>
-                                                <td>
-                                                    <p>-</p>
-                                                </td>
-                                                <td>
-                                                    <p>-</p>
-                                                </td>
-                                                <td>
-                                                    <div class="btn-group btn-group-sm gap-1" role="group"
-                                                        aria-label="Small button group px-2">
-                                                        <!-- Editar dados do voluntário no festival -->
-                                                        <button type="button" class="btn btn-outline-danger"
-                                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                                            aria-controls="offcanvasRight">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                height="16" fill="currentColor"
-                                                                class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                                <path
-                                                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                                <path fill-rule="evenodd"
-                                                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
-                                                            </svg>
-                                                        </button>
-
-                                                        <!-- Acessar perfil cadastral do voluntário -->
-                                                        <button type="button" class="btn btn-outline-danger"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#perfilVoluntarioModal">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                height="16" fill="currentColor"
-                                                                class="bi bi-person-fill" viewBox="0 0 16 16">
-                                                                <path
-                                                                    d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                                                            </svg>
-                                                        </button>
-
-                                                        <!-- Excluir voluntário da lista do festival -->
-                                                        <button type="button" class="btn btn-outline-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                height="16" fill="currentColor" class="bi bi-trash-fill"
-                                                                viewBox="0 0 16 16">
-                                                                <path
-                                                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                        <tbody id="corpoTabelaDeListagemDeVoluntarios">
+                                            <!-- As linhas da tabela são renderizadas a parit do banco -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -482,8 +278,9 @@
 
                         <!-- OffCanvas para gestão de horários e alocação de recursos ao voluntário selecionado -->
                         <section id="gerenciarVoluntario">
-                            <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false"
-                                tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                            <div class="offcanvas offcanvas-end col-sm-12" data-bs-scroll="true"
+                                data-bs-backdrop="false" tabindex="-1" id="offcanvasRight"
+                                aria-labelledby="offcanvasRightLabel">
                                 <div class="offcanvas-header">
                                     <h5 class="offcanvas-title" id="offcanvasRightLabel">Gerenciar recursos associados
                                     </h5>
@@ -496,7 +293,9 @@
                                         principal
                                     </p>
 
-                                    <form action="" method="post">
+                                    <form>
+                                        <div id="gestaoRecusosVoluntarioNoFestival"></div>
+
                                         <div class="mb-5">
                                             <p class="mb-2 h5">Credencial</p>
                                             <div class="mb-3">
@@ -570,6 +369,8 @@
                                             <p class="mb-2 h5">Voucher</p>
                                             <div class="row">
                                                 <div class="col">
+                                                    <label for="tamanhoHapi" class="form-select-label">Selecione o tipo
+                                                        de voucher a ser entregue:</label>
                                                     <select id="tamanhoHapi" class="form-select" required>
                                                         <option selected hidden>Tipo de voucher</option>
                                                         <option value="1">Almoço</option>
@@ -589,7 +390,8 @@
                                             </div>
                                         </div>
 
-                                        <button type="submit" class="btn btn-danger">Salvar</button>
+                                        <button type="btn" class="btn btn-danger"
+                                            id="registrarRecursosDoVoluntario">Registrar</button>
                                     </form>
                                 </div>
                             </div>
@@ -601,20 +403,22 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                                            Atenção
-                                        </h1>
+                                        <div>
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel"> Atenção </h1>
+                                            <small class="text-small opacity-75 text-secondary mt-0 mb-0"
+                                                id="identificaRegistroVoluntario"> </small>
+                                        </div>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body">
-                                        Tem certeza de que deseja excluir os dados referentes ao voluntário [nome
-                                        completo do voluntário]?
+                                    <div class="modal-body" id="confirmacaoRemocao">
+                                        <p>Tem certeza de que deseja excluir os dados referentes ao voluntário <b
+                                                id="nomeVoluntarioCandidatoRemocao"></b>?</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-danger"
                                             data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-danger"
+                                        <button type="submit" class="btn btn-danger" id="btnExcluirVoluntario"
                                             data-bs-dismiss="modal">Excluir</button>
                                     </div>
                                 </div>
@@ -624,13 +428,19 @@
                         <!-- Modal para vizualização do perfil do voluntário -->
                         <section id="perfil-voluntario">
                             <!-- Full screen modal -->
-                            <div class="modal fade" id="perfilVoluntarioModal" tabindex="-1"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static"
-                                data-bs-keyboard="false">
+                            <div class="modal fade" id="PerfilVoluntarioModal" tabindex="-1"
+                                aria-labelledby="perfilVoluntarioModalLabel" aria-hidden="true"
+                                data-bs-backdrop="static" data-bs-keyboard="false">
                                 <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Dados do Voluntário</h1>
+                                            <div>
+                                                <h1 class="modal-title fs-5" id="perfilVoluntarioModalLabel">Dados do
+                                                    Voluntário</h1>
+                                                <small class="opacity-50 text-secondary mt-0"
+                                                    id="docVoluntarioPerfil"></small>
+                                            </div>
+
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -638,30 +448,33 @@
                                             <div class="col"></div>
                                             <form class="row col-11 g-3" action="." method="get">
                                                 <!-- Dados pessoais -->
-                                                <div class="row mb-4 col-12">
-                                                    <p class="fs-5"><strong>Dados Pessoais</strong></p>
+                                                <div class="row mb-4 col-12" id="dadosPessoaisVoluntario">
+                                                    <p>
+                                                        <strong class="fs-5">Dados Pessoais</strong>
+                                                    </p>
                                                     <div class="col-md-6 col-sm-12">
                                                         <label for="nomeCompletoDoVoluntario" class="form-label">Nome
                                                             completo</label>
                                                         <input type="text" class="form-control"
-                                                            id="nomeCompletoDoVoluntario">
+                                                            id="nomeCompletoDoVoluntario" readonly>
                                                     </div>
                                                     <div class="col row">
                                                         <div class="col-md-6 col-sm-12">
                                                             <label for="telefoneDoVoluntario"
                                                                 class="form-label">Telefone</label>
                                                             <input type="phone" class="form-control"
-                                                                id="telefoneDoVoluntario">
+                                                                id="telefoneDoVoluntario" readonly>
                                                         </div>
                                                         <div class="col-md-6 col-sm-12">
                                                             <label for="cpfDoVoluntario" class="form-label">CPF</label>
-                                                            <input type="text" class="form-control"
-                                                                id="cpfDoVoluntario">
+                                                            <input type="text" class="form-control" id="cpfDoVoluntario"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
                                                         <label for="emailDoVoluntario" class="form-label">Email</label>
-                                                        <input type="email" class="form-control" id="emailDoVoluntario">
+                                                        <input type="email" class="form-control" id="emailDoVoluntario"
+                                                            readonly>
                                                     </div>
                                                     <div class="col row">
                                                         <div class="col-md-6 col-sm-12">
@@ -671,14 +484,14 @@
                                                                 <div class="form-check form-check-inline">
                                                                     <input class="form-check-input" type="radio"
                                                                         name="sexoDoVoluntario" id="sexoFeminino"
-                                                                        value="F">
+                                                                        value="Feminino">
                                                                     <label class="form-check-label"
                                                                         for="sexoFeminino">Feminino</label>
                                                                 </div>
                                                                 <div class="form-check form-check-inline">
                                                                     <input class="form-check-input" type="radio"
                                                                         name="sexoDoVoluntario" id="sexoMasculino"
-                                                                        value="M">
+                                                                        value="Masculino">
                                                                     <label class="form-check-label"
                                                                         for="sexoMasculino">Masculino</label>
                                                                 </div>
@@ -687,42 +500,40 @@
                                                         <div class="col-md-6 col-sm-12">
                                                             <label for="faixaEtariaDoVoluntario"
                                                                 class="form-label">Faixa etária</label>
-                                                            <select class="form-select" id="faixaEtariaDoVoluntario"
-                                                                aria-label="Default select example">
-                                                                <option selected hidden>Selecione...</option>
-                                                                <option value="15">Abaixo de 16 anos</option>
-                                                                <option value="16-20">De 16 a 20 anos</option>
-                                                                <option value="21-30">De 21 a 30 anos</option>
-                                                                <option value="31-40">De 31 a 40 anos</option>
-                                                                <option value="41-50">De 41 a 50 anos</option>
-                                                                <option value="51-60">De 51 a 60 anos</option>
-                                                                <option value="61">Acima de 60 anos</option>
+                                                            <input class="form-control" id="faixaEtariaDoVoluntario"
+                                                                readonly type="text">
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- Contato de emergência -->
                                                 <div class="row mb-4 col-md-6 col-sm-12">
                                                     <p><strong class="fs-5">Contato de Emergência</strong></p>
                                                     <div class="col-md-6 col-sm-12">
                                                         <label for="nomeContatoDoVoluntario"
                                                             class="form-label">Nome</label>
-                                                        <input type="name" class="form-control"
+                                                        <input type="name" class="form-control" readonly
                                                             id="nomeContatoDoVoluntario">
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
                                                         <label for="telefoneContatoDoVoluntario"
                                                             class="form-label">Telefone</label>
-                                                        <input type="phone" class="form-control"
+                                                        <input type="phone" class="form-control" readonly
                                                             id="telefoneContatoDoVoluntario">
                                                     </div>
                                                     <spam class="align-middle mb-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
-                                                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
-                                                          </svg>
-                                                        <small>Esta informação será utilizada para contato, em caso de emergência</small>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-info-circle-fill"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
+                                                        </svg>
+                                                        <small>Esta informação será utilizada para contato, em caso de
+                                                            emergência</small>
                                                     </spam>
                                                 </div>
+
                                                 <!-- Endereço -->
                                                 <div class="row mb-4 col-md-6 col-sm-12">
                                                     <p><strong class="fs-5">Endereço</strong></p>
@@ -730,25 +541,25 @@
                                                         <label for="bairroDoVoluntario"
                                                             class="form-label">Bairro</label>
                                                         <input type="text" class="form-control" id="bairroDoVoluntario"
-                                                            disabled>
+                                                            readonly>
                                                     </div>
                                                     <div class="col-md-5">
                                                         <label for="cidadeDoVoluntario"
                                                             class="form-label">Cidade</label>
                                                         <input type="text" class="form-control" id="cidadeDoVoluntario"
-                                                            disabled>
+                                                            readonly>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <label for="estadoDoVoluntario"
                                                             class="form-label">Estado</label>
                                                         <input type="text" class="form-control" id="estadoDoVoluntario"
-                                                            size="2" disabled>
+                                                            size="2" readonly>
                                                     </div>
                                                     <div class="col-md-8">
                                                         <label for="enderecoDoVoluntario"
                                                             class="form-label">Endereco</label>
                                                         <input type="text" class="form-control"
-                                                            id="enderecoDoVoluntario" disabled>
+                                                            id="enderecoDoVoluntario" readonly>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label for="cepDoVoluntario" class="form-label">CEP</label>
@@ -757,7 +568,8 @@
                                                             onblur="pesquisaEnderecoPorCEP(this.value);">
                                                     </div>
                                                 </div>
-                                                <!-- Contato de emergência -->
+
+                                                <!-- Dados Adicionais-->
                                                 <div class="row mb-4 col-12">
                                                     <p><strong class="fs-5">Dados Adicionais</strong></p>
                                                     <div class="col-md-6 col-sm-12">
@@ -782,19 +594,12 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6 col-sm-12">
+                                                            <div class="col-md-6 col-sm-12" id="ascendente">
                                                                 <label for="ascendenciaDoVoluntarioDescendente"
                                                                     class="form-label">Ascendência</label>
-                                                                <select class="form-select"
-                                                                    id="ascendenciaDoVoluntarioDescendente"
-                                                                    aria-label="Default select example">
-                                                                    <option selected hidden>Selecione...</option>
-                                                                    <option value="1">Issei (Japonês)</option>
-                                                                    <option value="2">Nissei (2ª Geração)</option>
-                                                                    <option value="3">Sansei (3ª Geração)</option>
-                                                                    <option value="4">Yonsei (4ª Geração)</option>
-                                                                    <option value="5">Gosei (5ª Geração)</option>
-                                                                </select>
+                                                                <input class="form-control"
+                                                                    id="ascendenciaDoVoluntarioDescendente" type="text"
+                                                                    readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -816,7 +621,7 @@
                                                             </div>
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                    id="idiomaVoluntarioEspanhol" value="Espanhol">
+                                                                    id="idiomaVoluntarioEspanhol">
                                                                 <label class="form-check-label"
                                                                     for="idiomaVoluntarioEspanhol">Espanhol</label>
                                                             </div>
@@ -826,28 +631,28 @@
                                                         <div class="col-12 row">
                                                             <div class="col-md-6 col-sm-12">
                                                                 <label for="nomeContatoDoVoluntario"
-                                                                class="form-label">Treinamento em Primeiros
-                                                                Socorros</label>
-                                                            <div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="treinamentoPrimeirosSocorros"
-                                                                        id="treinamentoSim" value="Sim">
-                                                                    <label class="form-check-label"
-                                                                        for="treinamentoSim">Sim</label>
+                                                                    class="form-label">Treinamento em Primeiros
+                                                                    Socorros</label>
+                                                                <div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="treinamentoPrimeirosSocorros"
+                                                                            id="treinamentoSim" value="Sim">
+                                                                        <label class="form-check-label"
+                                                                            for="treinamentoSim">Sim</label>
+                                                                    </div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="treinamentoPrimeirosSocorros"
+                                                                            id="treinamentoNao" value="Nao">
+                                                                        <label class="form-check-label"
+                                                                            for="treinamentoNao">Não</label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="treinamentoPrimeirosSocorros"
-                                                                        id="treinamentoNao" value="Nao">
-                                                                    <label class="form-check-label"
-                                                                        for="treinamentoNao">Não</label>
-                                                                </div>
-                                                            </div>
                                                             </div>
                                                             <div class="col-md-6 col-sm-12">
                                                                 <label for="nomeContatoDoVoluntario"
-                                                                class="form-label">Conhecimento em LIBRAS</label>
+                                                                    class="form-label">Conhecimento em LIBRAS</label>
                                                                 <div>
                                                                     <div class="form-check form-check-inline">
                                                                         <input class="form-check-input" type="radio"
@@ -868,40 +673,29 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
-                                                        <div class="col-12 row">                                                            
+                                                        <div class="col-12 row">
                                                             <div class="col-md-6 col-sm-12">
-                                                                <label for="ascendenciaDoVoluntarioDescendente"
+                                                                <label for="nivelEscolaridadeVoluntario"
                                                                     class="form-label">Escolaridade</label>
-                                                                <select class="form-select"
-                                                                    id="ascendenciaDoVoluntarioDescendente"
-                                                                    aria-label="Default select example">
-                                                                    <option selected hidden>Selecione...</option>
-                                                                    <option value="1">Pós-graduação completo</option>
-                                                                    <option value="2">Superior completo</option>
-                                                                    <option value="3">Superior incompleto</option>
-                                                                    <option value="4">Ensino Médio completo</option>
-                                                                    <option value="5">Ensino Médio incompleto</option>
-                                                                    <option value="6">Fundamental II completo</option>
-                                                                    <option value="7">Fundamental II incompleto</option>
-                                                                    <option value="8">Fundamental I completo</option>
-                                                                    <option value="9">Fundamental I incompleto</option>
-                                                                </select>
+                                                                <input class="form-control"
+                                                                    id="nivelEscolaridadeVoluntario" type="text"
+                                                                    readonly>
                                                             </div>
                                                             <div class="col-md-6 col-sm-12">
-                                                                <label for="possuiEmprego"
-                                                                    class="form-label">Trabalha atualmente</label>
+                                                                <label for="possuiEmprego" class="form-label">Trabalha
+                                                                    atualmente</label>
                                                                 <div>
                                                                     <div class="form-check form-check-inline">
                                                                         <input class="form-check-input" type="radio"
-                                                                            name="possuiEmprego"
-                                                                            id="trabalhaSim" value="Sim">
+                                                                            name="possuiEmprego" id="trabalhaSim"
+                                                                            value="Sim">
                                                                         <label class="form-check-label"
                                                                             for="trabalhaSim">Sim</label>
                                                                     </div>
                                                                     <div class="form-check form-check-inline">
                                                                         <input class="form-check-input" type="radio"
-                                                                            name="possuiEmprego"
-                                                                            id="trabalhaNao" value="Nao">
+                                                                            name="possuiEmprego" id="trabalhaNao"
+                                                                            value="Nao">
                                                                         <label class="form-check-label"
                                                                             for="trabalhaNao">Não</label>
                                                                     </div>
@@ -932,6 +726,67 @@
                             <h1>Recursos</h1>
                             <p class="fs-4">Gerenciar credenciais, hapis e vouchers</p>
                         </section>
+
+                        <!-- Cards relacionados aos Recusos do Festival-->
+                        <soction id="dadosHapi">
+                            <div class="row justify-content-between">
+                                <!-- Card de acesso rápido para a lista de voluntários -->
+                                <div id="cardHapis" class="col-sm-6 col-md-4">
+                                    <div class="card border-danger mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title pt-2 pb-3 text-center">Hapis</h5>
+                                            
+                                            <div class="card-text pb-3">
+                                                <p>Total: <spam id="hapisTotal">15000</spam></p>
+                                                <p>Em uso: <spam id="hapisEmUso">14990</spam></p>
+                                                <p>Disponíveis: <spam id="hapisDisponiveis">10</spam></p>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card de acesso rápido para a gestão de credenciais -->
+                                <div id="cardCredenciais" class="col-sm-6 col-md-4">
+                                    <div class="card border-danger mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title pt-2 pb-3 text-center">Credenciais</h5>
+                                            
+                                            <div class="card-text pb-3">
+                                                <p>Total: <spam id="credenciaisTotal">15000</spam></p>
+                                                <p>Em uso: <spam id="credenciaisEmUso">14990</spam></p>
+                                                <p>Disponíveis: <spam id="credenciaisDisponiveis">10</spam></p>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card de acesso rápido para a gestão de vouchers -->
+                                <div id="cardVouchers" class="col-sm-6 col-md-4">
+                                    <div class="card border-danger mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title pt-2 pb-3 text-center">Vouchers</h5>    
+                                            
+                                            <div class="card-text pb-3">
+                                                <p>Total: <spam id="vouchersTotal">15000</spam>
+                                                    <ul>
+                                                        <li>Almoço: <spam id="vouchersAlmoco">5000</spam></li>
+                                                        <li>Jantar: <spam id="vouchersJantar">5000</spam></li>
+                                                        <li>Kit lanche: <spam id="vouchersKitLanche">5000</spam></li>
+                                                    </ul>
+                                                </p>
+                                                <p>Resgatados: <spam id="vouchersEmUso">0</spam></p>                                          
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </soction>
+
+                        <!-- Cards relacionados às Credenciais -->
+                        <section id="dadosCredencial"></section>
+
+                        <!-- Cards relacionados aos Vouchers -->
+                        <section id="dadosVoucher"></section>
                     </main>
                 </section>
 
@@ -941,20 +796,27 @@
                     <main class="align-items-md-center pb-3 mb-5">
                         <section id="titulo" class="text-center mb-5">
                             <h1>Localização dos Estandes</h1>
+                            <p class="fs-4">Veja os principais pontos do Pavilhão do Evento como banheiros e saídas de emergência</p>
+                        </section>
+
+                        <!-- Imagem interativa do pavilhão do evento-->
+                        <section class="text-center border-danger">
+                            <!-- Atualizar anualmente conforme a planta do pavilhão do evento disponibilizada pela organização do evento-->
+                            <iframe src="https://drive.google.com/file/d/17G5Og7hSqrk_4limWK65au5LUb5DxxoX/preview" width="750" height="590" allow="autoplay" class="border-danger border-2"></iframe>
                         </section>
                     </main>
                 </section>
             </div>
         </div>
-
-        <hr class="mt-5 mb-4 border-bottom border-danger ">
-
-        <footer id="footer" class="footer">
-            <p class="text-muted">
-                © 2024 FJ Tech
-            </p>
-        </footer>
     </div>
+
+    <footer id="footer" class="container navbar-fixed-bottom">
+        <hr class="mt-5 mb-4 border-bottom border-danger">
+
+        <p class="text-muted">
+            © 2024 FJ Tech
+        </p>
+    </footer>
 
     <!-- Consumindo a API ViaCEP para tratativa de endereços -->
     <script>

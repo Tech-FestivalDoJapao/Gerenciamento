@@ -1,8 +1,14 @@
 # dependencies
 /node_modules/
 
+# Configuration files
+/src/js/firebaseConfig.mjs
+
 # misc
 .DS_Store
 
 # local env files
 .env*.local
+.env*
+*/.env*.local
+*/.env*
