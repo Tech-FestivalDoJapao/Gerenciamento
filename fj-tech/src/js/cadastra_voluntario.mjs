@@ -1,14 +1,10 @@
-import { firebaseConfig } from "./firebaseConfig.mjs";
+import { db } from "./firebaseConfig.mjs";
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, serverTimestamp, Timestamp } from "firebase/firestore";
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
 //const nomeVoluntario = document.getElementById("nomeCompletoDoVoluntario").value;
-/*
+
 try {
   const docRef = await addDoc(collection(db, "voluntario"), {
     nome_completo_voluntario: "Nome ",
@@ -131,4 +127,3 @@ try {
 } catch (e) {
   console.error("Error adding document: ", e);
 }
-*/

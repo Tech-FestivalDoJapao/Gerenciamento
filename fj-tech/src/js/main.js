@@ -6,7 +6,7 @@ import './database.mjs'
 import './busca_voluntario.mjs'
 import './cadastra_voluntario.mjs'
 import './remover_voluntario.mjs'
-//import './exibe_recursos_voluntario.mjs'
+import './exibe_recursos_voluntario.mjs'
 import './cadastra_recursos_voluntario.mjs'
 
 // Import all of Bootstrap's JS

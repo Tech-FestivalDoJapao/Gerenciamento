@@ -1,17 +1,5 @@
-import { firebaseConfig } from "./firebaseConfig.mjs";
-
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
-import { getFirestore, serverTimestamp, Timestamp } from "firebase/firestore";
-
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
-
-// Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
-export { db };
+import { db } from "./firebaseConfig.mjs";
 
 // Add a new document with a generated id.
 import { collection, query, where, getDocs } from "firebase/firestore";
@@ -20,6 +8,8 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 const q = query(collection(db, "voluntario"), where("nome_completo_voluntario", "!=", null));
 const querySnapshot = await getDocs(q);
 querySnapshot.forEach((doc) => {
+    console.log(doc.id);
+
     /**
      * Torna as datas de check-in, check-out e intervalo legíveis
      */

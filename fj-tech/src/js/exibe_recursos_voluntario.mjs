@@ -1,11 +1,5 @@
-import { firebaseConfig } from "./firebaseConfig.mjs";
-
-import { initializeApp } from "firebase/app";
+import { db } from "./firebaseConfig.mjs";
 import { getFirestore, collection, addDoc, serverTimestamp, Timestamp } from "firebase/firestore";
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 async function buscaRecursosVoluntario(idenficaVolutario) {
     // Referencia a tabela de voluntários no banco de dados

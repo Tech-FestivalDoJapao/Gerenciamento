@@ -1,4 +1,4 @@
-import { db } from './database.mjs';
+import { db } from "./firebaseConfig.mjs";
 import { collection, query, where, getDocs } from 'firebase/firestore';
 
 async function buscaVoluntario(nome) {

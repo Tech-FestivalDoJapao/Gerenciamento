@@ -1,4 +1,4 @@
-import { db } from './database.mjs';
+import { db } from "./firebaseConfig.mjs";
 import { doc, deleteDoc } from 'firebase/firestore';
 
 // Função para obter o nome do documento
