@@ -2,12 +2,15 @@
 import '../scss/styles.scss'
 import './color-modes.js'
 
-import './database.mjs'
-import './busca_voluntario.mjs'
-import './cadastra_voluntario.mjs'
-import './remover_voluntario.mjs'
-import './exibe_recursos_voluntario.mjs'
-import './cadastra_recursos_voluntario.mjs'
+// Informações dos voluntários
+import './voluntarios/lista.mjs'
+import './voluntarios/perfil.mjs'
+
+//import './database.mjs'
+//import './cadastra_voluntario.mjs'
+//import './remover_voluntario.mjs'
+//import './exibe_recursos_voluntario.mjs'
+//import './cadastra_recursos_voluntario.mjs'
 
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'
