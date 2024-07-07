@@ -1,6 +1,6 @@
 // Initializa a integração com o Firebase
 import { db } from "./../firebaseConfig.mjs";
-import { collection, query, where, getDocs, DocumentReference } from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 // Obtém a lista de voluntários do banco de dados
 const queryVoluntarios = query(collection(db, "voluntario"), where("nome_completo_voluntario", "!=", null));
@@ -37,7 +37,7 @@ querySnapshot.forEach((doc) => {
     /**
      * Insere os dados do voluntário na tabela de listagem de voluntários (corpoTabelaDeListagemDeVoluntarios)
      */
-    document.getElementById("corpoTabelaDeListagemDeVoluntarios").innerHTML += 
+    document.getElementById("corpoTabelaDeListagemDeVoluntarios").innerHTML +=
         `<tr id="${doc.id}">
             <th scope="row">
                 <div class="form-check">
@@ -130,4 +130,16 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
 
     document.getElementById("identificaRegistroVoluntario").innerText = `${docVoluntario.id}`;
     document.getElementById("nomeVoluntarioCandidatoRemocao").innerText = `${docVoluntario.data().nome_completo_voluntario}`;
+});
+
+/**
+ * Identifica o id do voluntário e a data de inscrição no modal de perfil do voluntário
+ */
+document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", (event) => {
+    const idVoluntarioPerfil = event.target.closest("tr").id;
+
+    const docVoluntario = querySnapshot.docs.find((doc) => doc.id === idVoluntarioPerfil);
+    const dataInscricaoVoluntario = new Date(docVoluntario.data().voluntariado.data_inscricao * 1000).toLocaleDateString('pt-BR');
+
+    document.getElementById("docVoluntarioPerfil").innerHTML = `ID: ${docVoluntario.id} | Voluntário desde ${dataInscricaoVoluntario}`;
 });
