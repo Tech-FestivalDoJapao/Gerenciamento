@@ -89,8 +89,8 @@ querySnapshot.forEach((doc) => {
                     </button>
 
                     <!-- Excluir voluntário da lista do festival -->
-                    <button type="button" class="btn btn-outline-danger" id="RemoverVoluntario" name="${doc.id}"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <button type="button" class="btn btn-outline-danger" id="RemoverVoluntario"
+                        data-bs-toggle="modal" data-bs-target="#RemoverVoluntarioModal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-trash-fill" viewBox="0 0 16 16">
                             <path
@@ -103,7 +103,7 @@ querySnapshot.forEach((doc) => {
 });
 
 /**
- * Busca de voluntários na tabela de listagem de voluntários por nome
+ * Busca de voluntários na tabela de listagem de voluntários por nome e exibe o resultado da pesquisa
  */
 document.getElementById("buscaVoluntarioNaTabela").addEventListener("input", (event) => {
     const nomePesquisado = event.target.value.toLowerCase();
@@ -118,4 +118,16 @@ document.getElementById("buscaVoluntarioNaTabela").addEventListener("input", (ev
             linha.style.display = "none";
         }
     });
+});
+
+/**
+ * Identifica o voluntário que será removido da listagem de voluntários e exibe o nome do voluntário no modal de 
+ * confirmação de remoção
+ */
+document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", (event) => {
+    const identificaVoluntarioRemocao = event.target.closest("tr").id;
+    const docVoluntario = querySnapshot.docs.find((doc) => doc.id === identificaVoluntarioRemocao);
+
+    document.getElementById("identificaRegistroVoluntario").innerText = `${docVoluntario.id}`;
+    document.getElementById("nomeVoluntarioCandidatoRemocao").innerText = `${docVoluntario.data().nome_completo_voluntario}`;
 });

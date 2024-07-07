@@ -5,6 +5,7 @@ import './color-modes.js'
 // Informações dos voluntários
 import './voluntarios/lista.mjs'
 import './voluntarios/perfil.mjs'
+import './voluntarios/remove.mjs'
 
 //import './database.mjs'
 //import './cadastra_voluntario.mjs'
