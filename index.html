@@ -62,30 +62,33 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
                     <li>
+                        <!-- Modo claro --> 
                         <button type="button" class="dropdown-item d-flex align-items-center"
                             data-bs-theme-value="light" aria-pressed="false">
                             <svg class="bi me-2 opacity-50" width="1em" height="1em">
                                 <use href="#sun-fill"></use>
                             </svg>
-                            Light
+                            Claro
                             <svg class="bi ms-auto d-none" width="1em" height="1em">
                                 <use href="#check2"></use>
                             </svg>
                         </button>
                     </li>
                     <li>
+                        <!-- Modo escuro -->
                         <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
                             aria-pressed="false">
                             <svg class="bi me-2 opacity-50" width="1em" height="1em">
                                 <use href="#moon-stars-fill"></use>
                             </svg>
-                            Dark
+                            Escuro
                             <svg class="bi ms-auto d-none" width="1em" height="1em">
                                 <use href="#check2"></use>
                             </svg>
                         </button>
                     </li>
                     <li>
+                        <!-- Modo automático, de acordo com o sistema -->
                         <button type="button" class="dropdown-item d-flex align-items-center active"
                             data-bs-theme-value="auto" aria-pressed="true">
                             <svg class="bi me-2 opacity-50" width="1em" height="1em">
@@ -250,6 +253,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">
+                                                    <!--  Coluna de multipla seleção de voluntários através da marcação dos checkboxes -->
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" value=""
                                                             id="selecionaVoluntarioNaTabela" />
@@ -298,7 +302,7 @@
                                                 <label for="codigoCredencial" class="form-label">Código da credencial
                                                     associada:</label>
                                                 <input type="email" class="form-control" id="codigoCredencial"
-                                                    placeholder="0001104" disabled>
+                                                    placeholder="xxxxxxxxxx" disabled>
                                             </div>
                                         </div>
 
@@ -394,7 +398,7 @@
                         </section>
 
                         <!-- Modal de confirmação de exclusão de dados -->
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        <div class="modal fade" id="RemoverVoluntarioModal" data-bs-backdrop="static" data-bs-keyboard="false"
                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
@@ -402,7 +406,7 @@
                                         <div>
                                             <h1 class="modal-title fs-5" id="staticBackdropLabel"> Atenção </h1>
                                             <small class="text-small opacity-75 text-secondary mt-0 mb-0"
-                                                id="identificaRegistroVoluntario"></small>
+                                                id="identificaRegistroVoluntario"> </small>
                                         </div>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
@@ -414,7 +418,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-danger"
                                             data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-danger" id="btnExcluirVoluntario"
+                                        <button type="submit" class="btn btn-danger" id="btnRemoverVoluntario"
                                             data-bs-dismiss="modal">Excluir</button>
                                     </div>
                                 </div>
@@ -731,6 +735,7 @@
                                     <div class="card border-danger mb-3">
                                         <div class="card-body">
                                             <h5 class="card-title pt-2 pb-3 text-center">Hapis</h5>
+                                            
                                             <div class="card-text pb-3">
                                                 <p>Total: <spam id="hapisTotal">15000</spam></p>
                                                 <p>Em uso: <spam id="hapisEmUso">14990</spam></p>
@@ -745,6 +750,7 @@
                                     <div class="card border-danger mb-3">
                                         <div class="card-body">
                                             <h5 class="card-title pt-2 pb-3 text-center">Credenciais</h5>
+                                            
                                             <div class="card-text pb-3">
                                                 <p>Total: <spam id="credenciaisTotal">15000</spam></p>
                                                 <p>Em uso: <spam id="credenciaisEmUso">14990</spam></p>
@@ -759,6 +765,7 @@
                                     <div class="card border-danger mb-3">
                                         <div class="card-body">
                                             <h5 class="card-title pt-2 pb-3 text-center">Vouchers</h5>    
+                                            
                                             <div class="card-text pb-3">
                                                 <p>Total: <spam id="vouchersTotal">15000</spam>
                                                     <ul>
@@ -772,7 +779,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </soction>
 
@@ -785,16 +791,19 @@
                 </section>
 
                 <!-- Estandes -->
-                <section class="tab-pane fade" id="estandes-tab-pane" role="tabpanel" aria-labelledby="estandes-tab" tabindex="0">
+                <section class="tab-pane fade" id="estandes-tab-pane" role="tabpanel" aria-labelledby="estandes-tab"
+                    tabindex="0">
                     <main class="align-items-md-center pb-3 mb-5">
                         <section id="titulo" class="text-center mb-5">
                             <h1>Localização dos Estandes</h1>
-                            <p class="fs-4">Principais pontos do pavilhão do evento como banheiros e saídas de emergência</p>
+                            <p class="fs-4">Veja os principais pontos do Pavilhão do Evento como banheiros e saídas de emergência</p>
                         </section>
-                    
-                        <div class="text-center border-danger">
-                            <iframe src="https://drive.google.com/file/d/17G5Og7hSqrk_4limWK65au5LUb5DxxoX/preview" width="750" height="590" allow="autoplay" class="border-danger border-2"></iframe>
-                        </div>
+
+                        <!-- Imagem interativa do pavilhão do evento-->
+                        <section class="text-center border-danger">
+                            <!-- Atualizar anualmente conforme a planta do pavilhão do evento disponibilizada pela organização do evento
+                            <iframe src="https://drive.google.com/file/d/17G5Og7hSqrk_4limWK65au5LUb5DxxoX/preview" width="750" height="590" allow="autoplay" class="border-danger border-2"></iframe> -->
+                        </section>
                     </main>
                 </section>
             </div>
