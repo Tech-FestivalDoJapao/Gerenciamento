@@ -138,8 +138,7 @@
                                 if (document.getElementById('palavra-chave').value === 'admin') {
                                     document.getElementById('recursos-tab').click();  
                                     document.getElementById('recursos-tab').removeAttribute('hidden');  
-                                    document.getElementsByName('acessar-recursos-link').item(0).style.display = 'none';
-                                    modal.hide();   
+                                    document.getElementsByName('acessar-recursos-link').item(0).style.display = 'none';                                    
                                 } else {
                                     alert('Palavra-chave inválida. Tente novamente.');
                                 }" data-bs-dismiss="modal">Acessar</button>
@@ -722,7 +721,7 @@
                         </section>
 
                         <!-- Cards relacionados aos Recusos do Festival-->
-                        <soction id="dadosHapi">
+                        <section id="dadosHapi">
                             <div class="row justify-content-between">
                                 <!-- Card de acesso rápido para a lista de voluntários -->
                                 <div id="cardHapis" class="col-sm-6 col-md-4">
@@ -731,9 +730,9 @@
                                             <h5 class="card-title pt-2 pb-3 text-center">Hapis</h5>
                                             
                                             <div class="card-text pb-3">
-                                                <p>Total: <spam id="hapisTotal">15000</spam></p>
-                                                <p>Em uso: <spam id="hapisEmUso">14990</spam></p>
-                                                <p>Disponíveis: <spam id="hapisDisponiveis">10</spam></p>                                                
+                                                <p>Total: <spam id="hapisTotal"></spam></p>
+                                                <p>Em uso: <spam id="hapisEmUso"></spam></p>
+                                                <p>Disponíveis: <spam id="hapisDisponiveis"></spam></p>                                                
                                             </div>
                                         </div>
                                     </div>
@@ -746,9 +745,9 @@
                                             <h5 class="card-title pt-2 pb-3 text-center">Credenciais</h5>
                                             
                                             <div class="card-text pb-3">
-                                                <p>Total: <spam id="credenciaisTotal">15000</spam></p>
-                                                <p>Em uso: <spam id="credenciaisEmUso">14990</spam></p>
-                                                <p>Disponíveis: <spam id="credenciaisDisponiveis">10</spam></p>                                                
+                                                <p>Total: <spam id="credenciaisTotal"></spam></p>
+                                                <p>Em uso: <spam id="credenciaisEmUso"></spam></p>
+                                                <p>Disponíveis: <spam id="credenciaisDisponiveis"></spam></p>                                                
                                             </div>
                                         </div>
                                     </div>
@@ -761,20 +760,20 @@
                                             <h5 class="card-title pt-2 pb-3 text-center">Vouchers</h5>    
                                             
                                             <div class="card-text pb-3">
-                                                <p>Total: <spam id="vouchersTotal">15000</spam>
+                                                <p>Total: <spam id="vouchersTotal"></spam>
                                                     <ul>
-                                                        <li>Almoço: <spam id="vouchersAlmoco">5000</spam></li>
-                                                        <li>Jantar: <spam id="vouchersJantar">5000</spam></li>
-                                                        <li>Kit lanche: <spam id="vouchersKitLanche">5000</spam></li>
+                                                        <li>Almoço: <spam id="vouchersAlmoco"></spam></li>
+                                                        <li>Jantar: <spam id="vouchersJantar"></spam></li>
+                                                        <li>Kit lanche: <spam id="vouchersKitLanche"></spam></li>
                                                     </ul>
                                                 </p>
-                                                <p>Resgatados: <spam id="vouchersEmUso">0</spam></p>                                          
+                                                <p>Resgatados: <spam id="vouchersResgatados"></spam></p>                                          
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </soction>
+                        </section>
 
                         <!-- Cards relacionados às Credenciais -->
                         <section id="dadosCredencial"></section>
