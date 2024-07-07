@@ -277,7 +277,7 @@
                         </section>
 
                         <!-- OffCanvas para gestão de horários e alocação de recursos ao voluntário selecionado -->
-                        <section id="gerenciarVoluntario">
+                        <section id="GerenciarVoluntario">
                             <div class="offcanvas offcanvas-end col-sm-12" data-bs-scroll="true"
                                 data-bs-backdrop="false" tabindex="-1" id="offcanvasRight"
                                 aria-labelledby="offcanvasRightLabel">
@@ -426,7 +426,7 @@
                         </div>
 
                         <!-- Modal para vizualização do perfil do voluntário -->
-                        <section id="perfil-voluntario">
+                        <section id="PerfilVoluntario">
                             <!-- Full screen modal -->
                             <div class="modal fade" id="PerfilVoluntarioModal" tabindex="-1"
                                 aria-labelledby="perfilVoluntarioModalLabel" aria-hidden="true"
@@ -435,14 +435,11 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <div>
-                                                <h1 class="modal-title fs-5" id="perfilVoluntarioModalLabel">Dados do
-                                                    Voluntário</h1>
-                                                <small class="opacity-50 text-secondary mt-0"
-                                                    id="docVoluntarioPerfil"></small>
+                                                <h1 class="modal-title fs-5" id="perfilVoluntarioModalLabel">Dados do Voluntário</h1>
+                                                <small class="opacity-50 text-secondary mt-0" id="docVoluntarioPerfil"></small>
                                             </div>
 
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                                            <button type="button" id="btnFecharPerfilHeader" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body row align-items-center">
                                             <div class="col"></div>
@@ -453,10 +450,8 @@
                                                         <strong class="fs-5">Dados Pessoais</strong>
                                                     </p>
                                                     <div class="col-md-6 col-sm-12">
-                                                        <label for="nomeCompletoDoVoluntario" class="form-label">Nome
-                                                            completo</label>
-                                                        <input type="text" class="form-control"
-                                                            id="nomeCompletoDoVoluntario" readonly>
+                                                        <label for="nomeCompletoDoVoluntario" class="form-label">Nome completo</label>
+                                                        <input type="text" class="form-control" id="nomeCompletoDoVoluntario" readonly>
                                                     </div>
                                                     <div class="col row">
                                                         <div class="col-md-6 col-sm-12">
@@ -708,8 +703,7 @@
                                             <div class="col"></div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger"
-                                                data-bs-dismiss="modal">Fechar</button>
+                                            <button type="button" id="btnFecharPerfilFooter" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
                                         </div>
                                     </div>
                                 </div>
