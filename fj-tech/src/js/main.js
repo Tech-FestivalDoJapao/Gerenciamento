@@ -18,15 +18,21 @@ import './recursos/cards.mjs'
 import * as bootstrap from 'bootstrap'
 
 /**
+ * Exibe o ano de criação do projeto no rodapé da página
+ */
+const anoCriacaoDoProjeto = 2024;
+const anoAtual = new Date().getFullYear();
+
+if (anoCriacaoDoProjeto != anoAtual) {
+  document.getElementById("anoCriacaoProjeto").innerHTML = anoCriacaoDoProjeto + "-" + anoAtual;
+}
+document.getElementById("anoCriacaoProjeto").innerHTML = anoCriacaoDoProjeto;
+
+/**
  * TODO
  * Validação do modal para desbloquear a área administrativa do sistema com o uso de uma palavra-chave
  */
 /*
-const validaAcessoAdministrativo = document.getElementById('#validaAcessoAdministrativo')
-if (validaAcessoAdministrativo.querySelector('.was-validated')) {
-  // Valida valor informado e habilita o botão de acesso
-}
-  */
 
 /**
  * Uso da API ViaCEP para preenchimento automático do endereço
