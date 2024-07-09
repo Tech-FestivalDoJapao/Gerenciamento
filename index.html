@@ -45,7 +45,7 @@
                         name="acessar-recursos-link" data-bs-target="#desbloquearGerenciamentoModal">Recursos</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link link-body-emphasis text-opacity-75 disabled" id="estandes-tab" type="button"
+                    <a class="nav-link link-body-emphasis text-opacity-75" id="estandes-tab" type="button"
                         data-bs-toggle="tab" data-bs-target="#estandes-tab-pane" role="tab"
                         aria-controls="estandes-tab-pane" aria-selected="false">Estandes</a>
                 </li>
@@ -189,7 +189,7 @@
                                     </div>
                                 </div>
                                 <!-- Card de acesso rápido para a localização dos estandes -->
-                                <div id="cardEstandes" class="col-sm-6 col-md-4" disabled>
+                                <div id="cardEstandes" class="col-sm-6 col-md-4">
                                     <div class="card border-danger mb-3">
                                         <div class="card-body">
                                             <h5 class="card-title pt-2 pb-3">Localização dos Estandes</h5>
@@ -246,7 +246,7 @@
 
                             <!-- Tabela de voluntários -->
                             <div class="hstack gap-5 mb-3">
-                                <div class="col col-1"></div>
+                                <div class="col-md-1"></div>
                                 <div class="p-2 col table-responsive">
                                     <table class="table align-middle mb-0 table-bordeless table-hover">
                                         <thead>
@@ -271,7 +271,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="col col-1"></div>
+                                <div class="col-md-1"></div>
                             </div>
                         </section>
 
@@ -789,13 +789,14 @@
                     <main class="align-items-md-center pb-3 mb-5">
                         <section id="titulo" class="text-center mb-5">
                             <h1>Localização dos Estandes</h1>
-                            <p class="fs-4">Veja os principais pontos do Pavilhão do Evento como banheiros e saídas de emergência</p>
+                            <p class="fs-4">Veja os principais pontos do Pavilhão do Evento</p>
                         </section>
 
                         <!-- Imagem interativa do pavilhão do evento-->
                         <section class="text-center border-danger">
-                            <!-- Atualizar anualmente conforme a planta do pavilhão do evento disponibilizada pela organização do evento
-                            <iframe src="https://drive.google.com/file/d/17G5Og7hSqrk_4limWK65au5LUb5DxxoX/preview" width="750" height="590" allow="autoplay" class="border-danger border-2"></iframe> -->
+                            <!-- Atualizar anualmente conforme a planta do pavilhão do evento disponibilizada pela organização do evento -->
+                            <embed src="./doc/Planta Geral Festival do Japão 2024 - São Paulo Expo.pdf" type="application/pdf" width="100%" height="600px"
+                                   alt="Planta Geral do Pavilhão do Evento, 25ª Edição do Festival do Japão (2024)" class="border-danger border-2" />
                         </section>
                     </main>
                 </section>
@@ -806,8 +807,8 @@
     <footer id="footer" class="container navbar-fixed-bottom">
         <hr class="mt-5 mb-4 border-bottom border-danger">
 
-        <p class="text-muted">
-            © 2024 FJ Tech
+        <p class="text-muted">            
+            &copy; <spam id="anoCriacaoProjeto"></spam> FJ Tech • Festival do Japão
         </p>
     </footer>
 
