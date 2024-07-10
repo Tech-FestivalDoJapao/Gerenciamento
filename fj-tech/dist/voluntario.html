@@ -20,7 +20,7 @@
         <header id="header"
             class="d-flex justify-content-between align-items-md-center pb-3 mb-5 border-bottom border-danger border-5">
             <h1 class="h4">
-                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+                <a href="./voluntario.html" class="d-flex align-items-center link-body-emphasis text-decoration-none">
                     <span>Festival do Japão</span>
                 </a>
             </h1>
@@ -88,7 +88,7 @@
                 <section id="cadastro_voluntario">
                     <div class="modal-body row align-items-center">
                         <div class="col"></div>
-                        <form class="row col-md-10 col-sm-12 g-3" id="cadastroDeVoluntario">
+                        <form class="row col-md-10 col-sm-12 g-3" id="formCadastroDeVoluntario">
                             <!-- Dados pessoais -->
                             <div class="row mb-4 col-12">
                                 <section class="mb-4">
@@ -99,8 +99,7 @@
 
                                     <div class="row mb-2">
                                         <div class="col-md-8 mt-1">
-                                            <label for="nomeCompletoDoVoluntario" class="form-label">Nome
-                                                completo</label>
+                                            <label for="nomeCompletoDoVoluntario" class="form-label">Nome completo</label>
                                             <input type="text" class="form-control" id="nomeCompletoDoVoluntario">
                                         </div>
                                         <div class="col-md-4 mt-1">
@@ -392,7 +391,7 @@
                             </div>
 
                             <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-danger" type="submit">Enviar Ficha de Inscrição</button>
+                                <button class="btn btn-danger" type="submit" id="enviaFichaDeInscricao">Enviar Ficha de Inscrição</button>
                             </div>
                         </form>
                         <div class="col-1"></div>
@@ -402,6 +401,7 @@
         </div>
     </div>
 
+    <!-- Rodapé da página -->
     <footer id="footer" class="container navbar-fixed-bottom">
         <hr class="mt-5 mb-4 border-bottom border-danger">
 
@@ -460,32 +460,7 @@
         };
     </script>
 
-    <script>
-        // Pega os valores enviados pelo formulário na página de 
-        document.getElementById("cadastroDeVoluntario").addEventListener("submit", async (event) => {
-            event.preventDefault();
-
-            const nomeVoluntario = document.getElementById("nomeCompletoDoVoluntario").value;
-            const emailVoluntario = document.getElementById("emailDoVoluntario").value;
-
-            const response = await fetch("/adicionarVoluntario", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ nomeVoluntario, emailVoluntario })
-            });
-
-            if (response.ok) {
-                alert("Voluntário adicionado com sucesso");
-                console.log(nomeVoluntario);
-            } else {
-                alert("Desculpe!\nNão foi possível cadastrar o voluntário.");
-                console.log(nomeVoluntario + "\n" + response);
-            }
-        });
-    </script>
-
+    <!-- SVGs utilizados no theme chooser -->
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path
