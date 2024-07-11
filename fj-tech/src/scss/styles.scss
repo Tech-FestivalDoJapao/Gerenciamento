@@ -3,9 +3,9 @@
 
 // Color mode variables in _root.scss
 @include color-mode(dark) {
-    // CSS variable overrides here...
-    .element {
-        color: var(--bs-primary-text-emphasis);
-        background-color: var(--bs-primary-bg-subtle);
-      }
+  // CSS variable overrides here...
+  .element {
+    color: var(--bs-primary-text-emphasis);
+    background-color: var(--bs-primary-bg-subtle);
+  }
 }

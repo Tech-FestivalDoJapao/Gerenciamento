@@ -67,8 +67,7 @@ querySnapshot.forEach((doc) => {
             <td>
                 <div class="btn-group btn-group-sm gap-1" role="group" aria-label="Small button group px-2">
                     <!-- Editar dados do voluntário no festival -->
-                    <button type="button" class="btn btn-outline-danger" id="GerenciarRecursosDoVoluntarioNoFestival"
-                        name="${doc.id}" onclick="atualizaOffcanvas(${doc.id})" data-bs-toggle="offcanvas"
+                    <button type="button" class="btn btn-outline-danger" id="GerenciarRecursosDoVoluntarioNoFestival" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -142,4 +141,8 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     const dataInscricaoVoluntario = new Date(docVoluntario.data().voluntariado.data_inscricao * 1000).toLocaleDateString('pt-BR');
 
     document.getElementById("docVoluntarioPerfil").innerHTML = `ID: ${docVoluntario.id} | Voluntário desde ${dataInscricaoVoluntario}`;
+    
+    // Identifica o voluntário que receberá os recursos do festival através do offcanvas de gerenciamento de recursos
+    document.getElementById("nomeVoluntarioGerenciado").innerText = `${docVoluntario.data().nome_completo_voluntario}`;
 });
+
