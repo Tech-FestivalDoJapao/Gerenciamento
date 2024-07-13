@@ -27,12 +27,12 @@ querySnapshot.forEach((doc) => {
      * Verifica se o voluntário está ativo, em intervalo, inativo ou se já finalizou o expediente
      */
     const status = ((checkIn != " - ") && (checkOut == " - ") && (inicioIntervalo == " - ") && (fimIntervalo == " - "))
-        ? "<span class='badge rounded-pill text-bg-success'> Ativo </span>"
+        ? "<span id='statusVoluntario' class='badge rounded-pill text-bg-success'> Ativo </span>"
         : ((checkIn != " - ") && (checkOut == " - ") && (inicioIntervalo != " - ") && (fimIntervalo == " - "))
-            ? "<span class='badge rounded-pill text-bg-warning'> Intervalo </span>"
+            ? "<span id='statusVoluntario' class='badge rounded-pill text-bg-warning'> Intervalo </span>"
             : ((checkIn != " - ") && (checkOut == " - ") && (inicioIntervalo != " - ") && (fimIntervalo != " - "))
-                ? "<span class='badge rounded-pill text-bg-success'> Ativo </span>"
-                : "<span class='badge rounded-pill text-bg-danger'> Inativo </span>";
+                ? "<span id='statusVoluntario' class='badge rounded-pill text-bg-success'> Ativo </span>"
+                : "<span id='statusVoluntario' class='badge rounded-pill text-bg-danger'> Inativo </span>";
 
     /**
      * Insere os dados do voluntário na tabela de listagem de voluntários (corpoTabelaDeListagemDeVoluntarios)

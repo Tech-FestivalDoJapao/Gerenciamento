@@ -318,7 +318,7 @@
                                             </p>
                                             <div class="mb-3 hstack gap-3 mt-2">
                                                 <input type="text" class="form-control col" id="codigoCredencial" placeholder="Informe o código" required>
-                                                <button type="button" class="btn btn-outline-danger" id="cadastraCodigoCredencial">
+                                                <button type="button" class="btn btn-danger" id="cadastraCodigoCredencial">
                                                     <svg xmlns="http://www.w3.org/2000/svg" height="20" width="22.5" viewBox="0 0 576 512" fill="currentColor"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 0h64c17.7 0 32 14.3 32 32V96c0 17.7-14.3 32-32 32H256c-17.7 0-32-14.3-32-32V32c0-17.7 14.3-32 32-32zM64 64H192v48c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48V64H512c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64zM176 437.3c0 5.9 4.8 10.7 10.7 10.7H389.3c5.9 0 10.7-4.8 10.7-10.7c0-29.5-23.9-53.3-53.3-53.3H229.3c-29.5 0-53.3 23.9-53.3 53.3zM288 352a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"/></svg>
                                                 </button>
                                             </div>
@@ -728,8 +728,63 @@
                         </section>
 
                         <!-- Cards relacionados aos Recusos do Festival-->
-                        <section id="dadosHapi">
+                        <section id="dadosRecursos">
                             <div class="row justify-content-between">
+                                <!-- Card de acesso rápido para a gestão de credenciais -->
+                                <div id="cardFrequnciaVoluntario" class="col-sm-6 col-md-8 mb-4">
+                                    <div class="card border-danger mb3">
+                                        <div class="card-body">
+                                            <h5 class="card-title pt-2 pb-3 text-center">Frequência de Voluntários (<spam id="diaAtualEvento"></spam>)</h5>
+
+                                            <div class="card-text pb-3">
+                                                <div class="progress-stacked">
+                                                    <div id="volPresente" class="progress" role="progressbar" aria-label="Voluntários ativos" aria-valuemin="0">
+                                                      <div class="progress-bar" style="background-color: #DC3545;">15%</div>
+                                                    </div>
+                                                    <div id="volIntervalo" class="progress" role="progressbar" aria-label="Voluntários em intervalo" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                                                      <div class="progress-bar" style="background-color: #EA868F;">30%</div>
+                                                    </div>
+                                                    <div id="volAusente" class="progress" role="progressbar" aria-label="Voluntários ausentes ou indisponíveis" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+                                                      <div class="progress-bar" style="background-color: #F8D7DA;">20%</div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mt-2">
+                                                    <p>Quantidade de voluntários por status</p>
+
+                                                    <ul>
+                                                        <li>Total: <span id="totalVoluntariosFestival"></span></li>
+                                                        <li>Presentes: <spam id="qtdeVoluntariosPresentes"></spam></li>
+                                                        <li>Em intervalo: <spam id="qtdeVoluntariosIntervalo"></spam></li>
+                                                        <li>Ausentes: <spam id="qtdeVoluntariosAusentes"></spam></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>
+
+                                 <div id="cadastroRecursos" class="col-sm-4 col-md-4">
+                                    <div class="card border-0 mb-3">
+                                        <div class="card-body">
+
+                                            <div class="mt-2">
+                                                <div class="hstack gap-3">
+                                                    <p class="mb-2">Ações</p>
+                                                    <button type="button" class="btn btn-danger col">Cadastrar Credenciais</button>
+                                                    <button type="button" class="btn btn-danger col">Cadastrar Hapi</button>
+                                                    <button type="button" class="btn btn-danger col">Cadastrar Voucher</button>
+                                                </div>
+
+                                                <span id="horarioInicioIntervalo">
+                                                    <!-- Aqui você pode listar os horários de intervalo -->
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                 </div>
+
                                 <!-- Card de acesso rápido para a lista de voluntários -->
                                 <div id="cardHapis" class="col-sm-6 col-md-4">
                                     <div class="card border-danger mb-3">
@@ -737,9 +792,22 @@
                                             <h5 class="card-title pt-2 pb-3 text-center">Hapis</h5>
                                             
                                             <div class="card-text pb-3">
-                                                <p>Total: <spam id="hapisTotal"></spam></p>
-                                                <p>Em uso: <spam id="hapisEmUso"></spam></p>
-                                                <p>Disponíveis: <spam id="hapisDisponiveis"></spam></p>                                                
+                                                <div class="row hstack gap-3">                                                    
+                                                    <div class="col text-center">
+                                                        <div class="h5"><span id="hapisTotal" style="font-size: 2em;"></span></div>
+                                                        <p>Total</p>
+                                                    </div>
+
+                                                    <div class="col text-center">
+                                                        <div class="h5"><span id="hapisDisponiveis" style="font-size: 2em;"></span></div>
+                                                        <p>Disponíveis</p>
+                                                    </div>
+
+                                                    <div class="col text-center">
+                                                        <div class="h5"><span id="hapisEmUso" style="font-size: 2em;"></span></div>
+                                                        <p>Em uso</p>
+                                                    </div>                                                    
+                                                </div>                                          
                                             </div>
                                         </div>
                                     </div>
@@ -750,11 +818,24 @@
                                     <div class="card border-danger mb-3">
                                         <div class="card-body">
                                             <h5 class="card-title pt-2 pb-3 text-center">Credenciais</h5>
-                                            
+                                                                                 
                                             <div class="card-text pb-3">
-                                                <p>Total: <spam id="credenciaisTotal"></spam></p>
-                                                <p>Em uso: <spam id="credenciaisEmUso"></spam></p>
-                                                <p>Disponíveis: <spam id="credenciaisDisponiveis"></spam></p>                                                
+                                                <div class="row hstack gap-3">
+                                                    <div class="col text-center">
+                                                        <div class="h5"><span id="credenciaisTotal" style="font-size: 2em;"></span></div>
+                                                        <p>Total</p>
+                                                    </div>
+
+                                                    <div class="col text-center">
+                                                        <div class="h5"><span id="credenciaisDisponiveis" style="font-size: 2em;"></span></div>
+                                                        <p>Disponíveis</p>
+                                                    </div>
+
+                                                    <div class="col text-center">
+                                                        <div class="h5"><span id="credenciaisEmUso" style="font-size: 2em;"></span></div>
+                                                        <p>Entregues</p>
+                                                    </div>
+                                                </div>                                              
                                             </div>
                                         </div>
                                     </div>
@@ -767,26 +848,37 @@
                                             <h5 class="card-title pt-2 pb-3 text-center">Vouchers</h5>    
                                             
                                             <div class="card-text pb-3">
-                                                <p>Total: <spam id="vouchersTotal"></spam>
+                                                <div class="row hstack gap-3">
+                                                    <div class="col text-center">
+                                                        <div class="h5"><span id="vouchersTotal" style="font-size: 2em;"></span></div>
+                                                        <p>Total</p>
+                                                    </div>
+
+                                                    <div class="col text-center">
+                                                        <div class="h5"><span id="vouchersDisponiveis" style="font-size: 2em;"></span></div>
+                                                        <p>Disponíveis</p>
+                                                    </div>
+
+                                                    <div class="col text-center">
+                                                        <div class="h5"><span id="vouchersResgatados" style="font-size: 2em;"></span></div>
+                                                        <p>Resgatados</p>
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <p>Quantidade de vouchers disponíveis por tipo</p>
                                                     <ul>
                                                         <li>Almoço: <spam id="vouchersAlmoco"></spam></li>
                                                         <li>Jantar: <spam id="vouchersJantar"></spam></li>
                                                         <li>Kit lanche: <spam id="vouchersKitLanche"></spam></li>
                                                     </ul>
-                                                </p>
-                                                <p>Resgatados: <spam id="vouchersResgatados"></spam></p>                                          
+                                                </div>   
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>                                
                             </div>
                         </section>
-
-                        <!-- Cards relacionados às Credenciais -->
-                        <section id="dadosCredencial"></section>
-
-                        <!-- Cards relacionados aos Vouchers -->
-                        <section id="dadosVoucher"></section>
                     </main>
                 </section>
 

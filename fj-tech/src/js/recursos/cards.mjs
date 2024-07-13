@@ -26,11 +26,13 @@ querySnapshot.forEach((doc) => {
 
         // Recalcula o total de vouchers disponiveis sempre que um voucher é resgatado
         //const totalDeVouchers = (vouchersAlmoco + vouchersJantar + vouchersLanche);
+        const totalDeVouchersDisponiveis = (doc.data().qtde_vouchers_disponiveis - doc.data().qtde_vouchers_usado);
 
         document.getElementById("vouchersTotal").innerHTML = doc.data().qtde_vouchers_disponiveis;
             document.getElementById("vouchersAlmoco").innerHTML = vouchersAlmoco;
             document.getElementById("vouchersJantar").innerHTML = vouchersJantar;
             document.getElementById("vouchersKitLanche").innerHTML = vouchersLanche;
+        document.getElementById("vouchersDisponiveis").innerHTML = totalDeVouchersDisponiveis;
         document.getElementById("vouchersResgatados").innerHTML = doc.data().qtde_vouchers_usado;
     }
 
@@ -41,3 +43,7 @@ querySnapshot.forEach((doc) => {
         document.getElementById("credenciaisDisponiveis").innerHTML = doc.data().qtde_credencial_disponivel;
     }
 });
+
+/**
+ * TODO: Cadastro único do total de cada recurso para o festival
+ */
