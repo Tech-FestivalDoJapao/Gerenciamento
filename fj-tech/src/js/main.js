@@ -11,9 +11,8 @@ import './voluntarios/remove.mjs'
 import './recursos/cards.mjs'
 import './recursos/voluntario.mjs'
 
-//import './cadastra_voluntario.mjs'
-//import './exibe_recursos_voluntario.mjs'
-//import './cadastra_recursos_voluntario.mjs'
+// Componentes do sistema
+import './filtro.mjs' 
 
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'
@@ -45,4 +44,8 @@ document.getElementById("diaAtualEvento").innerHTML = dataAtual.getDate() + "/" 
 /**
  * Uso da API ViaCEP para preenchimento automático do endereço
  * https://viacep.com.br/
+ */
+
+/**
+ * TODO: Habilitar o uso de toast para exibir mensagens de erro e sucesso
  */

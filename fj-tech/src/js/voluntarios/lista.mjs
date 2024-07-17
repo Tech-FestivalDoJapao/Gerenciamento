@@ -41,7 +41,7 @@ querySnapshot.forEach((doc) => {
         `<tr id="${doc.id}">
             <th scope="row">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="selecionaVoluntario" />
+                    <input class="form-check-input" type="checkbox" value="${doc.id}" id="selecionaVoluntario" />
                 </div>
             </th>
             <td>
@@ -146,3 +146,34 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     document.getElementById("nomeVoluntarioGerenciado").innerText = `${docVoluntario.data().nome_completo_voluntario}`;
 });
 
+/**
+ * Selecionar e deselecionar todos os voluntários da lista de voluntários através do checkbox de seleção
+ * no cabeçalho da tabela de listagem de voluntários
+ */
+document.getElementById("selecionaVoluntarioNaTabela").addEventListener("click", (event) => {
+    const selecionarVoluntarios = document.querySelectorAll("#selecionaVoluntario");
+
+    // Verifica se o checkbox de seleção de todos os voluntários está marcado
+    if (event.target.checked) {
+            try {                
+                selecionarVoluntarios.forEach((voluntarioSelecionado) => {
+                    // Marca todos os checkboxes de voluntários como selecionados
+                    voluntarioSelecionado.checked = true;
+                });
+            } catch (erro) {
+                console.error("Não foi possível selecionar todos os voluntários da lista", erro);
+            }
+    } 
+
+    // Verifica se o checkbox de seleção de todos os voluntários está desmarcado
+    if (!event.target.checked) {
+        try {
+            selecionarVoluntarios.forEach((voluntarioSelecionado) => {
+                // Desmarca todos os checkboxes de voluntários
+                voluntarioSelecionado.checked = false;
+            });
+        } catch (erro) {
+            console.error("Não foi possível deselecionar todos os voluntários da lista", erro);            
+        }
+    }
+});
