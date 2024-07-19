@@ -7,6 +7,9 @@
 # misc
 .DS_Store
 
+# build files
+/dist/main.js
+
 # local env files
 .env*.local
 .env*
