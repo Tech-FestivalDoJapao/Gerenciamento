@@ -144,6 +144,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     
     // Identifica o voluntário que receberá os recursos do festival através do offcanvas de gerenciamento de recursos
     document.getElementById("nomeVoluntarioGerenciado").innerText = `${docVoluntario.data().nome_completo_voluntario}`;
+    document.getElementById("gestaoRecusosVoluntarioNoFestival").innerText = `${docVoluntario.id}`;
 });
 
 /**

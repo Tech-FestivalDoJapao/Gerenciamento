@@ -6,6 +6,8 @@ import './color-modes.js'
 import './voluntarios/lista.mjs'
 import './voluntarios/perfil.mjs'
 import './voluntarios/remove.mjs'
+import './voluntarios/festival/credencial.mjs'
+import './voluntarios/festival/tamanho_hapi.mjs'
 
 // Informações dos recursos
 import './recursos/cards.mjs'
