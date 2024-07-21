@@ -12,6 +12,7 @@ import './voluntarios/festival/tamanho_hapi.mjs'
 // Informações dos recursos
 import './recursos/cards.mjs'
 import './recursos/voluntario.mjs'
+import './recursos/credenciais.mjs'
 
 // Componentes do sistema
 import './filtro.mjs' 

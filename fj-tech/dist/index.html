@@ -317,7 +317,8 @@
                         <!-- Filtro de voluntários por status-->
                         <section id="corpoFiltroDeVoluntarioPorStatus" hidden>
                             <div class="card border-2" style="width: 18rem;">
-                                <h5 class="card-title p-2 px-3 bg-danger bg-opacity-25" style="cursor: move;">Filtro</h5>
+                                <h5 class="card-title p-2 px-3 bg-danger bg-opacity-25" style="cursor: move;">Filtro
+                                </h5>
                                 <div class="card-body">
                                     <label for="filtrarPorStatus">Status do Voluntário</label>
                                     <select id="filtrarPorStatus" class="form-select">
@@ -325,7 +326,7 @@
                                         <option value="1">Ativo</option>
                                         <option value="2">Intervalo</option>
                                         <option value="3">Inativo</option>
-                                    </select>                                        
+                                    </select>
                                 </div>
                             </div>
                         </section>
@@ -336,8 +337,10 @@
                                 data-bs-backdrop="false" tabindex="-1" id="offcanvasRight"
                                 aria-labelledby="offcanvasRightLabel">
                                 <div class="offcanvas-header">
-                                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Gerenciar Recursos do Voluntário</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Gerenciar Recursos do
+                                        Voluntário</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
                                 </div>
                                 <div class="offcanvas-body">
                                     <p class="mb-5">
@@ -350,15 +353,17 @@
                                         <div class="mb-5 needs-validation">
                                             <p class="mb-2 h5">Código da Credencial</p>
                                             <div class="mb-3 hstack gap-3 mt-2">
-                                                <input type="text" class="form-control col" id="codigoCredencial" placeholder="Informe o código" required>                                        
-                                                <button type="button" class="btn btn-danger" id="cadastraCodigoCredencial">
+                                                <input type="text" class="form-control col" id="codigoCredencial"
+                                                    placeholder="Informe o código" required>
+                                                <button type="button" class="btn btn-danger"
+                                                    id="cadastraCodigoCredencial">
                                                     <svg xmlns="http://www.w3.org/2000/svg" height="20" width="22.5"
                                                         viewBox="0 0 576 512" fill="currentColor">
                                                         <path
                                                             d="M256 0h64c17.7 0 32 14.3 32 32V96c0 17.7-14.3 32-32 32H256c-17.7 0-32-14.3-32-32V32c0-17.7 14.3-32 32-32zM64 64H192v48c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48V64H512c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64zM176 437.3c0 5.9 4.8 10.7 10.7 10.7H389.3c5.9 0 10.7-4.8 10.7-10.7c0-29.5-23.9-53.3-53.3-53.3H229.3c-29.5 0-53.3 23.9-53.3 53.3zM288 352a64 64 0 1 0 0-128 64 64 0 1 0 0 128z" />
                                                     </svg>
                                                 </button>
-                                            </div>   
+                                            </div>
                                         </div>
 
                                         <div class="mb-5">
@@ -467,7 +472,8 @@
                                     </form>
                                 </div>
                                 <div class="offcanvas-footer">
-                                    <small class="text-small opacity-75 text-secondary mt-0 mb-0" id="gestaoRecusosVoluntarioNoFestival" hidden></small>
+                                    <small class="text-small opacity-75 text-secondary mt-0 mb-0"
+                                        id="gestaoRecusosVoluntarioNoFestival" hidden></small>
                                 </div>
                             </div>
                         </section>
@@ -816,7 +822,8 @@
                                     <div class="card border-danger mb3">
                                         <div class="card-body">
                                             <h5 class="card-title pt-2 pb-3 text-center">Frequência de Voluntários (
-                                                <spam id="diaAtualEvento"></spam>)</h5>
+                                                <spam id="diaAtualEvento"></spam>)
+                                            </h5>
 
                                             <div class="card-text pb-3">
                                                 <div class="progress-stacked">
@@ -857,26 +864,28 @@
                                     </div>
                                 </div>
 
+                                <!-- Card com cadastro de ações -->
                                 <div id="cadastroRecursos" class="col-sm-4 col-md-4">
                                     <div class="card border-0 mb-3">
                                         <div class="card-body">
-
                                             <div class="mt-2">
                                                 <div class="hstack gap-3">
                                                     <p class="mb-2">Ações</p>
-                                                    <button type="button" class="btn btn-danger col">Cadastrar
-                                                        Credenciais</button>
-                                                    <button type="button" class="btn btn-danger col">Cadastrar
-                                                        Hapi</button>
-                                                    <button type="button" class="btn btn-danger col">Cadastrar
-                                                        Voucher</button>
+                                                    <div class="vstack gap-3">
+                                                        <button type="button" class="btn btn-danger col-12"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#cadastroDeCredenciais">Cadastrar
+                                                            Credenciais</button>
+                                                        <button type="button" class="btn btn-danger col-12"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#cadastroDeHapis">Cadastrar Hapi</button>
+                                                        <button type="button" class="btn btn-danger col-12"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#cadastroDeVouchers">Cadastrar
+                                                            Voucher</button>
+                                                    </div>
                                                 </div>
-
-                                                <span id="horarioInicioIntervalo">
-                                                    <!-- Aqui você pode listar os horários de intervalo -->
-                                                </span>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -982,6 +991,123 @@
                                                     </ul>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="formCadastroDeRecursos">
+                            <!-- Modal de cadastro de Credenciais -->
+                            <div class="modal fade" id="cadastroDeCredenciais" tabindex="-1"
+                                aria-labelledby="cadastroDeCredenciais" aria-hidden="true" data-bs-backdrop="static"
+                                data-bs-keyboard="false">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5">Credenciais</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">                                           
+                                            <form>
+                                                <div>
+                                                    <legend class="col-form-label mt-1">
+                                                        Como deseja cadastrar a quantidade de credenciais disponiveis para esta edição do Festival do Japão?
+                                                    </legend>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="formaCadastroCredencial" id="cadastroUnicoCredencial">
+                                                      <label class="form-check-label" for="cadastroUnicoCredencial">
+                                                        Cadastro único, a mesma quantidade para todos os dias do evento
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="formaCadastroCredencial" id="cadastroIndividualCredencial">
+                                                      <label class="form-check-label" for="cadastroIndividualCredencial">
+                                                        Cadastro individual, quantidades específicas para cada dia do evento
+                                                      </label>
+                                                    </div>
+                                                </div>
+
+                                                <div id="cadastroUnicoDeCredenciais" class="mt-3" hidden>
+                                                    <div class="row mb-3">
+                                                        <label for="qtdeCredenciaisEvento" class="col-sm-6 col-md-8 col-form-label">Informe a quantidade total de credenciais:</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                          <input type="number" class="form-control" id="qtdeCredenciaisEvento">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="cadastroIndividualDeCredenciais" class="mt-3" hidden> 
+                                                    <p>Informe a quantidade de credenciais por dia:</p>
+                                                    <div class="row mb-1">
+                                                        <label for="qtdeCredenciaisDia1" class="col-sm-6 col-md-4 col-form-label">Sexta-feira</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                          <input type="number" class="form-control" id="qtdeCredenciaisDia1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-1">
+                                                        <label for="qtdeCredenciaisDia2" class="col-sm-6 col-md-4 col-form-label">Sábado</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                          <input type="number" class="form-control" id="qtdeCredenciaisDia2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-1">
+                                                        <label for="qtdeCredenciaisDia3" class="col-sm-6 col-md-4 col-form-label">Domingo</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                          <input type="number" class="form-control" id="qtdeCredenciaisDia3">
+                                                        </div>
+                                                    </div>                                                   
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-danger"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-danger" id="btnCadastrarCredenciais" data-bs-dismiss="modal">Cadastrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal de cadastro de Hapis -->
+                            <div class="modal fade" id="cadastroDeHapis" tabindex="-1"
+                                aria-labelledby="cadastroDeHapis" aria-hidden="true" data-bs-backdrop="static"
+                                data-bs-keyboard="false">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5">Hapis</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Opções de cadastro de hapis -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-danger"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-danger" id="btnCadastrarHapis" data-bs-dismiss="modal">Cadastrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal de cadastro de Vouchers -->
+                            <div class="modal fade" id="cadastroDeVouchers" tabindex="-1"
+                                aria-labelledby="cadastroDeVouchers" aria-hidden="true" data-bs-backdrop="static"
+                                data-bs-keyboard="false">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5">Vouchers</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Opções de cadastro de hapis -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-danger"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-danger" id="btnCadastrarVouchers" data-bs-dismiss="modal">Cadastrar</button>
                                         </div>
                                     </div>
                                 </div>
