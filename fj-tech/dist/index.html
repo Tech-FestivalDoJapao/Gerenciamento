@@ -819,46 +819,72 @@
                             <div class="row justify-content-between">
                                 <!-- Card de acesso rápido para a gestão de credenciais -->
                                 <div id="cardFrequnciaVoluntario" class="col-sm-6 col-md-8 mb-4">
-                                    <div class="card border-danger mb3">
+                                    <div class="card border-danger">
                                         <div class="card-body">
-                                            <h5 class="card-title pt-2 pb-3 text-center">Frequência de Voluntários (
-                                                <spam id="diaAtualEvento"></spam>)
+                                            <h5 class="card-title pt-2 pb-3 text-center">
+                                                Frequência de Voluntários (<spam id="diaAtualEvento"></spam>)
                                             </h5>
 
                                             <div class="card-text pb-3">
-                                                <div class="progress-stacked">
-                                                    <div id="volPresente" class="progress" role="progressbar"
-                                                        aria-label="Voluntários ativos" aria-valuemin="0">
-                                                        <div class="progress-bar" style="background-color: #DC3545;">15%
-                                                        </div>
-                                                    </div>
-                                                    <div id="volIntervalo" class="progress" role="progressbar"
-                                                        aria-label="Voluntários em intervalo" aria-valuenow="30"
-                                                        aria-valuemin="0" aria-valuemax="100">
-                                                        <div class="progress-bar" style="background-color: #EA868F;">30%
-                                                        </div>
-                                                    </div>
-                                                    <div id="volAusente" class="progress" role="progressbar"
-                                                        aria-label="Voluntários ausentes ou indisponíveis"
-                                                        aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                                                        <div class="progress-bar" style="background-color: #F8D7DA;">20%
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <div class="hstack">
+                                                    <!-- Número total de voluntários participantes do dia atual do evento -->
+                                                    <div class="col-sm-4 col-md-3 text-center">
+                                                        <div class="h4"><span id="totalVoluntariosFestival"
+                                                                style="font-size: 2em;"></span></div>
+                                                        <strong>TOTAL</strong>
+                                                    </div>  
 
-                                                <div class="mt-2">
-                                                    <p>Quantidade de voluntários por status</p>
+                                                    <div class="col-sm-8 col-md-9">                                                        
+        
+                                                        <div class="mt-2 mb-2">        
+                                                            <!-- Legendas da barra de progresso -->
+                                                            <div class="hstack g-3">
+                                                                <div class="col text-center">
+                                                                    <div class="h6">
+                                                                        <span id="qtdeVoluntariosPresentes" class="text-danger text-opacity-75" style="font-size: 2em;"></span>
+                                                                    </div>
+                                                                    <p>Presentes</p>
+                                                                </div>
+        
+                                                                <div class="col text-center">
+                                                                    <div class="h6">
+                                                                        <span id="qtdeVoluntariosIntervalo" class="text-danger text-opacity-50" style="font-size: 2em;"></span>
+                                                                    </div>
+                                                                    <p>Em Intervalo</p>
+                                                                </div>
+        
+                                                                <div class="col text-center">
+                                                                    <div class="h6">
+                                                                        <span id="qtdeVoluntariosAusentes" class="text-danger text-opacity-25" style="font-size: 2em;"></span>
+                                                                    </div>
+                                                                    <p>Ausentes</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-                                                    <ul>
-                                                        <li>Total: <span id="totalVoluntariosFestival"></span></li>
-                                                        <li>Presentes: <spam id="qtdeVoluntariosPresentes"></spam>
-                                                        </li>
-                                                        <li>Em intervalo: <spam id="qtdeVoluntariosIntervalo"></spam>
-                                                        </li>
-                                                        <li>Ausentes: <spam id="qtdeVoluntariosAusentes"></spam>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                                        <!-- Barra de progresso com a divisão de voluntários por status -->
+                                                        <div class="progress-stacked mb-0">
+                                                            <div id="volPresente" class="progress" role="progressbar"
+                                                                aria-label="Voluntários ativos" aria-valuemin="0">
+                                                                <div class="progress-bar bg-danger bg-opacity-75">15%
+                                                                </div>
+                                                            </div>
+                                                            <div id="volIntervalo" class="progress" role="progressbar"
+                                                                aria-label="Voluntários em intervalo" aria-valuenow="30"
+                                                                aria-valuemin="0" aria-valuemax="100">
+                                                                <div class="progress-bar bg-danger bg-opacity-50">30%
+                                                                </div>
+                                                            </div>
+                                                            <div id="volAusente" class="progress" role="progressbar"
+                                                                aria-label="Voluntários ausentes ou indisponíveis"
+                                                                aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+                                                                <div class="progress-bar bg-danger bg-opacity-25">20%
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <small class="text-secondary">Porcentagem de voluntários por status de participação</small>
+                                                    </div>
+                                                </div>                                    
                                             </div>
                                         </div>
                                     </div>
@@ -1080,7 +1106,57 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <!-- Opções de cadastro de hapis -->
+                                            <form>
+                                                <!-- Opções de cadastro de hapis -->
+                                                <div>
+                                                    <legend class="col-form-label mt-1">
+                                                        Como deseja cadastrar a quantidade de hapis disponiveis para esta edição do Festival do Japão?
+                                                    </legend>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="formaCadastroHapi" id="cadastroUnicoHapi">
+                                                      <label class="form-check-label" for="cadastroUnicoHapi">
+                                                        Cadastro único, a mesma quantidade para todos os dias do evento
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="formaCadastroHapi" id="cadastroIndividualHapi">
+                                                      <label class="form-check-label" for="cadastroIndividualHapi">
+                                                        Cadastro individual, quantidades específicas para cada dia do evento
+                                                      </label>
+                                                    </div>
+                                                </div>
+
+                                                <div id="cadastroUnicoDeHapis" class="mt-3" hidden>
+                                                    <div class="row mb-3">
+                                                        <label for="qtdeHapisEvento" class="col-sm-6 col-md-8 col-form-label">Informe a quantidade total de hapis:</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                          <input type="number" class="form-control" id="qtdeHapisEvento">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="cadastroIndividualDeHapis" class="mt-3" hidden> 
+                                                    <p>Informe a quantidade de hapis por dia:</p>
+                                                    <div class="row mb-1">
+                                                        <label for="qtdeHapisDia1" class="col-sm-6 col-md-4 col-form-label">Sexta-feira</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                          <input type="number" class="form-control" id="qtdeHapisDia1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-1">
+                                                        <label for="qtdeHapisDia2" class="col-sm-6 col-md-4 col-form-label">Sábado</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                          <input type="number" class="form-control" id="qtdeHapisDia2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-1">
+                                                        <label for="qtdeHapisDia3" class="col-sm-6 col-md-4 col-form-label">Domingo</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                          <input type="number" class="form-control" id="qtdeHapisDia3">
+                                                        </div>
+                                                    </div>                                                   
+                                                </div>
+                                            </form>                                             
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-danger"
@@ -1103,6 +1179,38 @@
                                         </div>
                                         <div class="modal-body">
                                             <!-- Opções de cadastro de hapis -->
+                                            <form>
+                                                <div>
+                                                    <legend class="col-form-label mt-1">
+                                                        Como deseja cadastrar a quantidade de vouchers disponiveis para esta edição do Festival do Japão?
+                                                    </legend>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="formaCadastroVoucher" id="cadastroUnicoVoucher">
+                                                      <label class="form-check-label" for="cadastroUnicoVoucher">
+                                                        Cadastro único, a mesma quantidade para todos os dias do evento
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="formaCadastroVoucher" id="cadastroIndividualVoucher">
+                                                      <label class="form-check-label" for="cadastroIndividualVoucher">
+                                                        Cadastro individual, quantidades específicas para cada dia do evento
+                                                      </label>
+                                                    </div>
+                                                </div>
+
+                                                <div id="cadastroUnicoDeVouchers" class="mt-3" hidden>
+                                                    <div class="row mb-3">
+                                                        <label for="qtdeVouchersEvento" class="col-sm-6 col-md-8 col-form-label">Informe a quantidade total de vouchers:</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                          <input type="number" class="form-control" id="qtdeVouchersEvento">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="cadastroIndividualDeVouchers" class="mt-3" hidden>                                                    
+                                                    <!-- Opções de cadastro de vouchers para cada dia do evento -->    
+                                                </div>
+                                            </form>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-danger"

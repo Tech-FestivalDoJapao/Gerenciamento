@@ -17,9 +17,18 @@ document.getElementById("totalVoluntariosFestival").innerHTML = voluntariosFesti
  */
 let voluntariosAtivos = 0;
 querySnapshot.forEach((doc) => {
+    // Verifica se o voluntáio está presente no festival e não está em intervalo
     if (doc.data().voluntariado.horarios.horario_checkin != null 
         && doc.data().voluntariado.horarios.horario_intervalo.inicio_intervalo == null 
         && doc.data().voluntariado.horarios.horario_intervalo.fim_intervalo == null 
+        && doc.data().voluntariado.horarios.horario_checkout == null) {
+        voluntariosAtivos++;
+    }
+
+    // Verifica se o voluntário está presente no festival e já teve algum intervalo
+    if (doc.data().voluntariado.horarios.horario_checkin != null 
+        && doc.data().voluntariado.horarios.horario_intervalo.inicio_intervalo != null 
+        && doc.data().voluntariado.horarios.horario_intervalo.fim_intervalo != null
         && doc.data().voluntariado.horarios.horario_checkout == null) {
         voluntariosAtivos++;
     }
