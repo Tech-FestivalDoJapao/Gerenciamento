@@ -1,4 +1,3 @@
-// 
 import { db } from "../src/js/firebaseConfig.mjs";
 import { collection, query, where, getDocs } from "firebase/firestore";
 

@@ -18,7 +18,28 @@ Atualmente, o sistema está disponível apenas para plataformas web, de modo que
 ### Demonstração
 ![Demo](https://github.com/Tech-FestivalDoJapao/Gerenciamento/assets/164685231/49769f94-ac78-4758-a180-92aa8f8a4909)
 
-## Como rodar o projeto localmente
+## Estrutura 
+O esquema abaixo representa a estrutura de pastas do projeto:
+```sh
+fj-tech/
+├── dist/
+│   └── index.html
+├── src/
+│   ├── js/
+│   │   ├── estandes/
+│   │   ├── recursos/
+│   │   ├── voluntarios/
+│   │   │   └── festival/
+│   │   └── main.js
+│   └── scss/
+│       └── styles.scss
+├── package-lock.json
+├── package.json
+└── webpack.config.js
+```
+> <small>Apenas os principais arquivos foram listados, navegue pelos diretórios para ver a estruturação dos arquivos na íntegra</small>
+
+### Como rodar o projeto localmente
 ```sh
 git clone https://github.com/Tech-FestivalDoJapao/Gerenciamento.git
 cd fj-tech
