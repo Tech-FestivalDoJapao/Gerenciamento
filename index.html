@@ -394,10 +394,12 @@
                                                     </button>
                                                 </div>
                                                 <div class="hstack gap-3">
-                                                    <label class="form-label col opacity-75">Check-in realizado <spam
-                                                            id="horarioCheckIn">--:--</spam></label>
-                                                    <label class="form-label col opacity-75">Checkout realizado <spam
-                                                            id="horarioCheckOut">--:--</spam></label>
+                                                    <label class="form-label col opacity-75">
+                                                         <spam id="horarioCheckIn"></spam>
+                                                    </label>
+                                                    <label class="form-label col opacity-75"> 
+                                                        <spam id="horarioCheckOut"></spam>
+                                                    </label>
                                                 </div>
 
                                                 <div class="mt-2">
@@ -471,9 +473,9 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="offcanvas-footer">
+                                <div class="offcanvas-footer opacity-0">
                                     <small class="text-small opacity-75 text-secondary mt-0 mb-0"
-                                        id="gestaoRecusosVoluntarioNoFestival" hidden></small>
+                                        id="gestaoRecusosVoluntarioNoFestival" ></small>
                                 </div>
                             </div>
                         </section>
@@ -819,7 +821,7 @@
                             <div class="row justify-content-between">
                                 <!-- Card de acesso rápido para a gestão de credenciais -->
                                 <div id="cardFrequnciaVoluntario" class="col-sm-6 col-md-8 mb-4">
-                                    <div class="card border-danger mb3">
+                                    <div class="card border-danger">
                                         <div class="card-body">
                                             <h5 class="card-title pt-2 pb-3 text-center">
                                                 Frequência de Voluntários (<spam id="diaAtualEvento"></spam>)
@@ -882,7 +884,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <small class="text-secondary">Porcentagem de voluntários por status</small>
+                                                        <small class="text-secondary">Porcentagem de voluntários por status de participação</small>
                                                     </div>
                                                 </div>                                    
                                             </div>
