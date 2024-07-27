@@ -23,7 +23,7 @@ document.getElementById("btnRemoverVoluntario").addEventListener("click", async 
         if (voluntarioRemovido) {
             voluntarioRemovido.remove();
         }
-    } catch (error) {
-        console.error("Erro ao remover voluntário: ", error);
+    } catch (erro) {
+        console.error("Erro ao remover voluntário: ", erro);
     }
 });

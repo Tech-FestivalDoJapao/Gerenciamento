@@ -9,6 +9,7 @@
 
 # build files
 /dist/main.js
+/dist/main.js.LICENSE.txt
 
 # local env files
 .env*.local
