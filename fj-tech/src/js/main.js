@@ -22,6 +22,12 @@ import './filtro.mjs'
 import * as bootstrap from 'bootstrap'
 
 /**
+ * Identifica a versão atual do sistema no menu da página
+ */
+const versaoSistema = require('./../../package.json').version; 
+document.getElementById("versaoDoSistema").innerHTML = "v" + versaoSistema;
+
+/**
  * Exibe o ano de criação do projeto no rodapé da página
  */
 const anoCriacaoDoProjeto = 2024;
