@@ -111,7 +111,7 @@
                         <!-- Theme chooser -->
                         <div class="order-3">
                             <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center opacity-50"
-                                id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown"
+                                id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-haspopup="true"
                                 aria-label="Toggle theme (auto)">
                                 <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
                                     <use href="#circle-half"></use>
@@ -343,12 +343,16 @@
                                 </h5>
                                 <div class="card-body">
                                     <label for="filtrarPorStatus">Status do Voluntário</label>
-                                    <select id="filtrarPorStatus" class="form-select">
-                                        <option selected>Status...</option>
-                                        <option value="1">Ativo</option>
-                                        <option value="2">Intervalo</option>
-                                        <option value="3">Inativo</option>
-                                    </select>
+                                    <div id="filtrarPorStatus" class="dropdown pt-2">
+                                        <button class="form-select text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Status...
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                          <li><a class="dropdown-item" value="1">Ativo</a></li>
+                                          <li><a class="dropdown-item" value="2">Intervalo</a></li>
+                                          <li><a class="dropdown-item" value="3">Inativo</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </section>
