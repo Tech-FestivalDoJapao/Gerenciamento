@@ -344,13 +344,14 @@
                                 <div class="card-body">
                                     <label for="filtrarPorStatus">Status do Voluntário</label>
                                     <div id="filtrarPorStatus" class="dropdown pt-2">
-                                        <button class="form-select text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Status...
+                                        <button id="statusFiltrado" class="form-select text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            
                                         </button>
                                         <ul class="dropdown-menu">
-                                          <li><a class="dropdown-item" value="1">Ativo</a></li>
-                                          <li><a class="dropdown-item" value="2">Intervalo</a></li>
-                                          <li><a class="dropdown-item" value="3">Inativo</a></li>
+                                          <li><a class="dropdown-item" id="filtrarAtivos">Ativos</a></li>
+                                          <li><a class="dropdown-item" id="filtrarIntervalo">Em intervalo</a></li>
+                                          <li><a class="dropdown-item" id="filtrarInativos">Inativos</a></li>
+                                          <li><a class="dropdown-item" id="filtrarTodos">Todos</a></li>
                                         </ul>
                                     </div>
                                 </div>

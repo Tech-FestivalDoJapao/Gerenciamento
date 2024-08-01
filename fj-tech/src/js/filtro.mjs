@@ -62,3 +62,71 @@ function tornarElementoMovel(cardDeFiltro) {
         document.onmousemove = null;
     }
 }
+
+/**
+ * Filtrar voluntários na lista por status de acordo com o filtro selecionado
+ */
+document.getElementById("statusFiltrado").innerText = "Status...";
+
+// Retorna todos os voluntários ativos
+document.getElementById("filtrarAtivos").addEventListener("click", (event) => {
+    const voluntarioListado = document.querySelectorAll("#corpoTabelaDeListagemDeVoluntarios tr");
+
+    voluntarioListado.forEach((linha) => {
+        const verificaVoluntarioAtivo = linha.querySelector("#statusVoluntario").textContent;
+        if (verificaVoluntarioAtivo === " Ativo ") {
+            linha.style.display = "table-row";
+        } else {
+            linha.style.display = "none";
+        }
+    });
+
+    // Altera o texto do seletor por status
+    document.getElementById("statusFiltrado").innerText = "Ativos";
+});
+
+// Retorna todos os voluntários em intervalo
+document.getElementById("filtrarIntervalo").addEventListener("click", (event) => {
+    const voluntarioListado = document.querySelectorAll("#corpoTabelaDeListagemDeVoluntarios tr");
+
+    voluntarioListado.forEach((linha) => {
+        const verificaVoluntarioIntervalo = linha.querySelector("#statusVoluntario").textContent;
+        if (verificaVoluntarioIntervalo === " Intervalo ") {
+            linha.style.display = "table-row";
+        } else {
+            linha.style.display = "none";
+        }
+    });
+
+    // Altera o texto do seletor por status
+    document.getElementById("statusFiltrado").innerText = "Em intervalo";
+});
+
+// Retorna todos os voluntários inativos
+document.getElementById("filtrarInativos").addEventListener("click", (event) => {
+    const voluntarioListado = document.querySelectorAll("#corpoTabelaDeListagemDeVoluntarios tr");
+
+    voluntarioListado.forEach((linha) => {
+        const verificaVoluntarioInativo = linha.querySelector("#statusVoluntario").textContent;
+        if (verificaVoluntarioInativo === " Inativo ") {
+            linha.style.display = "table-row";
+        } else {
+            linha.style.display = "none";
+        }
+    });
+
+    // Altera o texto do seletor por status
+    document.getElementById("statusFiltrado").innerText = "Inativos";
+});
+
+// Retorna todos os voluntários
+document.getElementById("filtrarTodos").addEventListener("click", (event) => {
+    const voluntarioListado = document.querySelectorAll("#corpoTabelaDeListagemDeVoluntarios tr");
+
+    voluntarioListado.forEach((linha) => {
+        linha.style.display = "table-row";
+    });
+
+    // Altera o texto do seletor por status
+    document.getElementById("statusFiltrado").innerText = "Todos";
+});
