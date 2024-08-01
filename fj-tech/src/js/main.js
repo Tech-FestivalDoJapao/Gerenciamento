@@ -59,3 +59,16 @@ document.getElementById("diaAtualEvento").innerHTML = dataAtual.getDate() + "/" 
 /**
  * TODO: Habilitar o uso de toast para exibir mensagens de erro e sucesso
  */
+
+// Move a legenda versaoDoSistema para o rodapé da página em telas menores que 768px
+if (window.innerWidth < 768) {
+  document.getElementById("versaoDoSistema").classList.add("fixed-bottom");
+  document.getElementById("versaoDoSistema").classList.add("text-end");
+  document.getElementById("versaoDoSistema").classList.add("p-4");
+
+  document.getElementById("menuOffcanvasNavbar").classList.add("p-4");
+  document.getElementById("menuOffcanvasNavbar").classList.add("jubtitle");
+  document.getElementById("menuLateral").classList.add("ps-4");
+
+
+} 

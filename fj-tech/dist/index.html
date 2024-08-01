@@ -33,13 +33,13 @@
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="menuOffcanvasNavbar"
                     aria-labelledby="menuOffcanvasNavbarLabel">
-                    <div class="d-flex justify-content-between align-items-md-center align-items-sm-right">                       
+                    <div class="d-flex justify-content-between align-items-md-center align-items-xs-right">                       
                         <div class="text-small opacity-25 order-sm-2 order-md-1">
                             <small id="versaoDoSistema" class="d-md-none"></small>
                         </div>     
 
                         <!-- Navegação em tabs -->
-                        <ul class="nav nav-underline flex-column flex-md-row order-sm-1 order-md-2">
+                        <ul class="nav nav-underline flex-column flex-md-row order-sm-1 order-md-2" id="menuLateral">
                             <!-- Home -->
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link active link-body-emphasis align-baseline" id="home-tab" type="button"
@@ -310,7 +310,7 @@
                                 <div class="col-md-1"></div>
                                 <div class="p-2 col table-responsive">
                                     <table class="table align-middle mb-0 table-bordeless table-hover">
-                                        <thead class="sticky-top">
+                                        <thead id="cabecalhoTabelaDeVoluntarios">
                                             <tr>
                                                 <th scope="col">
                                                     <!--  Coluna de multipla seleção de voluntários através da marcação dos checkboxes -->
