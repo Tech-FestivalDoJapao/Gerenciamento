@@ -20,6 +20,17 @@ filtrarVoluntario.addEventListener("click", (event) => {
 });
 
 /**
+ * Fecha o card de filtro de voluntário ao clicar no botão de fechar
+ */
+document.getElementById("fecharFiltro").addEventListener("click", (event) => {
+    const corpoFiltro = document.getElementById("corpoFiltroDeVoluntarioPorStatus");
+
+    if (event.target !== filtrarVoluntario && event.target !== corpoFiltro) {
+        corpoFiltro.hidden = true;
+    }
+});
+
+/**
  * Torna o card de filtro de voluntário móvel na tela
  */
 tornarElementoMovel(document.getElementById("corpoFiltroDeVoluntarioPorStatus"));
