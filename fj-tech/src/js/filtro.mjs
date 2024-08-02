@@ -9,8 +9,8 @@ filtrarVoluntario.addEventListener("click", (event) => {
     const corpoFiltro = document.getElementById("corpoFiltroDeVoluntarioPorStatus");
 
     // Exibe o card com as opções de filtro
-    corpoFiltro.hasAttribute("hidden") 
-        ? corpoFiltro.removeAttribute("hidden") 
+    corpoFiltro.hasAttribute("hidden")
+        ? corpoFiltro.removeAttribute("hidden")
         : corpoFiltro.hidden = true;
 
     // Posiciona o card ao lado do botão de filtro
@@ -83,6 +83,23 @@ document.getElementById("filtrarAtivos").addEventListener("click", (event) => {
 
     // Altera o texto do seletor por status
     document.getElementById("statusFiltrado").innerText = "Ativos";
+
+    // Limita a pesquisa de voluntários àqueles ativos
+    document.getElementById("buscaVoluntarioNaTabela").addEventListener("input", (event) => {
+        const nomePesquisado = event.target.value.toLowerCase();
+        const voluntarioListado = document.querySelectorAll("#corpoTabelaDeListagemDeVoluntarios tr");
+
+        voluntarioListado.forEach((linha) => {
+            const nomeVoluntario = linha.querySelector(".fw-semibold").textContent.toLowerCase();
+            const statusVoluntario = linha.querySelector("#statusVoluntario").textContent;
+
+            if (nomeVoluntario.includes(nomePesquisado) && statusVoluntario === " Ativo ") {
+                linha.style.display = "table-row";
+            } else {
+                linha.style.display = "none";
+            }
+        });
+    });
 });
 
 // Retorna todos os voluntários em intervalo
@@ -100,6 +117,23 @@ document.getElementById("filtrarIntervalo").addEventListener("click", (event) =>
 
     // Altera o texto do seletor por status
     document.getElementById("statusFiltrado").innerText = "Em intervalo";
+
+    // Limita a pesquisa de voluntários àqueles em intervalo
+    document.getElementById("buscaVoluntarioNaTabela").addEventListener("input", (event) => {
+        const nomePesquisado = event.target.value.toLowerCase();
+        const voluntarioListado = document.querySelectorAll("#corpoTabelaDeListagemDeVoluntarios tr");
+
+        voluntarioListado.forEach((linha) => {
+            const nomeVoluntario = linha.querySelector(".fw-semibold").textContent.toLowerCase();
+            const statusVoluntario = linha.querySelector("#statusVoluntario").textContent;
+
+            if (nomeVoluntario.includes(nomePesquisado) && statusVoluntario === " Intervalo ") {
+                linha.style.display = "table-row";
+            } else {
+                linha.style.display = "none";
+            }
+        });
+    });
 });
 
 // Retorna todos os voluntários inativos
@@ -117,6 +151,23 @@ document.getElementById("filtrarInativos").addEventListener("click", (event) => 
 
     // Altera o texto do seletor por status
     document.getElementById("statusFiltrado").innerText = "Inativos";
+
+    // Limita a pesquisa de voluntários àqueles inativos
+    document.getElementById("buscaVoluntarioNaTabela").addEventListener("input", (event) => {
+        const nomePesquisado = event.target.value.toLowerCase();
+        const voluntarioListado = document.querySelectorAll("#corpoTabelaDeListagemDeVoluntarios tr");
+
+        voluntarioListado.forEach((linha) => {
+            const nomeVoluntario = linha.querySelector(".fw-semibold").textContent.toLowerCase();
+            const statusVoluntario = linha.querySelector("#statusVoluntario").textContent;
+
+            if (nomeVoluntario.includes(nomePesquisado) && statusVoluntario === " Inativo ") {
+                linha.style.display = "table-row";
+            } else {
+                linha.style.display = "none";
+            }
+        });
+    });
 });
 
 // Retorna todos os voluntários
