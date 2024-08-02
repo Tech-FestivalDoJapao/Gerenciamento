@@ -339,18 +339,22 @@
                         <!-- Filtro de voluntários por status-->
                         <section id="corpoFiltroDeVoluntarioPorStatus" hidden>
                             <div class="card border-2" style="width: 18rem;">
-                                <h5 class="card-title p-2 px-3 bg-danger bg-opacity-25" style="cursor: move;">Filtro
-                                </h5>
+                                <div class="card-title hstack justify-content-between p-2 px-3 bg-danger bg-opacity-25" style="cursor: move;">
+                                    <h5 class="pb-0 mb-0">Filtro</h5>
+                                    <button type="button" class="btn-close" aria-label="Close" id="fecharFiltro"></button>
+                                </div>
+                                
                                 <div class="card-body">
                                     <label for="filtrarPorStatus">Status do Voluntário</label>
                                     <div id="filtrarPorStatus" class="dropdown pt-2">
-                                        <button class="form-select text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Status...
+                                        <button id="statusFiltrado" class="form-select text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            
                                         </button>
                                         <ul class="dropdown-menu">
-                                          <li><a class="dropdown-item" value="1">Ativo</a></li>
-                                          <li><a class="dropdown-item" value="2">Intervalo</a></li>
-                                          <li><a class="dropdown-item" value="3">Inativo</a></li>
+                                          <li><a class="dropdown-item" id="filtrarAtivos">Ativos</a></li>
+                                          <li><a class="dropdown-item" id="filtrarIntervalo">Em intervalo</a></li>
+                                          <li><a class="dropdown-item" id="filtrarInativos">Inativos</a></li>
+                                          <li><a class="dropdown-item" id="filtrarTodos">Todos</a></li>
                                         </ul>
                                     </div>
                                 </div>
