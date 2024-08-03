@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="container py-3 px-3 mx-auto">      
+    <div class="container py-3 px-3 mx-auto">
         <!-- Manu de navegação expansível -->
         <header class="justify-content pb-3 mb-5 border-bottom border-danger border-5">
             <nav class="navbar navbar-expand-md">
@@ -33,10 +33,10 @@
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="menuOffcanvasNavbar"
                     aria-labelledby="menuOffcanvasNavbarLabel">
-                    <div class="d-flex justify-content-between align-items-md-center align-items-xs-right">                       
+                    <div class="d-flex justify-content-between align-items-md-center align-items-xs-right">
                         <div class="text-small opacity-25 order-sm-2 order-md-1">
                             <small id="versaoDoSistema" class="d-md-none"></small>
-                        </div>     
+                        </div>
 
                         <!-- Navegação em tabs -->
                         <ul class="nav nav-underline flex-column flex-md-row order-sm-1 order-md-2" id="menuLateral">
@@ -111,8 +111,8 @@
                         <!-- Theme chooser -->
                         <div class="order-3">
                             <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center opacity-50"
-                                id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-haspopup="true"
-                                aria-label="Toggle theme (auto)">
+                                id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-label="Toggle theme (auto)">
                                 <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
                                     <use href="#circle-half"></use>
                                 </svg>
@@ -339,22 +339,25 @@
                         <!-- Filtro de voluntários por status-->
                         <section id="corpoFiltroDeVoluntarioPorStatus" hidden>
                             <div class="card border-2" style="width: 18rem;">
-                                <div class="card-title hstack justify-content-between p-2 px-3 bg-danger bg-opacity-25" style="cursor: move;">
+                                <div class="card-title hstack justify-content-between p-2 px-3 bg-danger bg-opacity-25"
+                                    style="cursor: move;">
                                     <h5 class="pb-0 mb-0">Filtro</h5>
-                                    <button type="button" class="btn-close" aria-label="Close" id="fecharFiltro"></button>
+                                    <button type="button" class="btn-close" aria-label="Close"
+                                        id="fecharFiltro"></button>
                                 </div>
-                                
+
                                 <div class="card-body">
                                     <label for="filtrarPorStatus">Status do Voluntário</label>
                                     <div id="filtrarPorStatus" class="dropdown pt-2">
-                                        <button id="statusFiltrado" class="form-select text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            
+                                        <button id="statusFiltrado" class="form-select text-start" type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+
                                         </button>
                                         <ul class="dropdown-menu">
-                                          <li><a class="dropdown-item" id="filtrarAtivos">Ativos</a></li>
-                                          <li><a class="dropdown-item" id="filtrarIntervalo">Em intervalo</a></li>
-                                          <li><a class="dropdown-item" id="filtrarInativos">Inativos</a></li>
-                                          <li><a class="dropdown-item" id="filtrarTodos">Todos</a></li>
+                                            <li><a class="dropdown-item" id="filtrarAtivos">Ativos</a></li>
+                                            <li><a class="dropdown-item" id="filtrarIntervalo">Em intervalo</a></li>
+                                            <li><a class="dropdown-item" id="filtrarInativos">Inativos</a></li>
+                                            <li><a class="dropdown-item" id="filtrarTodos">Todos</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -956,7 +959,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Card de acesso rápido para a lista de voluntários -->
+                                <!-- Card de resumo das informações dos hapis' -->
                                 <div id="cardHapis" class="col-sm-6 col-md-4">
                                     <div class="card border-danger mb-3">
                                         <div class="card-body">
@@ -987,7 +990,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Card de acesso rápido para a gestão de credenciais -->
+                                <!-- Card de resumo das informações de credenciais -->
                                 <div id="cardCredenciais" class="col-sm-6 col-md-4">
                                     <div class="card border-danger mb-3">
                                         <div class="card-body">
@@ -1018,7 +1021,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Card de acesso rápido para a gestão de vouchers -->
+                                <!-- Card de resumo das informações de vouchers -->
                                 <div id="cardVouchers" class="col-sm-6 col-md-4">
                                     <div class="card border-danger mb-3">
                                         <div class="card-body">
@@ -1063,6 +1066,7 @@
                             </div>
                         </section>
 
+                        <!-- Formulários de cadastro de recursos para cada item do card de cadastro de ações -->
                         <section id="formCadastroDeRecursos">
                             <!-- Modal de cadastro de Credenciais -->
                             <div class="modal fade" id="cadastroDeCredenciais" tabindex="-1"
@@ -1076,15 +1080,20 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
-                                                <div>
-                                                    <legend class="col-form-label mt-1">
-                                                        Como deseja cadastrar a quantidade de credenciais disponiveis
-                                                        para esta edição do Festival do Japão?
-                                                    </legend>
+                                            <fieldset class="row mb-3">
+                                                <legend class="col-form-label pt-1">
+                                                    Como deseja cadastrar a quantidade de credenciais disponiveis
+                                                    para esta edição do Festival do Japão?
+                                                </legend>
+                                                <div class="col-sm-10">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio"
-                                                            name="formaCadastroCredencial" id="cadastroUnicoCredencial">
+                                                            name="formaCadastroCredencial" id="cadastroUnicoCredencial"
+                                                            value="unico" 
+                                                            onclick="
+                                                                document.getElementById('cadastroUnicoDeCredenciais').classList.remove('d-none');
+                                                                document.getElementById('cadastroIndividualDeCredenciais').classList.add('d-none');
+                                                                ">
                                                         <label class="form-check-label" for="cadastroUnicoCredencial">
                                                             Cadastro único, a mesma quantidade para todos os dias do
                                                             evento
@@ -1093,7 +1102,11 @@
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio"
                                                             name="formaCadastroCredencial"
-                                                            id="cadastroIndividualCredencial">
+                                                            id="cadastroIndividualCredencial" value="individual"
+                                                            onclick="
+                                                                document.getElementById('cadastroUnicoDeCredenciais').classList.add('d-none');
+                                                                document.getElementById('cadastroIndividualDeCredenciais').classList.remove('d-none');
+                                                                ">
                                                         <label class="form-check-label"
                                                             for="cadastroIndividualCredencial">
                                                             Cadastro individual, quantidades específicas para cada dia
@@ -1101,47 +1114,47 @@
                                                         </label>
                                                     </div>
                                                 </div>
+                                            </fieldset>
 
-                                                <div id="cadastroUnicoDeCredenciais" class="mt-3" hidden>
-                                                    <div class="row mb-3">
-                                                        <label for="qtdeCredenciaisEvento"
-                                                            class="col-sm-6 col-md-8 col-form-label">Informe a
-                                                            quantidade total de credenciais:</label>
-                                                        <div class="col-sm-6 col-md-4">
-                                                            <input type="number" class="form-control"
-                                                                id="qtdeCredenciaisEvento">
-                                                        </div>
+                                            <div id="cadastroUnicoDeCredenciais" class="mt-3 d-none">
+                                                <div class="row mb-3">
+                                                    <label for="qtdeCredenciaisEvento"
+                                                        class="col-sm-6 col-md-8 col-form-label">Informe a
+                                                        quantidade total de credenciais:</label>
+                                                    <div class="col-sm-6 col-md-4">
+                                                        <input type="number" class="form-control"
+                                                            id="qtdeCredenciaisEvento">
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div id="cadastroIndividualDeCredenciais" class="mt-3" hidden>
-                                                    <p>Informe a quantidade de credenciais por dia:</p>
-                                                    <div class="row mb-1">
-                                                        <label for="qtdeCredenciaisDia1"
-                                                            class="col-sm-6 col-md-4 col-form-label">Sexta-feira</label>
-                                                        <div class="col-sm-6 col-md-4">
-                                                            <input type="number" class="form-control"
-                                                                id="qtdeCredenciaisDia1">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-1">
-                                                        <label for="qtdeCredenciaisDia2"
-                                                            class="col-sm-6 col-md-4 col-form-label">Sábado</label>
-                                                        <div class="col-sm-6 col-md-4">
-                                                            <input type="number" class="form-control"
-                                                                id="qtdeCredenciaisDia2">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-1">
-                                                        <label for="qtdeCredenciaisDia3"
-                                                            class="col-sm-6 col-md-4 col-form-label">Domingo</label>
-                                                        <div class="col-sm-6 col-md-4">
-                                                            <input type="number" class="form-control"
-                                                                id="qtdeCredenciaisDia3">
-                                                        </div>
+                                            <div id="cadastroIndividualDeCredenciais" class="mt-3 d-none">
+                                                <p>Informe a quantidade de credenciais por dia:</p>
+                                                <div class="row mb-1">
+                                                    <label for="qtdeCredenciaisDia1"
+                                                        class="col-sm-6 col-md-4 col-form-label">Sexta-feira</label>
+                                                    <div class="col-sm-6 col-md-4">
+                                                        <input type="number" class="form-control"
+                                                            id="qtdeCredenciaisDia1">
                                                     </div>
                                                 </div>
-                                            </form>
+                                                <div class="row mb-1">
+                                                    <label for="qtdeCredenciaisDia2"
+                                                        class="col-sm-6 col-md-4 col-form-label">Sábado</label>
+                                                    <div class="col-sm-6 col-md-4">
+                                                        <input type="number" class="form-control"
+                                                            id="qtdeCredenciaisDia2">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-1">
+                                                    <label for="qtdeCredenciaisDia3"
+                                                        class="col-sm-6 col-md-4 col-form-label">Domingo</label>
+                                                    <div class="col-sm-6 col-md-4">
+                                                        <input type="number" class="form-control"
+                                                            id="qtdeCredenciaisDia3">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-danger"
@@ -1173,7 +1186,11 @@
                                                     </legend>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio"
-                                                            name="formaCadastroHapi" id="cadastroUnicoHapi">
+                                                            name="formaCadastroHapi" id="cadastroUnicoHapi"
+                                                            onclick="
+                                                                document.getElementById('cadastroUnicoDeHapis').classList.remove('d-none');
+                                                                document.getElementById('cadastroIndividualDeHapis').classList.add('d-none');
+                                                                ">
                                                         <label class="form-check-label" for="cadastroUnicoHapi">
                                                             Cadastro único, a mesma quantidade para todos os dias do
                                                             evento
@@ -1181,7 +1198,11 @@
                                                     </div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio"
-                                                            name="formaCadastroHapi" id="cadastroIndividualHapi">
+                                                            name="formaCadastroHapi" id="cadastroIndividualHapi"
+                                                            onclick="
+                                                                document.getElementById('cadastroUnicoDeHapis').classList.add('d-none');
+                                                                document.getElementById('cadastroIndividualDeHapis').classList.remove('d-none');
+                                                                ">
                                                         <label class="form-check-label" for="cadastroIndividualHapi">
                                                             Cadastro individual, quantidades específicas para cada dia
                                                             do evento
@@ -1189,7 +1210,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div id="cadastroUnicoDeHapis" class="mt-3" hidden>
+                                                <div id="cadastroUnicoDeHapis" class="mt-3 d-none">
                                                     <div class="row mb-3">
                                                         <label for="qtdeHapisEvento"
                                                             class="col-sm-6 col-md-8 col-form-label">Informe a
@@ -1201,7 +1222,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div id="cadastroIndividualDeHapis" class="mt-3" hidden>
+                                                <div id="cadastroIndividualDeHapis" class="mt-3 d-none">
                                                     <p>Informe a quantidade de hapis por dia:</p>
                                                     <div class="row mb-1">
                                                         <label for="qtdeHapisDia1"
@@ -1261,7 +1282,11 @@
                                                     </legend>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio"
-                                                            name="formaCadastroVoucher" id="cadastroUnicoVoucher">
+                                                            name="formaCadastroVoucher" id="cadastroUnicoVoucher"
+                                                            onclick="
+                                                                document.getElementById('cadastroUnicoDeVouchers').classList.remove('d-none');
+                                                                document.getElementById('cadastroIndividualDeVouchers').classList.add('d-none');
+                                                                ">
                                                         <label class="form-check-label" for="cadastroUnicoVoucher">
                                                             Cadastro único, a mesma quantidade para todos os dias do
                                                             evento
@@ -1269,7 +1294,11 @@
                                                     </div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio"
-                                                            name="formaCadastroVoucher" id="cadastroIndividualVoucher">
+                                                            name="formaCadastroVoucher" id="cadastroIndividualVoucher"
+                                                            onclick="
+                                                                document.getElementById('cadastroUnicoDeVouchers').classList.add('d-none');
+                                                                document.getElementById('cadastroIndividualDeVouchers').classList.remove('d-none');
+                                                                ">
                                                         <label class="form-check-label" for="cadastroIndividualVoucher">
                                                             Cadastro individual, quantidades específicas para cada dia
                                                             do evento
@@ -1277,7 +1306,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div id="cadastroUnicoDeVouchers" class="mt-3" hidden>
+                                                <div id="cadastroUnicoDeVouchers" class="mt-3 d-none">
                                                     <div class="row mb-3">
                                                         <label for="qtdeVouchersEvento"
                                                             class="col-sm-6 col-md-8 col-form-label">Informe a
@@ -1289,7 +1318,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div id="cadastroIndividualDeVouchers" class="mt-3" hidden>
+                                                <div id="cadastroIndividualDeVouchers" class="mt-3 d-none">
                                                     <!-- Opções de cadastro de vouchers para cada dia do evento -->
                                                 </div>
                                             </form>

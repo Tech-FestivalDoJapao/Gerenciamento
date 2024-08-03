@@ -43,7 +43,3 @@ querySnapshot.forEach((doc) => {
         document.getElementById("credenciaisDisponiveis").innerHTML = doc.data().qtde_credencial_disponivel;
     }
 });
-
-/**
- * TODO: Cadastro único do total de cada recurso para o festival
- */

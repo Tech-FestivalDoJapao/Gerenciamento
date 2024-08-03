@@ -69,6 +69,4 @@ if (window.innerWidth < 768) {
   document.getElementById("menuOffcanvasNavbar").classList.add("p-4");
   document.getElementById("menuOffcanvasNavbar").classList.add("jubtitle");
   document.getElementById("menuLateral").classList.add("ps-4");
-
-
 } 
