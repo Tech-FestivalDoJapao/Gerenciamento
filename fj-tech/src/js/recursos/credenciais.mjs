@@ -5,7 +5,7 @@ import { doc, setDoc } from "firebase/firestore";
 import './cards.mjs';
 
 /**
- * TODO: Identifica a opção de cadastro de credenciais selecionada
+ * Identifica a opção de cadastro de credenciais selecionada
  */
 const CadastrarTotalDeCredenciais = document.getElementById("btnCadastrarCredenciais");
 CadastrarTotalDeCredenciais.addEventListener("click", async () => {
@@ -42,8 +42,6 @@ CadastrarTotalDeCredenciais.addEventListener("click", async () => {
      */
     const opcaoCadastroIndividual = document.getElementById('cadastroIndividualDeCredenciais');
     if (opcaoCadastroIndividual.className !== "mt-3 d-none") {
-        console.log("cadastro individual");
-
         /**
          * Obtém a quantidade de credenciais informada pelo usuário para cada dia do evento
          */
@@ -53,8 +51,6 @@ CadastrarTotalDeCredenciais.addEventListener("click", async () => {
 
         // Calcula a quantidade total de credenciais informadas pelo usuário
         const qtdeTotalCredenciais = parseInt(qtdeCredenciaisSexta) + parseInt(qtdeCredenciaisSabado) + parseInt(qtdeCredenciaisDomingo);
-        console.log(qtdeTotalCredenciais);
-
         /**
          * Verifica se a quantidade de credenciais informada para cada dia é válida (maior que zero) 
          * e a cadastra no banco de dados
