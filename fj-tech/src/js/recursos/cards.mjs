@@ -38,7 +38,7 @@ querySnapshot.forEach((doc) => {
 
     // Dados referentes à distribuição de Credenciais
     if (doc.id === "credencial") {
-        document.getElementById("credenciaisTotal").innerHTML = doc.data().qtde_credencial;
+        document.getElementById("credenciaisTotal").innerHTML = doc.data().qtde_credenciais;
         document.getElementById("credenciaisEmUso").innerHTML = doc.data().qtde_credencial_usada;
         document.getElementById("credenciaisDisponiveis").innerHTML = doc.data().qtde_credencial_disponivel;
     }
