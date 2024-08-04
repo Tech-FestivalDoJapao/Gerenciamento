@@ -15,8 +15,7 @@ Atualmente, o sistema está disponível apenas para plataformas web, de modo que
 | [Ficha de Inscrição para Voluntários](https://tech-festivaldojapao.github.io/Gerenciamento/voluntario.html) |
 | [Ficha de Disponibilidade do Voluntário](https://tech-festivaldojapao.github.io/Gerenciamento/horas.html) |
 
-### Demonstração
-![Demo](https://github.com/Tech-FestivalDoJapao/Gerenciamento/assets/164685231/49769f94-ac78-4758-a180-92aa8f8a4909)
+
 
 ## Estrutura 
 O esquema abaixo representa a estrutura de pastas do projeto:
