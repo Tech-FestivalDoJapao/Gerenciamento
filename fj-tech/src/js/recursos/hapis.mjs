@@ -9,13 +9,11 @@ import './cards.mjs';
  */
 const CadastrarTotalDeHapis = document.getElementById("btnCadastrarHapis");
 CadastrarTotalDeHapis.addEventListener("click", async () => {
-    console.log("Cadastrar hapis");
     /**
      * Obtém a opção de cadastro único de hapis selecionada pelo usuário
      */
     const opcaoCadastroUnico = document.getElementById('cadastroUnicoDeHapis');
     if (opcaoCadastroUnico.className !== "mt-3 d-none") {
-        console.log("Cadastro único de hapis");
         /**
          * Obtém a quantidade de hapis informada pelo usuário 
          */
@@ -28,7 +26,7 @@ CadastrarTotalDeHapis.addEventListener("click", async () => {
             try {
                 await setDoc(doc(db, "recursos", "hapi"), {
                     qtde_hapi: parseInt(qtdeHapis),
-                    qtde_hapi_disponivel: 0,
+                    qtde_hapi_disponivel: parseInt(qtdeHapis),
                     qtde_hapi_usado: 0
                 });
 
@@ -44,7 +42,6 @@ CadastrarTotalDeHapis.addEventListener("click", async () => {
      */
     const opcaoCadastroIndividual = document.getElementById('cadastroIndividualDeHapis');
     if (opcaoCadastroIndividual.className !== "mt-3 d-none") {
-        console.log("Cadastro individual de hapis");
         /**
          * Obtém a quantidade de hapis informada pelo usuário para cada dia do evento
          */
@@ -63,7 +60,7 @@ CadastrarTotalDeHapis.addEventListener("click", async () => {
             try {
                 await setDoc(doc(db, "recursos", "hapi"), {
                     qtde_hapi: qtdeTotalHapis,
-                    qtde_hapi_disponivel: 0,
+                    qtde_hapi_disponivel: qtdeTotalHapis,
                     qtde_hapi_usado: 0,
 
                     // Hapis por dia (não é necessário, mas pode ser útil)
@@ -78,4 +75,34 @@ CadastrarTotalDeHapis.addEventListener("click", async () => {
             }
         }
     }
+
+    // Reseta o estado do modal de cadastro de hapis
+    desmarcaOpcoesDeCadastro();
+    limparCampos();
 });
+
+/**
+ * Limpa os valores de todos os campos do modal de cadastro de quantidade de hapis
+ */
+function limparCampos() {
+    // Opção de adastro único
+    document.getElementById('qtdeHapisEvento').value = "";
+
+    // Opção de cadastro individual
+    document.getElementById('qtdeHapisDia1').value = "";
+    document.getElementById('qtdeHapisDia2').value = "";
+    document.getElementById('qtdeHapisDia3').value = "";
+};
+
+/**
+ * Desmarca as opções de cadastro de hapis e oculta seus respectivos formulários
+ */
+function desmarcaOpcoesDeCadastro() {
+    // Opção de adastro único
+    document.getElementById('cadastroUnicoDeHapis').removeAttribute('checked');
+    document.getElementById('cadastroUnicoDeHapis').classList.add('d-none');
+
+    // Opção de cadastro individual
+    document.getElementById('cadastroIndividualDeHapis').removeAttribute('checked');
+    document.getElementById('cadastroIndividualDeHapis').classList.add('d-none');
+}

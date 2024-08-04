@@ -26,7 +26,7 @@ CadastrarTotalDeCredenciais.addEventListener("click", async () => {
             try {
                 await setDoc(doc(db, "recursos", "credencial"), {
                     qtde_credenciais: parseInt(qtdeCredenciais),
-                    qtde_credencial_disponivel: 0,
+                    qtde_credencial_disponivel: parseInt(qtdeCredenciais),
                     qtde_credencial_usada: 0
                 });
 
@@ -59,7 +59,7 @@ CadastrarTotalDeCredenciais.addEventListener("click", async () => {
             try {
                 await setDoc(doc(db, "recursos", "credencial"), {
                     qtde_credenciais: qtdeTotalCredenciais,
-                    qtde_credencial_disponivel: 0,
+                    qtde_credencial_disponivel: qtdeTotalCredenciais,
                     qtde_credencial_usada: 0,
 
                     // Credenciais por dia (não é necessário, mas pode ser útil)
@@ -74,4 +74,34 @@ CadastrarTotalDeCredenciais.addEventListener("click", async () => {
             }
         }
     }
+
+    // Reseta o estado do modal de cadastro de credenciais
+    desmarcaOpcoesDeCadastro();
+    limparCampos();
 });
+
+/**
+ * Limpa os valores de todos os campos do modal de cadastro de quantidade de credenciais
+ */
+function limparCampos() {
+    // Opção de adastro único
+    document.getElementById('qtdeCredenciaisEvento').value = "";
+
+    // Opção de cadastro individual
+    document.getElementById('qtdeCredenciaisDia1').value = "";
+    document.getElementById('qtdeCredenciaisDia2').value = "";
+    document.getElementById('qtdeCredenciaisDia3').value = "";
+};
+
+/**
+ * Desmarca as opções de cadastro de credenciais e oculta seus respectivos formulários
+ */
+function desmarcaOpcoesDeCadastro() {
+    // Opção de adastro único
+    document.getElementById('cadastroUnicoDeCredenciais').removeAttribute('checked');
+    document.getElementById('cadastroUnicoDeCredenciais').classList.add('d-none');
+
+    // Opção de cadastro individual
+    document.getElementById('cadastroIndividualDeCredenciais').removeAttribute('checked');
+    document.getElementById('cadastroIndividualDeCredenciais').classList.add('d-none');
+}
