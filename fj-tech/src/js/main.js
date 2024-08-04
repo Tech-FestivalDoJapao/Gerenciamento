@@ -14,6 +14,8 @@ import './voluntarios/festival/tamanho_hapi.mjs'
 import './recursos/cards.mjs'
 import './recursos/voluntario.mjs'
 import './recursos/credenciais.mjs'
+import './recursos/hapis.mjs'
+import './recursos/vouchers.mjs'
 
 // Componentes do sistema
 import './filtro.mjs' 
@@ -42,8 +44,7 @@ document.getElementById("anoCriacaoProjeto").innerHTML = anoCriacaoDoProjeto;
  * Identifica o dia atual do evento
  */
 const dataAtual = new Date();
-document.getElementById("diaAtualEvento").innerHTML = dataAtual.getDate() + "/" + dataAtual.getMonth().toString().padStart(2, "0");
-
+document.getElementById("diaAtualEvento").innerHTML = dataAtual.getDate().toString().padStart(2, "0") + "/" + dataAtual.getMonth().toString().padStart(2, "0");
 
 /**
  * TODO

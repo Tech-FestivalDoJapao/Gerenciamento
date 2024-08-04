@@ -1,6 +1,6 @@
 import { db } from "./firebaseConfig.mjs";
 
-import { getFirestore, collection, addDoc, serverTimestamp, Timestamp } from "firebase/firestore";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 //const nomeVoluntario = document.getElementById("nomeCompletoDoVoluntario").value;
 

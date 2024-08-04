@@ -28,7 +28,7 @@ querySnapshot.forEach((doc) => {
         //const totalDeVouchers = (vouchersAlmoco + vouchersJantar + vouchersLanche);
         const totalDeVouchersDisponiveis = (doc.data().qtde_vouchers_disponiveis - doc.data().qtde_vouchers_usado);
 
-        document.getElementById("vouchersTotal").innerHTML = doc.data().qtde_vouchers_disponiveis;
+        document.getElementById("vouchersTotal").innerHTML = doc.data().qtde_vouchers;
             document.getElementById("vouchersAlmoco").innerHTML = vouchersAlmoco;
             document.getElementById("vouchersJantar").innerHTML = vouchersJantar;
             document.getElementById("vouchersKitLanche").innerHTML = vouchersLanche;
@@ -38,7 +38,7 @@ querySnapshot.forEach((doc) => {
 
     // Dados referentes à distribuição de Credenciais
     if (doc.id === "credencial") {
-        document.getElementById("credenciaisTotal").innerHTML = doc.data().qtde_credencial;
+        document.getElementById("credenciaisTotal").innerHTML = doc.data().qtde_credenciais;
         document.getElementById("credenciaisEmUso").innerHTML = doc.data().qtde_credencial_usada;
         document.getElementById("credenciaisDisponiveis").innerHTML = doc.data().qtde_credencial_disponivel;
     }
