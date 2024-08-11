@@ -6,16 +6,11 @@
 # FJ Tech
 O aplicativo FJ Tech visa atender as necessidades gerenciais identificadas no Festival do Japão, agilizando os processos referentes à gestão de voluntários e dos recursos utilizados por eles, como a distribuição de uniformes (hapis) e vouchers, para as próximas edições do evento
 
-### Plataformas
-Atualmente, o sistema está disponível apenas para plataformas web, de modo que é possível acessá-lo através dos links abaixo:
-
-| ![](https://img.shields.io/badge/Web-black.svg?style=for-the-badge&logo=google-chrome) | 
-| -------- | 
-| [Sistema de Gerenciamento](https://tech-festivaldojapao.github.io/Gerenciamento) | 
-| [Ficha de Inscrição para Voluntários](https://tech-festivaldojapao.github.io/Gerenciamento/voluntario.html) |
-| [Ficha de Disponibilidade do Voluntário](https://tech-festivaldojapao.github.io/Gerenciamento/horas.html) |
-
-
+> [!IMPORTANT]
+> Atualmente, o sistema está disponível apenas para **plataformas web**, de modo que é possível acessá-lo através dos links abaixo:
+> - [Sistema de Gerenciamento](https://tech-festivaldojapao.github.io/Gerenciamento) 
+>   - [Ficha de Inscrição para Voluntários](https://tech-festivaldojapao.github.io/Gerenciamento/voluntario.html) 
+>   - [Ficha de Disponibilidade do Voluntário](https://tech-festivaldojapao.github.io/Gerenciamento/horas.html)
 
 ## Estrutura 
 O esquema abaixo representa a estrutura de pastas do projeto:
@@ -36,7 +31,7 @@ fj-tech/
 ├── package.json
 └── webpack.config.js
 ```
-> <small>Apenas os principais arquivos foram listados, navegue pelos diretórios para ver a estruturação dos arquivos na íntegra</small>
+> <small> Apenas os principais arquivos foram listados, navegue pelos diretórios para ver a estruturação dos arquivos na íntegra </small>
 
 ### Como rodar o projeto localmente
 ```sh
