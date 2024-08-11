@@ -1050,7 +1050,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div>
+                                                <div id="vouchersPorTipo" class="d-none">
                                                     <p>Quantidade de vouchers disponíveis por tipo</p>
                                                     <ul>
                                                         <li>Almoço: <spam id="vouchersAlmoco"></spam>
@@ -1275,7 +1275,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <!-- Opções de cadastro de hapis -->
+                                            <!-- Opções de cadastro de vouchers -->
                                             <form>
                                                 <div class="mb-4">
                                                     <legend class="col-form-label mt-1">
@@ -1288,6 +1288,7 @@
                                                             onclick="
                                                                 document.getElementById('cadastroUnicoDeVouchers').classList.remove('d-none');
                                                                 document.getElementById('cadastroIndividualDeVouchers').classList.add('d-none');
+                                                                document.getElementById('cadastroPorTipoDeVoucher').classList.add('d-none');
                                                                 ">
                                                         <label class="form-check-label" for="cadastroUnicoVoucher">
                                                             Cadastro único, a mesma quantidade para todos os dias do
@@ -1300,10 +1301,23 @@
                                                             onclick="
                                                                 document.getElementById('cadastroUnicoDeVouchers').classList.add('d-none');
                                                                 document.getElementById('cadastroIndividualDeVouchers').classList.remove('d-none');
+                                                                document.getElementById('cadastroPorTipoDeVoucher').classList.add('d-none');
                                                                 ">
                                                         <label class="form-check-label" for="cadastroIndividualVoucher">
                                                             Cadastro individual, quantidades específicas para cada dia
                                                             do evento
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="formaCadastroVoucher" id="cadastroTipoVoucher"
+                                                            onclick="
+                                                                document.getElementById('cadastroUnicoDeVouchers').classList.add('d-none');
+                                                                document.getElementById('cadastroIndividualDeVouchers').classList.add('d-none');
+                                                                document.getElementById('cadastroPorTipoDeVoucher').classList.remove('d-none');
+                                                                ">
+                                                        <label class="form-check-label" for="cadastroTipoVoucher">
+                                                            Cadastro por tipo de voucher
                                                         </label>
                                                     </div>
                                                 </div>
@@ -1321,7 +1335,59 @@
                                                 </div>
 
                                                 <div id="cadastroIndividualDeVouchers" class="mt-3 d-none">
-                                                    <!-- Opções de cadastro de vouchers para cada dia do evento -->
+                                                    <p>Informe a quantidade de vouchers por dia:</p>
+                                                    <div class="row mb-1">
+                                                        <label for="qtdeVouchersDia1"
+                                                            class="col-sm-6 col-md-4 col-form-label">Sexta-feira</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                            <input type="number" class="form-control"
+                                                                id="qtdeVouchersDia1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-1">
+                                                        <label for="qtdeVouchersDia2"
+                                                            class="col-sm-6 col-md-4 col-form-label">Sábado</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                            <input type="number" class="form-control"
+                                                                id="qtdeVouchersDia2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-1">
+                                                        <label for="qtdeVouchersDia3"
+                                                            class="col-sm-6 col-md-4 col-form-label">Domingo</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                            <input type="number" class="form-control"
+                                                                id="qtdeVouchersDia3">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="cadastroPorTipoDeVoucher" class="mt-3 d-none">
+                                                    <p>Informe a quantidade de hapis por tipo:</p>
+                                                    <div class="row mb-1">
+                                                        <label for="qtdeVouchersAlmoco"
+                                                            class="col-sm-6 col-md-4 col-form-label">Almoço</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                            <input type="number" class="form-control"
+                                                                id="qtdeVouchersAlmoco">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-1">
+                                                        <label for="qtdeVouchersJantar"
+                                                            class="col-sm-6 col-md-4 col-form-label">Jantar</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                            <input type="number" class="form-control"
+                                                                id="qtdeVouchersJantar">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-1">
+                                                        <label for="qtdeVouchersKitLanche"
+                                                            class="col-sm-6 col-md-4 col-form-label">Kit lanche</label>
+                                                        <div class="col-sm-6 col-md-4">
+                                                            <input type="number" class="form-control"
+                                                                id="qtdeVouchersKitLanche">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>

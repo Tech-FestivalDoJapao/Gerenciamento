@@ -24,14 +24,19 @@ querySnapshot.forEach((doc) => {
         const vouchersJantar = doc.data().qtde_vouchers_por_tipo.qtde_voucher_jantar;
         const vouchersLanche = doc.data().qtde_vouchers_por_tipo.qtde_voucher_lanche;
 
+        // Exibe o card com a quantidade de vouchers por tipo
+        if (vouchersAlmoco !== null || vouchersJantar !== null || vouchersLanche !== null) {
+            document.getElementById('vouchersPorTipo').classList.remove('d-none');
+        }
+
         // Recalcula o total de vouchers disponiveis sempre que um voucher é resgatado
         //const totalDeVouchers = (vouchersAlmoco + vouchersJantar + vouchersLanche);
         const totalDeVouchersDisponiveis = (doc.data().qtde_vouchers_disponiveis - doc.data().qtde_vouchers_usado);
 
         document.getElementById("vouchersTotal").innerHTML = doc.data().qtde_vouchers;
-            document.getElementById("vouchersAlmoco").innerHTML = vouchersAlmoco;
-            document.getElementById("vouchersJantar").innerHTML = vouchersJantar;
-            document.getElementById("vouchersKitLanche").innerHTML = vouchersLanche;
+        document.getElementById("vouchersAlmoco").innerHTML = vouchersAlmoco;
+        document.getElementById("vouchersJantar").innerHTML = vouchersJantar;
+        document.getElementById("vouchersKitLanche").innerHTML = vouchersLanche;
         document.getElementById("vouchersDisponiveis").innerHTML = totalDeVouchersDisponiveis;
         document.getElementById("vouchersResgatados").innerHTML = doc.data().qtde_vouchers_usado;
     }

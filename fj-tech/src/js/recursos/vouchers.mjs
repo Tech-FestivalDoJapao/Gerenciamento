@@ -29,12 +29,19 @@ CadastrarTotalDeVouchers.addEventListener("click", async () => {
                     qtde_vouchers_disponiveis: parseInt(qtdeVouchers),
                     qtde_vouchers_usado: 0,
 
+                    // Vouchers por dia (não é necessário, mas pode ser útil)
+                    qtde_vouchers_por_dia: {
+                        qtde_voucher_sexta: null,
+                        qtde_voucher_sabado: null,
+                        qtde_voucher_domingo: null
+                    }, 
+
                     // Vouchers por tipo (não é necessário, mas pode ser útil)
                     qtde_vouchers_por_tipo: {
-                        qtde_voucher_almoco: 0,
-                        qtde_voucher_jantar: 0,
-                        qtde_voucher_lanche: 0
-                    }                    
+                        qtde_voucher_almoco: null,
+                        qtde_voucher_jantar: null,
+                        qtde_voucher_lanche: null
+                    }        
                 });
 
                 console.log("Vouchers cadastrados com sucesso!");
@@ -45,13 +52,98 @@ CadastrarTotalDeVouchers.addEventListener("click", async () => {
     }
 
     /**
-     * TODO: Obtém a opção de cadastro individual de vouchers selecionada pelo usuário
+     * Obtém a opção de cadastro individual de vouchers selecionada pelo usuário
      */
     const opcaoCadastroIndividual = document.getElementById('cadastroIndividualDeVouchers');
     if (opcaoCadastroIndividual.className !== "mt-3 d-none") {
         /**
-         * TODO: Obtém a quantidade de vouchers informada pelo usuário para cada dia do evento
+         * Obtém a quantidade de vouchers informada pelo usuário para cada dia do evento
          */
+        const qtdeVouchersSexta = document.getElementById('qtdeVouchersDia1').value;
+        const qtdeVouchersSabado = document.getElementById('qtdeVouchersDia2').value;
+        const qtdeVouchersDomingo = document.getElementById('qtdeVouchersDia3').value;
+
+        // Calcula a quantidade total de vouchers informadas pelo usuário
+        const qtdeTotalVouchers = parseInt(qtdeVouchersSexta) + parseInt(qtdeVouchersSabado) + parseInt(qtdeVouchersDomingo);
+        /**
+         * Verifica se a quantidade de vouchers informada para cada dia é válida (maior que zero) 
+         * e a cadastra no banco de dados
+         */
+        if (qtdeVouchersSexta && qtdeVouchersSabado && qtdeVouchersDomingo > 0) {
+            try {
+                await setDoc(doc(db, "recursos", "voucher"), {
+                    qtde_vouchers: qtdeTotalVouchers,
+                    qtde_vouchers_disponiveis: qtdeTotalVouchers,
+                    qtde_vouchers_usado: 0,
+
+                    // Vouchers por dia (não é necessário, mas pode ser útil)
+                    qtde_vouchers_por_dia: {
+                        qtde_voucher_sexta: parseInt(qtdeVouchersSexta),
+                        qtde_voucher_sabado: parseInt(qtdeVouchersSabado),
+                        qtde_voucher_domingo: parseInt(qtdeVouchersDomingo)
+                    }, 
+
+                    // Vouchers por tipo (não é necessário, mas pode ser útil)
+                    qtde_vouchers_por_tipo: {
+                        qtde_voucher_almoco: null,
+                        qtde_voucher_jantar: null,
+                        qtde_voucher_lanche: null
+                    }
+                });
+
+                console.log("Vouchers cadastrados com sucesso!");
+            } catch (erro) {
+                console.error("Erro ao cadastrar vouchers: \n" + erro);
+            }
+        }
+    };
+
+    /**
+     * Obtém a opção de cadastro de vouchers por tipo selecionada pelo usuário
+     */
+    const opcaoCadastroPorTipo = document.getElementById('cadastroPorTipoDeVoucher');
+    if (opcaoCadastroPorTipo.className !== "mt-3 d-none") {
+        /**
+         * TODO: Obtém a quantidade de vouchers informada pelo usuário para cada tipo (almoço, jantar, lanche)
+         */
+        const qtdeVouchersAlmoco = document.getElementById('qtdeVouchersAlmoco').value;
+        const qtdeVouchersJantar = document.getElementById('qtdeVouchersJantar').value;
+        const qtdeVouchersKitLanche = document.getElementById('qtdeVouchersKitLanche').value;
+
+        // Calcula a quantidade total de vouchers informadas pelo usuário
+        const qtdeTotalVouchers = parseInt(qtdeVouchersAlmoco) + parseInt(qtdeVouchersJantar) + parseInt(qtdeVouchersKitLanche);
+        console.log(qtdeTotalVouchers);
+        /**
+         * Verifica se a quantidade de vouchers informada para cada tipo é válida (maior que zero)
+         * e a cadastra no banco de dados
+         *  */
+        if (qtdeVouchersAlmoco && qtdeVouchersJantar && qtdeVouchersKitLanche > 0) {
+            try {
+                await setDoc(doc(db, "recursos", "voucher"), {
+                    qtde_vouchers: qtdeTotalVouchers,
+                    qtde_vouchers_disponiveis: qtdeTotalVouchers,
+                    qtde_vouchers_usado: 0,
+
+                    // Vouchers por dia (não é necessário, mas pode ser útil)
+                    qtde_vouchers_por_dia: {
+                        qtde_voucher_sexta: null,
+                        qtde_voucher_sabado: null,
+                        qtde_voucher_domingo: null
+                    }, 
+
+                    // Vouchers por tipo (não é necessário, mas pode ser útil)
+                    qtde_vouchers_por_tipo: {
+                        qtde_voucher_almoco: parseInt(qtdeVouchersAlmoco),
+                        qtde_voucher_jantar: parseInt(qtdeVouchersJantar),
+                        qtde_voucher_lanche: parseInt(qtdeVouchersKitLanche)
+                    }
+                });
+
+                console.log("Vouchers cadastrados com sucesso!");
+            } catch (erro) {
+                console.error("Erro ao cadastrar vouchers: \n" + erro);
+            }
+        }
     };
 
     // Reseta o estado do modal de cadastro de vouchers
@@ -67,6 +159,14 @@ function limparCampos() {
     document.getElementById('qtdeVouchersEvento').value = "";
 
     // TODO: Opção de cadastro individual
+    document.getElementById('qtdeVouchersDia1').value = "";
+    document.getElementById('qtdeVouchersDia2').value = "";
+    document.getElementById('qtdeVouchersDia3').value = "";
+
+    // TODO: Opção de cadastro por tipo
+    document.getElementById('qtdeVouchersAlmoco').value = "";
+    document.getElementById('qtdeVouchersJantar').value = "";
+    document.getElementById('qtdeVouchersKitLanche').value = "";
 };
 
 /**
@@ -75,9 +175,13 @@ function limparCampos() {
 function desmarcaOpcoesDeCadastro() {
     // Opção de adastro único
     document.getElementById('cadastroUnicoVoucher').removeAttribute('checked');
-    document.getElementById('cadastroUnicoVoucher').classList.add('d-none');
+    document.getElementById('cadastroUnicoDeVouchers').classList.add('d-none');
 
     // Opção de cadastro individual
     document.getElementById('cadastroIndividualVoucher').removeAttribute('checked');
-    document.getElementById('cadastroIndividualVoucher').classList.add('d-none');
+    document.getElementById('cadastroIndividualDeVouchers').classList.add('d-none');
+
+    // Opção de cadastro por tipo
+    document.getElementById('cadastroTipoVoucher').removeAttribute('checked');
+    document.getElementById('cadastroPorTipoDeVoucher').classList.add('d-none');
 }
