@@ -6,7 +6,7 @@ import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 try {
   const docRef = await addDoc(collection(db, "voluntario"), {
-    nome_completo_voluntario: "Nome ",
+    nome_completo_voluntario: "Nome Completo",
     cpf_voluntario: "000.000.000-00",
     contato_voluntario: {
       email_voluntario: "voluntario@email.com",

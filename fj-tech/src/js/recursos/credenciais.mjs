@@ -1,6 +1,6 @@
 // Initializa a integração com o Firebase
 import { db } from "../firebaseConfig.mjs";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 import './cards.mjs';
 
@@ -21,7 +21,7 @@ CadastrarTotalDeCredenciais.addEventListener("click", async () => {
         /**
          * Verifica se a quantidade de credenciais informada é válida (maior que zero) 
          * e a cadastra no banco de dados
-         */ 
+         */
         if (qtdeCredenciais > 0) {
             try {
                 await setDoc(doc(db, "recursos", "credencial"), {
@@ -30,9 +30,9 @@ CadastrarTotalDeCredenciais.addEventListener("click", async () => {
                     qtde_credencial_usada: 0
                 });
 
-                console.log("Credenciais cadastradas com sucesso!");                   
+                console.log("Credenciais cadastradas com sucesso!");
             } catch (erro) {
-                console.error("Erro ao cadastrar credenciais: \n" + erro); 
+                console.error("Erro ao cadastrar credenciais: \n" + erro);
             }
         }
     }
@@ -54,7 +54,7 @@ CadastrarTotalDeCredenciais.addEventListener("click", async () => {
         /**
          * Verifica se a quantidade de credenciais informada para cada dia é válida (maior que zero) 
          * e a cadastra no banco de dados
-         */ 
+         */
         if (qtdeCredenciaisSexta && qtdeCredenciaisSabado && qtdeCredenciaisDomingo > 0) {
             try {
                 await setDoc(doc(db, "recursos", "credencial"), {
@@ -68,9 +68,9 @@ CadastrarTotalDeCredenciais.addEventListener("click", async () => {
                     qtde_credencial_domingo: parseInt(qtdeCredenciaisDomingo)
                 });
 
-                console.log("Credenciais cadastradas com sucesso!");                   
+                console.log("Credenciais cadastradas com sucesso!");
             } catch (erro) {
-                console.error("Erro ao cadastrar credenciais: \n" + erro); 
+                console.error("Erro ao cadastrar credenciais: \n" + erro);
             }
         }
     }
@@ -78,6 +78,9 @@ CadastrarTotalDeCredenciais.addEventListener("click", async () => {
     // Reseta o estado do modal de cadastro de credenciais
     desmarcaOpcoesDeCadastro();
     limparCampos();
+
+    // Atualiza os card de credenciais na tela de recursos
+    atualizaInformacaoCard();
 });
 
 /**
@@ -104,4 +107,15 @@ function desmarcaOpcoesDeCadastro() {
     // Opção de cadastro individual
     document.getElementById('cadastroIndividualDeCredenciais').removeAttribute('checked');
     document.getElementById('cadastroIndividualDeCredenciais').classList.add('d-none');
+}
+
+/**
+ * Atualiza os dados de disponibilidade de credenciais após alguma açao do usuário
+ */
+async function atualizaInformacaoCard() {
+    const credencialDoc = await getDoc(doc(db, "recursos", "credencial"));
+
+    document.getElementById("credenciaisTotal").innerHTML = credencialDoc.data().qtde_credenciais;
+    document.getElementById("credenciaisEmUso").innerHTML = credencialDoc.data().qtde_credencial_usada;
+    document.getElementById("credenciaisDisponiveis").innerHTML = credencialDoc.data().qtde_credencial_disponivel;
 }

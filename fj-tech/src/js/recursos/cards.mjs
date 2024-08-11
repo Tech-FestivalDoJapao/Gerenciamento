@@ -29,9 +29,9 @@ querySnapshot.forEach((doc) => {
         const totalDeVouchersDisponiveis = (doc.data().qtde_vouchers_disponiveis - doc.data().qtde_vouchers_usado);
 
         document.getElementById("vouchersTotal").innerHTML = doc.data().qtde_vouchers;
-            document.getElementById("vouchersAlmoco").innerHTML = vouchersAlmoco;
-            document.getElementById("vouchersJantar").innerHTML = vouchersJantar;
-            document.getElementById("vouchersKitLanche").innerHTML = vouchersLanche;
+        document.getElementById("vouchersAlmoco").innerHTML = vouchersAlmoco;
+        document.getElementById("vouchersJantar").innerHTML = vouchersJantar;
+        document.getElementById("vouchersKitLanche").innerHTML = vouchersLanche;
         document.getElementById("vouchersDisponiveis").innerHTML = totalDeVouchersDisponiveis;
         document.getElementById("vouchersResgatados").innerHTML = doc.data().qtde_vouchers_usado;
     }

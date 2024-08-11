@@ -13,6 +13,9 @@ import './../lista.mjs';
  * Valida o código de credencial do voluntário
  */
 document.getElementById("cadastraCodigoCredencial").addEventListener("click", async () => {
+    let cod = document.getElementById("codigoCredencial").value;
+    console.log(cod);
+
     const codigoCredencial = document.getElementById("codigoCredencial");
 
     // Não permite a submissão de um código de credencial vazio nem com espaços em branco
@@ -26,7 +29,7 @@ document.getElementById("cadastraCodigoCredencial").addEventListener("click", as
         return;
     }
 
-    // Verifica se o código de credencial é válido
+    // Verifica se o código de credencial é válido (possui mais de 4 caracteres)
     if (codigoCredencial.value.length >= 4) {
          // Remove a validação do campo
         (document.getElementById("codigoCredencial").classList.contains("is-invalid")) 
@@ -42,15 +45,28 @@ document.getElementById("cadastraCodigoCredencial").addEventListener("click", as
 
         return;
     }
-});
 
-/**
- * TODO: Associa uma credencial válida ao usuário
- */
-document.getElementById("cadastraCodigoCredencial").addEventListener("click", async () => {
-    const credencial = document.getElementById("codigoCredencial").value;
+    /**
+     * Associa a credencial informada ao voluntário após a verificação da validade do código
+     */
     const nomeVoluntario = document.getElementById("nomeVoluntarioGerenciado").value;
+    const docVoluntario = document.getElementById("gestaoRecusosVoluntarioNoFestival").textContent;
 
-    // Verifica se o código de credencial é válido
+    // Busca o documento do voluntário no banco de dados
+    const docVoluntarioRef = doc(db, "voluntarios", docVoluntario);
+    const docVoluntarioSnap = await getDoc(docVoluntarioRef);
+
+    // Verifica se o documento do voluntário existe
+    if (docVoluntarioSnap.exists()) {
+        // Atualiza o documento do voluntário com o código de credencial
+        /*await db.collection("voluntarios").doc(docVoluntario).update({
+            codigoCredencial: codigoCredencial.value
+        });*/
+
+        console.log("Código de credencial cadastrado com sucesso!");
+    } else {
+        // Exibe uma mensagem de erro
+        document.getElementById("mensagemErro").classList.remove("d-none");
+        document.getElementById("mensagemSucesso").classList.add("d-none");
+    }
 });
-

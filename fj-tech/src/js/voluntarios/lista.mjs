@@ -180,5 +180,6 @@ document.getElementById("selecionaVoluntarioNaTabela").addEventListener("click",
 });
 
 /**
- * TODO: Atualiza a lista de voluntários após a adição, remoção ou atualização dos dados de um voluntário
+ * Atualiza a lista de voluntários após alguma ação como adição, remoção ou atualização dos dados de um voluntário
  */
+document.getElementById("corpoTabelaDeListagemDeVoluntarios").click();
