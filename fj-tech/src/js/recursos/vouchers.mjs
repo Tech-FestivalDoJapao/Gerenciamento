@@ -1,6 +1,6 @@
 // Initializa a integração com o Firebase
 import { db } from "../firebaseConfig.mjs";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 import './cards.mjs';
 
@@ -25,7 +25,7 @@ CadastrarTotalDeVouchers.addEventListener("click", async () => {
         if (qtdeVouchers > 0) {
             try {
                 await setDoc(doc(db, "recursos", "voucher"), {
-                    qtde_vouchers: parseInt(qtdeVouchers),                    
+                    qtde_vouchers: parseInt(qtdeVouchers),
                     qtde_vouchers_disponiveis: parseInt(qtdeVouchers),
                     qtde_vouchers_usado: 0,
 
@@ -34,14 +34,14 @@ CadastrarTotalDeVouchers.addEventListener("click", async () => {
                         qtde_voucher_sexta: null,
                         qtde_voucher_sabado: null,
                         qtde_voucher_domingo: null
-                    }, 
+                    },
 
                     // Vouchers por tipo (não é necessário, mas pode ser útil)
                     qtde_vouchers_por_tipo: {
                         qtde_voucher_almoco: null,
                         qtde_voucher_jantar: null,
                         qtde_voucher_lanche: null
-                    }        
+                    }
                 });
 
                 console.log("Vouchers cadastrados com sucesso!");
@@ -81,7 +81,7 @@ CadastrarTotalDeVouchers.addEventListener("click", async () => {
                         qtde_voucher_sexta: parseInt(qtdeVouchersSexta),
                         qtde_voucher_sabado: parseInt(qtdeVouchersSabado),
                         qtde_voucher_domingo: parseInt(qtdeVouchersDomingo)
-                    }, 
+                    },
 
                     // Vouchers por tipo (não é necessário, mas pode ser útil)
                     qtde_vouchers_por_tipo: {
@@ -112,7 +112,6 @@ CadastrarTotalDeVouchers.addEventListener("click", async () => {
 
         // Calcula a quantidade total de vouchers informadas pelo usuário
         const qtdeTotalVouchers = parseInt(qtdeVouchersAlmoco) + parseInt(qtdeVouchersJantar) + parseInt(qtdeVouchersKitLanche);
-        console.log(qtdeTotalVouchers);
         /**
          * Verifica se a quantidade de vouchers informada para cada tipo é válida (maior que zero)
          * e a cadastra no banco de dados
@@ -129,7 +128,7 @@ CadastrarTotalDeVouchers.addEventListener("click", async () => {
                         qtde_voucher_sexta: null,
                         qtde_voucher_sabado: null,
                         qtde_voucher_domingo: null
-                    }, 
+                    },
 
                     // Vouchers por tipo (não é necessário, mas pode ser útil)
                     qtde_vouchers_por_tipo: {
@@ -149,6 +148,9 @@ CadastrarTotalDeVouchers.addEventListener("click", async () => {
     // Reseta o estado do modal de cadastro de vouchers
     desmarcaOpcoesDeCadastro();
     limparCampos();
+
+    // Atualiza os card de vouchers na tela de recursos
+    atualizaInformacaoCard();
 });
 
 /**
@@ -185,3 +187,28 @@ function desmarcaOpcoesDeCadastro() {
     document.getElementById('cadastroTipoVoucher').removeAttribute('checked');
     document.getElementById('cadastroPorTipoDeVoucher').classList.add('d-none');
 }
+
+/**
+ * Atualiza os dados de disponibilidade de vouchers após alguma açao do usuário
+ */
+async function atualizaInformacaoCard() {
+    const voucherDoc = await getDoc(doc(db, "recursos", "voucher"));
+
+    document.getElementById("vouchersTotal").innerHTML = voucherDoc.data().qtde_vouchers;
+    document.getElementById("vouchersDisponiveis").innerHTML = voucherDoc.data().qtde_vouchers_disponiveis;
+    document.getElementById("vouchersResgatados").innerHTML = voucherDoc.data().qtde_vouchers_usado;
+
+    // Dados referentes à distribuição de Vouchers por tipo
+    const vouchersAlmoco = voucherDoc.data().qtde_vouchers_por_tipo.qtde_voucher_almoco;
+    const vouchersJantar = voucherDoc.data().qtde_vouchers_por_tipo.qtde_voucher_jantar;
+    const vouchersLanche = voucherDoc.data().qtde_vouchers_por_tipo.qtde_voucher_lanche;
+
+    // Exibe o card com a quantidade de vouchers por tipo
+    (vouchersAlmoco !== null || vouchersJantar !== null || vouchersLanche !== null)
+        ? document.getElementById('vouchersPorTipo').classList.remove('d-none')
+        : document.getElementById('vouchersPorTipo').classList.add('d-none');
+
+    document.getElementById("vouchersAlmoco").innerHTML = vouchersAlmoco;
+    document.getElementById("vouchersJantar").innerHTML = vouchersJantar;
+    document.getElementById("vouchersKitLanche").innerHTML = vouchersLanche;
+} 

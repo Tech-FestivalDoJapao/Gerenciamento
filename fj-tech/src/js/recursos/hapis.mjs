@@ -1,6 +1,6 @@
 // Initializa a integração com o Firebase
 import { db } from "../firebaseConfig.mjs";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 import './cards.mjs';
 
@@ -79,6 +79,9 @@ CadastrarTotalDeHapis.addEventListener("click", async () => {
     // Reseta o estado do modal de cadastro de hapis
     desmarcaOpcoesDeCadastro();
     limparCampos();
+
+    // Atualiza os card de hapis na tela de recursos
+    atualizaInformacaoCard();
 });
 
 /**
@@ -105,4 +108,15 @@ function desmarcaOpcoesDeCadastro() {
     // Opção de cadastro individual
     document.getElementById('cadastroIndividualDeHapis').removeAttribute('checked');
     document.getElementById('cadastroIndividualDeHapis').classList.add('d-none');
+}
+
+/**
+ * Atualiza os dados do card de disponibilidade de hapis após alguma açao do usuário
+ */
+async function atualizaInformacaoCard() {
+    const hapiDoc = await getDoc(doc(db, "recursos", "hapi"));
+
+    document.getElementById("hapisTotal").innerHTML = hapiDoc.data().qtde_hapi;
+    document.getElementById("hapisEmUso").innerHTML = hapiDoc.data().qtde_hapi_usado;
+    document.getElementById("hapisDisponiveis").innerHTML = hapiDoc.data().qtde_hapi_disponivel;
 }
