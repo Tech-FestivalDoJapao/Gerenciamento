@@ -112,17 +112,29 @@ try {
       },
       motivo_voluntariado: "Motivo do Voluntário para o Voluntariado",
       data_inscricao: Timestamp.fromDate(new Date()),
+      credencial: {
+        codigo_credencial: null,
+        data_emissao: null,
+      },
       horarios: {
-        horario_checkin: Timestamp.fromDate(new Date()),
-        horario_checkout: Timestamp.fromDate(new Date()),
+        horario_checkin: null,
+        horario_checkout: null,
         horario_intervalo: {
-          inicio_intervalo: Timestamp.fromDate(new Date()),
-          fim_intervalo: Timestamp.fromDate(new Date()),
+          inicio_intervalo: null,
+          fim_intervalo:  null,
         },
       },
     },
   });
-  console.log("Document written with ID: ", docRef.id);
+  console.log("Document written with ID:", docRef.id);
 } catch (e) {
-  console.error("Error adding document: ", e);
+  console.error("Erro ao cadastrar voluntário: ", e);
+}
+
+function mensagemCadastroBemSucedido(nomeVoluntario) {
+  alert(`Olá ${nomeVoluntario}, seu cadastro foi realizado com sucesso!`);
+}
+
+function mensagemErroCadastro(nomeVoluntario) {
+  alert(`Desculpe, ${nomeVoluntario}\nOcorreu um erro ao realizar seu cadastro de voluntário. Tente novamente.`);
 }

@@ -8,6 +8,13 @@ const querySnapshot = await getDocs(queryVoluntarios);
 
 querySnapshot.forEach((doc) => {
     /**
+     * Identifica o códiga de credencial alocado ao voluntário  
+     */
+    const codigoCredencial = (doc.data().voluntariado.credencial.codigo_credencial)
+        ? doc.data().voluntariado.credencial.codigo_credencial
+        : " - ";
+
+    /**
      * Torna as datas de check-in, check-out e intervalo legíveis
      */
     const checkIn = (doc.data().voluntariado.horarios.horario_checkin)
@@ -57,6 +64,9 @@ querySnapshot.forEach((doc) => {
             </td>
             <td>
                 ${status}
+            </td>
+            <td>
+                <p class="text-center"> ${codigoCredencial} </p>
             </td>
             <td>
                 <p class="text-center"> ${checkIn} </p>
@@ -156,14 +166,14 @@ document.getElementById("selecionaVoluntarioNaTabela").addEventListener("click",
 
     // Verifica se o checkbox de seleção de todos os voluntários está marcado
     if (event.target.checked) {
-            try {                
-                selecionarVoluntarios.forEach((voluntarioSelecionado) => {
-                    // Marca todos os checkboxes de voluntários como selecionados
-                    voluntarioSelecionado.checked = true;
-                });
-            } catch (erro) {
-                console.error("Não foi possível selecionar todos os voluntários da lista", erro);
-            }
+        try {                
+            selecionarVoluntarios.forEach((voluntarioSelecionado) => {
+                // Marca todos os checkboxes de voluntários como selecionados
+                voluntarioSelecionado.checked = true;
+            });
+        } catch (erro) {
+            console.error("Não foi possível selecionar todos os voluntários da lista", erro);
+        }
     } 
 
     // Verifica se o checkbox de seleção de todos os voluntários está desmarcado

@@ -47,6 +47,12 @@ const dataAtual = new Date();
 document.getElementById("diaAtualEvento").innerHTML = dataAtual.getDate().toString().padStart(2, "0") + "/" + dataAtual.getMonth().toString().padStart(2, "0");
 
 /**
+ * Habilita o uso de tooltips do boostatrap no sistema
+ */
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+/**
  * TODO
  * Validação do modal para desbloquear a área administrativa do sistema com o uso de uma palavra-chave
  */
