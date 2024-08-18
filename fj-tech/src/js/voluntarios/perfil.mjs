@@ -25,8 +25,8 @@ document.querySelectorAll("tr").forEach((tr) => {
              */
             document.getElementById("nomeCompletoDoVoluntario").value = perfil.data().nome_completo_voluntario;
             document.getElementById("cpfDoVoluntario").value = perfil.data().cpf_voluntario;
-            document.getElementById("emailDoVoluntario").value = perfil.data().contato_voluntario.email_voluntario;
-            document.getElementById("telefoneDoVoluntario").value = perfil.data().contato_voluntario.celular_voluntario;
+            document.getElementById("emailDoVoluntario").value = perfil.data().contato.email_voluntario;
+            document.getElementById("telefoneDoVoluntario").value = perfil.data().contato.celular_voluntario;
 
             (perfil.data().sexo_voluntario === "Masculino")
                 ? document.getElementById("sexoMasculino").checked = true
@@ -39,19 +39,19 @@ document.querySelectorAll("tr").forEach((tr) => {
             /**
              * Contato de Emergência
              */
-            document.getElementById("nomeContatoDoVoluntario").value = perfil.data().contato_emergencia_voluntario.nome_contato_emergencia;
-            document.getElementById("telefoneContatoDoVoluntario").value = perfil.data().contato_emergencia_voluntario.telefone_contato_emergencia;
+            document.getElementById("nomeContatoDoVoluntario").value = perfil.data().contato.emergencia.nome_contato_emergencia;
+            document.getElementById("telefoneContatoDoVoluntario").value = perfil.data().contato.emergencia.telefone_contato_emergencia;
 
             /**
              * Endereço do Voluntário
              */
             document.getElementById("cepDoVoluntario").setAttribute("readonly", true);
-            document.getElementById("cepDoVoluntario").value = perfil.data().endereco_voluntario.cep;
+            document.getElementById("cepDoVoluntario").value = perfil.data().endereco.cep;
 
-            document.getElementById("enderecoDoVoluntario").value = perfil.data().endereco_voluntario.logradouro;
-            document.getElementById("bairroDoVoluntario").value = perfil.data().endereco_voluntario.bairro;
-            document.getElementById("cidadeDoVoluntario").value = perfil.data().endereco_voluntario.cidade;
-            document.getElementById("estadoDoVoluntario").value = perfil.data().endereco_voluntario.estado;
+            document.getElementById("enderecoDoVoluntario").value = perfil.data().endereco.logradouro;
+            document.getElementById("bairroDoVoluntario").value = perfil.data().endereco.bairro;
+            document.getElementById("cidadeDoVoluntario").value = perfil.data().endereco.cidade;
+            document.getElementById("estadoDoVoluntario").value = perfil.data().endereco.estado;
 
             /**
              * Dados Adicionais

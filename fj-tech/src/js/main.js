@@ -56,7 +56,6 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
  * TODO
  * Validação do modal para desbloquear a área administrativa do sistema com o uso de uma palavra-chave
  */
-/*
 
 /**
  * Uso da API ViaCEP para preenchimento automático do endereço

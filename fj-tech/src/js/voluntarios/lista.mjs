@@ -1,33 +1,48 @@
 // Initializa a integração com o Firebase
 import { db } from "./../firebaseConfig.mjs";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, doc, query, where, getDoc, getDocs, orderBy } from "firebase/firestore";
+
+// Obtém o ano da edição atual do festival
+const edicaoAtualFestival = "2024";
 
 // Obtém a lista de voluntários do banco de dados
-const queryVoluntarios = query(collection(db, "voluntario"), where("nome_completo_voluntario", "!=", null));
-const querySnapshot = await getDocs(queryVoluntarios);
+const voluntarioCollection = collection(db, 'voluntario');
+const voluntarioSnapshot = await getDocs(voluntarioCollection);
 
-querySnapshot.forEach((doc) => {
-    /**
-     * Identifica o códiga de credencial alocado ao voluntário  
-     */
-    const codigoCredencial = (doc.data().voluntariado.credencial.codigo_credencial)
-        ? doc.data().voluntariado.credencial.codigo_credencial
+voluntarioSnapshot.forEach(async (voluntarioDoc) => {
+    const voluntario = voluntarioDoc.data();
+
+    const nomeCompletoVoluntario = voluntario.nome_completo_voluntario;
+    const emailVoluntario = voluntario.contato.email_voluntario;
+    const contatoVoluntario = voluntario.contato.celular_voluntario;
+
+    // Acessa a subcoleção "festival" e obtém o documento com edição atual do festival na subcoleção "festival" para o voluntario
+    const festivalCollection = doc(voluntarioDoc.ref, 'festival', edicaoAtualFestival);
+    const festivalSnapshot = await getDoc(festivalCollection);
+    const festival = festivalSnapshot.data();
+
+    const codigoCredencial = (festival.codigo_credencial_voluntario)
+        ? festival.codigo_credencial_voluntario
         : " - ";
 
+    /**
+     * TODO: Obtém o dia da semana atual para exibir os horários de check-in, checkout e intervalos do voluntário para cada dia do evento
+     */
+    
     /**
      * Torna as datas de check-in, check-out e intervalo legíveis
      */
-    const checkIn = (doc.data().voluntariado.horarios.horario_checkin)
-        ? new Date(doc.data().voluntariado.horarios.horario_checkin * 1000).toLocaleTimeString('pt-BR')
+    const checkIn = (festival.expediente.horarios_sexta.check_in)
+        ? new Date(festival.expediente.horarios_sexta.check_in * 1000).toLocaleTimeString('pt-BR')
         : " - ";
-    const inicioIntervalo = (doc.data().voluntariado.horarios.horario_intervalo.inicio_intervalo)
-        ? new Date(doc.data().voluntariado.horarios.horario_intervalo.inicio_intervalo * 1000).toLocaleTimeString('pt-BR')
+    const inicioIntervalo = (festival.expediente.horarios_sexta.intervalo.intervalo_1.inicio_intervalo)
+        ? new Date(festival.expediente.horarios_sexta.intervalo.intervalo_1.inicio_intervalo * 1000).toLocaleTimeString('pt-BR')
         : " - ";
-    const fimIntervalo = (doc.data().voluntariado.horarios.horario_intervalo.fim_intervalo)
-        ? new Date(doc.data().voluntariado.horarios.horario_intervalo.fim_intervalo * 1000).toLocaleTimeString('pt-BR')
+    const fimIntervalo = (festival.expediente.horarios_sexta.intervalo.intervalo_1.termino_intervalo)
+        ? new Date(festival.expediente.horarios_sexta.intervalo.intervalo_1.termino_intervalo * 1000).toLocaleTimeString('pt-BR')
         : " - ";
-    const checkOut = (doc.data().voluntariado.horarios.horario_checkout)
-        ? new Date(doc.data().voluntariado.horarios.horario_checkout * 1000).toLocaleTimeString('pt-BR')
+    const checkOut = (festival.expediente.horarios_sexta.check_out)
+        ? new Date(festival.expediente.horarios_sexta.check_out * 1000).toLocaleTimeString('pt-BR')
         : " - ";
 
     /**
@@ -45,22 +60,22 @@ querySnapshot.forEach((doc) => {
      * Insere os dados do voluntário na tabela de listagem de voluntários (corpoTabelaDeListagemDeVoluntarios)
      */
     document.getElementById("corpoTabelaDeListagemDeVoluntarios").innerHTML +=
-        `<tr id="${doc.id}">
+        `<tr id="${voluntarioDoc.id}">
             <th scope="row">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="${doc.id}" id="selecionaVoluntario" />
+                    <input class="form-check-input" type="checkbox" value="${voluntarioDoc.id}" id="selecionaVoluntario" />
                 </div>
             </th>
             <td>
                 <div class="d-flex align-items-center">
                     <div class="ms">
-                        <p class="fw-semibold mb-0"> ${doc.data().nome_completo_voluntario} </p>
-                        <p class="text-muted mb-0"> ${doc.data().contato_voluntario.email_voluntario} </p>
+                        <p class="fw-semibold mb-0"> ${nomeCompletoVoluntario} </p>
+                        <p class="text-muted mb-0"> ${emailVoluntario} </p>
                     </div>
                 </div>
             </td>
             <td>
-                <p class="fw-normal mb-1"> ${doc.data().contato_voluntario.celular_voluntario} </p>
+                <p class="fw-normal mb-1"> ${contatoVoluntario} </p>
             </td>
             <td>
                 ${status}
@@ -135,7 +150,7 @@ document.getElementById("buscaVoluntarioNaTabela").addEventListener("input", (ev
  */
 document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", (event) => {
     const identificaVoluntarioRemocao = event.target.closest("tr").id;
-    const docVoluntario = querySnapshot.docs.find((doc) => doc.id === identificaVoluntarioRemocao);
+    const docVoluntario = voluntarioSnapshot.docs.find((doc) => doc.id === identificaVoluntarioRemocao);
 
     document.getElementById("identificaRegistroVoluntario").innerText = `${docVoluntario.id}`;
     document.getElementById("nomeVoluntarioCandidatoRemocao").innerText = `${docVoluntario.data().nome_completo_voluntario}`;
@@ -147,14 +162,25 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
 document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", (event) => {
     const idVoluntarioPerfil = event.target.closest("tr").id;
 
-    const docVoluntario = querySnapshot.docs.find((doc) => doc.id === idVoluntarioPerfil);
-    const dataInscricaoVoluntario = new Date(docVoluntario.data().voluntariado.data_inscricao * 1000).toLocaleDateString('pt-BR');
+    const docVoluntario = voluntarioSnapshot.docs.find((doc) => doc.id === idVoluntarioPerfil);
+    const inscricaoVoluntario = getDoc(doc(docVoluntario, 'festival', edicaoAtualFestival)).data().data_inscricao;
+    const dataInscricaoVoluntario = new Date(inscricaoVoluntario * 1000).toLocaleDateString('pt-BR');
 
     document.getElementById("docVoluntarioPerfil").innerHTML = `ID: ${docVoluntario.id} | Voluntário desde ${dataInscricaoVoluntario}`;
-    
-    // Identifica o voluntário que receberá os recursos do festival através do offcanvas de gerenciamento de recursos
+});
+
+/**
+ * Identifica o voluntário que receberá os recursos do festival através do offcanvas de gerenciamento de recursos
+ */
+document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", (event) => {
+    const idVoluntarioPerfil = event.target.closest("tr").id;
+    const docVoluntario = voluntarioSnapshot.docs.find((doc) => doc.id === idVoluntarioPerfil);
+
     document.getElementById("nomeVoluntarioGerenciado").innerText = `${docVoluntario.data().nome_completo_voluntario}`;
     document.getElementById("gestaoRecusosVoluntarioNoFestival").innerText = `${docVoluntario.id}`;
+
+    // Adiciona o código de credencial previamente cadastrado
+    document.getElementById("codigoCredencial").value = getDoc(doc(voluntarioDoc.ref, 'festival', edicaoAtualFestival)).data().codigo_credencial_voluntario;
 });
 
 /**
@@ -166,15 +192,15 @@ document.getElementById("selecionaVoluntarioNaTabela").addEventListener("click",
 
     // Verifica se o checkbox de seleção de todos os voluntários está marcado
     if (event.target.checked) {
-        try {                
+        try {
             selecionarVoluntarios.forEach((voluntarioSelecionado) => {
                 // Marca todos os checkboxes de voluntários como selecionados
                 voluntarioSelecionado.checked = true;
             });
         } catch (erro) {
-            console.error("Não foi possível selecionar todos os voluntários da lista", erro);
+            console.erro("Não foi possível selecionar todos os voluntários da lista", erro);
         }
-    } 
+    }
 
     // Verifica se o checkbox de seleção de todos os voluntários está desmarcado
     if (!event.target.checked) {
@@ -184,7 +210,7 @@ document.getElementById("selecionaVoluntarioNaTabela").addEventListener("click",
                 voluntarioSelecionado.checked = false;
             });
         } catch (erro) {
-            console.error("Não foi possível deselecionar todos os voluntários da lista", erro);            
+            console.erro("Não foi possível deselecionar todos os voluntários da lista", erro);
         }
     }
 });
