@@ -41,12 +41,6 @@ if (anoCriacaoDoProjeto != anoAtual) {
 document.getElementById("anoCriacaoProjeto").innerHTML = anoCriacaoDoProjeto;
 
 /**
- * Identifica o dia atual do evento
- */
-const dataAtual = new Date();
-document.getElementById("diaAtualEvento").innerHTML = dataAtual.getDate().toString().padStart(2, "0") + "/" + dataAtual.getMonth().toString().padStart(2, "0");
-
-/**
  * Habilita o uso de tooltips do boostatrap no sistema
  */
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')

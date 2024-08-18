@@ -151,9 +151,10 @@ document.getElementById("buscaVoluntarioNaTabela").addEventListener("input", (ev
 document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", (event) => {
     const identificaVoluntarioRemocao = event.target.closest("tr").id;
     const docVoluntario = voluntarioSnapshot.docs.find((doc) => doc.id === identificaVoluntarioRemocao);
+    const nomeVoluntario = docVoluntario.data().nome_completo_voluntario;
 
     document.getElementById("identificaRegistroVoluntario").innerText = `${docVoluntario.id}`;
-    document.getElementById("nomeVoluntarioCandidatoRemocao").innerText = `${docVoluntario.data().nome_completo_voluntario}`;
+    document.getElementById("nomeVoluntarioCandidatoRemocao").innerText = `${nomeVoluntario}`;
 });
 
 /**
@@ -163,7 +164,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     const idVoluntarioPerfil = event.target.closest("tr").id;
 
     const docVoluntario = voluntarioSnapshot.docs.find((doc) => doc.id === idVoluntarioPerfil);
-    const inscricaoVoluntario = getDoc(doc(docVoluntario, 'festival', edicaoAtualFestival)).data().data_inscricao;
+    const inscricaoVoluntario = getDoc(doc(docVoluntario, 'festival', edicaoAtualFestival), data_inscricao);
     const dataInscricaoVoluntario = new Date(inscricaoVoluntario * 1000).toLocaleDateString('pt-BR');
 
     document.getElementById("docVoluntarioPerfil").innerHTML = `ID: ${docVoluntario.id} | Voluntário desde ${dataInscricaoVoluntario}`;
