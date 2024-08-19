@@ -164,9 +164,10 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     const idVoluntarioPerfil = event.target.closest("tr").id;
 
     const docVoluntario = voluntarioSnapshot.docs.find((doc) => doc.id === idVoluntarioPerfil);
-    const inscricaoVoluntario = getDoc(doc(docVoluntario, 'festival', edicaoAtualFestival), data_inscricao);
+    const inscricaoVoluntario = doc(docVoluntario.ref, 'festival', edicaoAtualFestival).data_inscricao;
     const dataInscricaoVoluntario = new Date(inscricaoVoluntario * 1000).toLocaleDateString('pt-BR');
 
+    //console.log("Dados do voluntário: ", docVoluntario.data());
     document.getElementById("docVoluntarioPerfil").innerHTML = `ID: ${docVoluntario.id} | Voluntário desde ${dataInscricaoVoluntario}`;
 });
 
@@ -179,9 +180,6 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
 
     document.getElementById("nomeVoluntarioGerenciado").innerText = `${docVoluntario.data().nome_completo_voluntario}`;
     document.getElementById("gestaoRecusosVoluntarioNoFestival").innerText = `${docVoluntario.id}`;
-
-    // Adiciona o código de credencial previamente cadastrado
-    document.getElementById("codigoCredencial").value = getDoc(doc(voluntarioDoc.ref, 'festival', edicaoAtualFestival)).data().codigo_credencial_voluntario;
 });
 
 /**
