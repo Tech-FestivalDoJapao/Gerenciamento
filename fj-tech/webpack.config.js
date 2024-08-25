@@ -3,9 +3,9 @@ const loader = require('sass-loader')
 
 module.exports = {
   entry: './src/js/main.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+  output: {    
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js'
   },
   devServer: {
     static: path.resolve(__dirname, 'dist'),

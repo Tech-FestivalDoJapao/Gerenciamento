@@ -1,4 +1,4 @@
-import { db } from "./firebaseConfig.mjs";
+import { db } from "../firebaseConfig.mjs";
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";

@@ -81,7 +81,7 @@ voluntarioSnapshot.forEach(async (voluntarioDoc) => {
                 ${status}
             </td>
             <td>
-                <p class="text-center"> ${codigoCredencial} </p>
+                <p class="text-center" id="credencial"> ${codigoCredencial} </p>
             </td>
             <td>
                 <p class="text-center"> ${checkIn} </p>
@@ -167,7 +167,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     const inscricaoVoluntario = doc(docVoluntario.ref, 'festival', edicaoAtualFestival).data_inscricao;
     const dataInscricaoVoluntario = new Date(inscricaoVoluntario * 1000).toLocaleDateString('pt-BR');
 
-    //console.log("Dados do voluntário: ", docVoluntario.data());
+    //console.assert("Dados do voluntário: ", docVoluntario.data());
     document.getElementById("docVoluntarioPerfil").innerHTML = `ID: ${docVoluntario.id} | Voluntário desde ${dataInscricaoVoluntario}`;
 });
 

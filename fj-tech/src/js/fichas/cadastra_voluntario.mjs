@@ -1,5 +1,5 @@
 // Initializa a integração com o Firebase
-import { db } from "./firebaseConfig.mjs";
+import { db } from "../firebaseConfig.mjs";
 import { collection, doc, addDoc, setDoc, Timestamp } from "firebase/firestore";
 
 const edicaoFestival = "2024";
