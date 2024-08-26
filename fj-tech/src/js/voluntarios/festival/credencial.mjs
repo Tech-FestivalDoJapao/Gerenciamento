@@ -1,11 +1,12 @@
 // Initializa a integração com o Firebase
 import { db } from "./../../firebaseConfig.mjs";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, Timestamp, updateDoc } from "firebase/firestore";
 
 import './../lista.mjs';
 
 // Obtém o ano da edição atual do festival
 const edicaoAtualFestival = "2024";
+// Obtém os elementos referentes ao código de credencial do voluntário
 const txtCredencial = document.getElementById("codigoCredencial");
 const btnCredencial = document.getElementById("cadastraCodigoCredencial");
 
@@ -21,6 +22,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     const festival = await getDoc(docFestivalRef);
 
     const credencialVoluntario = festival.data().codigo_credencial_voluntario;
+
     if (credencialVoluntario !== null) {
         bloquearCampoCredencial(credencialVoluntario);
         return;

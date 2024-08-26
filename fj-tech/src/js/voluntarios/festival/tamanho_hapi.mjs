@@ -1,38 +1,109 @@
 // Initializa a integração com o Firebase
 import { db } from "./../../firebaseConfig.mjs";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 import './../lista.mjs';
 
-/**
- * TODO: Valida a quantidade de hapis disponíveis por tamanho 
- */
-document.getElementById("tamanhoHapi").addEventListener("change", async () => {
-    const tamanhoHapi = document.getElementById("tamanhoHapi");
+// Obtém o ano da edição atual do festival
+const edicaoAtualFestival = "2024";
+// Obtém os elementos referentes ao resgate de hapi do voluntário
+const btnResgateHapi = document.getElementById("cadastraTamanhoHapi");
+const optTamanhoHapi = document.getElementById("tamanhoHapi");
+const txtResgateHapi = document.getElementById("informacoesResgateHapi");
 
-    // [TESTE] Se o tamanho do hapi for diferente de M, G ou GG exibe uma mensagem de erro
-    if (tamanhoHapi.value === "M" || tamanhoHapi.value === "G" || tamanhoHapi.value === "GG") {
-        tamanhoHapi.classList.remove("is-invalid");
-        tamanhoHapi.classList.add("is-valid");
-    } else {
-        tamanhoHapi.classList.remove("is-valid");
-        tamanhoHapi.classList.add("is-invalid");
+/**
+ * Exibe as informações refentes à edição atual do festival relacionadas ao voluntário
+ * no offcanvas de gestão de recursos do voluntário no festival
+ */
+document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", async (event) => {
+    // Limpa o campo de informações de resgate de hapi
+    txtResgateHapi.textContent = "";
+    // Habilita o campo de seleção de tamanho do hapi
+    desbloquearCampoHapi();
+    optTamanhoHapi.classList.remove("is-invalid");
+
+    // Acessa as informações do voluntário
+    const idVoluntario = event.target.closest("tr").id;
+    const docVoluntarioRef = doc(db, "voluntario", idVoluntario);
+    const docFestivalRef = doc(docVoluntarioRef, 'festival', edicaoAtualFestival);
+    const festival = await getDoc(docFestivalRef);
+
+    // Obtém o tamanho do hapi informado pelo voluntário durante o cadastro
+    const tamanhoHapi = festival.data().tamanho_hapi_voluntario;
+    const horaResgateHapi = (festival.data().hora_resgate_hapi)
+        ? festival.data().hora_resgate_hapi
+        : null;
+
+    // Exibe a informação de resgate do hapi do voluntário
+    if (horaResgateHapi !== null) {
+        txtResgateHapi.innerHTML = `<small class="opacity-50 m-0 px-4">Resgatado às ${horaResgateHapi.toDate().toLocaleTimeString()}</small>`;
+        bloquearCampoHapi();
     }
+
+    /**
+     * Caso o voluntário tenha informado o tamanho do hapi preferível, o tamanho escolhido é automaticamente exibido 
+     * como opção selecionada no campo de seleção de tamanho do hapi
+     */
+    if (tamanhoHapi !== null) {
+        optTamanhoHapi.value = tamanhoHapi;
+
+        return;
+    }
+    // Caso o voluntário não tenha informado o tamanho do hapi, o campo de seleção de tamanho do hapi é resetado
+    optTamanhoHapi.value = optTamanhoHapi.options[0].value;
+
+    /**
+     * Associa o tamanho do hapi selecionado ao voluntário
+     */
+    btnResgateHapi.addEventListener("click", async (event) => {
+        const tamanhoHapiDoVoluntario = optTamanhoHapi.value;
+
+        if (tamanhoHapiDoVoluntario !== optTamanhoHapi.options[0].value || tamanhoHapiDoVoluntario !== "Tamanho do hapi resgatado") {
+            await updateDoc(docFestivalRef, {
+                hora_resgate_hapi: new Date(),
+                tamanho_hapi_voluntario: tamanhoHapiDoVoluntario
+            }).then(() => {
+                console.log("Hapi associado com sucesso.");
+                
+                txtResgateHapi.innerHTML = `<small class="opacity-50 m-0 px-4">Resgatado às ${new Date().toLocaleTimeString()}</small>`;
+                bloquearCampoHapi();
+            }).catch(erro => {
+                console.error("Erro ao associar o tamanho do hapi ao voluntário.\n", erro);
+                desbloquearCampoHapi();
+            });
+        } else {
+            optTamanhoHapi.classList.add("is-invalid");
+            optTamanhoHapi.focus();
+        }
+    });
 });
 
 /**
- * TODO: Associa o tamanho do hapi selecionado ao voluntário
+ * Desabilita o botão de resgate de hapi, o campo de selção e exibe o tamanho do hapi do voluntário
+ * @param {String} tamanhoHapi 
  */
+function bloquearCampoHapi() {
+    // Exibe o tamanho do hapi do voluntário e bloqueia a edição do campo
+    optTamanhoHapi.value = optTamanhoHapi.value;
+    optTamanhoHapi.disabled = true;
 
-document.getElementById("cadastraTamanhoHapi").addEventListener("click", async (event) => {
-    event.preventDefault();
+    // Desabilita o botão de cadastro de tamanho do hapi
+    btnResgateHapi.disabled = true;
+    btnResgateHapi.style.cursor = "not-allowed";
+    btnResgateHapi.classList.remove("btn-danger");
+    btnResgateHapi.classList.add("btn-outline-danger");
+}
 
-    const idVoluntario = document.getElementById("gestaoRecusosVoluntarioNoFestival").value;
-    const tamanhoHapiDoVoluntario = document.getElementById("tamanhoHapi").value;
+/**
+ * Habilita o campo de seleção de tamanho do hapi e o botão de cadastro de tamanho do hapi
+ */
+function desbloquearCampoHapi() {
+    // Habilita o campo de seleção de tamanho do hapi
+    optTamanhoHapi.disabled = false;
 
-    try {
-        // Identifica o voluntário que irá resgatar o hapi no banco de dados
-    } catch (erro) {
-        console.error("Erro ao cadastrar o resgate do hapi pelo voluntário.\n", erro);
-    }
-});
+    // Habilita o botão de cadastro de tamanho do hapi
+    btnResgateHapi.disabled = false;
+    btnResgateHapi.style.cursor = "pointer";
+    btnResgateHapi.classList.remove("btn-outline-danger");
+    btnResgateHapi.classList.add("btn-danger");
+}

@@ -91,8 +91,9 @@ await addDoc(voluntarioRef, {
     const festivalRef = doc(collection(voluntarioRef, "festival"), edicaoFestival);
     setDoc(festivalRef, {
       data_inscricao: Timestamp.fromDate(new Date()),
+      hora_resgate_hapi: null,
 
-      codigo_credencial_voluntario: "000000",
+      codigo_credencial_voluntario: null,
       tamanho_hapi_voluntario: "M",
       lider_de_equipe_festival: false,
 
