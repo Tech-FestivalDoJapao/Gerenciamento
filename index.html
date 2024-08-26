@@ -414,7 +414,7 @@
                                                             <path
                                                                 d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
                                                         </svg>
-                                                        Check-in
+                                                        <spam id="horarioCheckIn">Check-in</spam>
                                                     </button>
                                                     <button type="button" class="btn btn-outline-danger col"
                                                         id="cadastraCheckOut">
@@ -424,16 +424,8 @@
                                                             <path
                                                                 d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
                                                         </svg>
-                                                        Checkout
+                                                        <spam id="horarioCheckOut">Checkout</spam>                                                        
                                                     </button>
-                                                </div>
-                                                <div class="hstack gap-3">
-                                                    <label class="form-label col opacity-75">
-                                                        <spam id="horarioCheckIn"></spam>
-                                                    </label>
-                                                    <label class="form-label col opacity-75">
-                                                        <spam id="horarioCheckOut"></spam>
-                                                    </label>
                                                 </div>
 
                                                 <div class="mt-2">
@@ -447,12 +439,11 @@
                                                             </svg>
                                                             Intervalo
                                                         </p>
-                                                        <button type="button" class="btn btn-danger">Iniciar</button>
-                                                        <button type="button"
-                                                            class="btn btn-outline-danger">Terminar</button>
+                                                        <button type="button" class="btn btn-danger" id="cadastraInicioIntervalo">Iniciar</button>
+                                                        <button type="button" class="btn btn-outline-danger" id="cadastraTerminoIntervalo">Terminar</button>
                                                     </div>
 
-                                                    <span id="horarioInicioIntervalo">
+                                                    <span id="horariosDeIntervalo">
                                                         <!-- Aqui você pode listar os horários de intervalo -->
                                                     </span>
                                                 </div>
@@ -465,7 +456,7 @@
                                             </p>
                                             <div class="mb-3 hstack gap-3 mt-2">
                                                 <select id="tamanhoHapi" class="form-select" required>
-                                                    <option selected hidden>Tamanho do hapi resgatado</option>
+                                                    <option null selected hidden>Tamanho do hapi resgatado</option>
                                                     <option value="P">P</option>
                                                     <option value="M">M</option>
                                                     <option value="G">G</option>
@@ -481,6 +472,7 @@
                                                     </svg>
                                                 </button>
                                             </div>
+                                            <spam id="informacoesResgateHapi"></spam>
                                         </div>
 
                                         <div class="mb-5">
@@ -504,6 +496,7 @@
                                                     </svg>
                                                 </button>
                                             </div>
+                                            <spam id="informacoesResgateVoucher"></spam>
                                         </div>
                                     </form>
                                 </div>
