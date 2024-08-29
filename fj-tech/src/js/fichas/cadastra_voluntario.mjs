@@ -94,7 +94,7 @@ await addDoc(voluntarioRef, {
       hora_resgate_hapi: null,
 
       codigo_credencial_voluntario: null,
-      tamanho_hapi_voluntario: "M",
+      tamanho_hapi_voluntario: null,
       lider_de_equipe_festival: false,
 
       // Informações adicionais do voluntariado

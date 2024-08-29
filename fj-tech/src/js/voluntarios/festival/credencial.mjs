@@ -1,6 +1,6 @@
 // Initializa a integração com o Firebase
 import { db } from "./../../firebaseConfig.mjs";
-import { doc, getDoc, Timestamp, updateDoc } from "firebase/firestore";
+import { doc, collection, getDoc, getDocs, query, updateDoc } from "firebase/firestore";
 
 import './../lista.mjs';
 
@@ -16,7 +16,7 @@ const btnCredencial = document.getElementById("cadastraCodigoCredencial");
  */
 document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", async (event) => {
     const idVoluntarioPerfil = event.target.closest("tr").id;
-    
+
     const docVoluntarioRef = doc(db, "voluntario", idVoluntarioPerfil);
     const docFestivalRef = doc(docVoluntarioRef, 'festival', edicaoAtualFestival);
     const festival = await getDoc(docFestivalRef);
@@ -25,10 +25,13 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
 
     if (credencialVoluntario !== null) {
         bloquearCampoCredencial(credencialVoluntario);
+        desbloquearCamposGerencais();
+
         return;
     }
 
     desbloquearCampoCredencial();
+    bloquearCamposGerencais();
 });
 
 /**
@@ -65,23 +68,61 @@ function desbloquearCampoCredencial() {
 }
 
 /**
+ * Bloqueia a edição dos campos de gestão de recursos do voluntário no festival
+ */
+function bloquearCamposGerencais() {
+    // Campos reláriosnados à horários de trabalho do voluntário
+    document.getElementById("cadastraCheckIn").setAttribute("disabled", true);
+    document.getElementById("cadastraCheckOut").setAttribute("disabled", true);
+    document.getElementById("cadastraInicioIntervalo").setAttribute("disabled", true);
+    document.getElementById("cadastraTerminoIntervalo").setAttribute("disabled", true);
+
+    // Campos relacionados à recursos utilizados pelo voluntário
+    // Hapi
+    document.getElementById("tamanhoHapi").setAttribute("disabled", true);
+    document.getElementById("cadastraTamanhoHapi").setAttribute("disabled", true);
+    // Voucher
+    document.getElementById("tipoVoucher").setAttribute("disabled", true);
+    document.getElementById("cadastraResgateVoucher").setAttribute("disabled", true);
+}
+
+/**
+ * Desbloqueia a edição dos campos de gestão de recursos do voluntário no festival
+ */
+function desbloquearCamposGerencais() {
+    // Campos reláriosnados à horários de trabalho do voluntário
+    document.getElementById("cadastraCheckIn").removeAttribute("disabled");
+    document.getElementById("cadastraCheckOut").removeAttribute("disabled");
+    document.getElementById("cadastraInicioIntervalo").removeAttribute("disabled");
+    document.getElementById("cadastraTerminoIntervalo").removeAttribute("disabled");
+
+    // Campos relacionados à recursos utilizados pelo voluntário
+    // Hapi
+    document.getElementById("tamanhoHapi").removeAttribute("disabled");
+    document.getElementById("cadastraTamanhoHapi").removeAttribute("disabled");
+    // Voucher
+    document.getElementById("tipoVoucher").removeAttribute("disabled");
+    document.getElementById("cadastraResgateVoucher").removeAttribute("disabled");
+}
+
+/**
  * Valida o código de credencial do voluntário que está sendo digitado
  */
 txtCredencial.addEventListener("input", () => {
     /**
      * Não permite a submissão de um código de credencial vazio nem com espaços em branco
      */
-    if (txtCredencial.value.trim() === null || txtCredencial.value.trim() === "" 
+    if (txtCredencial.value.trim() === null || txtCredencial.value.trim() === ""
         || txtCredencial.value.includes(" ") || txtCredencial.value.trim() === "0") {
-            txtCredencial.classList.add("is-invalid");
+        txtCredencial.classList.add("is-invalid");
 
-            return;
-    } 
+        return;
+    }
 
     /**
      * Não permite a submissão de um código de credencial com apenas zeros
      */
-    if (txtCredencial.value.trim() === "0".repeat(txtCredencial.value.length)) { 
+    if (txtCredencial.value.trim() === "0".repeat(txtCredencial.value.length)) {
         txtCredencial.classList.add("is-invalid");
 
         return;
@@ -110,15 +151,23 @@ btnCredencial.addEventListener("click", async () => {
         return;
     }
 
-    const idVoluntarioGerenciado = document.getElementById("gestaoRecusosVoluntarioNoFestival").textContent; 
+    /**
+     * TODO: Verifica se o código de credencial informado já foi cadastrado para outro voluntário
+     */
+
+    const idVoluntarioGerenciado = document.getElementById("gestaoRecusosVoluntarioNoFestival").textContent;
     const docVoluntarioRef = doc(db, "voluntario", idVoluntarioGerenciado);
-    const docFestivalRef = doc(docVoluntarioRef, 'festival', edicaoAtualFestival);    
+    const docFestivalRef = doc(docVoluntarioRef, 'festival', edicaoAtualFestival);
 
     // Set the value for codigo_credencial_voluntario field in docFestivalRef
     await updateDoc(docFestivalRef, {
         codigo_credencial_voluntario: txtCredencial.value
-    }).then(() => {        
-        console.log("Código de credencial cadastrado com sucesso!");           
+    }).then(() => {
+        console.log("Código de credencial cadastrado com sucesso!");
+
+        // Atualiza o valor da credencial na tabela apenas para o voluntário gerenciado
+        document.getElementById(idVoluntarioGerenciado).querySelector("#credencial").textContent = txtCredencial.value;
+        btnCredencial.setAttribute("disabled", true);
     }).catch((erro) => {
         console.error("Erro ao cadastrar o código de credencial: ", erro);
     });
