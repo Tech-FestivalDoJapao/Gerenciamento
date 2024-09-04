@@ -1,6 +1,6 @@
 // Initializa a integração com o Firebase
 import { db } from "./../firebaseConfig.mjs";
-import { collection, doc, query, where, getDoc, getDocs, orderBy } from "firebase/firestore";
+import { collection, doc, query, where, getDoc, getDocs, orderBy, CollectionReference } from "firebase/firestore";
 
 // Obtém o ano da edição atual do festival
 const edicaoAtualFestival = "2024";
@@ -145,41 +145,28 @@ document.getElementById("buscaVoluntarioNaTabela").addEventListener("input", (ev
 });
 
 /**
- * Identifica o voluntário que será removido da listagem de voluntários e exibe o nome do voluntário no modal de 
- * confirmação de remoção
+ * Identifica o voluntário que receberá a ação na listagem de voluntários e popula os campos relacionados à ele para cada ação
  */
-document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", (event) => {
-    const identificaVoluntarioRemocao = event.target.closest("tr").id;
-    const docVoluntario = voluntarioSnapshot.docs.find((doc) => doc.id === identificaVoluntarioRemocao);
+const listadeDeVoluntarios = document.getElementById("corpoTabelaDeListagemDeVoluntarios");
+listadeDeVoluntarios.addEventListener("click", (event) => {
+    const idVoluntario = event.target.closest("tr").id;
+    const docVoluntario = voluntarioSnapshot.docs.find((doc) => doc.id === idVoluntario);
+
+    // Informações dpo voluntário
+    const identificaVoluntario = docVoluntario.id;
     const nomeVoluntario = docVoluntario.data().nome_completo_voluntario;
-
-    document.getElementById("identificaRegistroVoluntario").innerText = `${docVoluntario.id}`;
+        
+    /**
+     * Identificação do voluntário no Modal de Confirmação de Remoção
+     */
+    document.getElementById("identificaRegistroVoluntario").innerText = `${identificaVoluntario}`;
     document.getElementById("nomeVoluntarioCandidatoRemocao").innerText = `${nomeVoluntario}`;
-});
 
-/**
- * Identifica o id do voluntário e a data de inscrição no modal de perfil do voluntário
- */
-document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", (event) => {
-    const idVoluntarioPerfil = event.target.closest("tr").id;
-
-    const docVoluntario = voluntarioSnapshot.docs.find((doc) => doc.id === idVoluntarioPerfil);
-    const inscricaoVoluntario = doc(docVoluntario.ref, 'festival', edicaoAtualFestival).data_inscricao;
-    const dataInscricaoVoluntario = new Date(inscricaoVoluntario * 1000).toLocaleDateString('pt-BR');
-
-    //console.assert("Dados do voluntário: ", docVoluntario.data());
-    document.getElementById("docVoluntarioPerfil").innerHTML = `ID: ${docVoluntario.id} | Voluntário desde ${dataInscricaoVoluntario}`;
-});
-
-/**
- * Identifica o voluntário que receberá os recursos do festival através do offcanvas de gerenciamento de recursos
- */
-document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", (event) => {
-    const idVoluntarioPerfil = event.target.closest("tr").id;
-    const docVoluntario = voluntarioSnapshot.docs.find((doc) => doc.id === idVoluntarioPerfil);
-
-    document.getElementById("nomeVoluntarioGerenciado").innerText = `${docVoluntario.data().nome_completo_voluntario}`;
-    document.getElementById("gestaoRecusosVoluntarioNoFestival").innerText = `${docVoluntario.id}`;
+    /**
+     * Identificação do voluntário no OffCanvas de Gerenciamento de Recursos 
+     */
+    document.getElementById("gestaoRecusosVoluntarioNoFestival").innerText = `${identificaVoluntario}`;
+    document.getElementById("nomeVoluntarioGerenciado").innerText = `${nomeVoluntario}`;
 });
 
 /**
@@ -217,4 +204,4 @@ document.getElementById("selecionaVoluntarioNaTabela").addEventListener("click",
 /**
  * Atualiza a lista de voluntários após alguma ação como adição, remoção ou atualização dos dados de um voluntário
  */
-document.getElementById("corpoTabelaDeListagemDeVoluntarios").click();
+listadeDeVoluntarios.click();
