@@ -9,7 +9,6 @@ import './lista.mjs';
  */
 document.getElementById("btnRemoverVoluntario").addEventListener("click", async () => {
     const idVoluntarioRemocao = document.getElementById("identificaRegistroVoluntario").textContent;
-    console.log(idVoluntarioRemocao);
 
     // Remove o voluntário do banco de dados Firebase
     try {
@@ -47,4 +46,17 @@ document.getElementById("btnRemoverVoluntario").addEventListener("click", async 
      * > Atualiza a quantidade de voluntários ausentes no festival identificados com o status "Inativo"
      * > Atualiza a porcentagem de voluntários presentes no festival para exibir no progress bar 
      */
+    let voluntariosAtivos = parseInt(document.getElementById("qtdeVoluntariosPresentes").textContent);
+    let voluntariosIntervalo = parseInt(document.getElementById("qtdeVoluntariosIntervalo").textContent);
+    let voluntariosAusentes = parseInt(document.getElementById("qtdeVoluntariosAusentes").textContent);    
+
+    if (voluntariosAtivos) {
+        document.getElementById("qtdeVoluntariosPresentes").innerHTML = voluntariosAtivos - 1;
+    }
+    if (voluntariosIntervalo) {
+        document.getElementById("qtdeVoluntariosIntervalo").innerHTML = voluntariosIntervalo - 1;
+    }
+    if (voluntariosAusentes > 0) {
+        document.getElementById("qtdeVoluntariosAusentes").innerHTML = voluntariosAusentes - 1;
+    }
 });

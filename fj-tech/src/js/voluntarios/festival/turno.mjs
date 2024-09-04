@@ -25,8 +25,6 @@ document.getElementById("GerenciarRecursosDoVoluntarioNoFestival").addEventListe
             return voluntarioGerenciado;
         }
 
-        //console.log(voluntarioGerenciado.data().voluntariado.horarios.horario_checkin);
-
         const checkInCadastrado = voluntarioGerenciado.data().voluntariado.horarios.horario_checkin
             ? "Check-in realizado " + new Date(voluntarioGerenciado.data().voluntariado.horarios.horario_checkin * 1000).toLocaleTimeString('pt-BR')
             : "Check-in pendente";
