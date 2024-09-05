@@ -26,7 +26,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
 
                 // Identifica o código de credencial e a data de inscrição do voluntário
                 const codigoCredencial = festival.data().codigo_credencial_voluntario;
-                const dataInscricao = new Date(festival.data().data_inscricao * 1000).toLocaleDateString("pt-BR");
+                const dataInscricao = new Date(festival.data().data_inscricao.toDate()).toLocaleDateString("pt-BR");
                 // Exibe apenas a data de inscrição do voluntário no header do modal de perfil, caso não haja credencial alocada
                 if (codigoCredencial === null) {
                     document.getElementById("docVoluntarioPerfil").innerHTML = `Voluntário desde ${dataInscricao}`;
