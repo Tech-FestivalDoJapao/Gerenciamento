@@ -129,16 +129,16 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     });
 });
 
-/**
- * Limpar modal de perfil do voluntário após fechamento
- */
-document.getElementById("btnFecharPerfilHeader").addEventListener("click", () => {
-    clearInputData();
-});
 
-document.getElementById("btnFecharPerfilFooter").addEventListener("click", () => {
+// Botões de fechamento do modal de perfil do voluntário
+const btnFecharPerfilHeader = document.getElementById("btnFecharPerfilHeader");
+const btnFecharPerfilFooter = document.getElementById("btnFecharPerfilFooter");
+/**
+ * Limpa os campos de perfil do voluntário após o fechamento do modal 
+ */
+if (btnFecharPerfilHeader.click || btnFecharPerfilFooter.click) {
     clearInputData();
-});
+}
 
 // Reseta os valores do modal de perfil 
 function clearInputData() {
@@ -169,6 +169,4 @@ function clearInputData() {
     document.getElementById("nivelEscolaridadeVoluntario").value = "";
     document.getElementById("trabalhaSim").checked = false;
     document.getElementById("trabalhaNao").checked = false;
-
-    //console.log("Fechando modal de perfil do voluntário.");
 }

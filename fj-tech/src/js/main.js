@@ -7,8 +7,8 @@ import './voluntarios/lista.mjs'
 import './voluntarios/perfil.mjs'
 import './voluntarios/remove.mjs'
 import './voluntarios/festival/credencial.mjs'
-import './voluntarios/festival/intervalo.mjs'
-import './voluntarios/festival/tamanho_hapi.mjs'
+import './voluntarios/festival/turno.mjs'
+import './voluntarios/festival/resgate_hapi.mjs'
 
 // Informações dos recursos
 import './recursos/cards.mjs'
@@ -67,6 +67,6 @@ if (window.innerWidth < 768) {
   document.getElementById("versaoDoSistema").classList.add("p-4");
 
   document.getElementById("menuOffcanvasNavbar").classList.add("p-4");
-  document.getElementById("menuOffcanvasNavbar").classList.add("jubtitle");
+  document.getElementById("menuOffcanvasNavbar").classList.add("subtitle");
   document.getElementById("menuLateral").classList.add("ps-4");
 } 

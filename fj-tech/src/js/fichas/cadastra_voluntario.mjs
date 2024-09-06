@@ -171,3 +171,7 @@ await addDoc(voluntarioRef, {
   .catch((erro) => {
     console.error("Ocorreu um erro ao cadastrar voluntário. Tente novamente \n", erro);
   });
+
+  /**
+   * TODO: Atualizar a lista de voluntários cadastrados na edição atual do Festival do Japão
+   */

@@ -25,13 +25,13 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
 
     if (credencialVoluntario !== null) {
         bloquearCampoCredencial(credencialVoluntario);
-        desbloquearCamposGerencais();
+        desbloquearCamposGerenciais();
 
         return;
     }
 
     desbloquearCampoCredencial();
-    bloquearCamposGerencais();
+    bloquearCamposGerenciais();
 });
 
 /**
@@ -70,7 +70,7 @@ function desbloquearCampoCredencial() {
 /**
  * Bloqueia a edição dos campos de gestão de recursos do voluntário no festival
  */
-function bloquearCamposGerencais() {
+function bloquearCamposGerenciais() {
     // Campos reláriosnados à horários de trabalho do voluntário
     document.getElementById("cadastraCheckIn").setAttribute("disabled", true);
     document.getElementById("cadastraCheckOut").setAttribute("disabled", true);
@@ -89,7 +89,7 @@ function bloquearCamposGerencais() {
 /**
  * Desbloqueia a edição dos campos de gestão de recursos do voluntário no festival
  */
-function desbloquearCamposGerencais() {
+function desbloquearCamposGerenciais() {
     // Campos reláriosnados à horários de trabalho do voluntário
     document.getElementById("cadastraCheckIn").removeAttribute("disabled");
     document.getElementById("cadastraCheckOut").removeAttribute("disabled");
@@ -167,7 +167,9 @@ btnCredencial.addEventListener("click", async () => {
 
         // Atualiza o valor da credencial na tabela apenas para o voluntário gerenciado
         document.getElementById(idVoluntarioGerenciado).querySelector("#credencial").textContent = txtCredencial.value;
-        btnCredencial.setAttribute("disabled", true);
+
+        bloquearCampoCredencial(txtCredencial.value);
+        desbloquearCamposGerenciais();
     }).catch((erro) => {
         console.error("Erro ao cadastrar o código de credencial: ", erro);
     });

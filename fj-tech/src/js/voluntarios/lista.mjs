@@ -3,7 +3,7 @@ import { db } from "./../firebaseConfig.mjs";
 import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
 
 // Obtém o ano da edição atual do festival
-const edicaoAtualFestival = "2024";
+export const edicaoAtualFestival = "2024";
 
 // Obtém a lista de voluntários do banco de dados
 const voluntarioCollection = query(collection(db, "voluntario"), where("nome_completo_voluntario", "!=", null));

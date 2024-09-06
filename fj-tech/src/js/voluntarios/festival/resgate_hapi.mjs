@@ -1,11 +1,12 @@
 // Initializa a integração com o Firebase
-import { db } from "./../../firebaseConfig.mjs";
+import { db } from "../../firebaseConfig.mjs";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 
-import './../lista.mjs';
+import '../lista.mjs';
 
 // Obtém o ano da edição atual do festival
-const edicaoAtualFestival = "2024";
+import { edicaoAtualFestival } from "../lista.mjs";
+
 // Obtém os elementos referentes ao resgate de hapi do voluntário
 const btnResgateHapi = document.getElementById("cadastraTamanhoHapi");
 const optTamanhoHapi = document.getElementById("tamanhoHapi");
@@ -36,7 +37,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
 
     // Exibe a informação de resgate do hapi do voluntário
     if (horaResgateHapi !== null) {
-        txtResgateHapi.innerHTML = `<small class="opacity-50 m-0 px-4">Resgatado às ${horaResgateHapi.toDate().toLocaleTimeString()}</small>`;
+        txtResgateHapi.innerHTML = `<small class="opacity-50 m-0 px-4">Resgatado às ${horaResgateHapi.toDate().toLocaleTimeString("pt-BR", { hour12: false })}</small>`;
         bloquearCampoHapi();
     }
 
