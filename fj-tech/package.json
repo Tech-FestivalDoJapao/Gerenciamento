@@ -1,6 +1,6 @@
 {
   "name": "fj-tech",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "index.js",
   "homepage": "https://tech-festivaldojapao.github.io/gerenciamento/",
   "repository": {
@@ -15,7 +15,13 @@
     "predeploy": "npm run build && npm version patch",
     "deploy": "gh-pages -d dist"
   },
-  "keywords": ["gerenciamento", "voluntários", "recursos", "festival", "japão"],
+  "keywords": [
+    "gerenciamento",
+    "voluntários",
+    "recursos",
+    "festival",
+    "japão"
+  ],
   "author": "Voluntários do Festival do Japão",
   "license": "ISC",
   "description": "Sistema gerenciador de voluntários e recursos do Festival do Japão.",
