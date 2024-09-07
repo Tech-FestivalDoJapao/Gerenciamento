@@ -14,7 +14,8 @@ voluntarioSnapshot.forEach(async (voluntarioDoc) => {
 
     const nomeCompletoVoluntario = voluntario.nome_completo_voluntario;
     const emailVoluntario = voluntario.contato.email_voluntario;
-    const contatoVoluntario = voluntario.contato.celular_voluntario;
+    // Remove o prefixo "+55 " do número de celular do voluntário, mantendo apenas o DDD e o número de celular
+    const contatoVoluntario = voluntario.contato.celular_voluntario.replace("+55 ", "");;
 
     // Acessa a subcoleção "festival" e obtém o documento com edição atual do festival na subcoleção "festival" para o voluntario
     const festivalCollection = doc(voluntarioDoc.ref, 'festival', edicaoAtualFestival);
@@ -61,7 +62,7 @@ voluntarioSnapshot.forEach(async (voluntarioDoc) => {
      */
     document.getElementById("corpoTabelaDeListagemDeVoluntarios").innerHTML +=
         `<tr id="${voluntarioDoc.id}">
-            <th scope="row">
+            <th scope="row" class="d-none d-lg-table-cell">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="${voluntarioDoc.id}" id="selecionaVoluntario" />
                 </div>
@@ -70,7 +71,7 @@ voluntarioSnapshot.forEach(async (voluntarioDoc) => {
                 <div class="d-flex align-items-center">
                     <div class="ms">
                         <p class="fw-semibold mb-0"> ${nomeCompletoVoluntario} </p>
-                        <p class="text-muted mb-0"> ${emailVoluntario} </p>
+                        <p class="text-muted mb-0 d-none d-md-table-cell"> ${emailVoluntario} </p>
                     </div>
                 </div>
             </td>
@@ -83,10 +84,10 @@ voluntarioSnapshot.forEach(async (voluntarioDoc) => {
             <td>
                 <p class="text-center" id="credencial"> ${codigoCredencial} </p>
             </td>
-            <td>
+            <td class="d-none d-md-table-cell">
                 <p class="text-center"> ${checkIn} </p>
             </td>
-            <td>
+            <td class="d-none d-md-table-cell">
                 <p class="text-center"> ${checkOut} </p>
             </td>
             <td>
@@ -113,7 +114,7 @@ voluntarioSnapshot.forEach(async (voluntarioDoc) => {
                     </button>
 
                     <!-- Excluir voluntário da lista do festival -->
-                    <button type="button" class="btn btn-outline-danger" id="RemoverVoluntario"
+                    <button type="button" class="btn btn-outline-danger d-none d-lg-table-cell" id="RemoverVoluntario"
                         data-bs-toggle="modal" data-bs-target="#RemoverVoluntarioModal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-trash-fill" viewBox="0 0 16 16">
