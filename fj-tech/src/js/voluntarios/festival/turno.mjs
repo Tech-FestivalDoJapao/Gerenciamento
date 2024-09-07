@@ -6,6 +6,8 @@ import '../lista.mjs';
 
 // Obtém o ano a edição atual do festival
 const edicaoAtualFestival = "2024";
+// Obtém o elmento referente à credencia do voluntário
+const txtCredencial = document.getElementById("codigoCredencial");
 // Obtém os elementos referentes ao início e final de expediente do voluntário
 const btnCheckIn = document.getElementById("cadastraCheckIn");
 const btnCheckOut = document.getElementById("cadastraCheckOut");
@@ -22,6 +24,8 @@ const divIntervalos = document.getElementById("horariosDeIntervalo");
  */
 document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", async (event) => {
     const idVoluntarioGerenciado = event.target.closest("tr").id;
+
+    clearTimeData();
     
     const docVoluntarioRef = doc(db, "voluntario", idVoluntarioGerenciado);
     const docFestivalRef = doc(docVoluntarioRef, 'festival', edicaoAtualFestival);
@@ -37,12 +41,14 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
      * Ativa apenas a opção de check-in caso não haja nenhum horário cadastrado
      */
     if (horarioCheckIn === null && horarioCheckOut === null) {
-        desbloquearCheckIn();
-        bloquearCheckOut();
+        if (txtCredencial === null) {
+            bloquearCheckIn(null);
+        }
+        bloquearCheckOut(null);
 
-        btnCheckOut.disabled = false;
+        /*btnCheckOut.disabled = true;
         btnCheckOut.style.cursor = "not-allowed";
-        btnCheckOut.setAttribute("block", true);
+        btnCheckOut.setAttribute("block", true);*/
 
         return;
     }
@@ -126,3 +132,15 @@ function desbloquearCheckOut() {
  * TODO: Valida as informações de início e término do intervalo baseado no turno do voluntário
  * criar funções para bloquear e desbloquear os botões de início e término de intervalo
  */
+
+/**
+ * Limpa os dados e o reseta o estado dos campos de horário do voluntário
+ */
+function clearTimeData() {
+    txtCheckIn.textContent = "Check-In";
+    btnCheckIn.classList.remove("btn-outline-danger");
+    btnCheckIn.classList.add("btn-danger");
+
+    txtCheckOut.textContent = "Checkout";
+    divIntervalos.innerHTML = "";
+}
