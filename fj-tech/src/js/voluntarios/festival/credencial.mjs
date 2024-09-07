@@ -159,6 +159,11 @@ btnCredencial.addEventListener("click", async () => {
     const docVoluntarioRef = doc(db, "voluntario", idVoluntarioGerenciado);
     const docFestivalRef = doc(docVoluntarioRef, 'festival', edicaoAtualFestival);
 
+    // Completa com zeros antes do código de crdencial caso o número de caracteres seja menor que 4
+    if (txtCredencial.value.length < 4) {
+        txtCredencial.value = "0".repeat(4 - txtCredencial.value.length) + txtCredencial.value;
+    }
+
     // Set the value for codigo_credencial_voluntario field in docFestivalRef
     await updateDoc(docFestivalRef, {
         codigo_credencial_voluntario: txtCredencial.value

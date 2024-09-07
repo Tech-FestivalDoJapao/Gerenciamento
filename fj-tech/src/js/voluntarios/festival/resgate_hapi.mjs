@@ -91,8 +91,6 @@ function bloquearCampoHapi() {
     // Desabilita o botão de cadastro de tamanho do hapi
     btnResgateHapi.disabled = true;
     btnResgateHapi.style.cursor = "not-allowed";
-    btnResgateHapi.classList.remove("btn-danger");
-    btnResgateHapi.classList.add("btn-outline-danger");
 }
 
 /**
@@ -105,6 +103,4 @@ function desbloquearCampoHapi() {
     // Habilita o botão de cadastro de tamanho do hapi
     btnResgateHapi.disabled = false;
     btnResgateHapi.style.cursor = "pointer";
-    btnResgateHapi.classList.remove("btn-outline-danger");
-    btnResgateHapi.classList.add("btn-danger");
 }

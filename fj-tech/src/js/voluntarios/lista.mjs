@@ -85,7 +85,7 @@ voluntarioSnapshot.forEach(async (voluntarioDoc) => {
                 <p class="text-center" id="credencial"> ${codigoCredencial} </p>
             </td>
             <td class="d-none d-md-table-cell">
-                <p class="text-center"> ${checkIn} </p>
+                <p class="text-center" id="check-in"> ${checkIn} </p>
             </td>
             <td class="d-none d-md-table-cell">
                 <p class="text-center"> ${checkOut} </p>

@@ -10,6 +10,9 @@ import './voluntarios/festival/credencial.mjs'
 import './voluntarios/festival/turno.mjs'
 import './voluntarios/festival/resgate_hapi.mjs'
 
+// Informações de cadastro de expedientes
+import './voluntarios/festival/cadastra_checkin.mjs'
+
 // Informações dos recursos
 import './recursos/cards.mjs'
 import './recursos/voluntario.mjs'

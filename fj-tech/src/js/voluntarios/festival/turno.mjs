@@ -35,6 +35,8 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     const horarioCheckIn = festival.data().expediente.horarios_sexta.check_in;
     const horarioCheckOut = festival.data().expediente.horarios_sexta.check_out;
     const horariosIntervalo = festival.data().expediente.horarios_sexta.intervalo;
+        const horarioInicioIntervalo = horariosIntervalo.intervalo_1.inicio_intervalo;
+        const horarioTerminoIntervalo = horariosIntervalo.intervalo_1.termino_intervalo;
 
     /**
      * Ativa apenas a opção de check-in caso não haja nenhum horário cadastrado
@@ -45,6 +47,9 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
         }
         bloquearCheckOut(null);
 
+        bloquearInicioIntervalo();
+        bloquearTerminoIntervalo();
+
         return;
     }
 
@@ -54,6 +59,39 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     if (horarioCheckIn !== null && horarioCheckOut === null) {
         bloquearCheckIn(horarioCheckIn);
         desbloquearCheckOut();
+
+        /**
+         * Ativa a opção de iniciar um intervalo caso o usuário já tenha realizado o check-in 
+         * e não haja nenhum intervalo cadastrado
+         */
+        if (horarioInicioIntervalo === null && horarioTerminoIntervalo === null) {
+            desbloquearInicioIntervalo();
+            bloquearTerminoIntervalo();
+
+            return;
+        }
+
+        /**
+         * Ativa a opção de finalizar um intervalo caso o usuário já tenha iniciado um intervalo
+         * e ainda não tenha finalizado
+         */
+        if (horarioInicioIntervalo !== null && horarioTerminoIntervalo === null) {
+            bloquearInicioIntervalo();
+            desbloquearTerminoIntervalo();
+
+            return;
+        }
+
+        /**
+         * Ativa a opção de iniciar um intervalo caso o usuário já tenha finalizado um intervalo
+         * e ainda não tenha iniciado outro
+         */
+        if (horarioInicioIntervalo !== null && horarioTerminoIntervalo !== null) {
+            desbloquearInicioIntervalo();
+            bloquearTerminoIntervalo();
+
+            return;
+        }
 
         // Exibe os intervalos realizados pelo voluntário
         exibeIntervalos(horariosIntervalo);
@@ -67,6 +105,9 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     if (horarioCheckIn !== null && horarioCheckOut !== null) {
         bloquearCheckIn(horarioCheckIn);
         bloquearCheckOut(horarioCheckOut);
+
+        bloquearInicioIntervalo();
+        bloquearTerminoIntervalo();
 
         return;
     }
@@ -99,7 +140,7 @@ function desbloquearCheckIn() {
 }
 
 /**
- * DEsabilita o botão de registro de checkout e atualiza o texto do botão com o horário de checkout
+ * Desabilita o botão de registro de checkout e atualiza o texto do botão com o horário de checkout
  * cadastrado no banco de dados
  * @param {Timestamp} horarioCheckOut 
  */
@@ -117,7 +158,7 @@ function bloquearCheckOut(horarioCheckOut) {
 /**
  * Habilita o botão de registro de checkout e atualiza o texto do botão com "Checkout"
  */
-function desbloquearCheckOut() {
+export function desbloquearCheckOut() {
     txtCheckOut.textContent = "Checkout";
 
     btnCheckOut.disabled = false;
@@ -135,19 +176,54 @@ function desbloquearCheckOut() {
  * Exibe as informações referentes ao(s) intervalo(s) realizado pelo voluntário
  * @param {Object} horariosIntervalo
  */
-function exibeIntervalos(horariosIntervalo) {
-    if (horariosIntervalo !== null) {
+function exibeIntervalos(intervalo) {
+    if (intervalo.intervalo_1 !== null) {
         divIntervalos.innerHTML = `
             <small class="opacity-50 m-0">
                 <ul class="list-group">
                     <li class="list-group px-4">
-                        ${new Date(horariosIntervalo.intervalo_1.inicio_intervalo * 1000).toLocaleTimeString("pt-BR", { hour12: false })} • ${new Date(horariosIntervalo.intervalo_1.termino_intervalo * 1000).toLocaleTimeString("pt-BR", { hour12: false })}
+                        ${new Date(intervalo.intervalo_1.inicio_intervalo * 1000).toLocaleTimeString("pt-BR", { hour12: false })} • ${new Date(intervalo.intervalo_1.termino_intervalo * 1000).toLocaleTimeString("pt-BR", { hour12: false })}
                     </li>
                 </ul>
             </small>`;
     }
 }
 
+/**
+ * Desabilita o botão de início de intervalo
+ */
+function bloquearInicioIntervalo() {    
+    btnIniciaIntervalo.disabled = true;
+    btnIniciaIntervalo.classList.remove("btn-danger");
+    btnIniciaIntervalo.classList.add("btn-outline-danger");
+}
+
+/**
+ * Habilita o botão de início de intervalo e o destaca
+ */
+export function desbloquearInicioIntervalo() {
+    btnIniciaIntervalo.disabled = false;
+    btnIniciaIntervalo.classList.remove("btn-outline-danger");
+    btnIniciaIntervalo.classList.add("btn-danger");
+}
+
+/**
+ * Desabilita o botão de término de intervalo
+ */
+export function bloquearTerminoIntervalo() {
+    btnFinalizaIntervalo.disabled = true;
+    btnFinalizaIntervalo.classList.remove("btn-danger");
+    btnFinalizaIntervalo.classList.add("btn-outline-danger");
+}
+
+/**
+ * Habilita o botão de término de intervalo e o destaca
+ */
+function desbloquearTerminoIntervalo() {
+    btnFinalizaIntervalo.disabled = false;
+    btnFinalizaIntervalo.classList.remove("btn-outline-danger");
+    btnFinalizaIntervalo.classList.add("btn-danger");
+}
 
 /**
  * Limpa os dados e o reseta o estado dos campos de horário do voluntário
