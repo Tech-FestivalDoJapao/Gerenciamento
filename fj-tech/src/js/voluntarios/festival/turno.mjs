@@ -35,7 +35,6 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     const horarioCheckIn = festival.data().expediente.horarios_sexta.check_in;
     const horarioCheckOut = festival.data().expediente.horarios_sexta.check_out;
     const horariosIntervalo = festival.data().expediente.horarios_sexta.intervalo;
-        //console.log(horariosIntervalo);
 
     /**
      * Ativa apenas a opção de check-in caso não haja nenhum horário cadastrado
@@ -46,10 +45,6 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
         }
         bloquearCheckOut(null);
 
-        /*btnCheckOut.disabled = true;
-        btnCheckOut.style.cursor = "not-allowed";
-        btnCheckOut.setAttribute("block", true);*/
-
         return;
     }
 
@@ -59,6 +54,9 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     if (horarioCheckIn !== null && horarioCheckOut === null) {
         bloquearCheckIn(horarioCheckIn);
         desbloquearCheckOut();
+
+        // Exibe os intervalos realizados pelo voluntário
+        exibeIntervalos(horariosIntervalo);
 
         return;
     }
@@ -83,7 +81,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
  * @param {Timestamp} horarioCheckIn 
  */
 function bloquearCheckIn(horarioCheckIn) {
-    txtCheckIn.textContent = new Date(horarioCheckIn * 1000).toLocaleTimeString();
+    txtCheckIn.textContent = new Date(horarioCheckIn.toDate()).toLocaleTimeString("pt-BR", { hour12: false });
 
     btnCheckIn.disabled = true;
     btnCheckIn.classList.remove("btn-danger");
@@ -107,7 +105,7 @@ function desbloquearCheckIn() {
  */
 function bloquearCheckOut(horarioCheckOut) {
     const checkout = horarioCheckOut
-        ? new Date(horarioCheckOut * 1000).toLocaleTimeString()
+        ? new Date(horarioCheckOut.toDate()).toLocaleTimeString("pt-BR", { hour12: false })
         : "Checkout";
 
     txtCheckOut.textContent = checkout;
@@ -132,6 +130,24 @@ function desbloquearCheckOut() {
  * TODO: Valida as informações de início e término do intervalo baseado no turno do voluntário
  * criar funções para bloquear e desbloquear os botões de início e término de intervalo
  */
+
+/**
+ * Exibe as informações referentes ao(s) intervalo(s) realizado pelo voluntário
+ * @param {Object} horariosIntervalo
+ */
+function exibeIntervalos(horariosIntervalo) {
+    if (horariosIntervalo !== null) {
+        divIntervalos.innerHTML = `
+            <small class="opacity-50 m-0">
+                <ul class="list-group">
+                    <li class="list-group px-4">
+                        ${new Date(horariosIntervalo.intervalo_1.inicio_intervalo * 1000).toLocaleTimeString("pt-BR", { hour12: false })} • ${new Date(horariosIntervalo.intervalo_1.termino_intervalo * 1000).toLocaleTimeString("pt-BR", { hour12: false })}
+                    </li>
+                </ul>
+            </small>`;
+    }
+}
+
 
 /**
  * Limpa os dados e o reseta o estado dos campos de horário do voluntário
