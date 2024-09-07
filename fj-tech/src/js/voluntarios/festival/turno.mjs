@@ -192,7 +192,7 @@ function exibeIntervalos(intervalo) {
 /**
  * Desabilita o botão de início de intervalo
  */
-function bloquearInicioIntervalo() {    
+export function bloquearInicioIntervalo() {    
     btnIniciaIntervalo.disabled = true;
     btnIniciaIntervalo.classList.remove("btn-danger");
     btnIniciaIntervalo.classList.add("btn-outline-danger");

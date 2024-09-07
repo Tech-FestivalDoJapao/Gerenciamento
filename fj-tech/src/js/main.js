@@ -12,6 +12,7 @@ import './voluntarios/festival/resgate_hapi.mjs'
 
 // Informações de cadastro de expedientes
 import './voluntarios/festival/cadastra_checkin.mjs'
+import './voluntarios/festival/cadastra_checkout.mjs'
 
 // Informações dos recursos
 import './recursos/cards.mjs'

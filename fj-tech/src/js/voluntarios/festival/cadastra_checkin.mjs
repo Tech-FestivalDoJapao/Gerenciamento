@@ -10,7 +10,7 @@ import { edicaoAtualFestival } from "../lista.mjs";
 // Obtém as funções de bloqueio e desbloqueio dos campos referntes ao turno do voluntário
 import { desbloquearCheckOut, desbloquearInicioIntervalo, bloquearTerminoIntervalo } from "./turno.mjs";
 
-// Obtém os elementos referentes ao check-ini do voluntário
+// Obtém os elementos referentes ao check-in do voluntário
 const btnCheckIn = document.getElementById("cadastraCheckIn");
 const txtCheckIn = document.getElementById("horarioCheckIn");
 // Obtém o elemento referente ao código de credencial do voluntário
@@ -26,7 +26,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     const docFestivalRef = doc(docVoluntarioRef, 'festival', edicaoAtualFestival);
     const festival = await getDoc(docFestivalRef);
 
-    // Obtém o horário informado pelo voluntário durante o cadastro
+    // Obtém o horário já existente no banco
     const horarioCheckIn = festival.data().expediente.horarios_sexta.check_in;
     const novoHorarioCheckIn = new Date();
 
@@ -67,7 +67,6 @@ function bloquearBtnCheckIn() {
     btnCheckIn.classList.remove("btn-danger");
     btnCheckIn.classList.add("btn-outline-danger");
     btnCheckIn.disabled = true;
-
 }
 
 /**

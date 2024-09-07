@@ -88,7 +88,7 @@ voluntarioSnapshot.forEach(async (voluntarioDoc) => {
                 <p class="text-center" id="check-in"> ${checkIn} </p>
             </td>
             <td class="d-none d-md-table-cell">
-                <p class="text-center"> ${checkOut} </p>
+                <p class="text-center" id="checkout"> ${checkOut} </p>
             </td>
             <td>
                 <div class="btn-group btn-group-sm gap-1" role="group" aria-label="Small button group px-2">
