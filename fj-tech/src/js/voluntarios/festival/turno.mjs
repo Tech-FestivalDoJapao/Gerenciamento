@@ -25,7 +25,7 @@ const divIntervalos = document.getElementById("horariosDeIntervalo");
 document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", async (event) => {
     const idVoluntarioGerenciado = event.target.closest("tr").id;
 
-    clearTimeData();
+    limparInformaçõesDeTurno();
     
     const docVoluntarioRef = doc(db, "voluntario", idVoluntarioGerenciado);
     const docFestivalRef = doc(docVoluntarioRef, 'festival', edicaoAtualFestival);
@@ -79,9 +79,6 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
             bloquearInicioIntervalo();
             desbloquearTerminoIntervalo();
 
-            // Exibe os intervalos realizados pelo voluntário
-            exibeIntervalos(horarioInicioIntervalo, null);
-
             return;
         }
 
@@ -92,9 +89,6 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
         if (horarioInicioIntervalo !== null && horarioTerminoIntervalo !== null) {
             desbloquearInicioIntervalo();
             bloquearTerminoIntervalo();
-
-            // Exibe os intervalos realizados pelo voluntário
-            exibeIntervalos(horarioInicioIntervalo, horarioTerminoIntervalo);
 
             return;
         }
@@ -108,9 +102,6 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     if (horarioCheckIn !== null && horarioCheckOut !== null) {
         bloquearCheckIn(horarioCheckIn);
         bloquearCheckOut(horarioCheckOut);
-
-        // Exibe os intervalos realizados pelo voluntário
-        exibeIntervalos(horarioInicioIntervalo, horarioTerminoIntervalo);
 
         bloquearInicioIntervalo();
         bloquearTerminoIntervalo();
@@ -179,23 +170,6 @@ export function desbloquearCheckOut() {
  */
 
 /**
- * Exibe as informações referentes ao(s) intervalo(s) realizado pelo voluntário
- * @param {Object} horariosIntervalo
- */
-function exibeIntervalos(inicio, termino) {
-    let inicioIntervalo = new Date(inicio * 1000).toLocaleTimeString("pt-BR", { hour12: false });
-    let terminoIntervalo = new Date(termino * 1000).toLocaleTimeString("pt-BR", { hour12: false });
-
-    divIntervalos.innerHTML = `
-        <div class="px-3">
-            <small class="row mb-1 px-1 py-2 badge rounded-pill bg-danger bg-opacity-25 text-dark"> 
-                <span> ${inicioIntervalo} </span> • <span> ${terminoIntervalo} </span> 
-            </small>
-        </div>        
-    `;
-}
-
-/**
  * Desabilita o botão de início de intervalo
  */
 export function bloquearInicioIntervalo() {    
@@ -225,7 +199,7 @@ export function bloquearTerminoIntervalo() {
 /**
  * Habilita o botão de término de intervalo e o destaca
  */
-function desbloquearTerminoIntervalo() {
+export function desbloquearTerminoIntervalo() {
     btnFinalizaIntervalo.disabled = false;
     btnFinalizaIntervalo.classList.remove("btn-outline-danger");
     btnFinalizaIntervalo.classList.add("btn-danger");
@@ -234,7 +208,7 @@ function desbloquearTerminoIntervalo() {
 /**
  * Limpa os dados e o reseta o estado dos campos de horário do voluntário
  */
-function clearTimeData() {
+function limparInformaçõesDeTurno() {
     divIntervalos.innerHTML = "";
 
     txtCheckIn.textContent = "Check-In";
