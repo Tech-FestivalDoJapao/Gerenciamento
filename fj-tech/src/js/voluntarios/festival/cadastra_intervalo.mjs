@@ -42,8 +42,6 @@ listaDeVoluntarios.addEventListener("click", async (event) => {
     if (inicioIntervalo === null && terminoIntervalo === null) {
         bloquearResgateVoucher();
 
-        console.log("Sem intervalo");
-
         btnInicioIntervalo.addEventListener("click", async () => {
             cadastraInicioIntervalo(docFestivalRef, horariosIntervalo);
         });
@@ -52,15 +50,11 @@ listaDeVoluntarios.addEventListener("click", async (event) => {
     if (inicioIntervalo !== null && terminoIntervalo === null) {
         exibeHorarioIntervalo(inicioIntervalo, terminoIntervalo);
         desbloquearResgateVoucher();
-
-        console.log("Intervalo iniciado");
     }
 
     if (inicioIntervalo !== null && terminoIntervalo !== null) {
         exibeHorarioIntervalo(inicioIntervalo, terminoIntervalo);
         bloquearResgateVoucher();
-
-        console.log("Intervalo finalizado");
     }
 
     
@@ -70,20 +64,17 @@ listaDeVoluntarios.addEventListener("click", async (event) => {
 });
 
 /**
- * TODO: Exibe os horários de início e término de intervalo
- */
-
-
-/**
  * Exibe as informações referentes ao(s) intervalo(s) realizado pelo voluntário
  * @param {Timestamp} inicioIntervalo - Horário de início do intervalo
  * @param {Timestamp} terminoIntervalo - Horário de término do intervalo
  */
 function exibeHorarioIntervalo(inicioIntervalo, terminoIntervalo) {
-    let inicio = new Date(inicioIntervalo.toDate()).toLocaleTimeString("pt-BR", { hour12: false });
+    let inicio, termino = null;
 
     // Exibe apenas o horário de início do intervalo
-    if (inicio !== null && terminoIntervalo === null) {
+    if (inicioIntervalo !== null && terminoIntervalo === null) {
+        inicio = new Date(inicioIntervalo.toDate()).toLocaleTimeString("pt-BR", { hour12: false });
+
         badgeHorariosIntervalo.innerHTML = `
             <div class="px-3">
                 <small class="row mb-1 px-1 py-2 badge rounded-pill bg-danger bg-opacity-25 text-dark"> 
@@ -96,8 +87,9 @@ function exibeHorarioIntervalo(inicioIntervalo, terminoIntervalo) {
     }
 
     // Exibe o horário de início e término do intervalo
-    if (inicio !== null && terminoIntervalo !== null) {
-        let termino = new Date(terminoIntervalo.toDate()).toLocaleTimeString("pt-BR", { hour12: false });
+    if (inicioIntervalo !== null && terminoIntervalo !== null) {
+        inicio = new Date(inicioIntervalo.toDate()).toLocaleTimeString("pt-BR", { hour12: false });
+        termino = new Date(terminoIntervalo.toDate()).toLocaleTimeString("pt-BR", { hour12: false });
 
         badgeHorariosIntervalo.innerHTML = `
             <div class="px-3">
@@ -135,6 +127,7 @@ async function cadastraInicioIntervalo(docFestivalRef, horariosIntervalo) {
             }
         }, { merge: true }).then(() => {
             console.log("Início do intervalo " + ultimoIntervalo + " cadastrado com sucesso");
+            exibeHorarioIntervalo(null, null);
     
             bloquearInicioIntervalo();
             desbloquearTerminoIntervalo();
@@ -158,6 +151,7 @@ async function cadastraInicioIntervalo(docFestivalRef, horariosIntervalo) {
         }
     }).then(() => {
         console.log("Início do intervalo " + incrementaIntervalo + " cadastrado com sucesso");
+        exibeHorarioIntervalo(null, null);
     
         bloquearInicioIntervalo();
         desbloquearTerminoIntervalo();
@@ -184,6 +178,7 @@ function cadastraTerminoIntervalo(docFestivalRef, horariosIntervalo) {
             }
         }, { merge: true }).then(() => {
             console.log("Término do intervalo " + ultimoIntervalo + " cadastrado com sucesso");
+            exibeHorarioIntervalo(null, null);
     
             desbloquearInicioIntervalo();
             bloquearTerminoIntervalo();

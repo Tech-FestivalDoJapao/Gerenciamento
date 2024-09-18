@@ -100,9 +100,6 @@ function desbloquearCamposGerenciais() {
     // Hapi
     document.getElementById("tamanhoHapi").removeAttribute("disabled");
     document.getElementById("cadastraTamanhoHapi").removeAttribute("disabled");
-    // Voucher
-    document.getElementById("tipoVoucher").removeAttribute("disabled");
-    document.getElementById("cadastraResgateVoucher").removeAttribute("disabled");
 }
 
 /**

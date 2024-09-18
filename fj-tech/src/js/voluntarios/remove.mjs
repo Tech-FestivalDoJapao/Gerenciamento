@@ -9,11 +9,21 @@ import './lista.mjs';
  */
 document.getElementById("btnRemoverVoluntario").addEventListener("click", async () => {
     const idVoluntarioRemocao = document.getElementById("identificaRegistroVoluntario").textContent;
+    const statusVoluntarioRemocao = document.getElementById("statusVoluntario").textContent;
 
     // Remove o voluntário do banco de dados Firebase
     try {
-        await deleteDoc(doc(db, "voluntario", idVoluntarioRemocao));
-        console.log("Voluntário removido com sucesso!");
+        await deleteDoc(doc(db, "voluntario", idVoluntarioRemocao)).then(() => {
+            console.log("Voluntário removido com sucesso!");
+
+            diminuiContagemDeVoluntarios(statusVoluntarioRemocao);
+        });
+
+        /**
+         * Atualiza a quantidade total de voluntários presentes na tela de recursos do festival após a remoção de um voluntário
+         */
+        const voluntariosFestival = await getDocs(query(collection(db, "voluntario")));    
+        document.getElementById("totalVoluntariosFestival").innerHTML = voluntariosFestival.size;
 
         /**
          * Atualiza a listagem de voluntários após a remoção de um voluntário
@@ -28,35 +38,24 @@ document.getElementById("btnRemoverVoluntario").addEventListener("click", async 
 });
 
 /**
- * Atualiza o card de voluntários presentes na tela de recursos no festival após a remoção de um voluntário
+ * Atualiza a quantideadse de voluntários do festival e decresce a contagem de voluntários no status em que o 
+ * volkuntário removido se encontrava
+ * 
+ * @param {String} status 
  */
-document.getElementById("btnRemoverVoluntario").addEventListener("click", async () => {
-    const voluntariosDoc = await getDocs(query(collection(db, "voluntario")));
-    const voluntariosFestival =  voluntariosDoc.size; 
-
-    // Atualiza a quantidade total de voluntários presentes no festival
-    document.getElementById("totalVoluntariosFestival").innerHTML = voluntariosFestival;
-
-    /**
-     * TODO: Atualizar informações de voluntários presentes, em intervalo e ausentes na tela de recursos
-     * após a remoção de um voluntário
-     * 
-     * > Atualiza a quantidade de voluntários presentes no festival identificados com o status "Ativo"
-     * > Atualiza a quantidade de voluntários em intervalo no festival identificados com o status "Intervalo"
-     * > Atualiza a quantidade de voluntários ausentes no festival identificados com o status "Inativo"
-     * > Atualiza a porcentagem de voluntários presentes no festival para exibir no progress bar 
-     */
-    let voluntariosAtivos = parseInt(document.getElementById("qtdeVoluntariosPresentes").textContent);
-    let voluntariosIntervalo = parseInt(document.getElementById("qtdeVoluntariosIntervalo").textContent);
-    let voluntariosAusentes = parseInt(document.getElementById("qtdeVoluntariosAusentes").textContent);    
-
-    if (voluntariosAtivos) {
-        document.getElementById("qtdeVoluntariosPresentes").innerHTML = voluntariosAtivos - 1;
+async function diminuiContagemDeVoluntarios(status) {   
+    const qtdeVoluntariosPresentes = document.getElementById("qtdeVoluntariosPresentes");
+    if (status === " Ativo ") {       
+        qtdeVoluntariosPresentes.textContent = parseInt(qtdeVoluntariosPresentes.textContent) - 1;
     }
-    if (voluntariosIntervalo) {
-        document.getElementById("qtdeVoluntariosIntervalo").innerHTML = voluntariosIntervalo - 1;
+
+    const qtdeVoluntariosIntervalo = document.getElementById("qtdeVoluntariosIntervalo");
+    if (status === " Intervalo ") {        
+        qtdeVoluntariosIntervalo.textContent = parseInt(qtdeVoluntariosIntervalo.textContent) - 1;
     }
-    if (voluntariosAusentes > 0) {
-        document.getElementById("qtdeVoluntariosAusentes").innerHTML = voluntariosAusentes - 1;
+
+    const qtdeVoluntariosAusentes = document.getElementById("qtdeVoluntariosAusentes");
+    if (status === " Inativo ") {        
+        qtdeVoluntariosAusentes.textContent = parseInt(qtdeVoluntariosAusentes.textContent) - 1;
     }
-});
+}

@@ -9,6 +9,7 @@ import { edicaoAtualFestival } from "../lista.mjs";
 
 // Obtém as funções de bloqueio e desbloqueio dos campos referntes ao turno do voluntário
 import { desbloquearCheckOut, desbloquearInicioIntervalo, bloquearTerminoIntervalo } from "./turno.mjs";
+import { bloquearResgateVoucher } from "./resgate_voucher.mjs";
 
 // Obtém os elementos referentes ao check-in do voluntário
 const btnCheckIn = document.getElementById("cadastraCheckIn");
@@ -42,7 +43,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
 
                 // Atualiza a página para exibir o novo horário de check-in e o status de ativo
                 document.getElementById("corpoTabelaDeListagemDeVoluntarios").querySelector("#" + idVoluntario).querySelector("#check-in").textContent = new Date(novoHorarioCheckIn).toLocaleTimeString("pt-BR", { hour12: false });
-                tornaVoluntarioAtivo(idVoluntario);
+                tornaVoluntarioAtivo(idVoluntario);  
 
                 // Bloqueia o botão de check-in e desbloqueia o botão de check-out
                 bloquearBtnCheckIn();
@@ -50,6 +51,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
 
                 // Ativa as opções de intervalo	
                 desbloquearInicioIntervalo();
+                bloquearResgateVoucher();
                 bloquearTerminoIntervalo();
             }).catch((erro) => {
                 console.error("Erro ao realizar check-in: ", erro);
@@ -78,5 +80,5 @@ function tornaVoluntarioAtivo(voluntario) {
 
     statusVoluntario.textContent = " Ativo ";
     statusVoluntario.classList.add("text-bg-success");
-    statusVoluntario.classList.remove("text-bg-danger");
+    statusVoluntario.classList.remove("text-bg-danger"); 
 }
