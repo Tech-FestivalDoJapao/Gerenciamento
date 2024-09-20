@@ -53,7 +53,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
             const identificaVoucherResgatado = document.createElement('small');
             identificaVoucherResgatado.className = 'opacity-50 m-0 px-4';
             identificaVoucherResgatado.textContent = `Voucher resgatado: ${tipoVoucherDoVoluntario}`;
-            txtResgateVoucher.appendChild(smallElement);
+            txtResgateVoucher.appendChild(identificaVoucherResgatado);
             bloquearResgateVoucher();
         }).catch((erro) => {
             console.error("Erro ao resgatar voucher: ", erro);
