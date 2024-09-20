@@ -51,7 +51,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
 
             // Exibe o tipo de voucher resgatado pelo voluntário
             const identificaVoucherResgatado = document.createElement('small');
-            smallElement.className = 'opacity-50 m-0 px-4';
+            identificaVoucherResgatado.className = 'opacity-50 m-0 px-4';
             smallElement.textContent = `Voucher resgatado: ${tipoVoucherDoVoluntario}`;
             txtResgateVoucher.appendChild(smallElement);
             bloquearResgateVoucher();
