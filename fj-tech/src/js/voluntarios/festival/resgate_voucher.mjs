@@ -50,7 +50,10 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
             console.log("Voucher resgatado com sucesso");
 
             // Exibe o tipo de voucher resgatado pelo voluntário
-            txtResgateVoucher.innerHTML = `<small class="opacity-50 m-0 px-4">Voucher resgatado: ${tipoVoucherDoVoluntario}</small>`;
+            const identificaVoucherResgatado = document.createElement('small');
+            identificaVoucherResgatado.className = 'opacity-50 m-0 px-4';
+            identificaVoucherResgatado.textContent = `Voucher resgatado: ${tipoVoucherDoVoluntario}`;
+            txtResgateVoucher.appendChild(identificaVoucherResgatado);
             bloquearResgateVoucher();
         }).catch((erro) => {
             console.error("Erro ao resgatar voucher: ", erro);
