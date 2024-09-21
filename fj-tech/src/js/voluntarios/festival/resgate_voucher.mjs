@@ -18,7 +18,7 @@ const txtResgateVoucher = document.getElementById("informacoesResgateVoucher");
  */
 document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", async (event) => {
     // Limpa o campo de informações de resgate de voucher
-    txtResgateVoucher.textContent = "";
+    limpaInformacoesResgateVoucher();
 
     // Acessa as informações do voluntário
     const idVoluntario = event.target.closest("tr").id;
@@ -53,6 +53,12 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
             const identificaVoucherResgatado = document.createElement('small');
             identificaVoucherResgatado.className = 'opacity-50 m-0 px-4';
             identificaVoucherResgatado.textContent = `Voucher resgatado: ${tipoVoucherDoVoluntario}`;
+
+            // Remove as informações anteriores de resgate de voucher
+            if (txtResgateVoucher.firstChild) {
+                txtResgateVoucher.removeChild(txtResgateVoucher.firstChild);
+            }
+
             txtResgateVoucher.appendChild(identificaVoucherResgatado);
             bloquearResgateVoucher();
         }).catch((erro) => {
@@ -82,4 +88,9 @@ export function desbloquearResgateVoucher() {
     // Habilita o botão de resgate de voucher
     btnResgateVoucher.disabled = false;
     btnResgateVoucher.style.cursor = "pointer";
+}
+
+function limpaInformacoesResgateVoucher() {
+    // Limpa o campo de informações de resgate de voucher
+    txtResgateVoucher.textContent = "";
 }

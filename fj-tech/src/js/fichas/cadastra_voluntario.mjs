@@ -138,7 +138,7 @@ await addDoc(voluntarioRef, {
             intervalo_1: {
               inicio_intervalo: null,
               termino_intervalo: null,
-              resgate_voucher: true,
+              resgate_voucher: false,
               devolucao_hapi: true
             },
             intervalo_2: {
