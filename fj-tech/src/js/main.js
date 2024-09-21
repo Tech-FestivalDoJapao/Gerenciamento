@@ -67,10 +67,12 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 
 // Move a legenda versaoDoSistema para o rodapé da página em telas menores que 768px
 if (window.innerWidth < 768) {
+  // Exibe a versão do sistema no rodapé da página
   document.getElementById("versaoDoSistema").classList.add("fixed-bottom");
   document.getElementById("versaoDoSistema").classList.add("text-end");
   document.getElementById("versaoDoSistema").classList.add("p-4");
 
+  // Atualiza o menu lateral
   document.getElementById("menuOffcanvasNavbar").classList.add("p-4");
   document.getElementById("menuOffcanvasNavbar").classList.add("subtitle");
   document.getElementById("menuLateral").classList.add("ps-4");
