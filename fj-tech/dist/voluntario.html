@@ -17,6 +17,7 @@
 
 <body>
     <div class="container py-3 px-3 mx-auto">
+        <!-- Cabeçalho da página -->
         <header id="header"
             class="d-flex justify-content-between align-items-md-center pb-3 mb-5 border-bottom border-danger border-5">
             <h1 class="h4">
@@ -88,7 +89,7 @@
                 <section id="cadastro_voluntario">
                     <div class="modal-body row align-items-center">
                         <div class="col"></div>
-                        <form class="row col-md-10 col-sm-12 g-3" id="formCadastroDeVoluntario">
+                        <div class="row col-md-10 col-sm-12 g-3" id="formCadastroDeVoluntario">
                             <!-- Dados pessoais -->
                             <div class="row mb-4 col-12">
                                 <section class="mb-4">
@@ -155,13 +156,13 @@
                                                 <select class="form-select" id="faixaEtariaDoVoluntario"
                                                     aria-label="Default select example">
                                                     <option selected hidden>Selecione...</option>
-                                                    <option value="16-">Abaixo de 16 anos</option>
-                                                    <option value="16-20">De 16 a 20 anos</option>
-                                                    <option value="21-30">De 21 a 30 anos</option>
-                                                    <option value="31-40">De 31 a 40 anos</option>
-                                                    <option value="41-50">De 41 a 50 anos</option>
-                                                    <option value="51-60">De 51 a 60 anos</option>
-                                                    <option value="60+">Acima de 60 anos</option>
+                                                    <option>Abaixo de 16 anos</option>
+                                                    <option>De 16 a 20 anos</option>
+                                                    <option>De 21 a 30 anos</option>
+                                                    <option>De 31 a 40 anos</option>
+                                                    <option>De 41 a 50 anos</option>
+                                                    <option>De 51 a 60 anos</option>
+                                                    <option>Acima de 60 anos</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -289,20 +290,20 @@
 
                                     <div class="row mb-2">
                                         <div class="col-md-6">
-                                            <label for="ascendenciaDoVoluntarioDescendente"
+                                            <label for="escolaridadeDoVoluntario"
                                                 class="form-label">Escolaridade</label>
-                                            <select class="form-select" id="ascendenciaDoVoluntarioDescendente"
+                                            <select class="form-select" id="escolaridadeDoVoluntario"
                                                 aria-label="Default select example">
                                                 <option selected hidden>Selecione...</option>
-                                                <option value="1">Pós-graduação completo</option>
-                                                <option value="2">Superior completo</option>
-                                                <option value="3">Superior incompleto</option>
-                                                <option value="4">Ensino Médio completo</option>
-                                                <option value="5">Ensino Médio incompleto</option>
-                                                <option value="6">Fundamental II completo</option>
-                                                <option value="7">Fundamental II incompleto</option>
-                                                <option value="8">Fundamental I completo</option>
-                                                <option value="9">Fundamental I incompleto</option>
+                                                <option>Pós-graduação completo</option>
+                                                <option>Superior completo</option>
+                                                <option>Superior incompleto</option>
+                                                <option>Ensino Médio completo</option>
+                                                <option>Ensino Médio incompleto</option>
+                                                <option>Fundamental II completo</option>
+                                                <option>Fundamental II incompleto</option>
+                                                <option>Fundamental I completo</option>
+                                                <option>Fundamental I incompleto</option>
                                             </select>
                                         </div>
                                         <div class="col-md-6 mt-1">
@@ -322,7 +323,7 @@
                                         </div>
 
                                         <div class="col-md-6 mt-1">
-                                            <label for="telefoneContatoDoVoluntario" class="form-label">Idiomas</label>
+                                            <label class="form-label">Idiomas</label>
                                             <div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox"
@@ -345,7 +346,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 mt-1">
-                                            <label for="nomeContatoDoVoluntario" class="form-label">Conhecimento em
+                                            <label class="form-label">Conhecimento em
                                                 LIBRAS</label>
                                             <div>
                                                 <div class="form-check form-check-inline">
@@ -391,9 +392,9 @@
                             </div>
 
                             <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-danger" type="submit" id="enviaFichaDeInscricao">Enviar Ficha de Inscrição</button>
+                                <button class="btn btn-danger" type="button" id="enviaFichaDeInscricao">Enviar Ficha de Inscrição</button>
                             </div>
-                        </form>
+                        </div>
                         <div class="col-1"></div>
                     </div>
                 </section>
