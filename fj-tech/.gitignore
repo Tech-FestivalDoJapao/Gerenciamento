@@ -1,15 +1,21 @@
 # dependencies
 /node_modules/
 
-# Configuration files
+# configuration files
 /src/js/firebaseConfig.mjs
 
 # misc
 .DS_Store
 
 # build files
-/dist/main.js
-/dist/main.js.LICENSE.txt
+/dist/main.bundle.js
+/dist/main.bundle.js.LICENSE.txt
+/dist/form.bundle.js
+/dist/form.bundle.js.LICENSE.txt
+
+# test files
+/coverage/
+/spec/
 
 # local env files
 .env*.local

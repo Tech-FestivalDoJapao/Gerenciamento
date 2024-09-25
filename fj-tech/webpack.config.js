@@ -2,10 +2,13 @@ const path = require('path')
 const loader = require('sass-loader')
 
 module.exports = {
-  entry: './src/js/main.js',
-  output: {    
+  entry: {
+    main: './src/js/main.js',            // arquivo principal
+    form: './src/js/form.js'              // novo arquivo para receber dados de voluntario.html
+  },
+  output: {
+    filename: '[name].bundle.js',         // [name] garante que o arquivo de saída terá o nome do *entry point*
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js'
   },
   devServer: {
     static: path.resolve(__dirname, 'dist'),
@@ -41,6 +44,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.mjs']
+    extensions: ['.js', '.ts', '.mjs'],
   }
 }
