@@ -14,6 +14,13 @@ let cpfVoluntario = document.getElementById("cpfDoVoluntario");
 let emailVoluntario = document.getElementById("emailDoVoluntario");
 let telefoneVoluntario = document.getElementById("telefoneDoVoluntario");
 
+// Endereço
+let cepVoluntario = document.getElementById("cepDoVoluntario");
+let logradouroVoluntario = document.getElementById("enderecoDoVoluntario");
+let bairroVoluntario = document.getElementById("bairroDoVoluntario");
+let cidadeVoluntario = document.getElementById("cidadeDoVoluntario");
+let estadoVoluntario = document.getElementById("estadoDoVoluntario");
+
 // Espera todo o conteúdo do site ser carregado
 document.addEventListener('DOMContentLoaded', function () {
   // Obtém o botão de envio do formulário
@@ -59,11 +66,11 @@ document.addEventListener('DOMContentLoaded', function () {
       },
 
       endereco: {
-        cep: "00000-000",
-        logradouro: "Rua do Voluntário, nº 123",
-        bairro: "Bairro do Voluntário",
-        cidade: "Cidade do Voluntário",
-        estado: "SP"
+        cep: cepVoluntario.value,
+        logradouro: logradouroVoluntario.value,
+        bairro: bairroVoluntario.value,
+        cidade: cidadeVoluntario.value,
+        estado: estadoVoluntario.value
       },
 
       carreira: {
