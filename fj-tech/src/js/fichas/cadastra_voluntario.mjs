@@ -13,13 +13,15 @@ let nomeCompleto = document.getElementById("nomeCompletoDoVoluntario");
 let cpfVoluntario = document.getElementById("cpfDoVoluntario");
 let emailVoluntario = document.getElementById("emailDoVoluntario");
 let telefoneVoluntario = document.getElementById("telefoneDoVoluntario");
-
 // Endereço
 let cepVoluntario = document.getElementById("cepDoVoluntario");
 let logradouroVoluntario = document.getElementById("enderecoDoVoluntario");
 let bairroVoluntario = document.getElementById("bairroDoVoluntario");
 let cidadeVoluntario = document.getElementById("cidadeDoVoluntario");
 let estadoVoluntario = document.getElementById("estadoDoVoluntario");
+// Contato de Emergência
+let nomeContatoEmergencia = document.getElementById("nomeContatoEmergenciaDoVoluntario");
+let telefoneContatoEmergencia = document.getElementById("telefoneContatoEmergenciaDoVoluntario");
 
 // Espera todo o conteúdo do site ser carregado
 document.addEventListener('DOMContentLoaded', function () {
@@ -60,8 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
         email_voluntario: emailVoluntario.value,
         celular_voluntario: telefoneVoluntario.value,
         emergencia: {
-          nome_contato_emergencia: "Nome do Contato de Emergência",
-          telefone_contato_emergencia: "+55 (11) 99999-9999",
+          nome_contato_emergencia: nomeContatoEmergencia.value,
+          telefone_contato_emergencia: telefoneContatoEmergencia.value,
         },
       },
 
