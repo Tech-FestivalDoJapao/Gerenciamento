@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="./img/image.png" type="image/x-icon">
     <link rel="icon" href="./img/image.png" type="image/x-icon">
 
-    <script src="./main.js"></script>
+    <script src="./main.bundle.js"></script>
 </head>
 
 <body>
@@ -203,7 +203,7 @@
                             <button type="button" class="btn btn-outline-danger"
                                 data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-danger" id="acessar-recursos" onclick="
-                                if (document.getElementById('palavra-chave').value === 'admin') {
+                                if (document.getElementById('palavra-chave').value === '@dm1n') {
                                     document.getElementById('recursos-tab').click();  
                                     document.getElementById('recursos-tab').removeAttribute('hidden');  
                                     document.getElementsByName('acessar-recursos-link').item(0).style.display = 'none';                                    
@@ -546,7 +546,16 @@
 
                         <!-- Modal para vizualização do perfil do voluntário -->
                         <section id="PerfilVoluntario">
-                            <!-- Full screen modal -->
+                            <!-- Limita a exibição dos campos do modal de perfil para dispositivos pequenos -->
+                            <style>                                
+                                @media (max-width: 575.98px) {
+                                  #divCPF, #divSexo, #divFaixaEtaria, #divEnderecoVoluntario, 
+                                  #ascendente, #divEscolaridade, #divTrabalho {
+                                    display: none;
+                                  }
+                                }
+                            </style>
+
                             <div class="modal fade" id="PerfilVoluntarioModal" tabindex="-1"
                                 aria-labelledby="perfilVoluntarioModalLabel" aria-hidden="true"
                                 data-bs-backdrop="static" data-bs-keyboard="false">
@@ -575,7 +584,7 @@
                                                         <label for="telefoneDoVoluntario" class="form-label">Telefone</label>
                                                         <input type="phone" class="form-control" id="telefoneDoVoluntario" readonly>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-12">
+                                                    <div class="col-md-3 col-sm-12" id="divCPF">
                                                         <label for="cpfDoVoluntario" class="form-label">CPF</label>
                                                         <input type="text" class="form-control" id="cpfDoVoluntario" readonly>
                                                     </div>                                                    
@@ -583,7 +592,7 @@
                                                         <label for="emailDoVoluntario" class="form-label">Email</label>
                                                         <input type="email" class="form-control" id="emailDoVoluntario" readonly>
                                                     </div>                                                   
-                                                    <div class="col-md-3 col-sm-12">
+                                                    <div class="col-md-3 col-sm-12" id="divSexo">
                                                         <label for="sexoDoVoluntario" class="form-label">Sexo</label>
                                                         <div>
                                                             <div class="form-check form-check-inline">
@@ -596,7 +605,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-12">
+                                                    <div class="col-md-3 col-sm-12" id="divFaixaEtaria">
                                                         <label for="faixaEtariaDoVoluntario" class="form-label">Faixa etária</label>
                                                         <input class="form-control" id="faixaEtariaDoVoluntario" readonly type="text">
                                                     </div>
@@ -623,7 +632,7 @@
                                                     </spam>
                                                 </div>
                                                 <!-- Endereço -->
-                                                <div class="row mb-4 col-md-6">
+                                                <div class="row mb-4 col-md-6" id="divEnderecoVoluntario">
                                                     <p><strong class="fs-5">Endereço</strong></p>
                                                     <div class="col-md-5">
                                                         <label for="bairroDoVoluntario" class="form-label">Bairro</label>
@@ -716,12 +725,12 @@
                                                         </div>
                                                     </div>
                                                     <!-- Nível de escolaridade -->
-                                                    <div class="col-md-3 col-sm-12">                                                        
+                                                    <div class="col-md-3 col-sm-12" id="divEscolaridade">                                                        
                                                         <label for="nivelEscolaridadeVoluntario" class="form-label">Escolaridade</label>
                                                         <input class="form-control" id="nivelEscolaridadeVoluntario" type="text" readonly>
                                                     </div>
                                                     <!-- Possui emprego -->
-                                                    <div class="col-md-3 col-sm-12">
+                                                    <div class="col-md-3 col-sm-12" id="divTrabalho">
                                                         <label for="possuiEmprego" class="form-label">Trabalha atualmente</label>
                                                         <div>
                                                             <div class="form-check form-check-inline">
@@ -848,18 +857,18 @@
                                             <div class="mt-2">
                                                 <div class="hstack gap-3">
                                                     <p class="mb-2">Ações</p>
-                                                    <div class="vstack gap-3">
+                                                    <div class="vstack gap-3">                                                        
+                                                        <button type="button" class="btn btn-danger col-12"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#cadastroDeHapis">Cadastrar Hapis</button>
                                                         <button type="button" class="btn btn-danger col-12"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#cadastroDeCredenciais">Cadastrar
                                                             Credenciais</button>
                                                         <button type="button" class="btn btn-danger col-12"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#cadastroDeHapis">Cadastrar Hapi</button>
-                                                        <button type="button" class="btn btn-danger col-12"
-                                                            data-bs-toggle="modal"
                                                             data-bs-target="#cadastroDeVouchers">Cadastrar
-                                                            Voucher</button>
+                                                            Vouchers</button>
                                                         <button type="button" class="btn btn-danger col-12" disabled 
                                                             id="emitirCertificadosDeParticipacao">Emitir Certificados</button>
                                                         <button type="button" class="btn btn-danger col-12" disabled hidden
