@@ -21,6 +21,30 @@ document.querySelectorAll("input").forEach(input => {
     if (input.type === "checkbox" || input.type === "radio") {
         input.classList.remove("border-0");
         input.classList.add("border", "border-opacity-75");
+
+        input.addEventListener("focus", () => {
+            if (input.type === "checkbox") {
+                input.addEventListener("change", () => {
+                    if (input.checked) {
+                        input.classList.add("bg-danger");
+                    } else {
+                        input.classList.remove("bg-danger");
+                    }
+                });
+            } 
+            
+            if (input.type === "radio") {
+                input.addEventListener("change", () => {
+                    document.querySelectorAll(`input[name="${input.name}"]`).forEach(radio => {
+                        if (radio.checked) {
+                            radio.classList.add("bg-danger");
+                        } else {
+                            radio.classList.remove("bg-danger");
+                        }
+                    });
+                });
+            }
+        });
     } 
 });
 

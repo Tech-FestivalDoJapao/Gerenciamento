@@ -13,6 +13,8 @@ let nomeCompleto = document.getElementById("nomeCompletoDoVoluntario");
 let cpfVoluntario = document.getElementById("cpfDoVoluntario");
 let emailVoluntario = document.getElementById("emailDoVoluntario");
 let telefoneVoluntario = document.getElementById("telefoneDoVoluntario");
+let sexoVoluntario = document.getElementById("sexoDoVoluntario");
+
 // Endereço
 let cepVoluntario = document.getElementById("cepDoVoluntario");
 let logradouroVoluntario = document.getElementById("enderecoDoVoluntario");
