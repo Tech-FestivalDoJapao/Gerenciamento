@@ -1,5 +1,5 @@
 # dependencies
-/node_modules/
+node_modules/
 
 # configuration files
 /src/js/firebaseConfig.mjs
@@ -13,12 +13,14 @@
 /dist/form.bundle.js
 /dist/form.bundle.js.LICENSE.txt
 
-# test files
-/coverage/
-/spec/
-
 # local env files
 .env*.local
 .env*
 */.env*.local
 */.env*
+
+# test file
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

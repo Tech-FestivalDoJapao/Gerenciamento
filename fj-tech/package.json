@@ -9,7 +9,9 @@
   },
   "scripts": {
     "dev": "webpack serve --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx playwright test",
+    "test-report": "npx playwright show-report",
+    "test-ui": "npx playwright test --ui",
     "start": "webpack server",
     "build": "webpack",
     "predeploy": "npm version patch && npm run build",
@@ -20,12 +22,14 @@
     "voluntários",
     "recursos",
     "festival",
-    "japão"
+    "Japão"
   ],
   "author": "Voluntários do Festival do Japão",
   "license": "ISC",
   "description": "Sistema gerenciador de voluntários e recursos do Festival do Japão.",
   "devDependencies": {
+    "@playwright/test": "^1.47.2",
+    "@types/node": "^22.7.4",
     "autoprefixer": "^10.4.19",
     "css-loader": "^7.1.2",
     "gh-pages": "^6.1.1",
