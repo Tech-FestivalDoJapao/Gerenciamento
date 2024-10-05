@@ -660,9 +660,9 @@
                                                 <div class="row mb-4 col-12">
                                                     <p><strong class="fs-5">Dados Adicionais</strong></p>
                                                     <!-- Descendência japonesa -->
-                                                    <div class="col-md-3 col-sm-12">
-                                                        <label for="nomeContatoDoVoluntario" class="form-label">Descendência japonesa</label>
-                                                        <div>
+                                                    <div class="col-md-4 col-sm-12">
+                                                        <label for="possuiDescendenciaJaponesa" class="form-label">Descendência japonesa</label>
+                                                        <div class="form-check-inline">
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="radio" name="possuiDescendenciaJaponesa" id="descendenteSim" value="Sim">
                                                                 <label class="form-check-label" for="descendenteSim">Sim</label>
@@ -671,15 +671,14 @@
                                                                 <input class="form-check-input" type="radio" name="possuiDescendenciaJaponesa" id="descendenteNao" value="Nao">
                                                                 <label class="form-check-label" for="descendenteNao">Não</label>
                                                             </div>
+                                                            <!--Ascendência -->
+                                                            <span class="mx-2 form-check form-check-inline" id="ascendente">
+                                                                <p class="text-secondary" id="ascendenciaDoVoluntarioDescendente"></p>
+                                                            </span>
                                                         </div>
-                                                    </div>
-                                                    <!--Ascendência -->
-                                                    <div class="col-md-3 col-sm-12" id="ascendente">
-                                                        <label for="ascendenciaDoVoluntarioDescendente" class="form-label">Ascendência</label>
-                                                        <input class="form-control" id="ascendenciaDoVoluntarioDescendente" type="text" readonly>
-                                                    </div>
+                                                    </div>                                                    
                                                     <!-- Idiomas -->
-                                                    <div class="col-md-6 col-sm-12">
+                                                    <div class="col-md-4 col-sm-12">
                                                         <label for="idiomasDoVoluntario" class="form-label">Idiomas</label>
                                                         <div>
                                                             <div class="form-check form-check-inline">
@@ -697,7 +696,7 @@
                                                         </div>
                                                     </div>
                                                     <!-- Treinamento Médico -->
-                                                    <div class="col-md-3 col-sm-12">
+                                                    <div class="col-md-4 col-sm-12">
                                                         <label for="nomeContatoDoVoluntario" class="form-label">Treinamento em Primeiros Socorros</label>
                                                         <div>
                                                             <div class="form-check form-check-inline">
@@ -711,7 +710,7 @@
                                                         </div>
                                                     </div>
                                                     <!-- Conhecimento em LIBRAS -->
-                                                    <div class="col-md-3 col-sm-12">
+                                                    <div class="col-md-4 col-sm-12">
                                                         <label for="nomeContatoDoVoluntario" class="form-label">Conhecimento em LIBRAS</label>
                                                         <div>
                                                             <div class="form-check form-check-inline">
@@ -725,12 +724,12 @@
                                                         </div>
                                                     </div>
                                                     <!-- Nível de escolaridade -->
-                                                    <div class="col-md-3 col-sm-12" id="divEscolaridade">                                                        
+                                                    <div class="col-md-4 col-sm-12" id="divEscolaridade">                                                        
                                                         <label for="nivelEscolaridadeVoluntario" class="form-label">Escolaridade</label>
                                                         <input class="form-control" id="nivelEscolaridadeVoluntario" type="text" readonly>
                                                     </div>
                                                     <!-- Possui emprego -->
-                                                    <div class="col-md-3 col-sm-12" id="divTrabalho">
+                                                    <div class="col-md-4 col-sm-12" id="divTrabalho">
                                                         <label for="possuiEmprego" class="form-label">Trabalha atualmente</label>
                                                         <div>
                                                             <div class="form-check form-check-inline">

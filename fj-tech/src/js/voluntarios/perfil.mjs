@@ -70,18 +70,20 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
                 /**
                  * Dados Adicionais
                  */
-                document.getElementById("ascendente").setAttribute("hidden", true);
+                // Descendência Japonesa
+                document.getElementById("ascendente").setAttribute("hidden", true);               
                 if (perfil.data().dados_pessoais.descendencia.possui_descendencia_japonesa === true) {
                     document.getElementById("descendenteSim").checked = true;
                     document.getElementById("ascendente").removeAttribute("hidden");
+
+                    // Ascendência do Voluntário
+                    const txtAscendencia = perfil.data().dados_pessoais.descendencia.ascendencia_voluntario.match(/\(([^)]+)\)/);
+                    const ascendencia = txtAscendencia ? txtAscendencia[1] : '';
+                    document.getElementById("ascendenciaDoVoluntarioDescendente").innerText += ascendencia;
                 } else {
                     document.getElementById("descendenteNao").checked = true;
                     document.getElementById("ascendente").setAttribute("hidden", true);
                 }
-
-                perfil.data().dados_pessoais.descendencia.ascendencia_voluntario.forEach((ascendencia) => {
-                    document.getElementById("ascendenciaDoVoluntarioDescendente").value += ascendencia;
-                });
 
                 // Idiomas
                 // Conhecimento em Ingl~Es
@@ -111,9 +113,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
                     : document.getElementById("treinamentoNao").checked = true;
 
                 // Escolaridade
-                perfil.data().carreira.escolaridade.nivel_escolaridade.forEach((nivelEscolaridade) => {
-                    document.getElementById("nivelEscolaridadeVoluntario").value += nivelEscolaridade;
-                });
+                document.getElementById("nivelEscolaridadeVoluntario").value = perfil.data().carreira.escolaridade.nivel_escolaridade;
 
                 // Trabalho
                 (perfil.data().carreira.profissao.trabalha_atualmente === true)
@@ -156,7 +156,7 @@ function clearInputData() {
     document.getElementById("estadoDoVoluntario").value = "";
     document.getElementById("descendenteSim").checked = false;
     document.getElementById("descendenteNao").checked = false;
-    document.getElementById("ascendenciaDoVoluntarioDescendente").value = "";
+    document.getElementById("ascendenciaDoVoluntarioDescendente").innerText = "";
     document.getElementById("idiomaVoluntarioIngles").checked = false;
     document.getElementById("idiomaVoluntarioJapones").checked = false;
     document.getElementById("idiomaVoluntarioEspanhol").checked = false;
