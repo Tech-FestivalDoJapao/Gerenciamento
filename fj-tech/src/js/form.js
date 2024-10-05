@@ -88,3 +88,24 @@ document.addEventListener('DOMContentLoaded', () => {
         toastBootstrap.show();
     });
 });
+
+/**
+ * Exibição personalizada dos campos de descendencia japonesa 
+ */
+var descendencia = document.getElementsByName("possuiDescendenciaJaponesa");
+var descendenciaJaponesa = document.getElementById("descendenteSim");
+var divAscendencia = document.getElementById("VoluntarioDescendente");
+
+descendencia.forEach(descendencia => {
+    descendencia.getAttribute("id") === "descendenteSim" 
+        ? descendenciaJaponesa.checked = true 
+        : descendenciaJaponesa.checked = false;
+
+    descendencia.addEventListener("change", () => {
+        if (descendenciaJaponesa.checked) {
+            divAscendencia.removeAttribute("hidden");
+        } else {
+            divAscendencia.setAttribute("hidden", true);
+        }
+    });
+});

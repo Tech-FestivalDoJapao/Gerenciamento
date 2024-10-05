@@ -13,7 +13,7 @@
     "test-report": "npx playwright show-report",
     "test-ui": "npx playwright test --ui",
     "start": "webpack server",
-    "build": "webpack",
+    "build": "webpack --mode production",
     "predeploy": "npm version patch && npm run build",
     "deploy": "gh-pages -d dist"
   },

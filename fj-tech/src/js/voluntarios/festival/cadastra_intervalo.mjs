@@ -70,6 +70,7 @@ listaDeVoluntarios.addEventListener("click", async (event) => {
  */
 function exibeHorarioIntervalo(inicioIntervalo, terminoIntervalo) {    
     let inicio, termino = null;
+    let dataTheme = document.documentElement.getAttribute("data-bs-theme");
 
     // Exibe apenas o horário de início do intervalo
     if (inicioIntervalo !== null && terminoIntervalo === null) {
@@ -83,6 +84,13 @@ function exibeHorarioIntervalo(inicioIntervalo, terminoIntervalo) {
             </div>        
         `;
 
+        // Altera a cor do texto de elementos de acordo com o data-bd-theme
+        if (dataTheme === "dark") {
+            document.querySelectorAll(".text-dark").forEach(element => {
+                element.classList.replace("text-dark", "text-light");
+            });
+        }
+
         return;
     }
 
@@ -93,11 +101,18 @@ function exibeHorarioIntervalo(inicioIntervalo, terminoIntervalo) {
 
         badgeHorariosIntervalo.innerHTML = `
             <div class="px-3">
-                <small class="row mb-1 px-1 py-2 badge rounded-pill bg-danger bg-opacity-25"> 
-                    <span class="text-dark"> ${inicio} </span> • <span> ${termino} </span>
+                <small class="row mb-1 px-1 py-2 badge rounded-pill bg-danger bg-opacity-25 text-dark" > 
+                    <span class="text-dark"> ${inicio} </span> • <span class="text-dark"> ${termino} </span>
                 </small>
             </div>        
         `;
+
+        // Altera a cor do texto de elementos de acordo com o data-bd-theme
+        if (dataTheme === "dark") {
+            document.querySelectorAll(".text-dark").forEach(element => {
+                element.classList.replace("text-dark", "text-light");
+            });
+        }
 
         return;
     }
