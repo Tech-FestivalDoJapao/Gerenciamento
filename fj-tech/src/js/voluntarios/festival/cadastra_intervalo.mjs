@@ -68,7 +68,7 @@ listaDeVoluntarios.addEventListener("click", async (event) => {
  * @param {Timestamp} inicioIntervalo - Horário de início do intervalo
  * @param {Timestamp} terminoIntervalo - Horário de término do intervalo
  */
-function exibeHorarioIntervalo(inicioIntervalo, terminoIntervalo) {
+function exibeHorarioIntervalo(inicioIntervalo, terminoIntervalo) {    
     let inicio, termino = null;
 
     // Exibe apenas o horário de início do intervalo
@@ -77,8 +77,8 @@ function exibeHorarioIntervalo(inicioIntervalo, terminoIntervalo) {
 
         badgeHorariosIntervalo.innerHTML = `
             <div class="px-3">
-                <small class="row mb-1 px-1 py-2 badge rounded-pill bg-danger bg-opacity-25 text-dark"> 
-                    <span> ${inicio} </span>
+                <small class="row mb-1 px-1 py-2 badge rounded-pill bg-danger bg-opacity-25"> 
+                    <span class="text-dark"> ${inicio} </span>
                 </small>
             </div>        
         `;
@@ -93,8 +93,8 @@ function exibeHorarioIntervalo(inicioIntervalo, terminoIntervalo) {
 
         badgeHorariosIntervalo.innerHTML = `
             <div class="px-3">
-                <small class="row mb-1 px-1 py-2 badge rounded-pill bg-danger bg-opacity-25 text-dark"> 
-                    <span> ${inicio} </span> • <span> ${termino} </span> 
+                <small class="row mb-1 px-1 py-2 badge rounded-pill bg-danger bg-opacity-25"> 
+                    <span class="text-dark"> ${inicio} </span> • <span> ${termino} </span>
                 </small>
             </div>        
         `;

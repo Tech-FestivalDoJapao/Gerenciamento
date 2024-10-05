@@ -62,10 +62,25 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
  */
 
 /**
- * TODO: Habilitar o uso de toast para exibir mensagens de erro e sucesso
+ * Exibe o toast de confirmação de cadastro de voluntário
  */
+document.addEventListener('DOMContentLoaded', () => {
+  // Captura o botão pelo ID
+  const btnConfirmaRemocaoVoluntario = document.getElementById('btnRemoverVoluntario');
 
-// Move a legenda versaoDoSistema para o rodapé da página em telas menores que 768px
+  // Captura o toast pelo ID
+  const toastElement = document.getElementById('toastConfirmacaoRemocaoVoluntario');
+  const toastBootstrap = new bootstrap.Toast(toastElement);
+
+  // Evento de clique no botão
+  btnConfirmaRemocaoVoluntario.addEventListener('click', () => { 
+    toastBootstrap.show(); 
+  });
+});
+
+/**
+ * Altera a posição e exibição da versão do sistema para telas menores que 768px
+ */
 if (window.innerWidth < 768) {
   // Exibe a versão do sistema no rodapé da página
   document.getElementById("versaoDoSistema").classList.add("fixed-bottom");

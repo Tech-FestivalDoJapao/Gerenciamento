@@ -31,8 +31,8 @@ document.querySelectorAll("input").forEach(input => {
                         input.classList.remove("bg-danger");
                     }
                 });
-            } 
-            
+            }
+
             if (input.type === "radio") {
                 input.addEventListener("change", () => {
                     document.querySelectorAll(`input[name="${input.name}"]`).forEach(radio => {
@@ -45,7 +45,7 @@ document.querySelectorAll("input").forEach(input => {
                 });
             }
         });
-    } 
+    }
 });
 
 /**
@@ -60,3 +60,31 @@ document.querySelectorAll("select").forEach(select => {
  */
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+/**
+ * Exibe o toast de confirmação de cadastro de voluntário
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // Captura o botão pelo ID
+    const button = document.getElementById('enviaFichaDeInscricao');
+
+    // Captura o toast pelo ID
+    const toastElement = document.getElementById('toastConfirmacaoCadastroVoluntario');
+    const toastBootstrap = new bootstrap.Toast(toastElement);
+
+    // Evento de clique no botão
+    button.addEventListener('click', () => {
+        // Opcional: definir o nome do voluntário
+        const nomeVoluntario = document.getElementById('nomeCompletoDoVoluntario');
+        const sexoVoluntario = document.getElementById('sexoMasculino').checked ? "Masculino" : "Feminino";
+
+        if (sexoVoluntario === "Masculino") {
+            document.getElementById('txtToastVoluntario').innerText = `Voluntário ${nomeVoluntario.value} cadastrado com sucesso!`;
+        } else {
+            document.getElementById('txtToastVoluntario').innerText = `Voluntária ${nomeVoluntario.value} cadastrada com sucesso!`;
+        }
+
+        // Exibir o toast
+        toastBootstrap.show();
+    });
+});

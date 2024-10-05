@@ -13,7 +13,8 @@ let nomeCompleto = document.getElementById("nomeCompletoDoVoluntario");
 let cpfVoluntario = document.getElementById("cpfDoVoluntario");
 let emailVoluntario = document.getElementById("emailDoVoluntario");
 let telefoneVoluntario = document.getElementById("telefoneDoVoluntario");
-let sexoVoluntario = document.getElementById("sexoDoVoluntario");
+let sexoVoluntario = document.getElementById("sexoMasculino");
+let faixaEtaria = document.getElementsByName('input[name="faixaEtariaDoVoluntario"]:checked');
 
 // Endereço
 let cepVoluntario = document.getElementById("cepDoVoluntario");
@@ -31,17 +32,16 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("enviaFichaDeInscricao").addEventListener("click", async (event) => {
     event.preventDefault();
 
+    sexoVoluntario = sexoVoluntario.classList.contains("bg-danger") === true ? "Masculino" : "Feminino"
+
     await addDoc(voluntarioRef, {
       cpf_voluntario: cpfVoluntario.value,
       nome_completo_voluntario: nomeCompleto.value,
-      treinamento_primeiros_socorros: true,
+      treinamento_primeiros_socorros: false,
 
       dados_pessoais: {
-        sexo_voluntario: "Masculino",
-        faixa_etaria: [
-          "-16", "16-20", "21-30", "31-40",
-          "41-50", "51-60", "61+"
-        ],
+        sexo_voluntario: sexoVoluntario,
+        faixa_etaria: null,
         descendencia: {
           possui_descendencia_japonesa: true,
           ascendencia_voluntario: [
@@ -93,15 +93,15 @@ document.addEventListener('DOMContentLoaded', function () {
           ],
           formacao_academica: "Curso do Voluntário",
           conhecimento_linguas: {
-            idioma_ingles: true,
-            idioma_japones: true,
+            idioma_ingles: false,
+            idioma_japones: false,
             idioma_espanhol: false,
             linguagem_de_sinais_brasileira: false,
           },
         },
 
         profissao: {
-          trabalha_atualmente: true,
+          trabalha_atualmente: false,
           profissao_voluntario: "Profissão do Voluntário",
           area_atuacao_voluntario: "Área de Atuação do Voluntário",
           experiencia_voluntariado: {
@@ -126,34 +126,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
           // Informações adicionais do voluntariado
           voluntariado: {
-            requer_certificado_participacao: true,
-            motivacao_voluntario: "Motivo do Voluntário para o Voluntariado",
-            area_interesse_voluntario: [
-              "Organização Geral",
-              "Gastronomia (kenjinkais e entidades)",
-              "Qualquer área",
-            ]
+            requer_certificado_participacao: true,      // Habilitado por padrão
+            motivacao_voluntario: null,
+            area_interesse_voluntario: null
           },
 
           // Disponibilidade do voluntário para trabalhar na edição atual do Festival do Japão
           disponibilidade: {
-            disponibilidade_geral: [
-              "Qualquer dia e horário, durante semana e finais de semana",
-              "Dias antes do evento, aos finais de semana",
-              "Montagem e no período do evento",
-              "Apenas no período do evento",
-              "Apenas em um dia do evento",
-              "Apenas no final de semana do evento",
-            ],
-            disponibilidade_sexta: [
-              "Indisponível", "Manhã", "Tarde", "Noite", "Integral"
-            ],
-            disponibilidade_sabado: [
-              "Indisponível", "Manhã", "Tarde", "Noite", "Integral"
-            ],
-            disponibilidade_domingo: [
-              "Indisponível", "Manhã", "Tarde", "Noite", "Integral"
-            ],
+            disponibilidade_geral: null,
+            disponibilidade_sexta: null,
+            disponibilidade_sabado: null,
+            disponibilidade_domingo: null,
           },
 
           // Horários de trabalho do voluntário em cada dia do Festival do Japão
@@ -165,14 +148,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 intervalo_1: {
                   inicio_intervalo: null,
                   termino_intervalo: null,
-                  resgate_voucher: false,
-                  devolucao_hapi: true
+                  resgate_voucher: null,
+                  devolucao_hapi: null
                 },
                 intervalo_2: {
                   inicio_intervalo: null,
                   termino_intervalo: null,
-                  resgate_voucher: false,
-                  devolucao_hapi: true
+                  resgate_voucher: null,
+                  devolucao_hapi: null
                 }
               }
             },
@@ -190,6 +173,9 @@ document.addEventListener('DOMContentLoaded', function () {
         })
           .then(() => {
             console.log(`Os dados do voluntário referentes à edição de ${edicaoFestival} do Festival do Japão foram cadastrados com sucesso!`);
+
+            exibeToastConfirmacaoCadastroVoluntario(nomeCompleto);
+            limpaFichaDeCadastroDeVoluntario();
           })
           .catch((erro) => {
             console.error(`Erro ao cadastrar dados de festival referentes ao voluntário ${voluntarioRef.id}: \n`, erro);
@@ -201,9 +187,34 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// TODO: Implementar a validação dos campos do formulário
 
+/**
+ * Prepara uma nova ficha de cadastro de voluntários limpando os campos após a submissão do form 
+ */
+function limpaFichaDeCadastroDeVoluntario() {
+  // Dados Pessoais
+  nomeCompleto.value = "";
+  cpfVoluntario.value = "";
+  emailVoluntario.value = "";
+  telefoneVoluntario.value = "";
+  faixaEtaria
 
+  // Endereço
+  cepVoluntario.value = "";
+  logradouroVoluntario.value = "";
+  bairroVoluntario.value = "";
+  cidadeVoluntario.value = "";
+  estadoVoluntario.value = "";
 
+  // Contato de Emergência
+  nomeContatoEmergencia.value = "";
+  telefoneContatoEmergencia.value = "";
+
+  // TODO: Descendência Japonesa
+
+  // TODO: Escolaridade
+}
 
 /**
  * TODO: Atualizar a lista de voluntários cadastrados na edição atual do Festival do Japão
