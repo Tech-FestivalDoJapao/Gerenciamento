@@ -80,115 +80,115 @@ voluntarioSnapshot.docChanges().forEach(async (change) => {
     function listaVoluntarioNaTabela(voluntarioDoc, nomeCompletoVoluntario, emailVoluntario, contatoVoluntario, status, codigoCredencial, checkIn, checkOut) {
         // Cria uma nova linha para inserir as informações do voluntário
         const linhaVoluntarioListado = document.createElement("tr");
-            linhaVoluntarioListado.id = voluntarioDoc.id;
+        linhaVoluntarioListado.id = voluntarioDoc.id;
 
         // Insere a linha do voluntário na tabela de listagem de voluntários
         const colunaDeSelecaoDeVoluntario = document.createElement("th");
-            colunaDeSelecaoDeVoluntario.scope = "row";
-            colunaDeSelecaoDeVoluntario.classList.add("d-none", "d-lg-table-cell");
+        colunaDeSelecaoDeVoluntario.scope = "row";
+        colunaDeSelecaoDeVoluntario.classList.add("d-none", "d-lg-table-cell");
         const divCheckboxSelecao = document.createElement("div");
-            divCheckboxSelecao.classList.add("form-check");
+        divCheckboxSelecao.classList.add("form-check");
         const checkboxSelecao = document.createElement("input");
-            checkboxSelecao.classList.add("form-check-input");
-            checkboxSelecao.type = "checkbox";
-            checkboxSelecao.value = voluntarioDoc.id;
-            checkboxSelecao.id = "selecionaVoluntario";
-            divCheckboxSelecao.appendChild(checkboxSelecao);
-            colunaDeSelecaoDeVoluntario.appendChild(divCheckboxSelecao);
-            linhaVoluntarioListado.appendChild(colunaDeSelecaoDeVoluntario);
+        checkboxSelecao.classList.add("form-check-input");
+        checkboxSelecao.type = "checkbox";
+        checkboxSelecao.value = voluntarioDoc.id;
+        checkboxSelecao.id = "selecionaVoluntario";
+        divCheckboxSelecao.appendChild(checkboxSelecao);
+        colunaDeSelecaoDeVoluntario.appendChild(divCheckboxSelecao);
+        linhaVoluntarioListado.appendChild(colunaDeSelecaoDeVoluntario);
 
         // Insere o nome e o email do voluntário na tabela de listagem de voluntários
         const colunaDeNomeEEmail = document.createElement("td");
         const divNomeEEmail = document.createElement("div");
-            divNomeEEmail.classList.add("d-flex", "align-items-center");
+        divNomeEEmail.classList.add("d-flex", "align-items-center");
         const grupoNomeEmail = document.createElement("div");
-            grupoNomeEmail.classList.add("ms");
+        grupoNomeEmail.classList.add("ms");
         const txtNome = document.createElement("p");
-            txtNome.classList.add("fw-semibold", "mb-0");
-            txtNome.textContent = nomeCompletoVoluntario;
+        txtNome.classList.add("fw-semibold", "mb-0");
+        txtNome.textContent = nomeCompletoVoluntario;
         const txtEmail = document.createElement("p");
-            txtEmail.classList.add("text-muted", "mb-0", "d-none", "d-md-table-cell");
-            txtEmail.textContent = emailVoluntario;
-            grupoNomeEmail.appendChild(txtNome);
-            grupoNomeEmail.appendChild(txtEmail);
-            divNomeEEmail.appendChild(grupoNomeEmail);
-            colunaDeNomeEEmail.appendChild(divNomeEEmail);
-            linhaVoluntarioListado.appendChild(colunaDeNomeEEmail);
+        txtEmail.classList.add("text-muted", "mb-0", "d-none", "d-md-table-cell");
+        txtEmail.textContent = emailVoluntario;
+        grupoNomeEmail.appendChild(txtNome);
+        grupoNomeEmail.appendChild(txtEmail);
+        divNomeEEmail.appendChild(grupoNomeEmail);
+        colunaDeNomeEEmail.appendChild(divNomeEEmail);
+        linhaVoluntarioListado.appendChild(colunaDeNomeEEmail);
 
         // Insere o contato do voluntário na tabela de listagem de voluntários
         const colunaDeContato = document.createElement("td");
         const txtContato = document.createElement("p");
-            txtContato.classList.add("fw-normal", "mb-1");
-            txtContato.textContent = contatoVoluntario;
-            colunaDeContato.appendChild(txtContato);
-            linhaVoluntarioListado.appendChild(colunaDeContato);
+        txtContato.classList.add("fw-normal", "mb-1");
+        txtContato.textContent = contatoVoluntario;
+        colunaDeContato.appendChild(txtContato);
+        linhaVoluntarioListado.appendChild(colunaDeContato);
 
         // Insere o status do voluntário na tabela de listagem de voluntários
         const colunaDeStatus = document.createElement("td");
-            colunaDeStatus.innerHTML = status;
-            linhaVoluntarioListado.appendChild(colunaDeStatus);
+        colunaDeStatus.innerHTML = status;
+        linhaVoluntarioListado.appendChild(colunaDeStatus);
 
         // Insere a credencial do voluntário na tabela de listagem de voluntários
         const colunaDeCredencial = document.createElement("td");
         const txtCredencial = document.createElement("p");
-            txtCredencial.classList.add("text-center");
-            txtCredencial.id = "credencial";
-            txtCredencial.textContent = codigoCredencial;
-            colunaDeCredencial.appendChild(txtCredencial);
-            linhaVoluntarioListado.appendChild(colunaDeCredencial);
+        txtCredencial.classList.add("text-center");
+        txtCredencial.id = "credencial";
+        txtCredencial.textContent = codigoCredencial;
+        colunaDeCredencial.appendChild(txtCredencial);
+        linhaVoluntarioListado.appendChild(colunaDeCredencial);
 
         // Insere o horário de check-in do voluntário na tabela de listagem de voluntários
         const colunaDeCheckIn = document.createElement("td");
-            colunaDeCheckIn.classList.add("d-none", "d-md-table-cell");
+        colunaDeCheckIn.classList.add("d-none", "d-md-table-cell");
         const txtCheckIn = document.createElement("p");
-            txtCheckIn.classList.add("text-center");
-            txtCheckIn.id = "check-in";
-            txtCheckIn.textContent = checkIn;
-            colunaDeCheckIn.appendChild(txtCheckIn);
-            linhaVoluntarioListado.appendChild(colunaDeCheckIn);
+        txtCheckIn.classList.add("text-center");
+        txtCheckIn.id = "check-in";
+        txtCheckIn.textContent = checkIn;
+        colunaDeCheckIn.appendChild(txtCheckIn);
+        linhaVoluntarioListado.appendChild(colunaDeCheckIn);
 
         // Insere o horário de check-out do voluntário na tabela de listagem de voluntários
         const colunaDeCheckOut = document.createElement("td");
-            colunaDeCheckOut.classList.add("d-none", "d-md-table-cell");
+        colunaDeCheckOut.classList.add("d-none", "d-md-table-cell");
         const txtCheckOut = document.createElement("p");
-            txtCheckOut.classList.add("text-center");
-            txtCheckOut.id = "checkout";
-            txtCheckOut.textContent = checkOut;
-            colunaDeCheckOut.appendChild(txtCheckOut);
-            linhaVoluntarioListado.appendChild(colunaDeCheckOut);
+        txtCheckOut.classList.add("text-center");
+        txtCheckOut.id = "checkout";
+        txtCheckOut.textContent = checkOut;
+        colunaDeCheckOut.appendChild(txtCheckOut);
+        linhaVoluntarioListado.appendChild(colunaDeCheckOut);
 
         // Insere as ações disponíveis para o voluntário na tabela de listagem de voluntários
         const colunaDeAcoes = document.createElement("td");
         const grupoDeAcoes = document.createElement("div");
-            grupoDeAcoes.classList.add("btn-group", "btn-group-sm", "gap-1");
-            grupoDeAcoes.role = "group";
+        grupoDeAcoes.classList.add("btn-group", "btn-group-sm", "gap-1");
+        grupoDeAcoes.role = "group";
         const btnGerenciaVoluntario = document.createElement("button");
-            btnGerenciaVoluntario.type = "button";
-            btnGerenciaVoluntario.classList.add("btn", "btn-outline-danger");
-            btnGerenciaVoluntario.id = "GerenciarRecursosDoVoluntarioNoFestival";
-            btnGerenciaVoluntario.dataset.bsToggle = "offcanvas";
-            btnGerenciaVoluntario.dataset.bsTarget = "#offcanvasRight";
-            btnGerenciaVoluntario.ariaControls = "offcanvasRight";
-            btnGerenciaVoluntario.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/></svg>`;
-            grupoDeAcoes.appendChild(btnGerenciaVoluntario);
+        btnGerenciaVoluntario.type = "button";
+        btnGerenciaVoluntario.classList.add("btn", "btn-outline-danger");
+        btnGerenciaVoluntario.id = "GerenciarRecursosDoVoluntarioNoFestival";
+        btnGerenciaVoluntario.dataset.bsToggle = "offcanvas";
+        btnGerenciaVoluntario.dataset.bsTarget = "#offcanvasRight";
+        btnGerenciaVoluntario.ariaControls = "offcanvasRight";
+        btnGerenciaVoluntario.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/></svg>`;
+        grupoDeAcoes.appendChild(btnGerenciaVoluntario);
         const btnPerfilVoluntario = document.createElement("button");
-            btnPerfilVoluntario.type = "button";
-            btnPerfilVoluntario.classList.add("btn", "btn-outline-danger");
-            btnPerfilVoluntario.dataset.bsToggle = "modal";
-            btnPerfilVoluntario.dataset.bsTarget = "#PerfilVoluntarioModal";
-            btnPerfilVoluntario.id = "AcessarPerfilVoluntario";
-            btnPerfilVoluntario.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>`;
-            grupoDeAcoes.appendChild(btnPerfilVoluntario);
+        btnPerfilVoluntario.type = "button";
+        btnPerfilVoluntario.classList.add("btn", "btn-outline-danger");
+        btnPerfilVoluntario.dataset.bsToggle = "modal";
+        btnPerfilVoluntario.dataset.bsTarget = "#PerfilVoluntarioModal";
+        btnPerfilVoluntario.id = "AcessarPerfilVoluntario";
+        btnPerfilVoluntario.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>`;
+        grupoDeAcoes.appendChild(btnPerfilVoluntario);
         const btnExcluiVoluntario = document.createElement("button");
-            btnExcluiVoluntario.type = "button";
-            btnExcluiVoluntario.classList.add("btn", "btn-outline-danger", "d-none", "d-lg-table-cell");
-            btnExcluiVoluntario.id = "RemoverVoluntario";
-            btnExcluiVoluntario.dataset.bsToggle = "modal";
-            btnExcluiVoluntario.dataset.bsTarget = "#RemoverVoluntarioModal";
-            btnExcluiVoluntario.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/></svg>`;
-            grupoDeAcoes.appendChild(btnExcluiVoluntario);
-            colunaDeAcoes.appendChild(grupoDeAcoes);
-            linhaVoluntarioListado.appendChild(colunaDeAcoes);
+        btnExcluiVoluntario.type = "button";
+        btnExcluiVoluntario.classList.add("btn", "btn-outline-danger", "d-none", "d-lg-table-cell");
+        btnExcluiVoluntario.id = "RemoverVoluntario";
+        btnExcluiVoluntario.dataset.bsToggle = "modal";
+        btnExcluiVoluntario.dataset.bsTarget = "#RemoverVoluntarioModal";
+        btnExcluiVoluntario.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/></svg>`;
+        grupoDeAcoes.appendChild(btnExcluiVoluntario);
+        colunaDeAcoes.appendChild(grupoDeAcoes);
+        linhaVoluntarioListado.appendChild(colunaDeAcoes);
 
         document.getElementById("corpoTabelaDeListagemDeVoluntarios").appendChild(linhaVoluntarioListado);
     }
@@ -223,7 +223,7 @@ listadeDeVoluntarios.addEventListener("click", (event) => {
     // Informações dpo voluntário
     const identificaVoluntario = docVoluntario.id;
     const nomeVoluntario = docVoluntario.data().nome_completo_voluntario;
-        
+
     /**
      * Identificação do voluntário no Modal de Confirmação de Remoção
      */
@@ -236,6 +236,7 @@ listadeDeVoluntarios.addEventListener("click", (event) => {
     document.getElementById("gestaoRecusosVoluntarioNoFestival").innerText = `${identificaVoluntario}`;
     document.getElementById("nomeVoluntarioGerenciado").innerText = `${nomeVoluntario}`;
 });
+
 
 /**
  * Selecionar e deselecionar todos os voluntários da lista de voluntários através do checkbox de seleção

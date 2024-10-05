@@ -48,9 +48,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
                     ? document.getElementById("sexoMasculino").checked = true
                     : document.getElementById("sexoFeminino").checked = true;
 
-                perfil.data().dados_pessoais.faixa_etaria.forEach((faixaEtaria) => {
-                    document.getElementById("faixaEtariaDoVoluntario").value += faixaEtaria;
-                });
+                document.getElementById("faixaEtariaDoVoluntario").value = perfil.data().dados_pessoais.faixa_etaria;
 
                 /**
                  * Contato de Emergência
