@@ -27,6 +27,7 @@ fj-tech/
 │   │   └── main.js
 │   └── scss/
 │       └── styles.scss
+├── test/
 ├── package-lock.json
 ├── package.json
 └── webpack.config.js
