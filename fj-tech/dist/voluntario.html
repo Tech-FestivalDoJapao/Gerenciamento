@@ -108,6 +108,15 @@
                                             <label for="cpfDoVoluntario" class="form-label">CPF</label>
                                             <input type="text" class="form-control" id="cpfDoVoluntario" size="14"
                                                 placeholder="000.000.000-00" required>
+                                            <!-- Máscara para o campo de CPF do voluntário -->
+                                            <script>
+                                                document.getElementById("cpfDoVoluntario").addEventListener('input', function (e) {
+                                                    var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
+                                                    e.target.value = !x[2] ? x[1] : (!x[3] ? x[1] + '.' + x[2] 
+                                                                        : (!x[4] ? x[1] + '.' + x[2] + '.' + x[3] 
+                                                                            : x[1] + '.' + x[2] + '.' + x[3] + '-' + x[4]));
+                                                });
+                                            </script>
                                         </div>
                                     </div>
                                     <div class="row mb-2">
@@ -119,6 +128,13 @@
                                             <label for="telefoneDoVoluntario" class="form-label">Telefone</label>
                                             <input type="phone" class="form-control" id="telefoneDoVoluntario" size="20"
                                                 placeholder="(00) 00000-0000" required>
+                                            <!-- Máscara para o campo de celular para contato do voluntário -->
+                                            <script>
+                                                document.getElementById("telefoneDoVoluntario").addEventListener('input', function (e) {
+                                                    var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+                                                    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+                                                });
+                                            </script>
                                         </div>
                                     </div>
                                     <div class="row mb-2">
@@ -239,6 +255,13 @@
                                             <input type="phone" class="form-control"
                                                 id="telefoneContatoEmergenciaDoVoluntario" size="14"
                                                 placeholder="(00) 00000-0000" required>
+                                            <!-- Máscara para o campo de celular -->
+                                            <script>
+                                                document.getElementById("telefoneContatoEmergenciaDoVoluntario").addEventListener('input', function (e) {
+                                                    var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+                                                    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+                                                });
+                                            </script>
                                         </div>
                                     </div>
                                 </section>
@@ -432,6 +455,19 @@
                                 </div>
                             </div>
 
+                            <!-- Toasts de falha ao identificar CEP -->
+                            <div id="toastFalhaCEP"
+                                class="toast align-items-center text-bg-danger border-0 position-fixed top-0 end-0"
+                                role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex">
+                                    <div class="toast-body">
+                                        O CEP informado está em um formato inválido ou não existe. <br>
+                                        <small>Tente novamente.</small>
+                                    </div>
+                                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" 
+                                        aria-label="Close"></button>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-1"></div>
                     </div>
@@ -451,6 +487,11 @@
 
     <!-- Consumindo a API ViaCEP para tratativa de endereços -->
     <script>
+        // Máscara aplicada no campo de CEP
+        document.getElementById("cepDoVoluntario").addEventListener('input', function (e) {
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,5})(\d{0,3})/);
+            e.target.value = !x[2] ? x[1] : x[1] + '-' + x[2];
+        });
         //Limpa valores do formulário de cep.
         function limpaFormEnderecos() {
             document.getElementById('enderecoDoVoluntario').value = ("");
