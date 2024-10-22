@@ -1,6 +1,6 @@
 {
   "name": "fj-tech",
-  "version": "1.0.4",
+  "version": "1.0.11",
   "main": "index.js",
   "homepage": "https://tech-festivaldojapao.github.io/gerenciamento/",
   "repository": {
@@ -11,12 +11,18 @@
     "dev": "webpack serve --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack server",
-    "build": "webpack",
-    "predeploy": "npm run build",
+    "build": "webpack --mode production",
+    "predeploy": "npm version patch && npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "gerenciamento",
+    "voluntários",
+    "recursos",
+    "festival",
+    "japão"
+  ],
+  "author": "Voluntários do Festival do Japão",
   "license": "ISC",
   "description": "Sistema gerenciador de voluntários e recursos do Festival do Japão.",
   "devDependencies": {
@@ -28,7 +34,7 @@
     "sass": "^1.77.4",
     "sass-loader": "^14.2.1",
     "style-loader": "^4.0.0",
-    "webpack": "^5.91.0",
+    "webpack": "^5.94.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"
   },
@@ -36,6 +42,6 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "firebase": "^10.12.4"
+    "firebase": "^10.14.0"
   }
 }

@@ -7,121 +7,136 @@ import './lista.mjs';
 /**
  * Identifica o id do voluntário cujo perfil será exibido
  */
-document.querySelectorAll("tr").forEach((tr) => {
-    tr.addEventListener("click", async () => {
-        const idPerfilVoluntario = tr.id;
-
-        /**
-         * Exibe as informações mais relevantes do voluntário na tela de perfil
-         */
-        const docRef = doc(db, "voluntario", idPerfilVoluntario);
-        const perfil = await getDoc(docRef);
-
-        if (perfil.exists()) {
-            //console.log("Document data:", perfil.data());
-
+document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("click", () => {
+    document.querySelectorAll("tr").forEach((tr) => {
+        tr.addEventListener("click", async () => {
+            const idPerfilVoluntario = tr.id;
+            
             /**
-             * Dados Pessoais 
+             * Exibe as informações mais relevantes do voluntário na tela de perfil
              */
-            document.getElementById("nomeCompletoDoVoluntario").value = perfil.data().nome_completo_voluntario;
-            document.getElementById("cpfDoVoluntario").value = perfil.data().cpf_voluntario;
-            document.getElementById("emailDoVoluntario").value = perfil.data().contato_voluntario.email_voluntario;
-            document.getElementById("telefoneDoVoluntario").value = perfil.data().contato_voluntario.celular_voluntario;
+            const docVoluntarioRef = doc(db, "voluntario", idPerfilVoluntario);
+            const perfil = await getDoc(docVoluntarioRef);
+            const docFestivalRef = doc(docVoluntarioRef, 'festival', '2024');
+            const festival = await getDoc(docFestivalRef);
 
-            (perfil.data().sexo_voluntario === "Masculino")
-                ? document.getElementById("sexoMasculino").checked = true
-                : document.getElementById("sexoFeminino").checked = true;
+            if (perfil.exists()) {
+                // Limpa os campos do modal de perfil do voluntário se houver algum valor
+                clearInputData();
 
-            perfil.data().faixa_etaria_voluntario.forEach((faixaEtaria) => {
-                document.getElementById("faixaEtariaDoVoluntario").value += faixaEtaria;
-            });
+                // Identifica o código de credencial e a data de inscrição do voluntário
+                const codigoCredencial = festival.data().codigo_credencial_voluntario;
+                const dataInscricao = new Date(festival.data().data_inscricao.toDate()).toLocaleDateString("pt-BR");
+                // Exibe apenas a data de inscrição do voluntário no header do modal de perfil, caso não haja credencial alocada
+                if (codigoCredencial === null) {
+                    document.getElementById("docVoluntarioPerfil").innerHTML = `Voluntário desde ${dataInscricao}`;
+                    
+                    return;
+                }              
+                // Exibe o código de credencial alocado e a data de inscrição do voluntário no header do modal de perfil  
+                document.getElementById("docVoluntarioPerfil").innerHTML = `ID: ${codigoCredencial} | Voluntário desde ${dataInscricao}`;
 
-            /**
-             * Contato de Emergência
-             */
-            document.getElementById("nomeContatoDoVoluntario").value = perfil.data().contato_emergencia_voluntario.nome_contato_emergencia;
-            document.getElementById("telefoneContatoDoVoluntario").value = perfil.data().contato_emergencia_voluntario.telefone_contato_emergencia;
+                /**
+                 * Dados Pessoais 
+                 */
+                document.getElementById("nomeCompletoDoVoluntario").value = perfil.data().nome_completo_voluntario;
+                document.getElementById("cpfDoVoluntario").value = perfil.data().cpf_voluntario;
+                document.getElementById("emailDoVoluntario").value = perfil.data().contato.email_voluntario;
+                document.getElementById("telefoneDoVoluntario").value = perfil.data().contato.celular_voluntario;
 
-            /**
-             * Endereço do Voluntário
-             */
-            document.getElementById("cepDoVoluntario").setAttribute("readonly", true);
-            document.getElementById("cepDoVoluntario").value = perfil.data().endereco_voluntario.cep;
+                (perfil.data().dados_pessoais.sexo_voluntario === "Masculino")
+                    ? document.getElementById("sexoMasculino").checked = true
+                    : document.getElementById("sexoFeminino").checked = true;
 
-            document.getElementById("enderecoDoVoluntario").value = perfil.data().endereco_voluntario.logradouro;
-            document.getElementById("bairroDoVoluntario").value = perfil.data().endereco_voluntario.bairro;
-            document.getElementById("cidadeDoVoluntario").value = perfil.data().endereco_voluntario.cidade;
-            document.getElementById("estadoDoVoluntario").value = perfil.data().endereco_voluntario.estado;
+                document.getElementById("faixaEtariaDoVoluntario").value = perfil.data().dados_pessoais.faixa_etaria;
 
-            /**
-             * Dados Adicionais
-             */
-            document.getElementById("ascendente").setAttribute("hidden", true);
-            if (perfil.data().descendencia_voluntario.descendente_japones === true) {
-                document.getElementById("descendenteSim").checked = true;
-                document.getElementById("ascendente").removeAttribute("hidden");
+                /**
+                 * Contato de Emergência
+                 */
+                document.getElementById("nomeContatoDoVoluntario").value = perfil.data().contato.emergencia.nome_contato_emergencia;
+                document.getElementById("telefoneContatoDoVoluntario").value = perfil.data().contato.emergencia.telefone_contato_emergencia;
+
+                /**
+                 * Endereço do Voluntário
+                 */
+                document.getElementById("cepDoVoluntario").setAttribute("readonly", true);
+                document.getElementById("cepDoVoluntario").value = perfil.data().endereco.cep;
+
+                document.getElementById("enderecoDoVoluntario").value = perfil.data().endereco.logradouro;
+                document.getElementById("bairroDoVoluntario").value = perfil.data().endereco.bairro;
+                document.getElementById("cidadeDoVoluntario").value = perfil.data().endereco.cidade;
+                document.getElementById("estadoDoVoluntario").value = perfil.data().endereco.estado;
+
+                /**
+                 * Dados Adicionais
+                 */
+                // Descendência Japonesa
+                document.getElementById("ascendente").setAttribute("hidden", true);               
+                if (perfil.data().dados_pessoais.descendencia.possui_descendencia_japonesa === true) {
+                    document.getElementById("descendenteSim").checked = true;
+                    document.getElementById("ascendente").removeAttribute("hidden");
+
+                    // Ascendência do Voluntário
+                    const txtAscendencia = perfil.data().dados_pessoais.descendencia.ascendencia_voluntario.match(/\(([^)]+)\)/);
+                    const ascendencia = txtAscendencia ? txtAscendencia[1] : '';
+                    document.getElementById("ascendenciaDoVoluntarioDescendente").innerText += ascendencia;
+                } else {
+                    document.getElementById("descendenteNao").checked = true;
+                    document.getElementById("ascendente").setAttribute("hidden", true);
+                }
+
+                // Idiomas
+                // Conhecimento em Ingl~Es
+                document.getElementById("idiomaVoluntarioIngles").removeAttribute("checked", true);
+                (perfil.data().carreira.escolaridade.conhecimento_linguas.idioma_ingles === true)
+                    ? document.getElementById("idiomaVoluntarioIngles").checked = true
+                    : document.getElementById("idiomaVoluntarioIngles").removeAttribute("checked");
+                // Conhecimento em Japonês
+                document.getElementById("idiomaVoluntarioJapones").removeAttribute("checked", true);
+                (perfil.data().carreira.escolaridade.conhecimento_linguas.idioma_japones === true)
+                    ? document.getElementById("idiomaVoluntarioJapones").checked = true
+                    : document.getElementById("idiomaVoluntarioJapones").removeAttribute("checked");
+                // Conhecimento em Espanhol
+                document.getElementById("idiomaVoluntarioEspanhol").removeAttribute("checked", true);
+                (perfil.data().carreira.escolaridade.conhecimento_linguas.idioma_espanhol === true)
+                    ? document.getElementById("idiomaVoluntarioEspanhol").checked = true
+                    : document.getElementById("idiomaVoluntarioEspanhol").removeAttribute("checked");
+
+                // Conhecimento em Libras
+                (perfil.data().carreira.escolaridade.conhecimento_linguas.linguagem_de_sinais_brasileira === true)
+                    ? document.getElementById("conhecimentoLibrasSim").checked = true
+                    : document.getElementById("conhecimentoLibrasNao").checked = true;
+
+                // Treinamento em Primeiros Socorros
+                (perfil.data().treinamento_primeiros_socorros === true)
+                    ? document.getElementById("treinamentoSim").checked = true
+                    : document.getElementById("treinamentoNao").checked = true;
+
+                // Escolaridade
+                document.getElementById("nivelEscolaridadeVoluntario").value = perfil.data().carreira.escolaridade.nivel_escolaridade;
+
+                // Trabalho
+                (perfil.data().carreira.profissao.trabalha_atualmente === true)
+                    ? document.getElementById("trabalhaSim").checked = true
+                    : document.getElementById("trabalhaNao").checked = true;
             } else {
-                document.getElementById("descendenteNao").checked = true;
+                // perfil.data() retornará undefined
+                console.log("Não foi possível encontrar o perfil deste voluntário.");
             }
-
-            perfil.data().descendencia_voluntario.ascendencia_voluntario.forEach((ascendencia) => {
-                document.getElementById("ascendenciaDoVoluntarioDescendente").value += ascendencia;
-            });
-
-            // Idiomas
-            // Conhecimento em Ingl~Es
-            document.getElementById("idiomaVoluntarioIngles").removeAttribute("checked", true);
-            (perfil.data().escolaridade_voluntario.conhecimento_voluntario.idioma_ingles === true)
-                ? document.getElementById("idiomaVoluntarioIngles").setAttribute("checked", true)
-                : document.getElementById("idiomaVoluntarioIngles").removeAttribute("checked");
-            // Conhecimento em Japonês
-            document.getElementById("idiomaVoluntarioJapones").removeAttribute("checked", true);
-            (perfil.data().escolaridade_voluntario.conhecimento_voluntario.idioma_japones === true)
-                ? document.getElementById("idiomaVoluntarioJapones").setAttribute("checked", true)
-                : document.getElementById("idiomaVoluntarioJapones").removeAttribute("checked");
-            // Conhecimento em Espanhol
-            document.getElementById("idiomaVoluntarioEspanhol").removeAttribute("checked", true);
-            (perfil.data().escolaridade_voluntario.conhecimento_voluntario.idioma_espanhol === true)
-                ? document.getElementById("idiomaVoluntarioEspanhol").setAttribute("checked", true)
-                : document.getElementById("idiomaVoluntarioEspanhol").removeAttribute("checked");
-
-            // Conhecimento em Libras
-            (perfil.data().escolaridade_voluntario.conhecimento_voluntario.linguagem_libras === true)
-                ? document.getElementById("conhecimentoLibrasSim").checked = true
-                : document.getElementById("conhecimentoLibrasNao").checked = true;
-
-            // Treinamento em Primeiros Socorros
-            (perfil.data().escolaridade_voluntario.treinamento_primeiros_socorros === true)
-                ? document.getElementById("treinamentoSim").checked = true
-                : document.getElementById("treinamentoNao").checked = true;
-
-            // Escolaridade
-            perfil.data().escolaridade_voluntario.nivel_escolaridade_voluntario.forEach((nivelEscolaridade) => {
-                document.getElementById("nivelEscolaridadeVoluntario").value += nivelEscolaridade;
-            });
-
-            // Trabalho
-            (perfil.data().carreira_voluntario.trabalha_atualmente === true)
-                ? document.getElementById("trabalhaSim").checked = true
-                : document.getElementById("trabalhaNao").checked = true;
-        } else {
-            // perfil.data() retornará undefined
-            console.log("Não foi possível encontrar o perfil deste voluntário.");
-        }
-
+        });
     });
 });
 
-/**
- * Limpar modal de perfil do voluntário após fechamento
- */
-document.getElementById("btnFecharPerfilHeader").addEventListener("click", () => {
-    clearInputData();
-});
 
-document.getElementById("btnFecharPerfilFooter").addEventListener("click", () => {
+// Botões de fechamento do modal de perfil do voluntário
+const btnFecharPerfilHeader = document.getElementById("btnFecharPerfilHeader");
+const btnFecharPerfilFooter = document.getElementById("btnFecharPerfilFooter");
+/**
+ * Limpa os campos de perfil do voluntário após o fechamento do modal 
+ */
+if (btnFecharPerfilHeader.click || btnFecharPerfilFooter.click) {
     clearInputData();
-});
+}
 
 // Reseta os valores do modal de perfil 
 function clearInputData() {
@@ -141,7 +156,7 @@ function clearInputData() {
     document.getElementById("estadoDoVoluntario").value = "";
     document.getElementById("descendenteSim").checked = false;
     document.getElementById("descendenteNao").checked = false;
-    document.getElementById("ascendenciaDoVoluntarioDescendente").value = "";
+    document.getElementById("ascendenciaDoVoluntarioDescendente").innerText = "";
     document.getElementById("idiomaVoluntarioIngles").checked = false;
     document.getElementById("idiomaVoluntarioJapones").checked = false;
     document.getElementById("idiomaVoluntarioEspanhol").checked = false;
@@ -152,6 +167,4 @@ function clearInputData() {
     document.getElementById("nivelEscolaridadeVoluntario").value = "";
     document.getElementById("trabalhaSim").checked = false;
     document.getElementById("trabalhaNao").checked = false;
-
-    //console.log("Fechando modal de perfil do voluntário.");
 }

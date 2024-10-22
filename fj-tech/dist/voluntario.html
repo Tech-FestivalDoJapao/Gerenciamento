@@ -5,18 +5,17 @@
     <title>Cadastro de Voluntário no Festival do Japão</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Formulário para cadastro de pessoas interessadas no voluntariado do Festival do Japão.">
+    <meta name="description"
+        content="Formulário para cadastro de pessoas interessadas no voluntariado do Festival do Japão.">
     <meta name="keywords" content="Festival do Japão, Voluntários">
 
     <link rel="shortcut icon" href="./img/image.png" type="image/x-icon">
     <link rel="icon" href="./img/image.png" type="image/x-icon">
-
-    <script src="./main.js"></script>
-    <script src="./color-modes.js"></script>
 </head>
 
 <body>
     <div class="container py-3 px-3 mx-auto">
+        <!-- Cabeçalho da página -->
         <header id="header"
             class="d-flex justify-content-between align-items-md-center pb-3 mb-5 border-bottom border-danger border-5">
             <h1 class="h4">
@@ -27,8 +26,9 @@
 
             <!-- Theme chooser -->
             <div>
-                <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center opacity-50" id="bd-theme"
-                    type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+                <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center opacity-50"
+                    id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown"
+                    aria-label="Toggle theme (auto)">
                     <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
                         <use href="#circle-half"></use>
                     </svg>
@@ -88,9 +88,10 @@
                 <section id="cadastro_voluntario">
                     <div class="modal-body row align-items-center">
                         <div class="col"></div>
-                        <form class="row col-md-10 col-sm-12 g-3" id="formCadastroDeVoluntario">
-                            <!-- Dados pessoais -->
+                        <div class="row col-md-10 col-sm-12 g-3" id="formCadastroDeVoluntario">
+                            <!-- Dados do voluntário -->
                             <div class="row mb-4 col-12">
+                                <!-- Dados pessoais -->
                                 <section class="mb-4">
                                     <p class="fs-5">
                                         <strong class="mb-3">Dados Pessoais</strong>
@@ -99,24 +100,41 @@
 
                                     <div class="row mb-2">
                                         <div class="col-md-8 mt-1">
-                                            <label for="nomeCompletoDoVoluntario" class="form-label">Nome completo</label>
-                                            <input type="text" class="form-control" id="nomeCompletoDoVoluntario">
+                                            <label for="nomeCompletoDoVoluntario" class="form-label">Nome
+                                                completo</label>
+                                            <input type="name" class="form-control" id="nomeCompletoDoVoluntario" required>
                                         </div>
                                         <div class="col-md-4 mt-1">
                                             <label for="cpfDoVoluntario" class="form-label">CPF</label>
                                             <input type="text" class="form-control" id="cpfDoVoluntario" size="14"
-                                                placeholder="000.000.000-00">
+                                                placeholder="000.000.000-00" required>
+                                            <!-- Máscara para o campo de CPF do voluntário -->
+                                            <script>
+                                                document.getElementById("cpfDoVoluntario").addEventListener('input', function (e) {
+                                                    var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
+                                                    e.target.value = !x[2] ? x[1] : (!x[3] ? x[1] + '.' + x[2] 
+                                                                        : (!x[4] ? x[1] + '.' + x[2] + '.' + x[3] 
+                                                                            : x[1] + '.' + x[2] + '.' + x[3] + '-' + x[4]));
+                                                });
+                                            </script>
                                         </div>
                                     </div>
                                     <div class="row mb-2">
                                         <div class="col-md-8 mt-1">
                                             <label for="emailDoVoluntario" class="form-label">E-mail</label>
-                                            <input type="email" class="form-control" id="emailDoVoluntario">
+                                            <input type="email" class="form-control" id="emailDoVoluntario" required>
                                         </div>
                                         <div class="col-md-4 mt-1 mb-1">
                                             <label for="telefoneDoVoluntario" class="form-label">Telefone</label>
-                                            <input type="phone" class="form-control" id="telefoneDoVoluntario" size="14"
-                                                placeholder="+55 (00) 00000-0000">
+                                            <input type="phone" class="form-control" id="telefoneDoVoluntario" size="20"
+                                                placeholder="(00) 00000-0000" required>
+                                            <!-- Máscara para o campo de celular para contato do voluntário -->
+                                            <script>
+                                                document.getElementById("telefoneDoVoluntario").addEventListener('input', function (e) {
+                                                    var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+                                                    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+                                                });
+                                            </script>
                                         </div>
                                     </div>
                                     <div class="row mb-2">
@@ -125,12 +143,12 @@
                                             <div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="sexoDoVoluntario"
-                                                        id="sexoFeminino" value="F">
+                                                        id="sexoFeminino" value="Feminino">
                                                     <label class="form-check-label" for="sexoFeminino">Feminino</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="sexoDoVoluntario"
-                                                        id="sexoMasculino" value="M">
+                                                        id="sexoMasculino" value="Masculino">
                                                     <label class="form-check-label"
                                                         for="sexoMasculino">Masculino</label>
                                                 </div>
@@ -138,36 +156,37 @@
                                         </div>
                                         <div class="col-md-8 mt-1">
                                             <label for="faixaEtariaDoVoluntario" class="form-label">
-                                                Faixa etária <br>
+                                                Faixa etária
                                                 <spam class="align-middle mb-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="currentColor" class="bi bi-info-circle-fill opacity-75"
+                                                    <svg data-bs-toggle="tooltip" data-placement="right"
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        data-bs-title="A idade minima para ajudar como voluntário é de 16 anos de idade"
+                                                        fill="currentColor"
+                                                        class="bi bi-info-circle-fill opacity-75 align-baseline"
                                                         viewBox="0 0 16 16">
                                                         <path
                                                             d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
                                                     </svg>
-                                                    <small class="opacity-75">A idade minima para ajudar como voluntário
-                                                        é de 16 anos de idade
-                                                    </small>
                                                 </spam>
                                             </label>
                                             <div class="col-md-4">
                                                 <select class="form-select" id="faixaEtariaDoVoluntario"
                                                     aria-label="Default select example">
                                                     <option selected hidden>Selecione...</option>
-                                                    <option value="16-">Abaixo de 16 anos</option>
-                                                    <option value="16-20">De 16 a 20 anos</option>
-                                                    <option value="21-30">De 21 a 30 anos</option>
-                                                    <option value="31-40">De 31 a 40 anos</option>
-                                                    <option value="41-50">De 41 a 50 anos</option>
-                                                    <option value="51-60">De 51 a 60 anos</option>
-                                                    <option value="60+">Acima de 60 anos</option>
+                                                    <option>Abaixo de 16 anos</option>
+                                                    <option>Entre 16 e 20 anos</option>
+                                                    <option>Entre 21 e 30 anos</option>
+                                                    <option>Entre 31 e 40 anos</option>
+                                                    <option>Entre 41 e 50 anos</option>
+                                                    <option>Entre 51 e 60 anos</option>
+                                                    <option>Acima de 60 anos</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                 </section>
 
+                                <!-- Endereço -->
                                 <section class="mb-4 mt-4">
                                     <p class="fs-5">
                                         <strong class="mb-3">Endereço</strong>
@@ -192,20 +211,21 @@
                                     <div class="row">
                                         <div class="col-md-5 mt-1">
                                             <label for="bairroDoVoluntario" class="form-label">Bairro</label>
-                                            <input type="text" class="form-control" id="bairroDoVoluntario" disabled>
+                                            <input type="text" class="form-control" id="bairroDoVoluntario" readonly>
                                         </div>
                                         <div class="col-md-5 mt-1">
                                             <label for="cidadeDoVoluntario" class="form-label">Cidade</label>
-                                            <input type="text" class="form-control" id="cidadeDoVoluntario" disabled>
+                                            <input type="text" class="form-control" id="cidadeDoVoluntario" readonly>
                                         </div>
                                         <div class="col-md-2 mt-1">
                                             <label for="estadoDoVoluntario" class="form-label">Estado</label>
                                             <input type="text" class="form-control" id="estadoDoVoluntario" size="2"
-                                                disabled>
+                                                readonly>
                                         </div>
                                     </div>
                                 </section>
 
+                                <!-- Contato de Emergência -->
                                 <section class="mb-4 mt-4">
                                     <p>
                                         <strong class="fs-5 mb-3">Contato de Emergência</strong><br>
@@ -227,18 +247,26 @@
                                             <label for="nomeContatoEmergenciaDoVoluntario"
                                                 class="form-label">Nome</label>
                                             <input type="name" class="form-control"
-                                                id="nomeContatoEmergenciaDoVoluntario">
+                                                id="nomeContatoEmergenciaDoVoluntario" required>
                                         </div>
                                         <div class="col-md-6 my-1">
                                             <label for="telefoneContatoEmergenciaDoVoluntario"
                                                 class="form-label">Telefone</label>
                                             <input type="phone" class="form-control"
                                                 id="telefoneContatoEmergenciaDoVoluntario" size="14"
-                                                placeholder="+55 (00) 00000-0000">
+                                                placeholder="(00) 00000-0000" required>
+                                            <!-- Máscara para o campo de celular -->
+                                            <script>
+                                                document.getElementById("telefoneContatoEmergenciaDoVoluntario").addEventListener('input', function (e) {
+                                                    var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+                                                    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+                                                });
+                                            </script>
                                         </div>
                                     </div>
                                 </section>
 
+                                <!-- Descendência Japonesa -->
                                 <section class="mb-4 mt-4">
                                     <p class="fs-5">
                                         <strong class="mb-3">Descendência Japonesa</strong>
@@ -264,23 +292,23 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 mt-1" id="VoluntarioDescendente">
+                                        <div class="col-md-6 mt-1" id="VoluntarioDescendente" hidden>
                                             <label for="ascendenciaDoVoluntarioDescendente"
                                                 class="form-label">Ascendência</label>
                                             <select class="form-select" id="ascendenciaDoVoluntarioDescendente"
                                                 aria-label="Default select example">
                                                 <option selected hidden>Selecione...</option>
-                                                <option value="1">Issei (Japonês)</option>
-                                                <option value="2">Nissei (2ª Geração)</option>
-                                                <option value="3">Sansei (3ª Geração)</option>
-                                                <option value="4">Yonsei (4ª Geração)</option>
-                                                <option value="5">Gosei (5ª Geração)</option>
-                                                <option value="6">Não se aplca</option>
+                                                <option>Issei (1ª Geração)</option>
+                                                <option>Nissei (2ª Geração)</option>
+                                                <option>Sansei (3ª Geração)</option>
+                                                <option>Yonsei (4ª Geração)</option>
+                                                <option>Gosei (5ª Geração)</option>
                                             </select>
                                         </div>
                                     </div>
                                 </section>
 
+                                <!-- Escolaridade -->
                                 <section class="mb-4 mt-4">
                                     <p class="fs-5">
                                         <strong class="mb-3">Escolaridade</strong>
@@ -289,24 +317,25 @@
 
                                     <div class="row mb-2">
                                         <div class="col-md-6">
-                                            <label for="ascendenciaDoVoluntarioDescendente"
+                                            <label for="escolaridadeDoVoluntario"
                                                 class="form-label">Escolaridade</label>
-                                            <select class="form-select" id="ascendenciaDoVoluntarioDescendente"
+                                            <select class="form-select" id="escolaridadeDoVoluntario"
                                                 aria-label="Default select example">
                                                 <option selected hidden>Selecione...</option>
-                                                <option value="1">Pós-graduação completo</option>
-                                                <option value="2">Superior completo</option>
-                                                <option value="3">Superior incompleto</option>
-                                                <option value="4">Ensino Médio completo</option>
-                                                <option value="5">Ensino Médio incompleto</option>
-                                                <option value="6">Fundamental II completo</option>
-                                                <option value="7">Fundamental II incompleto</option>
-                                                <option value="8">Fundamental I completo</option>
-                                                <option value="9">Fundamental I incompleto</option>
+                                                <option>Pós-graduação completo</option>
+                                                <option>Superior completo</option>
+                                                <option>Superior incompleto</option>
+                                                <option>Ensino Médio completo</option>
+                                                <option>Ensino Médio incompleto</option>
+                                                <option>Fundamental II completo</option>
+                                                <option>Fundamental II incompleto</option>
+                                                <option>Fundamental I completo</option>
+                                                <option>Fundamental I incompleto</option>
+                                                <option>Não alfabetizado</option>
                                             </select>
                                         </div>
                                         <div class="col-md-6 mt-1">
-                                            <label for="estudante" class="form-label">Está estudando atualmente</label>
+                                            <label for="estudante" class="form-label">Está estudando atualmente?</label>
                                             <div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="estudante"
@@ -320,9 +349,8 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="col-md-6 mt-1">
-                                            <label for="telefoneContatoDoVoluntario" class="form-label">Idiomas</label>
+                                            <label class="form-label">Idiomas</label>
                                             <div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox"
@@ -345,7 +373,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 mt-1">
-                                            <label for="nomeContatoDoVoluntario" class="form-label">Conhecimento em
+                                            <label class="form-label">Conhecimento em
                                                 LIBRAS</label>
                                             <div>
                                                 <div class="form-check form-check-inline">
@@ -367,17 +395,33 @@
                                     </div>
                                 </section>
 
-                                <section class="mb-4 mt-4" hidden>
+                                <!-- Carreira -->
+                                <section class="mb-4 mt-4">
                                     <p class="fs-5">
                                         <strong class="mb-3">Trabalho</strong>
                                         <hr class="mt-1 mb-4 border-bottom border-danger ">
                                     </p>
 
                                     <div class="mb-2">
-
+                                        <div class="col-md-6 mt-1">
+                                            <label for="trabalho" class="form-label">Está trabalhando atualmente?</label>
+                                            <div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="trabalho"
+                                                        id="trabalhaSim">
+                                                    <label class="form-check-label" for="trabalhaSim">Sim</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="trabalho"
+                                                        id="trabalhaNao">
+                                                    <label class="form-check-label" for="trabalhaNao">Não</label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </section>
 
+                                <!-- Experiência de voluntariado -->
                                 <section class="mb-4 mt-4" hidden>
                                     <p class="fs-5">
                                         <strong class="mb-3">Voluntariado</strong>
@@ -390,10 +434,41 @@
                                 </section>
                             </div>
 
+                            <!-- Submissão da ficha -->
                             <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-danger" type="submit" id="enviaFichaDeInscricao">Enviar Ficha de Inscrição</button>
+                                <button class="btn btn-danger" type="button" id="enviaFichaDeInscricao">
+                                    Enviar Ficha de Inscrição
+                                </button>
                             </div>
-                        </form>
+
+                            <!-- Toasts de confirmação de envio da ficha de voluntário -->
+                            <div id="toastConfirmacaoCadastroVoluntario"
+                                class="toast align-items-center text-bg-success border-0 position-fixed bottom-0 end-0"
+                                role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex">
+                                    <div class="toast-body">
+                                        <spam id="txtToastVoluntario"></spam> <br>
+                                        <small>Em breve você receberá um e-mail de confirmação.</small>
+                                    </div>
+                                    <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                                        data-bs-dismiss="toast" aria-label="Close"></button>
+                                </div>
+                            </div>
+
+                            <!-- Toasts de falha ao identificar CEP -->
+                            <div id="toastFalhaCEP"
+                                class="toast align-items-center text-bg-danger border-0 position-fixed top-0 end-0"
+                                role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex">
+                                    <div class="toast-body">
+                                        O CEP informado está em um formato inválido ou não existe. <br>
+                                        <small>Tente novamente.</small>
+                                    </div>
+                                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" 
+                                        aria-label="Close"></button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-1"></div>
                     </div>
                 </section>
@@ -405,13 +480,18 @@
     <footer id="footer" class="container navbar-fixed-bottom">
         <hr class="mt-5 mb-4 border-bottom border-danger">
 
-        <p class="text-muted">            
+        <p class="text-muted">
             &copy; <spam id="anoCriacaoProjeto"></spam> FJ Tech • Festival do Japão
         </p>
     </footer>
 
     <!-- Consumindo a API ViaCEP para tratativa de endereços -->
     <script>
+        // Máscara aplicada no campo de CEP
+        document.getElementById("cepDoVoluntario").addEventListener('input', function (e) {
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,5})(\d{0,3})/);
+            e.target.value = !x[2] ? x[1] : x[1] + '-' + x[2];
+        });
         //Limpa valores do formulário de cep.
         function limpaFormEnderecos() {
             document.getElementById('enderecoDoVoluntario').value = ("");
@@ -480,6 +560,8 @@
                 d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
         </symbol>
     </svg>
+
+    <script src="./form.bundle.js"></script>
 </body>
 
 </html>

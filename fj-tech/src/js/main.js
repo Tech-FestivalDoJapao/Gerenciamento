@@ -8,7 +8,12 @@ import './voluntarios/perfil.mjs'
 import './voluntarios/remove.mjs'
 import './voluntarios/festival/credencial.mjs'
 import './voluntarios/festival/turno.mjs'
-import './voluntarios/festival/tamanho_hapi.mjs'
+import './voluntarios/festival/resgate_hapi.mjs'
+
+// Informações de cadastro de expedientes
+import './voluntarios/festival/cadastra_checkin.mjs'
+import './voluntarios/festival/cadastra_intervalo.mjs'
+import './voluntarios/festival/cadastra_checkout.mjs'
 
 // Informações dos recursos
 import './recursos/cards.mjs'
@@ -41,16 +46,15 @@ if (anoCriacaoDoProjeto != anoAtual) {
 document.getElementById("anoCriacaoProjeto").innerHTML = anoCriacaoDoProjeto;
 
 /**
- * Identifica o dia atual do evento
+ * Habilita o uso de tooltips do boostatrap no sistema
  */
-const dataAtual = new Date();
-document.getElementById("diaAtualEvento").innerHTML = dataAtual.getDate().toString().padStart(2, "0") + "/" + dataAtual.getMonth().toString().padStart(2, "0");
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
 /**
  * TODO
  * Validação do modal para desbloquear a área administrativa do sistema com o uso de uma palavra-chave
  */
-/*
 
 /**
  * Uso da API ViaCEP para preenchimento automático do endereço
@@ -58,16 +62,33 @@ document.getElementById("diaAtualEvento").innerHTML = dataAtual.getDate().toStri
  */
 
 /**
- * TODO: Habilitar o uso de toast para exibir mensagens de erro e sucesso
+ * Exibe o toast de confirmação de cadastro de voluntário
  */
+document.addEventListener('DOMContentLoaded', () => {
+  // Captura o botão pelo ID
+  const btnConfirmaRemocaoVoluntario = document.getElementById('btnRemoverVoluntario');
 
-// Move a legenda versaoDoSistema para o rodapé da página em telas menores que 768px
+  // Captura o toast pelo ID
+  const toastElement = document.getElementById('toastConfirmacaoRemocaoVoluntario');
+  const toastBootstrap = new bootstrap.Toast(toastElement);
+
+  // Evento de clique no botão
+  btnConfirmaRemocaoVoluntario.addEventListener('click', () => { 
+    toastBootstrap.show(); 
+  });
+});
+
+/**
+ * Altera a posição e exibição da versão do sistema para telas menores que 768px
+ */
 if (window.innerWidth < 768) {
+  // Exibe a versão do sistema no rodapé da página
   document.getElementById("versaoDoSistema").classList.add("fixed-bottom");
   document.getElementById("versaoDoSistema").classList.add("text-end");
   document.getElementById("versaoDoSistema").classList.add("p-4");
 
+  // Atualiza o menu lateral
   document.getElementById("menuOffcanvasNavbar").classList.add("p-4");
-  document.getElementById("menuOffcanvasNavbar").classList.add("jubtitle");
+  document.getElementById("menuOffcanvasNavbar").classList.add("subtitle");
   document.getElementById("menuLateral").classList.add("ps-4");
-} 
+}
