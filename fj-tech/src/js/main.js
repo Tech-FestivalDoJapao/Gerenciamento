@@ -92,3 +92,20 @@ if (window.innerWidth < 768) {
   document.getElementById("menuOffcanvasNavbar").classList.add("subtitle");
   document.getElementById("menuLateral").classList.add("ps-4");
 }
+
+/**
+ * Bloqueia o recarregamento indesejado do sistema
+ */
+document.addEventListener('keydown', function (event) {
+  // Bloqueia a tecla F5 e Ctrl + R 
+  if ((event.key === 'F5') || (event.ctrlKey && event.key === 'r')) {
+    event.preventDefault();
+    //alert('Recarregar a página está bloqueado!');
+  }
+
+  // Bloqueia a tecla Enter
+  if (event.key === 'Enter') {
+    event.preventDefault(); 
+    //alert('O recarregamento e envio com Enter está bloqueado!');
+  }
+});
