@@ -189,17 +189,16 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="desbloquearGerenciamentoDeRecursos">Área Administrativa
-                            </h1>
+                            <h1 class="modal-title fs-5" id="desbloquearGerenciamentoDeRecursos">Área Administrativa</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form id="validaAcessoAdministrativo" class="was-validated">
                                 <div class="mb-3">
-                                    <label for="palavra-chave" class="col-form-label mb-3">
+                                    <p for="palavra-chave" class="col-form-label mb-3">
                                         Para desbloquear o acesso à área de Gerenciamento de Recursos é necessário
-                                        informar uma palavra-chave:
-                                    </label>
+                                        informar a chave a seguir: <span class="font-monospace p-1 bg-secondary-subtle text-secondary-emphasis" id="senha"></span>
+                                    </p>
                                     <input type="text" class="form-control" id="palavra-chave" required>
                                     <div class="invalid-feedback">
                                         Por favor, insira uma palavra-chave válida neste campo
@@ -211,13 +210,14 @@
                             <button type="button" class="btn btn-outline-danger"
                                 data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-danger" id="acessar-recursos" onclick="
-                                if (document.getElementById('palavra-chave').value === '@dm1n') {
+                                if (document.getElementById('palavra-chave').value === document.getElementById('senha').textContent) {
                                     document.getElementById('recursos-tab').click();  
                                     document.getElementById('recursos-tab').removeAttribute('hidden');  
                                     document.getElementsByName('acessar-recursos-link').item(0).style.display = 'none';                                    
                                 } else {
                                     alert('Palavra-chave inválida. Tente novamente.');
-                                }" data-bs-dismiss="modal">Acessar</button>
+                                };
+                                document.getElementById('palavra-chave').value = '';" data-bs-dismiss="modal">Acessar</button>
                         </div>
                     </div>
                 </div>
@@ -1644,6 +1644,49 @@
                 limpaFormEnderecos();
             }
         };
+    </script>
+
+    <!-- Gera uma senha aleatória para desbloqueio do acesso à área administrativa -->
+    <script>
+        // Gera uma senha aleatória de 14 caracteres para desbloquear a área administrativa do sistema
+        function gerarSenha(tamanho = 14) {
+            const numeros = '0123456789';
+            const especiais = '!@#$%^&*()-_=+[]{}|;:,.<>?';
+            const letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const letrasMinusculas = 'abcdefghijklmnopqrstuvwxyz';
+
+            // Combina todos os caracteres possíveis
+            const todosCaracteres = letrasMaiusculas + letrasMinusculas + numeros + especiais;
+
+            let senha = '';
+
+            // Garantir que pelo menos um de cada tipo seja adicionado
+            senha += letrasMaiusculas[Math.floor(Math.random() * letrasMaiusculas.length)];
+            senha += letrasMinusculas[Math.floor(Math.random() * letrasMinusculas.length)];
+            senha += numeros[Math.floor(Math.random() * numeros.length)];
+            senha += especiais[Math.floor(Math.random() * especiais.length)];
+
+            // Preencher o restante da senha com caracteres aleatórios
+            for (let i = senha.length; i < tamanho; i++) {
+                senha += todosCaracteres[Math.floor(Math.random() * todosCaracteres.length)];
+            }
+
+            // Embaralhar os caracteres para evitar previsibilidade
+            senha = senha.split('').sort(() => Math.random() - 0.5).join('');
+
+            return senha;
+        }
+        
+        // Exibir a senha gerada na tela, alterando em um intervalo de 3 minutos
+        function atualizarSenha() {
+            document.getElementById('senha').innerHTML = gerarSenha();
+        }
+
+        // Atualiza a senha imediatamente ao carregar a página
+        atualizarSenha();
+
+        // Define um intervalo para atualizar a senha a cada 15 minutos (900000 milissegundos)
+        setInterval(atualizarSenha, 180000);
     </script>
 
     <!-- SVGs utilizados no theme chooser -->
