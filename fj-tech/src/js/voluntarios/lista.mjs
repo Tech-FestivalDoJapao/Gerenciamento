@@ -109,6 +109,7 @@ voluntarioSnapshot.docChanges().forEach(async (change) => {
         const txtEmail = document.createElement("p");
         txtEmail.classList.add("text-muted", "mb-0", "d-none", "d-md-table-cell");
         txtEmail.textContent = emailVoluntario;
+        txtEmail.style.overflowWrap = "anywhere";
         grupoNomeEmail.appendChild(txtNome);
         grupoNomeEmail.appendChild(txtEmail);
         divNomeEEmail.appendChild(grupoNomeEmail);
@@ -169,7 +170,8 @@ voluntarioSnapshot.docChanges().forEach(async (change) => {
         btnGerenciaVoluntario.dataset.bsToggle = "offcanvas";
         btnGerenciaVoluntario.dataset.bsTarget = "#offcanvasRight";
         btnGerenciaVoluntario.ariaControls = "offcanvasRight";
-        btnGerenciaVoluntario.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/></svg>`;
+        btnGerenciaVoluntario.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" data-bs-toggle="tooltip" data-bs-title="Gerenciar horário e recursos do voluntário">
+            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/></svg>`;
         grupoDeAcoes.appendChild(btnGerenciaVoluntario);
         const btnPerfilVoluntario = document.createElement("button");
         btnPerfilVoluntario.type = "button";
@@ -177,7 +179,7 @@ voluntarioSnapshot.docChanges().forEach(async (change) => {
         btnPerfilVoluntario.dataset.bsToggle = "modal";
         btnPerfilVoluntario.dataset.bsTarget = "#PerfilVoluntarioModal";
         btnPerfilVoluntario.id = "AcessarPerfilVoluntario";
-        btnPerfilVoluntario.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>`;
+        btnPerfilVoluntario.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16" data-bs-toggle="tooltip" data-bs-title="Acessar perfil do voluntário"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>`;
         grupoDeAcoes.appendChild(btnPerfilVoluntario);
         const btnExcluiVoluntario = document.createElement("button");
         btnExcluiVoluntario.type = "button";
@@ -185,7 +187,7 @@ voluntarioSnapshot.docChanges().forEach(async (change) => {
         btnExcluiVoluntario.id = "RemoverVoluntario";
         btnExcluiVoluntario.dataset.bsToggle = "modal";
         btnExcluiVoluntario.dataset.bsTarget = "#RemoverVoluntarioModal";
-        btnExcluiVoluntario.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/></svg>`;
+        btnExcluiVoluntario.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16" data-bs-toggle="tooltip" data-bs-title="Remover voluntário"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/></svg>`;
         grupoDeAcoes.appendChild(btnExcluiVoluntario);
         colunaDeAcoes.appendChild(grupoDeAcoes);
         linhaVoluntarioListado.appendChild(colunaDeAcoes);

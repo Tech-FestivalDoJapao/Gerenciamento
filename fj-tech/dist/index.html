@@ -1014,7 +1014,6 @@
                                                     </div>
 
                                                     <div class="col-sm-8 col-md-9">
-
                                                         <div class="mt-2 mb-2">
                                                             <!-- Legendas da barra de progresso -->
                                                             <div class="hstack g-3">
@@ -1180,14 +1179,15 @@
                                             <div class="card-text pb-3">
                                                 <div class="row hstack gap-3">
                                                     <div class="col text-center">
-                                                        <div class="h5"><span id="vouchersTotal"
-                                                                style="font-size: 2em;"></span></div>
+                                                        <div class="h5" id="qtdeTotalDeVouchers">
+                                                            <span id="vouchersTotal" style="font-size: 2em;"></span></div>
                                                         <p>Total</p>
                                                     </div>
 
                                                     <div class="col text-center">
-                                                        <div class="h5"><span id="vouchersDisponiveis"
-                                                                style="font-size: 2em;"></span></div>
+                                                        <div class="h5">
+                                                            <span id="vouchersDisponiveis" style="font-size: 2em;"></span>
+                                                        </div>
                                                         <p>Disponíveis</p>
                                                     </div>
 
@@ -1243,9 +1243,9 @@
                                                                 document.getElementById('cadastroUnicoDeCredenciais').classList.remove('d-none');
                                                                 document.getElementById('cadastroIndividualDeCredenciais').classList.add('d-none');
                                                                 ">
-                                                        <label class="form-check-label" for="cadastroUnicoCredencial">
-                                                            Cadastro único, a mesma quantidade para todos os dias do
-                                                            evento
+                                                        <label class="form-check-label" for="cadastroUnicoCredencial"
+                                                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Informe a quantidade total de credenciais para o evento" >
+                                                            Cadastro único 
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
@@ -1256,10 +1256,9 @@
                                                                 document.getElementById('cadastroUnicoDeCredenciais').classList.add('d-none');
                                                                 document.getElementById('cadastroIndividualDeCredenciais').classList.remove('d-none');
                                                                 ">
-                                                        <label class="form-check-label"
-                                                            for="cadastroIndividualCredencial">
-                                                            Cadastro individual, quantidades específicas para cada dia
-                                                            do evento
+                                                        <label class="form-check-label" for="cadastroIndividualCredencial"
+                                                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Informe a quantidade específica de credenciais para cada dia do evento" >
+                                                            Cadastro por dia
                                                         </label>
                                                     </div>
                                                 </div>
@@ -1268,12 +1267,8 @@
                                             <div id="cadastroUnicoDeCredenciais" class="mt-3 d-none">
                                                 <div class="row mb-3">
                                                     <label for="qtdeCredenciaisEvento"
-                                                        class="col-sm-6 col-md-8 col-form-label">Informe a
-                                                        quantidade total de credenciais:</label>
-                                                    <div class="col-sm-6 col-md-4">
-                                                        <input type="number" class="form-control"
-                                                            id="qtdeCredenciaisEvento">
-                                                    </div>
+                                                        class="col-sm-6 col-md-8 col-form-label">Informe a quantidade total de credenciais:</label>
+                                                    <div class="col-sm-6 col-md-4"> <input type="number" class="form-control" id="qtdeCredenciaisEvento"> </div>
                                                 </div>
                                             </div>
 
@@ -1283,24 +1278,21 @@
                                                     <label for="qtdeCredenciaisDia1"
                                                         class="col-sm-6 col-md-4 col-form-label">Sexta-feira</label>
                                                     <div class="col-sm-6 col-md-4">
-                                                        <input type="number" class="form-control"
-                                                            id="qtdeCredenciaisDia1">
+                                                        <input type="number" class="form-control" id="qtdeCredenciaisDia1">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-1">
                                                     <label for="qtdeCredenciaisDia2"
                                                         class="col-sm-6 col-md-4 col-form-label">Sábado</label>
                                                     <div class="col-sm-6 col-md-4">
-                                                        <input type="number" class="form-control"
-                                                            id="qtdeCredenciaisDia2">
+                                                        <input type="number" class="form-control" id="qtdeCredenciaisDia2">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-1">
                                                     <label for="qtdeCredenciaisDia3"
                                                         class="col-sm-6 col-md-4 col-form-label">Domingo</label>
                                                     <div class="col-sm-6 col-md-4">
-                                                        <input type="number" class="form-control"
-                                                            id="qtdeCredenciaisDia3">
+                                                        <input type="number" class="form-control" id="qtdeCredenciaisDia3">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1339,9 +1331,9 @@
                                                                 document.getElementById('cadastroUnicoDeHapis').classList.remove('d-none');
                                                                 document.getElementById('cadastroIndividualDeHapis').classList.add('d-none');
                                                                 ">
-                                                        <label class="form-check-label" for="cadastroUnicoHapi">
-                                                            Cadastro único, a mesma quantidade para todos os dias do
-                                                            evento
+                                                        <label class="form-check-label" for="cadastroUnicoHapi"
+                                                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Informe a quantidade total de hapis para o evento" >
+                                                            Cadastro único
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
@@ -1351,9 +1343,9 @@
                                                                 document.getElementById('cadastroUnicoDeHapis').classList.add('d-none');
                                                                 document.getElementById('cadastroIndividualDeHapis').classList.remove('d-none');
                                                                 ">
-                                                        <label class="form-check-label" for="cadastroIndividualHapi">
-                                                            Cadastro individual, quantidades específicas para cada dia
-                                                            do evento
+                                                        <label class="form-check-label" for="cadastroIndividualHapi"
+                                                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Informe a quantidade específica de hapis para cada dia do evento" >
+                                                            Cadastro por dia
                                                         </label>
                                                     </div>
                                                 </div>
@@ -1361,11 +1353,9 @@
                                                 <div id="cadastroUnicoDeHapis" class="mt-3 d-none">
                                                     <div class="row mb-3">
                                                         <label for="qtdeHapisEvento"
-                                                            class="col-sm-6 col-md-8 col-form-label">Informe a
-                                                            quantidade total de hapis:</label>
+                                                            class="col-sm-6 col-md-8 col-form-label">Informe a quantidade total de hapis:</label>
                                                         <div class="col-sm-6 col-md-4">
-                                                            <input type="number" class="form-control"
-                                                                id="qtdeHapisEvento">
+                                                            <input type="number" class="form-control" id="qtdeHapisEvento">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1436,9 +1426,9 @@
                                                                 document.getElementById('cadastroIndividualDeVouchers').classList.add('d-none');
                                                                 document.getElementById('cadastroPorTipoDeVoucher').classList.add('d-none');
                                                                 ">
-                                                        <label class="form-check-label" for="cadastroUnicoVoucher">
-                                                            Cadastro único, a mesma quantidade para todos os dias do
-                                                            evento
+                                                        <label class="form-check-label" for="cadastroUnicoVoucher"
+                                                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Informe a quantidade total de vouchers para o evento" >
+                                                            Cadastro único
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
@@ -1449,9 +1439,9 @@
                                                                 document.getElementById('cadastroIndividualDeVouchers').classList.remove('d-none');
                                                                 document.getElementById('cadastroPorTipoDeVoucher').classList.add('d-none');
                                                                 ">
-                                                        <label class="form-check-label" for="cadastroIndividualVoucher">
-                                                            Cadastro individual, quantidades específicas para cada dia
-                                                            do evento
+                                                        <label class="form-check-label" for="cadastroIndividualVoucher"
+                                                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Informe a quantidade específica de vouchers para cada dia do evento" >
+                                                            Cadastro por dia
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
