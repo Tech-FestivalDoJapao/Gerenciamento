@@ -126,7 +126,7 @@ txtCredencial.addEventListener("input", () => {
     }
 
     /**
-     * Não permite a submissão de um código de credencial com çetras
+     * Não permite a submissão de um código de credencial com letras
      */
     if (txtCredencial.value.trim().match(/[a-zA-Z]/)) {
         txtCredencial.classList.add("is-invalid");
