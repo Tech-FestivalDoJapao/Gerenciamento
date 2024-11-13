@@ -20,22 +20,21 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
             const docFestivalRef = doc(docVoluntarioRef, 'festival', '2024');
             const festival = await getDoc(docFestivalRef);
 
-            if (perfil.exists()) {
-                // Limpa os campos do modal de perfil do voluntário se houver algum valor
-                clearInputData();
+            // Limpa os campos do modal de perfil do voluntário se houver algum valor
+            clearInputData();
 
+            if (perfil.exists()) {               
                 // Identifica o código de credencial e a data de inscrição do voluntário
                 const codigoCredencial = festival.data().codigo_credencial_voluntario;
                 const dataInscricao = new Date(festival.data().data_inscricao.toDate()).toLocaleDateString("pt-BR");
+                            
+                // Exibe o código de credencial alocado e a data de inscrição do voluntário no header do modal de perfil  
+                document.getElementById("docVoluntarioPerfil").innerHTML = `ID: ${codigoCredencial} | Voluntário desde ${dataInscricao}`;
                 // Exibe apenas a data de inscrição do voluntário no header do modal de perfil, caso não haja credencial alocada
                 if (codigoCredencial === null) {
                     document.getElementById("docVoluntarioPerfil").innerHTML = `Voluntário desde ${dataInscricao}`;
-                    
-                    return;
-                }              
-                // Exibe o código de credencial alocado e a data de inscrição do voluntário no header do modal de perfil  
-                document.getElementById("docVoluntarioPerfil").innerHTML = `ID: ${codigoCredencial} | Voluntário desde ${dataInscricao}`;
-
+                }  
+                
                 /**
                  * Dados Pessoais 
                  */
@@ -126,7 +125,6 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
         });
     });
 });
-
 
 // Botões de fechamento do modal de perfil do voluntário
 const btnFecharPerfilHeader = document.getElementById("btnFecharPerfilHeader");
