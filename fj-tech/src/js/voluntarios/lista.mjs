@@ -276,3 +276,6 @@ document.getElementById("selecionaVoluntarioNaTabela").addEventListener("click",
  * Atualiza a lista de voluntários após alguma ação como adição, remoção ou atualização dos dados de um voluntário
  */
 listadeDeVoluntarios.click();
+
+const campoDeBusca = document.getElementById("buscaVoluntarioNaTabela");
+    campoDeBusca.classList.add("border-0", "border-bottom", "border-danger", "border-opacity-75");
