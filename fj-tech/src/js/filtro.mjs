@@ -191,4 +191,19 @@ document.getElementById("filtrarTodos").addEventListener("click", (event) => {
 
     // Altera o texto do seletor por status
     document.getElementById("statusFiltrado").innerText = "Todos";
+
+    // Remove o limite da pesquisa
+    document.getElementById("buscaVoluntarioNaTabela").addEventListener("input", (event) => {
+        const nomePesquisado = event.target.value.toLowerCase();
+
+        voluntarioListado.forEach((linha) => {
+            const nomeVoluntario = linha.querySelector(".fw-semibold").textContent.toLowerCase();
+
+            if (nomeVoluntario.includes(nomePesquisado)) {
+                linha.style.display = "table-row";
+            } else {
+                linha.style.display = "none";
+            }
+        });
+    });
 });
