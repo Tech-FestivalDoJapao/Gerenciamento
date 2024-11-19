@@ -3,6 +3,7 @@ import { db } from "./../../firebaseConfig.mjs";
 import { doc, collection, getDoc, getDocs, query, updateDoc } from "firebase/firestore";
 
 import './../lista.mjs';
+import { desbloquearCheckOut } from "./turno.mjs";
 
 // Obtém o ano da edição atual do festival
 const edicaoAtualFestival = "2024";
@@ -95,11 +96,6 @@ function desbloquearCamposGerenciais() {
     document.getElementById("cadastraCheckOut").removeAttribute("disabled");
     document.getElementById("cadastraInicioIntervalo").removeAttribute("disabled");
     document.getElementById("cadastraTerminoIntervalo").removeAttribute("disabled");
-
-    // Campos relacionados à recursos utilizados pelo voluntário
-    // Hapi
-    document.getElementById("tamanhoHapi").removeAttribute("disabled");
-    document.getElementById("cadastraTamanhoHapi").removeAttribute("disabled");
 }
 
 /**

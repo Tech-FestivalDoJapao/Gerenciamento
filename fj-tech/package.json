@@ -26,22 +26,22 @@
   "license": "ISC",
   "description": "Sistema gerenciador de voluntários e recursos do Festival do Japão.",
   "devDependencies": {
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "^10.4.20",
     "css-loader": "^7.1.2",
-    "gh-pages": "^6.1.1",
-    "mini-css-extract-plugin": "^2.9.0",
+    "gh-pages": "^6.2.0",
+    "mini-css-extract-plugin": "^2.9.2",
     "postcss-loader": "^8.1.1",
-    "sass": "^1.77.4",
-    "sass-loader": "^14.2.1",
+    "sass": "^1.81.0",
+    "sass-loader": "^16.0.3",
     "style-loader": "^4.0.0",
-    "webpack": "^5.94.0",
+    "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
+    "webpack-dev-server": "^5.1.0"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "firebase": "^11.0.1"
+    "firebase": "^11.0.2"
   }
 }

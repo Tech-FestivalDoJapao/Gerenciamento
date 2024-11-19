@@ -9,6 +9,7 @@ import { edicaoAtualFestival } from "../lista.mjs";
 
 // Obtém as funções de bloqueio e desbloqueio dos campos referntes ao turno do voluntário
 import { desbloquearCheckOut, desbloquearInicioIntervalo, bloquearTerminoIntervalo } from "./turno.mjs";
+import { bloquearResgateHapi, desbloquearResgateHapi } from "./resgate_hapi.mjs";
 import { bloquearResgateVoucher } from "./resgate_voucher.mjs";
 
 // Obtém os elementos referentes ao check-in do voluntário
@@ -49,8 +50,11 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
                 bloquearBtnCheckIn();
                 desbloquearCheckOut();
 
-                // Ativa as opções de intervalo	
+                // Permite o resgate de hapi
                 desbloquearInicioIntervalo();
+                desbloquearResgateHapi();
+
+                // Bloqueia o resgate de voucher
                 bloquearResgateVoucher();
                 bloquearTerminoIntervalo();
             }).catch((erro) => {

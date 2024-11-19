@@ -165,11 +165,6 @@ export function desbloquearCheckOut() {
 }
 
 /**
- * TODO: Valida as informações de início e término do intervalo baseado no turno do voluntário
- * criar funções para bloquear e desbloquear os botões de início e término de intervalo
- */
-
-/**
  * Desabilita o botão de início de intervalo
  */
 export function bloquearInicioIntervalo() {    

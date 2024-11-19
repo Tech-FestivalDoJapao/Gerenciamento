@@ -20,7 +20,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     // Limpa o campo de informações de resgate de hapi
     txtResgateHapi.textContent = "";
     // Habilita o campo de seleção de tamanho do hapi
-    desbloquearCampoHapi();
+    desbloquearResgateHapi();
     optTamanhoHapi.classList.remove("is-invalid");
 
     // Acessa as informações do voluntário
@@ -38,7 +38,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     // Exibe a informação de resgate do hapi do voluntário
     if (horaResgateHapi !== null) {
         txtResgateHapi.innerHTML = `<small class="opacity-50 m-0 px-4">Resgatado às ${horaResgateHapi.toDate().toLocaleTimeString("pt-BR", { hour12: false })}</small>`;
-        bloquearCampoHapi();
+        bloquearResgateHapi();
     }
 
     /**
@@ -67,10 +67,10 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
                 console.log("Hapi associado com sucesso.");
                 
                 txtResgateHapi.innerHTML = `<small class="opacity-50 m-0 px-4">Resgatado às ${new Date().toLocaleTimeString()}</small>`;
-                bloquearCampoHapi();
+                bloquearResgateHapi();
             }).catch(erro => {
                 console.error("Erro ao associar o tamanho do hapi ao voluntário.\n", erro);
-                desbloquearCampoHapi();
+                desbloquearResgateHapi();
             });
         } else {
             optTamanhoHapi.classList.add("is-invalid");
@@ -83,7 +83,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
  * Desabilita o botão de resgate de hapi, o campo de selção e exibe o tamanho do hapi do voluntário
  * @param {String} tamanhoHapi 
  */
-function bloquearCampoHapi() {
+export function bloquearResgateHapi() {
     // Exibe o tamanho do hapi do voluntário e bloqueia a edição do campo
     optTamanhoHapi.value = optTamanhoHapi.value;
     optTamanhoHapi.disabled = true;
@@ -96,7 +96,7 @@ function bloquearCampoHapi() {
 /**
  * Habilita o campo de seleção de tamanho do hapi e o botão de cadastro de tamanho do hapi
  */
-function desbloquearCampoHapi() {
+export function desbloquearResgateHapi() {
     // Habilita o campo de seleção de tamanho do hapi
     optTamanhoHapi.disabled = false;
 
