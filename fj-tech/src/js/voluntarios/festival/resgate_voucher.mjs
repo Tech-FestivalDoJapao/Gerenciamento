@@ -6,6 +6,7 @@ import '../lista.mjs';
 
 // Obtém o ano da edição atual do festival
 import { edicaoAtualFestival } from "../lista.mjs";
+import { btnFinalizaIntervalo } from "./turno.mjs";
 
 // Obtém os elementos referentes ao resgate de voucher do voluntário
 const btnResgateVoucher = document.getElementById("cadastraResgateVoucher");
@@ -30,6 +31,13 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
     const horariosSexta = festival.data().expediente.horarios_sexta.intervalo;
     let ultimoIntervalo = Object.keys(horariosSexta).pop();
 
+    const resgateVoucherOcorreu = horariosSexta.intervalo_1.resgate_voucher;
+    if (resgateVoucherOcorreu) {
+        exibeInformacaoresgateVoucher(resgateVoucherOcorreu); 
+    } else {
+        limpaInformacoesResgateVoucher();
+    }
+
     /**
      * Associa o tipo de voucher selecionado ao voluntário
      */
@@ -49,17 +57,7 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
         }, { merge: true }).then(() => {
             console.log("Voucher resgatado com sucesso");
 
-            // Exibe o tipo de voucher resgatado pelo voluntário
-            const identificaVoucherResgatado = document.createElement('small');
-            identificaVoucherResgatado.className = 'opacity-50 m-0 px-4';
-            identificaVoucherResgatado.textContent = `Voucher resgatado: ${tipoVoucherDoVoluntario}`;
-
-            // Remove as informações anteriores de resgate de voucher
-            if (txtResgateVoucher.firstChild) {
-                txtResgateVoucher.removeChild(txtResgateVoucher.firstChild);
-            }
-
-            txtResgateVoucher.appendChild(identificaVoucherResgatado);
+            exibeInformacaoresgateVoucher(tipoVoucherDoVoluntario);
             bloquearResgateVoucher();
         }).catch((erro) => {
             console.error("Erro ao resgatar voucher: ", erro);
@@ -79,6 +77,11 @@ export function bloquearResgateVoucher() {
     // Desabilita o botão de resgate de voucher
     btnResgateVoucher.disabled = true;
     btnResgateVoucher.style.cursor = "not-allowed";
+
+    // Limpa o campo de seleção de voucher
+    if (btnFinalizaIntervalo.classList.contains("btn-outline-danger")) {
+        optResgateVoucher.value = optResgateVoucher.options[0].value;
+    }
 }
 
 export function desbloquearResgateVoucher() {
@@ -88,6 +91,20 @@ export function desbloquearResgateVoucher() {
     // Habilita o botão de resgate de voucher
     btnResgateVoucher.disabled = false;
     btnResgateVoucher.style.cursor = "pointer";
+}
+
+function exibeInformacaoresgateVoucher(voucher) {
+    // Exibe o tipo de voucher resgatado pelo voluntário
+    const identificaVoucherResgatado = document.createElement('small');
+    identificaVoucherResgatado.className = 'opacity-50 m-0 px-4';
+    identificaVoucherResgatado.textContent = `Voucher resgatado: ${voucher}`;
+
+    // Remove as informações anteriores de resgate de voucher
+    if (txtResgateVoucher.firstChild) {
+        txtResgateVoucher.removeChild(txtResgateVoucher.firstChild);
+    }
+
+    txtResgateVoucher.appendChild(identificaVoucherResgatado);
 }
 
 function limpaInformacoesResgateVoucher() {

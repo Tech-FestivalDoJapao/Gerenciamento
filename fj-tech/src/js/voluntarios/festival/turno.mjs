@@ -15,7 +15,7 @@ const txtCheckIn = document.getElementById("horarioCheckIn");
 const txtCheckOut = document.getElementById("horarioCheckOut");
 // Obtém os elementos referentes aos horários de intervalo do voluntário
 const btnIniciaIntervalo = document.getElementById("cadastraInicioIntervalo");
-const btnFinalizaIntervalo = document.getElementById("cadastraTerminoIntervalo");
+export const btnFinalizaIntervalo = document.getElementById("cadastraTerminoIntervalo");
 const divIntervalos = document.getElementById("horariosDeIntervalo");
 
 /**
