@@ -30,9 +30,10 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
 
     // Obtém o horário já existente no banco
     const horarioCheckIn = festival.data().expediente.horarios_sexta.check_in;
-    const novoHorarioCheckIn = new Date();
 
     btnCheckIn.addEventListener("click", async () => {
+        const novoHorarioCheckIn = new Date();
+
         /**
          * Realiza o check-in do voluntário caso o mesmo ainda não tenha sido realizado
          */
@@ -79,10 +80,12 @@ function bloquearBtnCheckIn() {
  * Altera o badge de status do voluntário, tornando-o ativo no festival
  * @param {*} voluntario - ID do voluntário
  */
-function tornaVoluntarioAtivo(voluntario) {
+export function tornaVoluntarioAtivo(voluntario) {
     const statusVoluntario = document.getElementById(voluntario).querySelector("#statusVoluntario");
 
     statusVoluntario.textContent = " Ativo ";
     statusVoluntario.classList.add("text-bg-success");
-    statusVoluntario.classList.remove("text-bg-danger"); 
+
+    statusVoluntario.classList.remove("text-bg-danger");    // Caso o voluntário esteja inativo
+    statusVoluntario.classList.remove("text-bg-warning");   // Caso o voluntário esteja em intervalo
 }

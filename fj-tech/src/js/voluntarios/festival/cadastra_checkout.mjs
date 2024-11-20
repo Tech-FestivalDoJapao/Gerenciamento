@@ -9,6 +9,8 @@ import { edicaoAtualFestival } from "../lista.mjs";
 
 // Obtém as funções de bloqueio e desbloqueio dos campos referntes ao turno do voluntário
 import { bloquearInicioIntervalo, bloquearTerminoIntervalo } from "./turno.mjs";
+import { bloquearResgateHapi } from "./resgate_hapi.mjs";
+import { bloquearResgateVoucher } from "./resgate_voucher.mjs";
 
 // Obtém os elementos referentes ao checkout do voluntário
 const btnCheckOut = document.getElementById("cadastraCheckOut");
@@ -47,8 +49,8 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
                 console.log("Check-out realizado com sucesso");
 
                 // Atualiza a página para exibir o novo horário de check-out e o status de inativo
+                document.getElementById("corpoTabelaDeListagemDeVoluntarios").querySelector("#" + idVoluntario).querySelector("#checkout").textContent = new Date(novoHorarioCheckOut).toLocaleTimeString("pt-BR", { hour12: false });
                 tornaVoluntarioInativo(idVoluntario);
-                document.getElementById("corpoTabelaDeListagemDeVoluntarios").querySelector(idVoluntario).querySelector("#checkout").textContent = new Date(novoHorarioCheckOut).toLocaleTimeString("pt-BR", { hour12: false });
 
                 // Bloqueia a eição de horários e recursos do voluntário
                 bloquearRecursos();
@@ -96,10 +98,6 @@ function bloquearRecursos() {
     bloquearTerminoIntervalo();
 
     // Bloqueia os campos relacionados à recursos utilizados pelo voluntário
-    // Hapi
-    document.getElementById("tamanhoHapi").setAttribute("disabled", true);
-    document.getElementById("cadastraTamanhoHapi").setAttribute("disabled", true);
-    // Voucher
-    document.getElementById("tipoVoucher").setAttribute("disabled", true);
-    document.getElementById("cadastraResgateVoucher").setAttribute("disabled", true);
+    bloquearResgateHapi();
+    bloquearResgateVoucher();
 }

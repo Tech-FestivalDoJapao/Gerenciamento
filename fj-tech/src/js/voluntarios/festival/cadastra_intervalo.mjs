@@ -7,6 +7,7 @@ import '../lista.mjs';
 import { edicaoAtualFestival } from "../lista.mjs";
 import { bloquearResgateVoucher, desbloquearResgateVoucher } from "./resgate_voucher.mjs";
 import { bloquearInicioIntervalo, bloquearTerminoIntervalo, desbloquearInicioIntervalo, desbloquearTerminoIntervalo } from "./turno.mjs";
+import { tornaVoluntarioAtivo } from "./cadastra_checkin.mjs";
 
 // Lista de voluntários
 const listaDeVoluntarios = document.getElementById("corpoTabelaDeListagemDeVoluntarios");
@@ -16,10 +17,6 @@ const btnInicioIntervalo = document.getElementById("cadastraInicioIntervalo");
 const btnTerminoIntervalo = document.getElementById("cadastraTerminoIntervalo");
 // Obtém a div para exibição dos horários de intervalo
 const badgeHorariosIntervalo = document.getElementById("horariosDeIntervalo");
-
-/**
- *TODO: Associa um horário de início de intervalo ao voluntário
- */
 
 /**
  * TODO: Associa um horário de término de intervalo ao voluntário
@@ -43,7 +40,7 @@ listaDeVoluntarios.addEventListener("click", async (event) => {
         bloquearResgateVoucher();
 
         btnInicioIntervalo.addEventListener("click", async () => {
-            cadastraInicioIntervalo(docFestivalRef, horariosIntervalo);
+            cadastraInicioIntervalo(idVoluntario, docFestivalRef, horariosIntervalo);
         });
     }
 
@@ -59,9 +56,97 @@ listaDeVoluntarios.addEventListener("click", async (event) => {
 
     
     btnTerminoIntervalo.addEventListener("click", async () => {
-        cadastraTerminoIntervalo(docFestivalRef, horariosIntervalo);
+        cadastraTerminoIntervalo(idVoluntario, docFestivalRef, horariosIntervalo);
     });
 });
+
+/**
+ * Cadastra o início de um novo intervalo para o voluntário
+ * @param {*} docFestivalRef 
+ * @param {*} horariosIntervalo 
+ */
+async function cadastraInicioIntervalo(voluntario, docFestivalRef, horariosIntervalo) {
+    let ultimoIntervalo = Object.keys(horariosIntervalo).pop();
+    let identificaIntervalo = ultimoIntervalo.charAt(ultimoIntervalo.length - 1);
+    let incrementaIntervalo = String.fromCharCode(identificaIntervalo.charCodeAt(0) + 1);
+    let novoIntervalo = `intervalo_${incrementaIntervalo}`;
+
+    if (identificaIntervalo === "1") {
+        await setDoc(docFestivalRef, {
+            expediente: {
+                horarios_sexta: {
+                    intervalo: {
+                        [ultimoIntervalo]: {
+                            inicio_intervalo: new Date(),
+                        }
+                    }
+                }
+            }
+        }, { merge: true }).then(() => {
+            console.log("Início do intervalo " + ultimoIntervalo + " cadastrado com sucesso");
+            tornaVoluntarioInTervalo(voluntario);            
+            exibeHorarioIntervalo(null, null);
+    
+            bloquearInicioIntervalo();
+            desbloquearTerminoIntervalo();
+            desbloquearResgateVoucher();
+        }).catch((erro) => {
+            console.error("Erro ao cadastrar início de intervalo: ", erro);
+        });
+
+        return;
+    } 
+
+    await updateDoc(docFestivalRef, {
+        "expediente.horarios_sexta.intervalo": {
+            ...horariosIntervalo,
+            [novoIntervalo]: {
+                "inicio_intervalo": new Date(),
+                "termino_intervalo": null,
+                "resgate_voucher": null,
+                "devolucao_hapi": null
+            }
+        }
+    }).then(() => {
+        console.log("Início do intervalo " + incrementaIntervalo + " cadastrado com sucesso");
+        exibeHorarioIntervalo(null, null);
+    
+        bloquearInicioIntervalo();
+        desbloquearTerminoIntervalo();
+        desbloquearResgateVoucher();
+    }).catch((erro) => {
+        console.error("Erro ao cadastrar início de intervalo: ", erro);
+    });
+}   
+
+function cadastraTerminoIntervalo(voluntario, docFestivalRef, horariosIntervalo) {
+    let ultimoIntervalo = Object.keys(horariosIntervalo).pop();
+    let identificaIntervalo = ultimoIntervalo.charAt(ultimoIntervalo.length - 1);
+
+    
+        setDoc(docFestivalRef, {
+            expediente: {
+                horarios_sexta: {
+                    intervalo: {
+                        [ultimoIntervalo]: {
+                            termino_intervalo: new Date(),
+                        }
+                    }
+                }
+            }
+        }, { merge: true }).then(() => {
+            console.log("Término do intervalo " + ultimoIntervalo + " cadastrado com sucesso");
+            tornaVoluntarioAtivo(voluntario);
+            exibeHorarioIntervalo(null, null);
+    
+            desbloquearInicioIntervalo();
+            bloquearTerminoIntervalo();
+            bloquearResgateVoucher();
+        }).catch((erro) => {
+            console.error("Erro ao cadastrar término de intervalo: ", erro);
+        });
+
+}
 
 /**
  * Exibe as informações referentes ao(s) intervalo(s) realizado pelo voluntário
@@ -116,90 +201,17 @@ function exibeHorarioIntervalo(inicioIntervalo, terminoIntervalo) {
 
         return;
     }
-}   
+}  
 
 /**
- * Cadastra o início de um novo intervalo para o voluntário
- * @param {*} docFestivalRef 
- * @param {*} horariosIntervalo 
+ * Altera o badge de status do voluntário, tornando-o em intervalo no festival
+ * @param {*} voluntario - ID do voluntário 
  */
-async function cadastraInicioIntervalo(docFestivalRef, horariosIntervalo) {
-    let ultimoIntervalo = Object.keys(horariosIntervalo).pop();
-    let identificaIntervalo = ultimoIntervalo.charAt(ultimoIntervalo.length - 1);
-    let incrementaIntervalo = String.fromCharCode(identificaIntervalo.charCodeAt(0) + 1);
-    let novoIntervalo = `intervalo_${incrementaIntervalo}`;
-
-    if (identificaIntervalo === "1") {
-        await setDoc(docFestivalRef, {
-            expediente: {
-                horarios_sexta: {
-                    intervalo: {
-                        [ultimoIntervalo]: {
-                            inicio_intervalo: new Date(),
-                        }
-                    }
-                }
-            }
-        }, { merge: true }).then(() => {
-            console.log("Início do intervalo " + ultimoIntervalo + " cadastrado com sucesso");
-            exibeHorarioIntervalo(null, null);
+function tornaVoluntarioInTervalo(voluntario) {
+    const statusVoluntario = document.getElementById(voluntario).querySelector("#statusVoluntario");
     
-            bloquearInicioIntervalo();
-            desbloquearTerminoIntervalo();
-            desbloquearResgateVoucher();
-        }).catch((erro) => {
-            console.error("Erro ao cadastrar início de intervalo: ", erro);
-        });
+    statusVoluntario.textContent = " Intervalo ";
+    statusVoluntario.classList.add("text-bg-warning");
 
-        return;
-    } 
-
-    await updateDoc(docFestivalRef, {
-        "expediente.horarios_sexta.intervalo": {
-            ...horariosIntervalo,
-            [novoIntervalo]: {
-                "inicio_intervalo": new Date(),
-                "termino_intervalo": null,
-                "resgate_voucher": null,
-                "devolucao_hapi": null
-            }
-        }
-    }).then(() => {
-        console.log("Início do intervalo " + incrementaIntervalo + " cadastrado com sucesso");
-        exibeHorarioIntervalo(null, null);
-    
-        bloquearInicioIntervalo();
-        desbloquearTerminoIntervalo();
-        desbloquearResgateVoucher();
-    }).catch((erro) => {
-        console.error("Erro ao cadastrar início de intervalo: ", erro);
-    });
-}   
-
-function cadastraTerminoIntervalo(docFestivalRef, horariosIntervalo) {
-    let ultimoIntervalo = Object.keys(horariosIntervalo).pop();
-    let identificaIntervalo = ultimoIntervalo.charAt(ultimoIntervalo.length - 1);
-
-    
-        setDoc(docFestivalRef, {
-            expediente: {
-                horarios_sexta: {
-                    intervalo: {
-                        [ultimoIntervalo]: {
-                            termino_intervalo: new Date(),
-                        }
-                    }
-                }
-            }
-        }, { merge: true }).then(() => {
-            console.log("Término do intervalo " + ultimoIntervalo + " cadastrado com sucesso");
-            exibeHorarioIntervalo(null, null);
-    
-            desbloquearInicioIntervalo();
-            bloquearTerminoIntervalo();
-            bloquearResgateVoucher();
-        }).catch((erro) => {
-            console.error("Erro ao cadastrar término de intervalo: ", erro);
-        });
-
+    statusVoluntario.classList.remove("text-bg-success");   // Caso o voluntário esteja ativo
 }
