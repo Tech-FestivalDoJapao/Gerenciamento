@@ -89,6 +89,13 @@ if (window.innerWidth < 768) {
 }
 
 /**
+ * Imede que o usuário cole ou arraste o texto da chave de acesso no campo de texto
+ */
+let palavraChave = document.getElementById("palavra-chave");
+palavraChave.addEventListener("paste", (event) => { event.preventDefault(); });
+palavraChave.addEventListener("drop", (event) => { event.preventDefault(); });
+
+/**
  * Bloqueia o recarregamento indesejado do sistema
  */
 document.addEventListener('keydown', function (event) {

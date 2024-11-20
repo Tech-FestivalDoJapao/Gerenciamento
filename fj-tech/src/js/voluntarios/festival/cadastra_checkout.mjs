@@ -34,9 +34,9 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
         bloquearRecursos();
     }
 
-    const novoHorarioCheckOut = new Date();
-
     btnCheckOut.addEventListener("click", async () => {
+        const novoHorarioCheckOut = new Date();
+
         /**
          * Realiza o check-in do voluntário caso o mesmo ainda não tenha sido realizado
          */
@@ -47,8 +47,8 @@ document.getElementById("corpoTabelaDeListagemDeVoluntarios").addEventListener("
                 console.log("Check-out realizado com sucesso");
 
                 // Atualiza a página para exibir o novo horário de check-out e o status de inativo
-                document.getElementById("corpoTabelaDeListagemDeVoluntarios").querySelector(idVoluntario).querySelector("#checkout").textContent = new Date(novoHorarioCheckOut).toLocaleTimeString("pt-BR", { hour12: false });
                 tornaVoluntarioInativo(idVoluntario);
+                document.getElementById("corpoTabelaDeListagemDeVoluntarios").querySelector(idVoluntario).querySelector("#checkout").textContent = new Date(novoHorarioCheckOut).toLocaleTimeString("pt-BR", { hour12: false });
 
                 // Bloqueia a eição de horários e recursos do voluntário
                 bloquearRecursos();
