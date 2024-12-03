@@ -4,20 +4,22 @@
 </div>
 
 # FJ Tech
-O aplicativo FJ Tech visa atender as necessidades gerenciais identificadas no Festival do Japão, agilizando os processos referentes à gestão de voluntários e dos recursos utilizados por eles, como a distribuição de uniformes (hapis) e vouchers, para as próximas edições do evento
+O sistema FJ Tech visa atender as necessidades gerenciais identificadas no Festival do Japão, agilizando os processos referentes à gestão de voluntários e dos recursos utilizados por eles, como a distribuição de uniformes (hapis) e vouchers, para as próximas edições do evento
 
 > [!IMPORTANT]
 > Atualmente, o sistema está disponível apenas para **plataformas web**, de modo que é possível acessá-lo através dos links abaixo:
 > - [Sistema de Gerenciamento](https://tech-festivaldojapao.github.io/Gerenciamento) 
->   - [Ficha de Inscrição para Voluntários](https://tech-festivaldojapao.github.io/Gerenciamento/voluntario.html) 
->   - [Ficha de Disponibilidade do Voluntário](https://tech-festivaldojapao.github.io/Gerenciamento/horas.html)
+> - [Ficha de Inscrição para Voluntários](https://tech-festivaldojapao.github.io/Gerenciamento/voluntario.html) 
+<!-- >>   - [Ficha de Disponibilidade do Voluntário](https://tech-festivaldojapao.github.io/Gerenciamento/horas.html) -->
 
 ## Estrutura 
 O esquema abaixo representa a estrutura de pastas do projeto:
 ```sh
 fj-tech/
 ├── dist/
-│   └── index.html
+│   ├── img/
+│   ├── index.html
+│   └── voluntario.html
 ├── src/
 │   ├── js/
 │   │   ├── estandes/
