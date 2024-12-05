@@ -733,7 +733,7 @@
                                             <div class="col"></div>
                                             <form class="row col-11 g-3" method="get">
                                                 <!-- Dados pessoais -->
-                                                <div class="row mb-4 col-12" id="dadosPessoaisVoluntario">
+                                                <div class="row mb-5 col-12" id="dadosPessoaisVoluntario">
                                                     <p> <strong class="fs-5">Dados Pessoais</strong> </p>
                                                     <div class="col-md-6 col-sm-12">
                                                         <label for="nomeCompletoDoVoluntario" class="form-label">Nome
@@ -747,7 +747,14 @@
                                                         <input type="phone" class="form-control"
                                                             id="telefoneDoVoluntario" readonly>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-12" id="divCPF">
+                                                    <div class="col-md-3 col-sm-12" id="divFaixaEtaria">
+                                                        <label for="faixaEtariaDoVoluntario" class="form-label">Faixa
+                                                            etária</label>
+                                                        <input class="form-control" id="faixaEtariaDoVoluntario"
+                                                            readonly type="text">
+                                                    </div>
+                                                    <!-- CPF -->
+                                                    <div class="col-md-3 col-sm-12" id="divCPF" hidden>
                                                         <label for="cpfDoVoluntario" class="form-label">CPF</label>
                                                         <input type="text" class="form-control" id="cpfDoVoluntario"
                                                             readonly>
@@ -776,7 +783,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-12" id="divFaixaEtaria">
+
+                                                    <div class="col-md-3 col-sm-12" id="divFaixaEtaria" hidden>
                                                         <label for="faixaEtariaDoVoluntario" class="form-label">Faixa
                                                             etária</label>
                                                         <input class="form-control" id="faixaEtariaDoVoluntario"
@@ -784,8 +792,18 @@
                                                     </div>
                                                 </div>
                                                 <!-- Contato de emergência -->
-                                                <div class="row mb-4 col-md-6">
-                                                    <p><strong class="fs-5">Contato de Emergência</strong></p>
+                                                <div class="row mb-5 col-md-6">
+                                                    <p>
+                                                        <strong class="fs-5">Contato de Emergência</strong>
+                                                        <spam class="p-2 align-items-center">                                                     
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16"
+                                                                data-bs-toggle="tooltip" data-bs-title="Esta informação será utilizada para contato, em caso de emergência">   
+                                                                <path
+                                                                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
+                                                            </svg>                                                        
+                                                        </spam>
+                                                    </p>
                                                     <div class="col-md-6 col-sm-12">
                                                         <label for="nomeContatoDoVoluntario"
                                                             class="form-label">Nome</label>
@@ -798,7 +816,8 @@
                                                         <input type="phone" class="form-control" readonly
                                                             id="telefoneContatoDoVoluntario">
                                                     </div>
-                                                    <spam class="align-middle mb-2 mt-2">
+                                                    <!-- Contato de emergência -->
+                                                    <spam class="align-middle mb-2 mt-2" hidden>
                                                         <div class="alert alert-primary d-flex align-items-center p-2"
                                                             role="alert">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16"
@@ -813,7 +832,7 @@
                                                     </spam>
                                                 </div>
                                                 <!-- Endereço -->
-                                                <div class="row mb-4 col-md-6" id="divEnderecoVoluntario">
+                                                <div class="row mb-5 col-md-6" id="divEnderecoVoluntario">
                                                     <p><strong class="fs-5">Endereço</strong></p>
                                                     <div class="col-md-5">
                                                         <label for="bairroDoVoluntario"
@@ -833,13 +852,15 @@
                                                         <input type="text" class="form-control" id="estadoDoVoluntario"
                                                             size="2" readonly>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <!-- Endereço -->
+                                                    <div class="col-md-8" hidden>
                                                         <label for="enderecoDoVoluntario"
                                                             class="form-label">Endereco</label>
                                                         <input type="text" class="form-control"
                                                             id="enderecoDoVoluntario" readonly>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <!-- CEP -->
+                                                    <div class="col-md-4" hidden>
                                                         <label for="cepDoVoluntario" class="form-label">CEP</label>
                                                         <input type="text" class="form-control" id="cepDoVoluntario"
                                                             size="10" maxlength="9"
